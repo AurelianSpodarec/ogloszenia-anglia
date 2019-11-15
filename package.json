@@ -1,0 +1,28 @@
+{
+  "name": "ogloszenianglia.co.uk",
+  "version": "0.1.0",
+  "description": "Calssified Ads Webapp for Polish community in the UK",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx next build",
+    "prod": "NODE_ENV=production node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AurelianSpodarec/ogloszenia-anglia.git"
+  },
+  "author": "Aurelian Spodarec",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AurelianSpodarec/ogloszenia-anglia/issues"
+  },
+  "homepage": "https://github.com/AurelianSpodarec/ogloszenia-anglia#readme",
+  "dependencies": {
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "^9.1.3",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-markdown": "^4.2.2"
+  }
+}
