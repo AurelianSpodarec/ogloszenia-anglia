@@ -1,35 +1,31 @@
 {
-  "name": "ogloszenianglia.co.uk",
+  "name": "my-app",
   "version": "0.1.0",
-  "description": "Calssified Ads Webapp for Polish community in the UK",
-  "main": "index.js",
-  "scripts": {
-    "build": "npx next build",
-    "prod": "NODE_ENV=production node server.js",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AurelianSpodarec/ogloszenia-anglia.git"
-  },
-  "author": "Aurelian Spodarec",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/AurelianSpodarec/ogloszenia-anglia/issues"
-  },
-  "homepage": "https://github.com/AurelianSpodarec/ogloszenia-anglia#readme",
+  "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.25",
-    "@fortawesome/free-brands-svg-icons": "^5.11.2",
-    "@fortawesome/free-regular-svg-icons": "^5.11.2",
-    "@fortawesome/free-solid-svg-icons": "^5.11.2",
-    "@fortawesome/react-fontawesome": "^0.1.7",
-    "@material-ui/core": "^4.6.1",
-    "@material-ui/icons": "^4.5.1",
-    "isomorphic-unfetch": "^3.0.0",
-    "next": "^9.1.3",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "react-markdown": "^4.2.2"
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
