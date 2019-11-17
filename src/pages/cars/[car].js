@@ -6,6 +6,9 @@ export default function Car() {
 
     return (
         <Layout>
+
+
+
             <h1>{router.query.id}</h1>
             <p>This is the blog Car content.</p>
         </Layout>

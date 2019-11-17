@@ -19,6 +19,11 @@
   },
   "homepage": "https://github.com/AurelianSpodarec/ogloszenia-anglia#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-brands-svg-icons": "^5.11.2",
+    "@fortawesome/free-regular-svg-icons": "^5.11.2",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.7",
     "@material-ui/core": "^4.6.1",
     "@material-ui/icons": "^4.5.1",
     "isomorphic-unfetch": "^3.0.0",
