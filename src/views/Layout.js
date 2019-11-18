@@ -8,6 +8,21 @@ import Categories from './../components/Categories'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+
+import { Container, Grid, Paper, withStyles } from "@material-ui/core";
+
+
+const styles = theme => ({
+    "@global": {
+        body: {
+            height: "100%",
+            margin: 0,
+            marginTop: '64px',
+        },
+
+    }
+});
+
 class Layout extends React.Component {
 
     render() {
@@ -32,4 +47,4 @@ class Layout extends React.Component {
     }
 }
 
-export default Layout;
+export default withStyles(styles)(Layout);

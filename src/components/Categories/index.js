@@ -1,5 +1,6 @@
 import React from 'react';
 import categoryItem from './sub-components/categoryItem';
+import { Grid } from '@material-ui/core';
 
 const categories = [
     {
@@ -67,9 +68,14 @@ const categories = [
 class Category extends React.Component {
     render() {
         return (
-            <div>
-                {categories.map(category => categoryItem(category))}
-            </div>
+            <Grid
+                container
+                direction="row"
+                justify="center"
+                alignItems="center"
+            >    {categories.map(category => categoryItem(category))}
+
+            </Grid>
         )
     }
 }
