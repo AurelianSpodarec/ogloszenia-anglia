@@ -6,30 +6,39 @@ import { Grid } from '@material-ui/core';
 
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1,
+    categoryItem: {
+        backgroundColor: '#ff9d9d',
+        height: '56px',
+        width: '56px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: '50%',
+        verticalAlign: 'middle',
+        color: 'white',
     },
-    paper: {
-        textAlign: 'center',
-    },
+    categoryItem__icon: {
+        alignItems: "center",
+        display: "flex",
+        flexDirection: "column",
+        padding: "20px",
+    }
 }));
 
-const categoryItem = (props) => {
-    // const classes = useStyles();
+export default function categoryItem(props) {
+    const classes = useStyles();
 
     return (
-        <Grid item >
+        <Grid item>
             <a href={props.link}>
 
-                <div style={{ "backgroundColor": "red", "height": "56px", "width": "56px", "textAlign": "center" }}>
-                    <FontAwesomeIcon icon={props.icon} />
+                <div className={classes.categoryItem}>
+                    <FontAwesomeIcon className={classes.categoryItem__icon} icon={props.icon} />
                 </div>
 
                 <p>{props.name}</p>
 
             </a>
         </Grid>
-    )
+    );
 }
-
-export default categoryItem;
