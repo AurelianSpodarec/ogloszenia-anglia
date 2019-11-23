@@ -1,6 +1,7 @@
-import React from 'react';
-import CategoryItem from './sub-components/CategoryItem';
-import { Grid } from '@material-ui/core';
+import React from 'react'
+
+import CategoryItem from './sub-components/CategoryItem/'
+import { Grid } from '@material-ui/core'
 
 class Category extends React.Component {
 
