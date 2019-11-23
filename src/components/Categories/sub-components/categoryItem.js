@@ -1,11 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid } from '@material-ui/core';
+import { Grid, Link } from '@material-ui/core';
+
+
+
+
+const CategoryItem = (props) => {
+    const classes = useStyles();
+    const data = props.category
+    return (
+        <Grid item>
+            <Link href={data.link}>
+
+                <div className={classes.categoryItem}>
+                    <FontAwesomeIcon className={classes.categoryItem__icon} icon={data.icon} />
+                </div>
+
+                <p>{data.name}</p>
+
+            </Link>
+        </Grid>
+    )
+}
+
+export default CategoryItem;
 
 
 const useStyles = makeStyles(theme => ({
+    root: {
+        flexGrow: 1,
+    },
+    paper: {
+        textAlign: 'center',
+    },
+
     categoryItem: {
         backgroundColor: '#ff9d9d',
         height: '56px',
@@ -24,21 +54,3 @@ const useStyles = makeStyles(theme => ({
         padding: "20px",
     }
 }));
-
-export default function categoryItem(props) {
-    const classes = useStyles();
-
-    return (
-        <Grid item>
-            <a href={props.link}>
-
-                <div className={classes.categoryItem}>
-                    <FontAwesomeIcon className={classes.categoryItem__icon} icon={props.icon} />
-                </div>
-
-                <p>{props.name}</p>
-
-            </a>
-        </Grid>
-    );
-}
