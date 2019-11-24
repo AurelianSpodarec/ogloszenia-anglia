@@ -15,10 +15,23 @@ import {
     faMotorcycle,
     faDumbbell,
     faCalendarAlt,
-    faCubes
+    faCubes,
+    faPlus
 } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faHandshake, faCar, faHome, faCouch, faGift, faMobileAlt, faMotorcycle, faDumbbell, faCalendarAlt, faCubes)
+library.add(
+    faHandshake,
+    faCar,
+    faHome,
+    faCouch,
+    faGift,
+    faMobileAlt,
+    faMotorcycle,
+    faDumbbell,
+    faCalendarAlt,
+    faCubes,
+    faPlus
+)
 
 
 ReactDOM.render(<Layout />, document.getElementById('root'));

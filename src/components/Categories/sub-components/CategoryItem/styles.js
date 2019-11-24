@@ -22,6 +22,9 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         flexDirection: "column",
         padding: "20px",
+    },
+    categoryLinkActive: {
+        backgroundColor: 'red'
     }
 }));
 

@@ -1,44 +1,73 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Grid, Typography, Box, AppBar, Toolbar, Button, InputBase } from '@material-ui/core';
+import {
+    Grid,
+    Typography,
+    Box,
+    AppBar,
+    Toolbar,
+    Button,
+    InputBase
+} from '@material-ui/core';
 
 import useStyles from './styles'
 
-class Header extends React.Component {
+const Logo = function () {
+    const classes = useStyles();
+    return (
+        <Typography className={classes.logo} variant="h6" >
+            Ogloszenia Anglia
+        </Typography>
+    )
+}
 
-    render() {
-        return (
+const SearchInput = function () {
+    const classes = useStyles();
+    return (
+        <div className={classes.searchIcon}>
+            <FontAwesomeIcon icon="search" />
+            <div>
+            </div>
+            <InputBase
+                placeholder="Search…"
 
-            <AppBar className="header">
-                <Toolbar>
+                inputProps={{ 'aria-label': 'search' }}
+            />
+        </div>
+    )
+}
 
-                    <Typography variant="h6" >
-                        Ogloszenia Anglia
-                    </Typography>
+const HeaderButtons = function () {
+    const classes = useStyles();
+    return (
+        <>
+            <Button><FontAwesomeIcon icon={['fas', 'plus']} />Dodaj Ogloszenie</Button>
 
-                    <div>
-                        <div>
-                        </div>
-                        <InputBase
-                            placeholder="Search…"
+            <Button color="inherit">Login</Button>
+            <Button color="inherit">Login</Button>
+        </>
+    )
+}
 
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </div>
+const Header = function () {
+    const classes = useStyles();
 
-                    <Button>Dodaj Ogloszenie</Button>
+    return (
+        <AppBar className={classes.header}>
+            <Toolbar>
 
-                    <Button color="inherit">Login</Button>
-                    <Button color="inherit">Login</Button>
+                <Logo />
 
-                </Toolbar>
-            </AppBar>
+                <SearchInput />
 
-        )
-    }
+                <HeaderButtons />
+
+            </Toolbar>
+        </AppBar>
+
+    )
 }
 
 export default Header;
