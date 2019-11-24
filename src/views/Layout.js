@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import ReactDOM from 'react-dom'
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 
 import Header from './../components/Header'
 import Footer from './../components/Footer'
@@ -14,18 +15,23 @@ import {
     withStyles
 } from "@material-ui/core";
 
+import CarsView from './Categories/Cars';
+
 function Layout(props) {
     return (
+
         <>
-            <BrowserRouter>
-                <Header />
+            <Header />
 
-                <Categories />
+            <Categories />
 
-                {/* Children */}
+            <Router>
+                <div>
+                    <Route path="/" component={CarsView} />
+                </div>
+            </Router>
 
-                <Footer />
-            </BrowserRouter>
+            <Footer />
         </>
     )
 }
