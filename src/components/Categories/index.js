@@ -9,6 +9,7 @@ import {
 
 import CategoryItem from './sub-components/CategoryItem/'
 import { Grid } from '@material-ui/core'
+import CarsView from '../../views/Categories/Cars';
 
 const categories = [
     {
@@ -78,22 +79,24 @@ function Category() {
     const [activeCategory, setCategory] = useState(false)
 
     return (
-        <Grid
-            container
-            direction="row"
-            justify="center"
-            alignItems="center"
-        >
-            {categories.map(category => (
-                <CategoryItem
-                    category={category}
-                    activeCategory={activeCategory === category.link}
-                    onSelectCategory={() => { setCategory(category.link) }}
-                    key={category.link}
-                />
-            ))}
+        <Router>
+            <Grid
+                container
+                direction="row"
+                justify="center"
+                alignItems="center"
+            >
+                {categories.map(category => (
+                    <CategoryItem
+                        category={category}
+                        activeCategory={activeCategory === category.link}
+                        onSelectCategory={() => { setCategory(category.link) }}
+                        key={category.link}
+                    />
+                ))}
 
-        </Grid>
+            </Grid>
+        </Router>
     )
 }
 
