@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const _404 = function () {
+const NotFound = function () {
     // const classes = useStyles();
 
     return (
@@ -13,4 +13,4 @@ const _404 = function () {
     )
 }
 
-export default _404;
+export default NotFound;

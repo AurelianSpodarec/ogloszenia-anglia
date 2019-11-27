@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
+    Container,
     Grid,
     Typography,
     Box,
@@ -56,15 +57,17 @@ const Header = function () {
 
     return (
         <AppBar className={classes.header}>
-            <Toolbar>
+            <Container>
+                <Toolbar>
 
-                <Logo />
+                    <Logo />
 
-                <SearchInput />
+                    <SearchInput />
 
-                <HeaderButtons />
+                    <HeaderButtons />
 
-            </Toolbar>
+                </Toolbar>
+            </Container>
         </AppBar>
 
     )

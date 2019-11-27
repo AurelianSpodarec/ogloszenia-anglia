@@ -9,7 +9,12 @@ import {
 
 import CategoryItem from './sub-components/CategoryItem/'
 import { Grid } from '@material-ui/core'
+
 import CarsView from '../../views/Categories/Cars';
+import NotFound from '../../views/NotFound';
+import HomesView from '../../views/Categories/Homes';
+
+
 
 const categories = [
     {
@@ -94,6 +99,36 @@ function Category() {
                         key={category.link}
                     />
                 ))}
+                <Switch>
+                    <Route exact path="/" component={CarsView} />
+                    <Route path="/cars" component={CarsView} />
+                    <Route path="/homes" component={HomesView} />
+                    <Route component={NotFound} />
+                </Switch>
+
+                {/* <Router>
+                <ul>
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/cars">Cars</Link>
+                    </li>
+                    <li>
+                        <Link to="/homes">Homes</Link>
+                    </li>
+                </ul>
+                <div>
+                    <Switch>
+                        <Route exact path="/" component={CarsView} />
+                        <Route path="/cars" component={CarsView} />
+                        <Route path="/homes" component={HomesView} />
+                        <Route component={NotFound} />
+                    </Switch>
+                </div>
+            </Router> */}
+
+
 
             </Grid>
         </Router>

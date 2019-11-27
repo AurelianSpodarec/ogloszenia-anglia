@@ -16,7 +16,8 @@ import {
     faDumbbell,
     faCalendarAlt,
     faCubes,
-    faPlus
+    faPlus,
+    faArrowAltCircleRight
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -30,7 +31,8 @@ library.add(
     faDumbbell,
     faCalendarAlt,
     faCubes,
-    faPlus
+    faPlus,
+    faArrowAltCircleRight
 )
 
 

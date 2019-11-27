@@ -9,7 +9,7 @@ import {
     Route,
     Link
 } from "react-router-dom";
-// import { shortenWord } from './../../../../utils/functions';
+
 import useStyles from './styles'
 import CarsView from '../../../../views/Categories/Cars';
 
@@ -21,20 +21,20 @@ const CategoryItem = props => {
 
     return (
         <Grid item>
-            {/* <Link to={`/${isActive}`}> */}
-            <Router>
-                <Link to="/cars">
-                    <div onClick={props.onSelectCategory} className={classes.categoryLink}>
-                        {isActive ? "Yes" : "No"}
-                        <div className={isActive ? classes.categoryLinkActive : classes.categoryItem}>
-                            <FontAwesomeIcon className={classes.categoryItem__icon} icon={category.icon} />
-                        </div>
-                        <Typography>{category.name}</Typography>
+            <Link exact to={`/${isActive}`}>
 
+                {/* <Link to="/cars"> */}
+                <div onClick={props.onSelectCategory} className={classes.categoryLink}>
+                    {isActive ? "Yes" : "No"}
+                    <div className={isActive ? classes.categoryLinkActive : classes.categoryItem}>
+                        <FontAwesomeIcon className={classes.categoryItem__icon} icon={category.icon} />
                     </div>
-                </Link>
+                    <Typography>{category.name}</Typography>
 
-            </Router>
+                </div>
+            </Link>
+
+
 
         </Grid>
     )
