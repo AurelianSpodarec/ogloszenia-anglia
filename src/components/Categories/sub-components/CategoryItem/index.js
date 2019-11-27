@@ -15,10 +15,7 @@ import CarsView from '../../../../views/Categories/Cars';
 
 const CategoryItem = props => {
     const classes = useStyles();
-
-    const category = props.category
-    const isActive = props.activeCategory
-
+    console.log("lksdls", props.exact)
     return (
         <Grid item>
             {/* <Link to={`/${isActive}`}> */}
@@ -34,13 +31,15 @@ const CategoryItem = props => {
                 </div>
             // </Link> */}
 
-            <Link to={category.path}>
-                <div>
-                    <FontAwesomeIcon className={classes.categoryItem__icon} icon={category.icon} />
+            <Link exact={props.exact ? true : undefined} to={props.path}>
+                <div onClick={props.onSelectCategory} className={classes.categoryLink}>
+                    <div>
+                        <FontAwesomeIcon className={classes.categoryItem__icon} icon={props.icon} />
+                    </div>
+                    <Typography>{props.label}</Typography>
                 </div>
-                <Typography>{category.label}</Typography>
             </Link>
-
+            {/* <Typography>{props.label}</Typography> */}
 
         </Grid>
     )

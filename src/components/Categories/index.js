@@ -23,6 +23,7 @@ const categories = [
         "label": "Motoryzacja",
         "icon": "car",
         "component": CarsView,
+        "exact": true,
         "route": {
             "url": "/motoryzacja",
         }
@@ -90,7 +91,7 @@ const categories = [
 function Category() {
 
     const [activeCategory, setCategory] = useState(false)
-
+    console.log()
     return (
         <Router>
             <Grid
@@ -100,14 +101,25 @@ function Category() {
                 alignItems="center"
             >
                 {categories.map(category => {
-                    return <CategoryItem label={category.label} icon={category.icon} path={category.route.url} component={category.component} />
-                })};
+                    console.log(category)
+                    return <CategoryItem
+                        key={category.route.url}
+                        label={category.label}
+                        icon={category.icon}
+                        path={category.route.url}
+                        component={category.component}
+                    />
+                })}
             </Grid>
 
             <Switch>
                 {/* <Route exact path="homes" component={HomesView} /> */}
-                <Route path="/homes" component={HomesView} />
-                <Route path="/cars" component={CarsView} />
+                {/* {categories.map(category => {
+                    return <Route exact={category.path ? true : undefined} path={category.path} component={category.component} />
+                })} */}
+                <Route exact path="/motoryzacja" component={CarsView} />
+                <Route path="/nieruchomosc" component={HomesView} />
+                <Route path="/oddam-sa-darmo" component={DefaultView} />
                 <Route component={NotFound} />
             </Switch>
         </Router>

@@ -30,7 +30,7 @@ function Layout(props) {
             <Category />
 
             <Container>
-                <CarsView />
+                {/* <CarsView /> */}
             </Container>
 
 

@@ -6,7 +6,6 @@ import {
     Grid,
     Card,
     Typography,
-    faArrowAltCircleRight
 } from '@material-ui/core';
 
 import CarItem from './sub-components/CarItem/';
@@ -27,7 +26,7 @@ const CarsView = function () {
                 <Grid item md={3}>
                     <Card>
                         <Typography>Posted by</Typography>
-                        <FontAwesomeIcon icon="faArrowAltCircleRight" />
+                        <FontAwesomeIcon icon="circle-right-alt" />
                     </Card>
                 </Grid>
                 <Grid item md={9}>
