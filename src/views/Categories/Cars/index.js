@@ -5,9 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     Grid,
     Card,
+    Typography,
+    faArrowAltCircleRight
 } from '@material-ui/core';
 
-import CarItem from './sub-components/CarItem';
+import CarItem from './sub-components/CarItem/';
 
 // import useStyles from './styles'
 
@@ -24,7 +26,8 @@ const CarsView = function () {
             <Grid container spacing={1}>
                 <Grid item md={3}>
                     <Card>
-
+                        <Typography>Posted by</Typography>
+                        <FontAwesomeIcon icon="faArrowAltCircleRight" />
                     </Card>
                 </Grid>
                 <Grid item md={9}>

@@ -20,14 +20,40 @@ import HomesView from './Categories/Homes';
 import NotFound from './NotFound';
 import Category from './../components/Categories';
 
-// const carsListing = [
-//     {
-//         "car": "Volvo",
-//     },
-//     {
-//         "car": "BMW"
-//     },
-// ]
+const routes = [
+    {
+        "categories": [
+            {
+                "label": "Home",
+                "component": CarsView,
+                "route": {
+                    "url": "/",
+                    "exact": true
+                },
+                "extra": {
+                    "icon": "fa plus",
+                    "bgColor": "default"
+                }
+            },
+            {
+                "label": "About",
+                "component": AboutView,
+                "route": {
+                    "url": "/about",
+                },
+                "extra": {
+                    "icon": "fa person",
+                    "bgColor": "red"
+                }
+            }
+        ]
+    },
+    {
+        "footer": [
+
+        ]
+    }
+]
 
 // const categoriesMenu = [
 //     {
@@ -103,6 +129,11 @@ import Category from './../components/Categories';
 //     )
 // }
 
+// const routes = [
+//     {
+
+//     }
+// ]
 
 function Layout(props) {
     return (

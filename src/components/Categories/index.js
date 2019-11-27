@@ -10,6 +10,8 @@ import {
 import CategoryItem from './sub-components/CategoryItem/'
 import { Grid } from '@material-ui/core'
 
+
+
 import CarsView from '../../views/Categories/Cars';
 import NotFound from '../../views/NotFound';
 import HomesView from '../../views/Categories/Homes';
@@ -19,61 +21,65 @@ import HomesView from '../../views/Categories/Homes';
 const categories = [
     {
         "name": "Motoryzacja",
-        "link": "motoryzacja",
+        "path": "/motoryzacja",
         "color": "default",
-        "icon": "car"
+        "icon": "car",
+        "component": CarsView
+    },
+    {
+        "component": NotFound
     },
     {
         "name": "Nieruchomosc",
-        "link": "nieruchomosc",
+        "path": "/nieruchomosc",
         "color": "default",
         "icon": "home"
     },
     {
         "name": "Oddam za darmo",
-        "link": "oddam-sa-darmo",
+        "path": "/oddam-sa-darmo",
         "color": "default",
         "icon": "gift"
     },
     {
         "name": "Electronika",
-        "link": "elektronika",
+        "path": "/elektronika",
         "color": "default",
         "icon": "mobile-alt"
     },
     {
         "name": "Dom i Ogród",
-        "link": "dom-i-ogrod",
+        "path": "/dom-i-ogrod",
         "color": "default",
         "icon": "couch"
     },
     {
         "name": "Motocykly i inne pojazdy",
-        "link": "motocykly-i-inne-pojazdy",
+        "path": "/motocykly-i-inne-pojazdy",
         "color": "default",
         "icon": "motorcycle"
     },
     {
         "name": "Sport, rozrywka, gry",
-        "link": "sport-rozrywka-gry",
+        "path": "/sport-rozrywka-gry",
         "color": "default",
         "icon": "dumbbell"
     },
     {
         "name": "Eventy",
-        "link": "eventy",
+        "path": "/eventy",
         "color": "default",
         "icon": "calendar-alt"
     },
     {
         "name": "Inne",
-        "link": "inne",
+        "path": "/inne",
         "color": "default",
         "icon": "cubes"
     },
     {
         "name": "Praca i Serwisy",
-        "link": "praca-i-serwisy",
+        "path": "/praca-i-serwisy",
         "color": "default",
         "icon": "handshake",
     }
@@ -100,10 +106,15 @@ function Category() {
                     />
                 ))}
                 <Switch>
-                    <Route exact path="/" component={CarsView} />
+
+                    {categories.map((path, component) => {
+                        <Route path={path} component={component} />
+                    })}
+
+                    {/* <Route exact path="/" component={CarsView} />
                     <Route path="/cars" component={CarsView} />
                     <Route path="/homes" component={HomesView} />
-                    <Route component={NotFound} />
+                    <Route component={NotFound} /> */}
                 </Switch>
 
                 {/* <Router>
