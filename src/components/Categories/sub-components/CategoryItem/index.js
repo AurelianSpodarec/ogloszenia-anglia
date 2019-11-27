@@ -21,10 +21,10 @@ const CategoryItem = props => {
 
     return (
         <Grid item>
-            <Link exact to={`/${isActive}`}>
+            {/* <Link to={`/${isActive}`}> */}
 
-                {/* <Link to="/cars"> */}
-                <div onClick={props.onSelectCategory} className={classes.categoryLink}>
+            {/* <Link to="/cars"> */}
+            {/* <div onClick={props.onSelectCategory} className={classes.categoryLink}>
                     {isActive ? "Yes" : "No"}
                     <div className={isActive ? classes.categoryLinkActive : classes.categoryItem}>
                         <FontAwesomeIcon className={classes.categoryItem__icon} icon={category.icon} />
@@ -32,8 +32,14 @@ const CategoryItem = props => {
                     <Typography>{category.name}</Typography>
 
                 </div>
-            </Link>
+            // </Link> */}
 
+            <Link to={category.path}>
+                <div>
+                    <FontAwesomeIcon className={classes.categoryItem__icon} icon={category.icon} />
+                </div>
+                <Typography>{category.label}</Typography>
+            </Link>
 
 
         </Grid>
