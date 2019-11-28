@@ -3,31 +3,28 @@ import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+    makeStyles,
     Grid,
     Card,
     Typography,
     Container,
     CardItem
 } from '@material-ui/core';
+import { fetchProduct } from './../../../../../services/api/product';
 
-// import useStyles from './styles'
 
-const CarView = ({ car, match, location }) => {
-    // const classes = useStyles();
-    const { params:
-        {
-            carId,
-            name
-        }
-    } = match;
-    console.log(car)
-    console.log(match, location, carId)
+import useStyles from './styles'
+
+const CarView = ({ match, location }) => {
+    const classes = useStyles();
+    if (!match || !match.params.id) return;
+
+    const car = fetchProduct("car", parseInt(match.params.id))
+
     return (
         <Container>
 
-
-            <h1>{carId}{name}</h1>
-
+            <h1>{car.name}</h1>
 
         </Container>
     )

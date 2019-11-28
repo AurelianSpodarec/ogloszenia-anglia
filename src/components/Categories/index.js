@@ -123,7 +123,6 @@ const router = {
 function Category() {
 
     const [activeCategory, setCategory] = useState(false)
-    console.log()
     return (
         <Router>
             <Grid
@@ -133,7 +132,6 @@ function Category() {
                 alignItems="center"
             >
                 {router.categories.map(category => {
-                    console.log(category)
                     return <CategoryItem
                         key={category.route.url}
                         label={category.label}
@@ -150,7 +148,7 @@ function Category() {
                     return <Route exact={category.path ? true : undefined} path={category.path} component={category.component} />
                 })} */}
                 <Route exact path="/motoryzacja" component={CarsView} />
-                <Route path={`/motoryzacja/:carId`} component={CarView} />
+                <Route path={`/motoryzacja/:id`} component={CarView} />
 
                 <Route path="/nieruchomosc" component={HomesView} />
                 <Route path="/oddam-sa-darmo" component={DefaultView} />

@@ -17,7 +17,8 @@ import {
     faCalendarAlt,
     faCubes,
     faPlus,
-    faArrowAltCircleRight
+    faArrowAltCircleRight,
+    faMapMarkerAlt
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -32,7 +33,8 @@ library.add(
     faCalendarAlt,
     faCubes,
     faPlus,
-    faArrowAltCircleRight
+    faArrowAltCircleRight,
+    faMapMarkerAlt
 )
 
 

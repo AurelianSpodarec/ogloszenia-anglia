@@ -3,47 +3,46 @@ import { Link, useParams, useRouteMatch } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-    makeStyles,
-    Grid,
     Typography,
     Box,
     Button,
     Card,
     CardMedia,
-    CardContent,
-    CardActions,
+    CardContent
 } from '@material-ui/core';
 
 import useStyles from './styles'
 
 
-
 const CarItem = function (props) {
     const classes = useStyles();
-    let { id } = useParams();
-    let { path, url } = useRouteMatch();
+    let { path } = useRouteMatch();
 
     return (
-        <Link to={`${path}/${props.car.carId}`}>
+        <Link className={classes.link} to={`${path}/${props.car.id}`}>
             <Card className={classes.card}>
                 <CardMedia
                     className={classes.media}
                     image={props.car.media[0].img}
                     title="Paella dish"
                 />
-
                 <CardContent className={classes.details}>
-                    <CardContent>
-                        <Typography>{props.car.name}</Typography>
-                        <Typography>${props.car.price}</Typography>
-                    </CardContent>
+                    <Box justifyContent="space-between" className={classes.detail}>
+                        <Typography className={classes.title}>{props.car.name}</Typography>
+                        <Typography className={classes.price}>${props.car.price}</Typography>
+                    </Box>
+                    <Box className={classes.detail}>
+                        <Typography>Nissan - Versa - 2008</Typography>
+                        <Typography>147,239ml</Typography>
+                    </Box>
+                    <Box justifyContent="space-between" className={classes.detail}>
+                        <Box display="flex">
+                            <FontAwesomeIcon icon="map-marker-alt" />
+                            <Typography className={classes.location}>{props.car.location}</Typography>
+                        </Box>
+                        <Button>Chat Now</Button>
+                    </Box>
                 </CardContent>
-                <CardActions>
-                    <Typography>Chicago</Typography>
-
-                    <Button title="Chat now" />
-                </CardActions>
-
             </Card>
         </Link>
     )
