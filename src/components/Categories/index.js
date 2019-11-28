@@ -17,76 +17,108 @@ import CarsView from '../../views/Categories/Cars';
 import NotFound from '../../views/NotFound';
 import HomesView from '../../views/Categories/Homes';
 import DefaultView from '../../views/Categories/Default';
+import CarView from '../../views/Categories/Cars/sub-components/CarView';
 
-const categories = [
-    {
-        "label": "Motoryzacja",
-        "icon": "car",
-        "component": CarsView,
-        "exact": true,
-        "route": {
-            "url": "/motoryzacja",
+const router = {
+
+    categories: [
+        {
+            "label": "Motoryzacja",
+            "icon": "car",
+            "component": CarsView,
+            "exact": true,
+            "route": {
+                "url": "/motoryzacja",
+            }
+        },
+        // {
+        //     "component": CarView,
+        //     "route": {
+        //         "url": "/motoryzacja/:carID",
+        //     }
+        // },
+        {
+            "label": "Nieruchomosc",
+            "icon": "home",
+            "component": DefaultView,
+            "route": {
+                "url": "/nieruchomosc",
+            }
+        },
+        {
+            "label": "Oddam za darmo",
+            "icon": "gift",
+            "component": DefaultView,
+            "route": {
+                "url": "/oddam-sa-darmo",
+            }
+        },
+        {
+            "label": "Electronika",
+            "color": "default",
+            "icon": "mobile-alt",
+            "component": DefaultView,
+            "route": {
+                "url": "/elektronika",
+            }
+        },
+        {
+            "label": "Dom i Ogród",
+            "color": "default",
+            "icon": "couch",
+            "component": DefaultView,
+            "route": {
+                "url": "/dom-i-ogrod",
+            }
+        },
+        {
+            "label": "Motocykly i inne pojazdy",
+            "color": "default",
+            "icon": "motorcycle",
+            "component": DefaultView,
+            "route": {
+                "url": "/motocykly-i-inne-pojazdy",
+            }
+        },
+        {
+            "label": "Sport, rozrywka, gry",
+            "color": "default",
+            "icon": "dumbbell",
+            "component": DefaultView,
+            "route": {
+                "url": "/sport-rozrywka-gry",
+            }
+        },
+        {
+            "label": "Eventy",
+            "color": "default",
+            "icon": "calendar-alt",
+            "component": DefaultView,
+            "route": {
+                "url": "/eventy",
+            }
+        },
+        {
+            "label": "Inne",
+            "color": "default",
+            "icon": "cubes",
+            "component": DefaultView,
+            "route": {
+                "url": "/inne",
+            }
+        },
+        {
+            "label": "Praca i Serwisy",
+            "color": "default",
+            "icon": "handshake",
+            "component": DefaultView,
+            "route": {
+                "url": "/praca-i-serwisy",
+            }
         }
-    },
-    {
-        "label": "Nieruchomosc",
-        "icon": "home",
-        "component": DefaultView,
-        "route": {
-            "url": "/nieruchomosc",
-        }
-    },
-    {
-        "label": "Oddam za darmo",
-        "icon": "gift",
-        "component": DefaultView,
-        "route": {
-            "url": "/oddam-sa-darmo",
-        }
-    }
-    // {
-    //     "label": "Electronika",
-    //     "url": "/elektronika",
-    //     "color": "default",
-    //     "icon": "mobile-alt"
-    // },
-    // {
-    //     "label": "Dom i Ogród",
-    //     "url": "/dom-i-ogrod",
-    //     "color": "default",
-    //     "icon": "couch"
-    // },
-    // {
-    //     "label": "Motocykly i inne pojazdy",
-    //     "url": "/motocykly-i-inne-pojazdy",
-    //     "color": "default",
-    //     "icon": "motorcycle"
-    // },
-    // {
-    //     "label": "Sport, rozrywka, gry",
-    //     "url": "/sport-rozrywka-gry",
-    //     "color": "default",
-    //     "icon": "dumbbell"
-    // },
-    // {
-    //     "label": "Eventy",
-    //     "url": "/eventy",
-    //     "color": "default",
-    //     "icon": "calendar-alt"
-    // },
-    // {
-    //     "label": "Inne",
-    //     "url": "/inne",
-    //     "color": "default",
-    //     "icon": "cubes"
-    // },
-    // {
-    //     "label": "Praca i Serwisy",
-    //     "url": "/praca-i-serwisy",
-    //     "color": "default",
-    //     "icon": "handshake",
-    // }
-]
+    ]
+
+}
 
 function Category() {
 
@@ -100,7 +132,7 @@ function Category() {
                 justify="center"
                 alignItems="center"
             >
-                {categories.map(category => {
+                {router.categories.map(category => {
                     console.log(category)
                     return <CategoryItem
                         key={category.route.url}
@@ -118,8 +150,17 @@ function Category() {
                     return <Route exact={category.path ? true : undefined} path={category.path} component={category.component} />
                 })} */}
                 <Route exact path="/motoryzacja" component={CarsView} />
+                <Route path={`/motoryzacja/:carId`} component={CarView} />
+
                 <Route path="/nieruchomosc" component={HomesView} />
                 <Route path="/oddam-sa-darmo" component={DefaultView} />
+                <Route path="/elektronika" component={DefaultView} />
+                <Route path="/dom-i-ogrod" component={DefaultView} />
+                <Route path="/motocykly-i-inne-pojazdy" component={DefaultView} />
+                <Route path="/sport-rozrywka-gry" component={DefaultView} />
+                <Route path="/eventy" component={DefaultView} />
+                <Route path="/inne" component={DefaultView} />
+                <Route path="/praca-i-serwisy" component={DefaultView} />
                 <Route component={NotFound} />
             </Switch>
         </Router>
