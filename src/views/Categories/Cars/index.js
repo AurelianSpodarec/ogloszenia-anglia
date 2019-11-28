@@ -13,13 +13,13 @@ import { fetchProducts } from './../../../services/api/product';
 
 import useStyles from './styles'
 
-
 const CarsView = function () {
     const classes = useStyles();
 
     return (
         <Container>
-            <h1>Cars</h1>
+
+            <Typography>Uzywane auta w Leicester</Typography>
 
             <Grid container spacing={3}>
 
