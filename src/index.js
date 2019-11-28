@@ -18,7 +18,8 @@ import {
     faCubes,
     faPlus,
     faArrowAltCircleRight,
-    faMapMarkerAlt
+    faMapMarkerAlt,
+    faSearch
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -34,7 +35,8 @@ library.add(
     faCubes,
     faPlus,
     faArrowAltCircleRight,
-    faMapMarkerAlt
+    faMapMarkerAlt,
+    faSearch
 )
 
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import useStyles from './styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     makeStyles,
@@ -10,10 +11,8 @@ import {
     Container,
     CardItem
 } from '@material-ui/core';
+
 import { fetchProduct } from './../../../../../services/api/product';
-
-
-import useStyles from './styles'
 
 const CarView = ({ match, location }) => {
     const classes = useStyles();

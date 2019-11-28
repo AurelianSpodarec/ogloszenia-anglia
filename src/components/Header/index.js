@@ -44,7 +44,7 @@ const HeaderButtons = function () {
     const classes = useStyles();
     return (
         <>
-            <Button><FontAwesomeIcon icon={['fas', 'plus']} />Dodaj Ogloszenie</Button>
+            <Button><FontAwesomeIcon icon={"plus"} />Dodaj Ogloszenie</Button>
 
             <Button color="inherit">Login</Button>
             <Button color="inherit">Login</Button>

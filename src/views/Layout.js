@@ -29,11 +29,6 @@ function Layout(props) {
 
             <Category />
 
-            <Container>
-                {/* <CarsView /> */}
-            </Container>
-
-
             <Footer />
         </>
     )

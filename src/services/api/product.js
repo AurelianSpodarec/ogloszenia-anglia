@@ -12,10 +12,7 @@ const fetchProducts = (productName) => {
 }
 
 const fetchProduct = (productName, productId) => {
-    const a = files[productName]
-    const b = a.find((item) => item.id === productId)
-    console.log("fetch product", b)
-    return b;
+    return files[productName].find((item) => item.id === productId)
 }
 
 

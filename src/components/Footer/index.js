@@ -1,16 +1,31 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-class Footer extends React.Component {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+    Container,
+    Grid,
+    Typography,
+    Box,
+    AppBar,
+    Toolbar,
+    Button,
+    InputBase
+} from '@material-ui/core';
 
-    render() {
-        return (
+import useStyles from './styles'
 
-            <footer className="footer">
-                <h3>Footer</h3>
-            </footer>
+const Footer = function () {
+    const classes = useStyles();
 
-        )
-    }
+    return (
+        <div className={classes.footer}>
+            <Container>
+                <Typography>Ogloszenia Anglia</Typography>
+            </Container>
+        </div>
+
+    )
 }
 
 export default Footer;
