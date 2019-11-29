@@ -37,20 +37,20 @@ const CarView = ({ match, location }) => {
                             return <CardMedia
                                 className={classes.thumbnails}
                                 image={img.img}
-                            // title={car.name}
+                            // title={car.alt}
                             />
                         })}
                     </Box>
                 </Box>
 
-                <Box className={classes.col}>
+                <Box className={[classes.col, classes.details]}>
                     <Box>
                         <Typography className={classes.price}>{car.price}</Typography>
                         <Typography className={classes.name}>{car.name}</Typography>
                     </Box>
                     <Box>
                         <Typography>Description</Typography>
-                        <p>Amazing car, it run on oil and fire. When angry, it gets all green and treas are green but burn in fire</p>
+                        <Typography>Amazing car, it run on oil and fire. When angry, it gets all green and treas are green but burn in fire</Typography>
                     </Box>
                 </Box>
 

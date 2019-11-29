@@ -9,20 +9,28 @@ const useStyles = makeStyles(theme => ({
     },
     mainImg: {
         height: "500px",
+        borderRadius: "5px",
+        padding: "3px"
+    },
+    details: {
+        padding: "8px",
     },
     thumbnails: {
         height: "140px"
     },
     price: {
-        fontWeight: "bold"
+        fontWeight: "bold",
+        fontSize: "24px",
     },
     title: {
-        fontWeight: "bold"
+        fontWeight: "bold",
+        fontSize: "18px"
     },
     col: {
         flexBasis: "50%",
         maxWidth: "50%",
-        flexDirection: 'column'
+        flexDirection: 'column',
+        boxSizing: "border-box",
     }
 
 }));

@@ -5,7 +5,8 @@ import {
     Grid,
     Card,
     Typography,
-    Container
+    Container,
+    Toolbar
 } from '@material-ui/core';
 
 import CarItem from './sub-components/CarItem/';
@@ -25,8 +26,10 @@ const CarsView = function () {
 
                 <Grid item md={3}>
                     <Card>
-                        <Typography>Posted by</Typography>
-                        <FontAwesomeIcon icon="circle-right" />
+                        <Toolbar>
+                            <Typography>Posted by</Typography>
+                            <FontAwesomeIcon icon="circle-right" />
+                        </Toolbar>
                     </Card>
                 </Grid>
                 <Grid item md={9}>
