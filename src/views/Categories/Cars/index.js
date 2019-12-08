@@ -13,7 +13,25 @@ import CarItem from './sub-components/CarItem/';
 import { fetchProducts } from './../../../services/api/product';
 
 import useStyles from './styles'
+// All Possibilities
+// 
+// Posted By: ["All", "Individual", "Dealership"]
+// Body Style: ["All", "Sedan", "Hybrid", "Convertible", "Truck", "Coupe", "Hatchback", "Minivan", "Wagon", "SUV", "Others"]
+// Transmision: ["All", "Automatic", "Manual"]
+// Fuel: ["Disel", "Electric", "Flex", "Gas", "Hybrid"]
+// Drivetrain: ["4WD", "AWD", "FWD", "RWD"]
+// 
+// Car Post
 
+// DB
+
+// Users
+// Posts
+// Categories: Cars, Homes, etc
+// Single Product view: Full JSON
+// Product Listing view: Some JSON
+// Location? 
+// Reviews
 const CarsView = function () {
     const classes = useStyles();
 
