@@ -63,9 +63,9 @@ const CarsView = function () {
                 </Grid>
                 <Grid item md={9}>
 
-                    {data.hits.map(car => {
+                    {/* {data.hits.map(car => {
                         return <CarItem key={car.id} car={car} />
-                    })}
+                    })} */}
 
                 </Grid>
 
