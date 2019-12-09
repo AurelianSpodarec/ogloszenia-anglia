@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -11,8 +11,9 @@ import {
 
 import CarItem from './sub-components/CarItem/';
 import { fetchProducts } from './../../../services/api/product';
-
+import { getCars } from './../../../services/api/car';
 import useStyles from './styles'
+import axios from 'axios';
 // All Possibilities
 // 
 // Posted By: ["All", "Individual", "Dealership"]
@@ -34,12 +35,22 @@ import useStyles from './styles'
 // Reviews
 const CarsView = function () {
     const classes = useStyles();
+    const [data, setData] = useState({ hits: [] });
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await axios(
+                'http://localhost:3001/api/v1/cars',
+            );
+            setData(result.data);
+        };
+        fetchData();
+    }, []);
 
     return (
         <Container>
-
             <Typography>Uzywane auta w Leicester</Typography>
-
+            {console.log(data)}
             <Grid container spacing={3}>
 
                 <Grid item md={3}>
@@ -52,7 +63,7 @@ const CarsView = function () {
                 </Grid>
                 <Grid item md={9}>
 
-                    {fetchProducts("car").map(car => {
+                    {data.hits.map(car => {
                         return <CarItem key={car.id} car={car} />
                     })}
 
