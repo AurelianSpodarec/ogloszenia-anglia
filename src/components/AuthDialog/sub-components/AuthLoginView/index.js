@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useStyles from './styles';
 import {
@@ -31,7 +28,6 @@ const AuthLoginView = (isPasswordVisible, setPasswordVisibility) => {
 
     return (
         <div>
-
             <FormControl className={clsx(classes.margin, classes.textField)}>
                 <div>
                     <FontAwesomeIcon icon="lock" />

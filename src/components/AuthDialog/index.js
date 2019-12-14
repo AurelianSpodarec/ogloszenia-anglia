@@ -1,28 +1,15 @@
 import React, { useState } from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import useStyles from './styles';
+
 import {
     Container,
     Grid,
     Typography,
-    Box,
-    AppBar,
-    Toolbar,
-    Button,
-    InputBase,
     Dialog,
-    DialogTitle,
     CardMedia,
-    Input,
-    TextField,
-    InputLabel,
-    IconButton,
-    InputAdornment,
-    FormControl
 } from '@material-ui/core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useStyles from './styles';
 
 import AuthSocialView from './sub-components/AuthSocialView';
 import AuthRegisterView from './sub-components/AuthRegisterView';
@@ -37,12 +24,13 @@ function AuthDialog({ onClose, selectedValue, open }) {
 
     const handleClose = () => {
         onClose(selectedValue);
+        setView('AuthSocialView')
     };
 
     const renderAuthSocialConnector = (currentView) => {
         switch (currentView) {
             case "AuthSocialView":
-                return AuthSocialView();
+                return AuthSocialView(setView);
                 break;
             case "AuthLoginView":
                 return AuthLoginView(isPasswordVisible, setPasswordVisibility);
