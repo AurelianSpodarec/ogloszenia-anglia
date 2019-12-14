@@ -19,8 +19,15 @@ import {
     faPlus,
     faArrowAltCircleRight,
     faMapMarkerAlt,
-    faSearch
-} from '@fortawesome/free-solid-svg-icons'
+    faSearch,
+    faHeart,
+    faCamera
+} from '@fortawesome/free-solid-svg-icons';
+
+import {
+    faFacebookF,
+    faGoogle
+} from '@fortawesome/free-brands-svg-icons';
 
 library.add(
     faHandshake,
@@ -36,7 +43,11 @@ library.add(
     faPlus,
     faArrowAltCircleRight,
     faMapMarkerAlt,
-    faSearch
+    faSearch,
+    faFacebookF,
+    faGoogle,
+    faHeart,
+    faCamera
 )
 
 
