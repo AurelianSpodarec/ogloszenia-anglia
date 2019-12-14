@@ -21,7 +21,10 @@ import {
     faMapMarkerAlt,
     faSearch,
     faHeart,
-    faCamera
+    faCamera,
+    faLock,
+    faEye,
+    faEyeSlash
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -47,7 +50,10 @@ library.add(
     faFacebookF,
     faGoogle,
     faHeart,
-    faCamera
+    faCamera,
+    faLock,
+    faEye,
+    faEyeSlash
 )
 
 

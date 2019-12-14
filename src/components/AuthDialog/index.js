@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -15,12 +15,102 @@ import {
     InputBase,
     Dialog,
     DialogTitle,
-    CardMedia
+    CardMedia,
+    Input,
+    TextField,
+    InputLabel,
+    IconButton,
+    InputAdornment,
+    FormControl
 } from '@material-ui/core';
+import clsx from 'clsx';
+
+function AuthRegisterView() {
+    const classes = useStyles();
+    return (
+        <div>
+
+        </div>
+    )
+}
+
+function AuthLoginView() {
+    const classes = useStyles();
+    const [isPasswordVisible, setPasswordVisibility] = useState(false)
+
+    const handleClickShowPassword = () => {
+        setPasswordVisibility(isPasswordVisible === false ? true : false);
+    }
+
+    return (
+        <div>
+
+            <FormControl className={clsx(classes.margin, classes.textField)}>
+                <div>
+                    <FontAwesomeIcon icon="lock" />
+                </div>
+                <div>
+                    <InputLabel htmlFor="auth-login-password">Password</InputLabel>
+                    <Input
+                        id="auth-login-password"
+                        type={isPasswordVisible ? 'text' : 'password'}
+                        endAdornment={
+                            <InputAdornment position="end">
+                                <IconButton
+                                    aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                // onMouseDown={handleMouseDownPassword}
+                                >
+                                    {isPasswordVisible ? <FontAwesomeIcon icon="eye-slash" /> : <FontAwesomeIcon icon="eye" />}
+                                </IconButton>
+                            </InputAdornment>
+                        }
+                    />
+                </div>
+            </FormControl>
+        </div>
+    )
+}
+
+function AuthSocialView() {
+    const classes = useStyles();
+    return (
+        <div>
+            <div className={classes.socialButtons}>
+                <Button className={classes.buttonFacebook}>
+                    <FontAwesomeIcon className={classes.socialButtonIcon} icon={['fab', 'facebook-f']} />
+                    <Typography component="span">Continue with Facebook</Typography>
+                </Button>
+                <Button className={classes.buttonGoogle}>
+                    <FontAwesomeIcon className={classes.socialButtonIcon} icon={['fab', 'google']} />
+                    <Typography>Continue with Google</Typography>
+                </Button>
+            </div>
+
+            <div>
+                <Button>Sign Up</Button>
+                <Button>Log In</Button>
+            </div>
+
+            <Typography className={classes.terms}>By clicking on "Sign Up", you agree on Ogloszenia Anglia <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></Typography>
+
+        </div>
+    )
+}
 
 function AuthDialog(props) {
     const classes = useStyles();
     const { onClose, selectedValue, open } = props;
+    const { currentView, setView } = useState();
+
+    // const views = {
+    //     AuthSocialView,
+    //     AuthLoginView,
+    //     AuthRegisterView
+    // }
+    const setView = () => {
+        setView()
+    }
 
     const handleClose = () => {
         onClose(selectedValue);
@@ -53,23 +143,10 @@ function AuthDialog(props) {
                     </div>
 
                     <div className={classes.options}>
-                        <div className={classes.socialButtons}>
-                            <Button className={classes.buttonFacebook}>
-                                <FontAwesomeIcon className={classes.socialButtonIcon} icon={['fab', 'facebook-f']} />
-                                <Typography component="span">Continue with Facebook</Typography>
-                            </Button>
-                            <Button className={classes.buttonGoogle}>
-                                <FontAwesomeIcon className={classes.socialButtonIcon} icon={['fab', 'google']} />
-                                <Typography>Continue with Google</Typography>
-                            </Button>
-                        </div>
+                        {
+                            AuthLoginView()
 
-                        <div>
-                            <Button>Sign Up</Button>
-                            <Button>Log In</Button>
-                        </div>
-
-                        <Typography className={classes.terms}>By clicking on "Sign Up", you agree on Ogloszenia Anglia <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></Typography>
+                        }
                     </div>
                 </div>
             </div>

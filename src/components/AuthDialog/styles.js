@@ -13,6 +13,10 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         flexDirection: "row"
     },
+    textField: {
+        position: 'relative',
+        display: 'flex'
+    },
     mediaWrap: {
         padding: '20px'
     },
