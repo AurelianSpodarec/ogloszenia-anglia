@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useParams, useRouteMatch } from 'react-router-dom';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     Typography,
     Box,
@@ -11,7 +11,7 @@ import {
     CardContent
 } from '@material-ui/core';
 
-import useStyles from './styles'
+import useStyles from './styles';
 
 
 const CarItem = function (props) {
