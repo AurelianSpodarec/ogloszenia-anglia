@@ -31,7 +31,11 @@ const AuthRegisterView = () => {
 
     return (
         <div>
-            j
+            <DialogTitle id="scroll-dialog-title">Register</DialogTitle>
+            mmmmmmmmmmmmmmjmm<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+            <br /><br /><br /><br /><br /><br /><br />
         </div>
     )
 }

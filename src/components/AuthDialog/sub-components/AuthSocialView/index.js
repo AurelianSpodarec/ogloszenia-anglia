@@ -30,7 +30,11 @@ const AuthSocialView = (setView) => {
     const classes = useStyles();
 
     return (
-        <div>
+        <Box>
+            <Box className={classes.authBodyLogo}>
+                <Typography variant="h6">Ogloszenia Anglia</Typography>
+                <Typography>Buy and sell quickly, safely and locally</Typography>
+            </Box>
             <div className={classes.socialButtons}>
                 <Button className={classes.buttonFacebook}>
                     <FontAwesomeIcon className={classes.socialButtonIcon} icon={['fab', 'facebook-f']} />
@@ -49,7 +53,7 @@ const AuthSocialView = (setView) => {
 
             <Typography className={classes.terms}>By clicking on "Sign Up", you agree on Ogloszenia Anglia <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></Typography>
 
-        </div>
+        </Box>
     )
 }
 

@@ -20,17 +20,36 @@ import HomesView from './Categories/Homes';
 import NotFound from './NotFound';
 import Category from './../components/Categories';
 
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import './Layout.css';
+
+const theme = createMuiTheme({
+    typography: {
+        fontFamily: [
+            'Nunito',
+            'Roboto',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif'
+        ].join(','),
+    }
+});
+
+
 
 function Layout(props) {
     return (
+        <ThemeProvider theme={theme}>
+            <>
+                <Header />
 
-        <>
-            <Header />
+                <Category />
 
-            <Category />
+                <Footer />
+            </>
 
-            <Footer />
-        </>
+        </ThemeProvider>
     )
 }
 

@@ -24,7 +24,8 @@ import {
     faCamera,
     faLock,
     faEye,
-    faEyeSlash
+    faEyeSlash,
+    faTimes
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -53,7 +54,8 @@ library.add(
     faCamera,
     faLock,
     faEye,
-    faEyeSlash
+    faEyeSlash,
+    faTimes
 )
 
 

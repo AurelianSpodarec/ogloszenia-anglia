@@ -27,12 +27,23 @@ const AuthLoginView = (isPasswordVisible, setPasswordVisibility) => {
     const classes = useStyles();
 
     return (
-        <div>
-            <FormControl className={clsx(classes.margin, classes.textField)}>
-                <div>
-                    <FontAwesomeIcon icon="lock" />
-                </div>
-                <div>
+        <Box>
+
+            <Box>
+                <Box>
+                    <FontAwesomeIcon className={classes.icon} width={24} icon="lock" />
+                </Box>
+                <FormControl>
+                    <InputLabel htmlFor="auth-email">Email</InputLabel>
+                    <Input id="auth-email" type={'email'} />
+                </FormControl>
+            </Box>
+
+            <Box className={classes.formControl}>
+                <Box>
+                    <FontAwesomeIcon className={classes.icon} width={24} icon="lock" />
+                </Box>
+                <FormControl>
                     <InputLabel htmlFor="auth-login-password">Password</InputLabel>
                     <Input
                         id="auth-login-password"
@@ -49,9 +60,16 @@ const AuthLoginView = (isPasswordVisible, setPasswordVisibility) => {
                             </InputAdornment>
                         }
                     />
-                </div>
-            </FormControl>
-        </div>
+                </FormControl>
+            </Box>
+
+            <Button variant="contained" color="secondary" disabled>Log in</Button>
+
+            <Box>
+                <Button>Forgot your password?</Button>
+                <Button>Don't have an account?</Button>
+            </Box>
+        </Box>
     )
 }
 
