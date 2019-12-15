@@ -53,10 +53,11 @@ const useStyles = makeStyles(theme => ({
     },
     authBody: {
         width: '420px',
-        overflowY: 'scroll'
+        overflowY: 'auto'
     },
     authBodyContent: {
-        height: '100%',
+        // height: '100%',
+        position: 'relative',
         overflow: 'hidden   '
     }
 }));

@@ -40,11 +40,14 @@ function AuthDialog({ onClose, selectedValue, open }) {
                 return AuthSocialView(setView);
                 break;
             case "AuthLoginView":
-                return AuthLoginView(isPasswordVisible, setPasswordVisibility);
+                return AuthLoginView(isPasswordVisible, setPasswordVisibility, setView);
                 break;
             case "AuthRegisterView":
                 return AuthRegisterView();
                 break;
+            // case "AuthForgotPasswordView":
+            // return AuthRegisterView();
+            // break;
             default:
                 return AuthSocialView(setView);
             // return AuthLoginView(isPasswordVisible, setPasswordVisibility);
@@ -58,7 +61,6 @@ function AuthDialog({ onClose, selectedValue, open }) {
                     {AuthBanner(handleClose)}
                 </Box>
                 <Box className={classes.authBody}>
-                    <DialogTitle id="scroll-dialog-title">Subscribe</DialogTitle>
                     <DialogContent className={classes.authBodyContent}>
                         <Box className={classes.socialConnectBox}>
                             {renderAuthSocialConnector(currentView)}

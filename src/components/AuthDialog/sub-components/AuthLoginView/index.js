@@ -23,11 +23,19 @@ import {
 import clsx from 'clsx';
 
 
-const AuthLoginView = (isPasswordVisible, setPasswordVisibility) => {
+const AuthLoginView = (isPasswordVisible, setPasswordVisibility, setView) => {
     const classes = useStyles();
 
     return (
         <Box>
+            <Box className={classes.AuthHeader}>
+                <Box onClick={() => setView('AuthSocialView')}>
+                    <FontAwesomeIcon icon="arrow-left" />
+                </Box>
+                <Typography>Log In</Typography>
+                {/* <Typography>Create a new account</Typography> */}
+            </Box>
+
 
             <Box>
                 <Box>

@@ -10,6 +10,12 @@ const useStyles = makeStyles(theme => ({
     icon: {
         width: '22px',
         height: '22px'
+    },
+    AuthHeader: {
+        position: 'absolute',
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center'
     }
 
 }));
