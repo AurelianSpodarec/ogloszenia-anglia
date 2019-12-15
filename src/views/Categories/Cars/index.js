@@ -46,7 +46,7 @@ const CarsView = function () {
         };
         fetchData();
     }, []);
-
+console.log(data)
     return (
         <Container>
             <Typography>Uzywane auta w Leicester</Typography>

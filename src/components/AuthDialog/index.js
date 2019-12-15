@@ -7,6 +7,9 @@ import {
     Typography,
     Dialog,
     CardMedia,
+    DialogContent,
+    DialogContentText,
+    Box
 } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useStyles from './styles';
@@ -44,32 +47,35 @@ function AuthDialog({ onClose, selectedValue, open }) {
     }
 
     return (
-        <Dialog modal={true} className={classes.dialog} onClose={handleClose} maxWidth={false} aria-labelledby="simple-dialog-title" open={open}>
-            <div className={classes.authWrap} >
-                <CardMedia className={classes.media} image={"https://images.unsplash.com/photo-1524634126442-357e0eac3c14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"}>
-                    <div className={classes.mediaWrap}>
-                        <Typography className={classes.mediaTitle} variant="h6">Log in to unlock these features</Typography>
-                        <Typography>
-                            <FontAwesomeIcon icon={"camera"} />
-                            Post Listings
-                        </Typography>
-                        <Typography>
-                            <FontAwesomeIcon icon={"heart"} />
-                            Save listings
-                        </Typography>
-                    </div>
-                </CardMedia>
-
-                <div className={classes.socialConnectContainer}>
-                    <div className={classes.authLogo}>
-                        <Typography className={classes.logo} variant="h6">Ogloszenia Anglia</Typography>
-                        <Typography>Buy and sell quickly, safely and locally</Typography>
-                    </div>
-                    <div className={classes.options}>
-                        {renderAuthSocialConnector(currentView)}
-                    </div>
-                </div>
-            </div>
+        <Dialog onClose={handleClose} open={open} maxWidth={false}>
+            <Box className={classes.authWrap} >
+                <Box className={classes.authBannerBox}>
+                    <CardMedia className={classes.authBanner} image={"https://images.unsplash.com/photo-1524634126442-357e0eac3c14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"}>
+                        <DialogContent>
+                            <DialogContentText className={classes.featureTitle}>Log in to unlock these features</DialogContentText>
+                            <Box className={classes.featureUnlock}>
+                                <FontAwesomeIcon className={classes.featureUnlockIcon} icon={"camera"} />
+                                <Typography>Post Listings</Typography>
+                            </Box>
+                            <Box className={classes.featureUnlock}>
+                                <FontAwesomeIcon className={classes.featureUnlockIcon} icon={"heart"} />
+                                <Typography>Save listings</Typography>
+                            </Box>
+                        </DialogContent>
+                    </CardMedia>
+                </Box>
+                <Box className={classes.authBody}>
+                    <DialogContent>
+                        <Box className={classes.authBodyLogo}>
+                            <Typography variant="h6">Ogloszenia Anglia</Typography>
+                            <Typography>Buy and sell quickly, safely and locally</Typography>
+                        </Box>
+                        <Box className={classes.socialConnectBox}>
+                            {renderAuthSocialConnector(currentView)}
+                        </Box>
+                    </DialogContent>
+                </Box>
+            </Box>
         </Dialog>
     );
 }

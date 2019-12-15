@@ -1,51 +1,30 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
-    media: {
-        height: 500,
-        width: 400,
-        // maxWidth: 220,?
-        // minWidth: 220,
-        position: 'relative',
-        borderRadius: "6px"
-    },
     authWrap: {
         display: "flex",
-        flexDirection: "row"
-    },
-    textField: {
-        position: 'relative',
-        display: 'flex'
-    },
-    mediaWrap: {
-        padding: '20px'
-    },
-    socialConnectContainer: {
-        padding: '20px',
-        textAlign: 'center'
-    },
-    dialog: {
-        maxWidth: "754px",
-        margin: "0 auto",
-    },
-    buttonFacebook: {
-        backgroundColor: '#4762A0',
+        flexDirection: "row",
+        textAlign: 'center',
         width: '100%',
-        color: "#fff"
+        minHeight: '500px'
     },
-    buttonGoogle: {
-        backgroundColor: '#c8422f',
-        width: '100%',
-        color: "#fff"
+    authBannerBox: {
+        maxWidth: '300px',
     },
-    socialButtonIcon: {
-        marginRight: '9px'
+    authBanner: {
+        height: '100%',
+        boxShadow: 'inset 0px -79px 61px 46px rgba(0,0,0,0.26)'
     },
-    mediaTitle: {
-        fontWeight: 'bold'
+    featureUnlock: {
+        display: 'flex',
+        alignItems: 'center',
+    },
+    featureUnlockIcon: {
+        marginRight: '8px'
+    },
+    authBody: {
+        width: '420px'
     }
-
-
 }));
 
 export default useStyles;
