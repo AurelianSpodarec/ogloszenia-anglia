@@ -72,11 +72,7 @@ const Header = function () {
                     <Container>
                         <Toolbar>
 
-
-
                             <Typography>Ogloszenia Anglia</Typography>
-
-
                             <div className={classes.search}>
                                 <div className={classes.searchIcon}>
                                     <FontAwesomeIcon icon="search" />
