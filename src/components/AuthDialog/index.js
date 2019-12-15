@@ -28,6 +28,17 @@ function AuthDialog({ onClose, selectedValue, open }) {
 
     const [currentView, setView] = useState();
     const [isPasswordVisible, setPasswordVisibility] = useState(false)
+    const [inputs, setInputs] = useState({ firstName: "" });
+    // Inputs for login, register, reset password, contain similar fields, so would I just
+    // loginEmail, resetEmail, registerEmail and stuff ufff
+    const handleInputChange = event => {
+        const { name, value } = event.target;
+        console.log(name, value)
+        setInputs({
+            ...inputs,
+            [name]: value
+        });
+    }
 
     const handleClose = () => {
         onClose(selectedValue);
@@ -43,7 +54,7 @@ function AuthDialog({ onClose, selectedValue, open }) {
                 return AuthLoginView(isPasswordVisible, setPasswordVisibility, setView);
                 break;
             case "AuthRegisterView":
-                return AuthRegisterView();
+                return AuthRegisterView(isPasswordVisible, setPasswordVisibility, inputs, handleInputChange);
                 break;
             // case "AuthForgotPasswordView":
             // return AuthRegisterView();
@@ -63,12 +74,22 @@ function AuthDialog({ onClose, selectedValue, open }) {
                 <Box className={classes.authBody}>
                     <DialogContent className={classes.authBodyContent}>
                         <Box className={classes.socialConnectBox}>
+
+                            {/* <Box className={classes.AuthHeader}>
+                                <Box onClick={() => setView('AuthSocialView')}>
+                                    <FontAwesomeIcon icon="arrow-left" />
+                                </Box>
+
+                                <Typography>Log In</Typography>
+                                {/* <Typography>Create a new account</Typography> */}
+                            {/* </Box> */}
+
                             {renderAuthSocialConnector(currentView)}
                         </Box>
                     </DialogContent>
                 </Box>
             </Box>
-        </Dialog>
+        </Dialog >
     );
 }
 

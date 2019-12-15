@@ -26,7 +26,8 @@ import {
     faEye,
     faEyeSlash,
     faTimes,
-    faArrowLeft
+    faArrowLeft,
+    faEnvelope
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -57,7 +58,8 @@ library.add(
     faEye,
     faEyeSlash,
     faTimes,
-    faArrowLeft
+    faArrowLeft,
+    faEnvelope
 )
 
 

@@ -1,19 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
-    auth: {
-        overflow: 'hidden'
-    },
-    authWrap: {
-        display: "flex",
-        flexDirection: "row",
-        textAlign: 'center',
-        width: '100%',
-        height: '500px',
-        maxHeight: '500px',
-        // overflowY: 'scroll',
-        // overflow: 'hidden'
-    },
     authBannerBox: {
         maxWidth: '300px',
         color: '#fff'
@@ -33,13 +20,13 @@ const useStyles = makeStyles(theme => ({
     authBannerInner: {
         // color: '#fff'
     },
-    featureTitle: {
+    authFeatureTitle: {
         fontWeight: 'bold',
         fontSize: '20px',
         textAlign: 'left',
         color: '#fff'
     },
-    featureUnlock: {
+    authFeatureUnlock: {
         display: 'flex',
         alignItems: 'center',
 
@@ -47,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     // featureUnlockTitle: {
     //     color: '#000'
     // },
-    featureUnlockIcon: {
+    authFeatureUnlockIcon: {
         marginRight: '12px',
         width: '22px'
     },

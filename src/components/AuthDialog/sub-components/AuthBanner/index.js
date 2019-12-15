@@ -19,28 +19,27 @@ function AuthBanner(handleClose) {
     const classes = useStyles();
 
     return (
-        <>
+        <CardMedia className={classes.authBanner} image={"https://images.unsplash.com/photo-1524634126442-357e0eac3c14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"}>
+            <DialogContent className={classes.authBannerInner}>
 
-            <CardMedia className={classes.authBanner} image={"https://images.unsplash.com/photo-1524634126442-357e0eac3c14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"}>
+                <Box onClick={handleClose} className={classes.authBannerClose}>
+                    <FontAwesomeIcon icon="times" />
+                </Box>
 
-                <DialogContent className={classes.authBannerInner}>
-                    <Box onClick={handleClose} className={classes.authBannerClose}>
-                        <FontAwesomeIcon icon="times" />
+                <Box className={classes.authBannerBody}>
+                    <DialogContentText className={classes.authFeatureTitle}>Log in to unlock these features</DialogContentText>
+                    <Box className={classes.authFeatureUnlock}>
+                        <FontAwesomeIcon className={classes.authFeatureUnlockIcon} icon={"camera"} />
+                        <Typography className={classes.authFeatureUnlockTitle}>Post Listings</Typography>
                     </Box>
-                    <Box className={classes.authBannerBody}>
-                        <DialogContentText className={classes.featureTitle}>Log in to unlock these features</DialogContentText>
-                        <Box className={classes.featureUnlock}>
-                            <FontAwesomeIcon className={classes.featureUnlockIcon} icon={"camera"} />
-                            <Typography className={classes.featureUnlockTitle}>Post Listings</Typography>
-                        </Box>
-                        <Box className={classes.featureUnlock}>
-                            <FontAwesomeIcon className={classes.featureUnlockIcon} icon={"heart"} />
-                            <Typography className={classes.featureUnlockTitle}>Save listings</Typography>
-                        </Box>
+                    <Box className={classes.authFeatureUnlock}>
+                        <FontAwesomeIcon className={classes.authFeatureUnlockIcon} icon={"heart"} />
+                        <Typography className={classes.authFeatureUnlockTitle}>Save listings</Typography>
                     </Box>
-                </DialogContent>
-            </CardMedia>
-        </>
+                </Box>
+
+            </DialogContent>
+        </CardMedia>
     )
 }
 

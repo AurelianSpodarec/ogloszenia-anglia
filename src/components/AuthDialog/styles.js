@@ -42,11 +42,7 @@ const useStyles = makeStyles(theme => ({
     featureUnlock: {
         display: 'flex',
         alignItems: 'center',
-
     },
-    // featureUnlockTitle: {
-    //     color: '#000'
-    // },
     featureUnlockIcon: {
         marginRight: '12px',
         width: '22px'
@@ -57,8 +53,8 @@ const useStyles = makeStyles(theme => ({
     },
     authBodyContent: {
         // height: '100%',
-        position: 'relative',
-        overflow: 'hidden   '
+        // position: 'relative',
+        overflow: 'hidden'
     }
 }));
 
