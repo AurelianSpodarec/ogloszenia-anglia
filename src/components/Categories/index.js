@@ -20,7 +20,14 @@ import DefaultView from '../../views/Categories/Default';
 import CarView from '../../views/Categories/Cars/sub-components/CarView';
 
 const router = {
-
+    menu: [
+        {
+            "label": "Dashboard",
+            "route": {
+                "url": "/dashboard"
+            }
+        }
+    ],
     categories: [
         {
             "label": "Motoryzacja",
