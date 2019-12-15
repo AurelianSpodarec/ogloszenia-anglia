@@ -27,7 +27,12 @@ import {
     faEyeSlash,
     faTimes,
     faArrowLeft,
-    faEnvelope
+    faEnvelope,
+    faTachometerAlt,
+    faSignOutAlt,
+    faCog,
+    faUser,
+    faBullhorn
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -59,7 +64,12 @@ library.add(
     faEyeSlash,
     faTimes,
     faArrowLeft,
-    faEnvelope
+    faEnvelope,
+    faTachometerAlt,
+    faSignOutAlt,
+    faCog,
+    faUser,
+    faBullhorn
 )
 
 
