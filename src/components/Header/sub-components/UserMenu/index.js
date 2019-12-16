@@ -76,6 +76,7 @@ const UserMenu = function () {
                 onClose={handleMenuClose}
             >
                 {/* START IS ADMIN */}
+                {/* {user.role === 'admin' ? } */}
                 <StyledMenuItem>
                     <ListItemIcon>
                         <FontAwesomeIcon icon="tachometer-alt" />
@@ -83,6 +84,7 @@ const UserMenu = function () {
                     <ListItemText primary="Dashboard" />
                 </StyledMenuItem>
                 <Divider />
+                {/* // : } */}
                 {/* END IS ADMIN */}
                 <StyledMenuItem>
                     <ListItemIcon>
