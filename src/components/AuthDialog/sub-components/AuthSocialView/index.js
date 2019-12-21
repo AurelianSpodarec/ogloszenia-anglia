@@ -26,7 +26,7 @@ import {
 import clsx from 'clsx';
 
 
-const AuthSocialView = (setView) => {
+const AuthSocialView = ({ setView }) => {
     const classes = useStyles();
 
     return (

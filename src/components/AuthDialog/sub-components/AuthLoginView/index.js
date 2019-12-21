@@ -44,7 +44,7 @@ const login = async (email, password) => {
 const AuthLoginView = (isPasswordVisible, setPasswordVisibility, setView) => {
     const classes = useStyles();
     const email = useFormInput();
-    const password = useFormInput();
+    // const password = useFormInput();
 
     return (
         <Box>
@@ -71,7 +71,7 @@ const AuthLoginView = (isPasswordVisible, setPasswordVisibility, setView) => {
                 <Grid item>
                     {/* <TextField id="input-with-icon-grid" label="Email" /> */}
                     <FormControl>
-                        <InputLabel {...password} htmlFor="auth-login-password">Password</InputLabel>
+                        <InputLabel htmlFor="auth-login-password">Password</InputLabel>
                         <Input
                             id="auth-login-password"
                             type={isPasswordVisible ? 'text' : 'password'}
@@ -91,29 +91,6 @@ const AuthLoginView = (isPasswordVisible, setPasswordVisibility, setView) => {
                 </Grid>
             </Grid>
 
-            {/* 
-             
-             <Box className={classes.formControl}>
-                
-                <FormControl>
-                    <InputLabel htmlFor="auth-login-password">Password</InputLabel>
-                    <Input
-                        id="auth-login-password"
-                        type={isPasswordVisible ? 'text' : 'password'}
-                        endAdornment={
-                            <InputAdornment position="end">
-                                <IconButton
-                                    aria-label="toggle password visibility"
-                                    onClick={() => setPasswordVisibility(!isPasswordVisible)}
-                                // onMouseDown={handleMouseDownPassword}
-                                >
-                                    {isPasswordVisible ? <FontAwesomeIcon icon="eye-slash" /> : <FontAwesomeIcon icon="eye" />}
-                                </IconButton>
-                            </InputAdornment>
-                        }
-                    />
-                </FormControl>
-            </Box> */}
 
             <Button variant="contained" color="secondary" disabled>Log in</Button>
 

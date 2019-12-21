@@ -25,44 +25,29 @@ import {
 
 function AuthDialog({ onClose, selectedValue, open }) {
     const classes = useStyles();
-
     const [currentView, setView] = useState();
-    const [isPasswordVisible, setPasswordVisibility] = useState(false)
-    const [inputs, setInputs] = useState({ firstName: "" });
-    // Inputs for login, register, reset password, contain similar fields, so would I just
-    // loginEmail, resetEmail, registerEmail and stuff ufff
-    const handleInputChange = event => {
-        const { name, value } = event.target;
-        console.log(name, value)
-        setInputs({
-            ...inputs,
-            [name]: value
-        });
-    }
 
     const handleClose = () => {
         onClose(selectedValue);
-        setView('AuthSocialView')
+        // setView('AuthSocialView')
     };
 
-    const renderAuthSocialConnector = (currentView) => {
-        switch (currentView) {
-            case "AuthSocialView":
-                return AuthSocialView(setView);
-                break;
-            case "AuthLoginView":
-                return AuthLoginView(isPasswordVisible, setPasswordVisibility, setView);
-                break;
-            case "AuthRegisterView":
-                return AuthRegisterView(isPasswordVisible, setPasswordVisibility, inputs, handleInputChange);
-                break;
-            // case "AuthForgotPasswordView":
-                // return AuthRegisterView();
-                // break;
-            default:
-                return AuthSocialView(setView);
-            // return AuthLoginView(isPasswordVisible, setPasswordVisibility);
-        }
+    let viewToRender;
+    switch (currentView) {
+        case "AuthSocialView":
+            viewToRender = <AuthSocialView setView={setView} />;
+            break;
+        case "AuthLoginView":
+            viewToRender = <AuthLoginView setView={setView} />;
+            break;
+        case "AuthRegisterView":
+            viewToRender = <AuthRegisterView setView={setView} />;
+            break;
+        case "AuthForgotPasswordView":
+            viewToRender = <AuthRegisterView setView={setView} />;
+            break;
+        default:
+            viewToRender = <AuthSocialView setView={setView} />;
     }
 
     return (
@@ -84,7 +69,7 @@ function AuthDialog({ onClose, selectedValue, open }) {
                                 {/* <Typography>Create a new account</Typography> */}
                             {/* </Box> */}
 
-                            {renderAuthSocialConnector(currentView)}
+                            {viewToRender}
                         </Box>
                     </DialogContent>
                 </Box>
