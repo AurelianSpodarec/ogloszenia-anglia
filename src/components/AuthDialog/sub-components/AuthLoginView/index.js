@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useStyles from './styles';
+import axios from 'axios';
 import {
     Container,
     Grid,
@@ -21,10 +22,29 @@ import {
     FormControl
 } from '@material-ui/core';
 import clsx from 'clsx';
+import useFormInput from '../../../../hooks/useFormInput';
 
+const login = async (email, password) => {
+    console.log(email, password)
+    try {
+        const res = await axios({
+            method: 'POST',
+            url: 'http://localhost:3001/api/v1/user/login',
+            data: {
+                email,
+                password
+            }
+        })
+        console.log(res)
+    } catch (err) {
+        console.log(err)
+    }
+}
 
 const AuthLoginView = (isPasswordVisible, setPasswordVisibility, setView) => {
     const classes = useStyles();
+    const email = useFormInput();
+    const password = useFormInput();
 
     return (
         <Box>
@@ -40,7 +60,7 @@ const AuthLoginView = (isPasswordVisible, setPasswordVisibility, setView) => {
                     <FontAwesomeIcon className={classes.icon} width={24} icon="envelope" />
                 </Grid>
                 <Grid item>
-                    <TextField id="input-with-icon-grid" label="Email" />
+                    <TextField {...email} id="input-with-icon-grid" label="Email" />
                 </Grid>
             </Grid>
 
@@ -51,7 +71,7 @@ const AuthLoginView = (isPasswordVisible, setPasswordVisibility, setView) => {
                 <Grid item>
                     {/* <TextField id="input-with-icon-grid" label="Email" /> */}
                     <FormControl>
-                        <InputLabel htmlFor="auth-login-password">Password</InputLabel>
+                        <InputLabel {...password} htmlFor="auth-login-password">Password</InputLabel>
                         <Input
                             id="auth-login-password"
                             type={isPasswordVisible ? 'text' : 'password'}

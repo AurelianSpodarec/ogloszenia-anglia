@@ -57,8 +57,8 @@ function AuthDialog({ onClose, selectedValue, open }) {
                 return AuthRegisterView(isPasswordVisible, setPasswordVisibility, inputs, handleInputChange);
                 break;
             // case "AuthForgotPasswordView":
-            // return AuthRegisterView();
-            // break;
+                // return AuthRegisterView();
+                // break;
             default:
                 return AuthSocialView(setView);
             // return AuthLoginView(isPasswordVisible, setPasswordVisibility);
