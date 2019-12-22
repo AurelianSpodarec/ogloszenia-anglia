@@ -41,6 +41,11 @@ const login = async (email, password) => {
     }
 }
 
+
+const INITIAL_STATE = {
+    email: "",
+    password: ""
+}
 const AuthLoginView = (isPasswordVisible, setPasswordVisibility, setView) => {
     const classes = useStyles();
     const email = useFormInput();
