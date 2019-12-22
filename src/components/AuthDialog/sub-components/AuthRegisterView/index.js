@@ -92,8 +92,9 @@ const AuthRegisterView = (isPasswordVisible, setPasswordVisibility) => {
                             </Grid>
                             <Grid item>
                                 <TextField
-                                    // value={inputs.lastName}
-                                    // onChange={handleInputChange}
+                                    name="lastName"
+                                    value={values.lastName}
+                                    onChange={handleChange}
                                     label="Last name"
                                 />
                             </Grid>
@@ -107,8 +108,9 @@ const AuthRegisterView = (isPasswordVisible, setPasswordVisibility) => {
                     </Grid>
                     <Grid item>
                         <TextField
-                            // value={inputs.email}
-                            // onChange={handleInputChange}
+                            name="email"
+                            value={values.email}
+                            onChange={handleChange}
                             label="Email"
                         />
                     </Grid>
@@ -121,10 +123,11 @@ const AuthRegisterView = (isPasswordVisible, setPasswordVisibility) => {
                         <FormControl>
                             <InputLabel htmlFor="auth-login-password">Password</InputLabel>
                             <Input
+                                name="password"
                                 id="auth-login-password"
                                 type={isPasswordVisible ? 'text' : 'password'}
-                                // value={inputs.password}
-                                // onChange={handleInputChange}
+                                value={values.password}
+                                onChange={handleChange}
                                 endAdornment={
                                     <InputAdornment position="end">
                                         <IconButton
