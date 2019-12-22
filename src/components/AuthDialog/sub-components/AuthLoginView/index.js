@@ -22,87 +22,116 @@ import {
     FormControl
 } from '@material-ui/core';
 import clsx from 'clsx';
-import useFormInput from '../../../../hooks/useFormInput';
+import useForm from '../../../../hooks/useForm';
 
 const login = async (email, password) => {
     console.log(email, password)
     try {
         const res = await axios({
             method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
             url: 'http://localhost:3001/api/v1/user/login',
             data: {
                 email,
                 password
             }
         })
-        console.log(res)
+        console.log(res.data.data.user)
+        return res
     } catch (err) {
-        console.log(err)
+        console.error(err)
     }
 }
-
 
 const INITIAL_STATE = {
     email: "",
     password: ""
 }
-const AuthLoginView = (isPasswordVisible, setPasswordVisibility, setView) => {
+
+const AuthLoginView = (isPasswordVisible, setPasswordVisibility) => {
     const classes = useStyles();
-    const email = useFormInput();
-    // const password = useFormInput();
+
+    const { handleChange, handleSubmit, values } = useForm(submit, INITIAL_STATE);
+
+    function submit() {
+        login(values.email, values.password)
+        // login("admin@gmail.com", "admin123")
+    }
 
     return (
         <Box>
             {/* <Box className={classes.AuthHeader}>
-                <Box onClick={() => setView('AuthSocialView')}>
-                    <FontAwesomeIcon icon="arrow-left" />
-                </Box>
-                <Typography>Log In</Typography>
-                {/* <Typography>Create a new account</Typography> */}
-            {/* </Box> */} */}
-            <Grid container spacing={1} alignItems="flex-end">
-                <Grid item>
-                    <FontAwesomeIcon className={classes.icon} width={24} icon="envelope" />
-                </Grid>
-                <Grid item>
-                    <TextField {...email} id="input-with-icon-grid" label="Email" />
-                </Grid>
-            </Grid>
+                            <Box onClick={() => setView('AuthSocialView')}>
+                                <FontAwesomeIcon icon="arrow-left" />
+                            </Box>
+                            <Typography>Log In</Typography>
+                            {/* <Typography>Create a new account</Typography> */}
+            {/* </Box> */}
+            <form onSubmit={handleSubmit} noValidate autoComplete="off">
 
-            <Grid container spacing={1} alignItems="flex-end">
-                <Grid item>
-                    <FontAwesomeIcon className={classes.icon} width={24} icon="lock" />
+                <Grid container spacing={1} alignItems="flex-end">
+                    <Grid item>
+                        <FontAwesomeIcon className={classes.icon} width={24} icon="envelope" />
+                    </Grid>
+                    <Grid item>
+                        {/* <input
+                                name="email"
+                                type="email"
+                                value={values.email}
+                                onChange={handleChange}>
+                            </input> */}
+                        <TextField
+                            name="email"
+                            type="email"
+                            value={values.email}
+                            id="input-with-icon-grid"
+                            label="Email"
+                            onChange={handleChange} />
+                    </Grid>
                 </Grid>
-                <Grid item>
-                    {/* <TextField id="input-with-icon-grid" label="Email" /> */}
-                    <FormControl>
-                        <InputLabel htmlFor="auth-login-password">Password</InputLabel>
-                        <Input
-                            id="auth-login-password"
-                            type={isPasswordVisible ? 'text' : 'password'}
-                            endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={() => setPasswordVisibility(!isPasswordVisible)}
-                                    // onMouseDown={handleMouseDownPassword}
-                                    >
-                                        {isPasswordVisible ? <FontAwesomeIcon icon="eye-slash" /> : <FontAwesomeIcon icon="eye" />}
-                                    </IconButton>
-                                </InputAdornment>
-                            }
-                        />
-                    </FormControl>
+
+                <Grid container spacing={1} alignItems="flex-end">
+                    <Grid item>
+                        <FontAwesomeIcon className={classes.icon} width={24} icon="lock" />
+                    </Grid>
+                    <Grid item>
+                        {/* <TextField id="input-with-icon-grid" label="Email" /> */}
+                        <FormControl>
+                            <InputLabel
+                                name="password"
+                                type="password"
+                                value={values.password}
+                                onChange={handleChange}
+                                htmlFor="auth-login-password">Password</InputLabel>
+                            <Input
+                                id="auth-login-password"
+                                type={isPasswordVisible ? 'text' : 'password'}
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={() => setPasswordVisibility(!isPasswordVisible)}
+                                        // onMouseDown={handleMouseDownPassword}
+                                        >
+                                            {isPasswordVisible ? <FontAwesomeIcon icon="eye-slash" /> : <FontAwesomeIcon icon="eye" />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
+                            />
+                        </FormControl>
+                    </Grid>
                 </Grid>
-            </Grid>
 
-
-            <Button variant="contained" color="secondary" disabled>Log in</Button>
+                <Button type="submit" variant="contained" color="secondary" >Log in</Button>
+            </form>
 
             <Box>
                 <Button>Forgot your password?</Button>
                 <Button>Don't have an account?</Button>
             </Box>
+
         </Box>
     )
 }
