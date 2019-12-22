@@ -26,29 +26,8 @@ import {
 import clsx from 'clsx';
 import axios from 'axios';
 
-import useForm from '../../../../hooks/useForm';
-
-const register = async (firstName, lastName, email, password) => {
-    try {
-        const res = await axios({
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            url: 'http://localhost:3001/api/v1/user/signup',
-            data: {
-                firstName,
-                lastName,
-                email,
-                password
-            }
-        })
-        console.log(res)
-        return res;
-    } catch (err) {
-        console.log(err)
-    }
-}
+import { useForm } from '../../../../hooks';
+import { userRegister } from '../../../../services/api/users';
 
 const INITIAL_STATE = {
     firstName: "",
@@ -63,7 +42,18 @@ const AuthRegisterView = (isPasswordVisible, setPasswordVisibility) => {
     const { handleChange, handleSubmit, values } = useForm(submit, INITIAL_STATE)
 
     function submit() {
-        register(values.firstName, values.lastName, values.email, values.password)
+        console.log({
+            "firstName": values.firstName,
+            "lastName": values.lastName,
+            "email": values.email,
+            "password": values.password
+        })
+        userRegister({
+            "firstName": values.firstName,
+            "lastName": values.lastName,
+            "email": values.email,
+            "password": values.password
+        })
     }
 
     return (

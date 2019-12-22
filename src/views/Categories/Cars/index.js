@@ -10,8 +10,7 @@ import {
 } from '@material-ui/core';
 
 import CarItem from './sub-components/CarItem/';
-import { fetchProducts } from './../../../services/api/product';
-import { getCars } from './../../../services/api/car';
+import { getCars } from './../../../services/api/categories/car';
 import useStyles from './styles'
 import axios from 'axios';
 // All Possibilities
@@ -37,16 +36,16 @@ const CarsView = function () {
     const classes = useStyles();
     const [data, setData] = useState({ hits: [] });
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const result = await axios(
-                'http://localhost:3001/api/v1/cars',
-            );
-            setData(result.data);
-        };
-        fetchData();
-    }, []);
-console.log(data)
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const result = await axios(
+    //             'http://localhost:3001/api/v1/cars',
+    //         );
+    //         setData(result.data);
+    //     };
+    //     fetchData();
+    // }, []);
+    // console.log(data)
     return (
         <Container>
             <Typography>Uzywane auta w Leicester</Typography>

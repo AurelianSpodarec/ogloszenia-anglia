@@ -21,29 +21,10 @@ import {
     InputAdornment,
     FormControl
 } from '@material-ui/core';
-import clsx from 'clsx';
-import useForm from '../../../../hooks/useForm';
 
-const login = async (email, password) => {
-    console.log(email, password)
-    try {
-        const res = await axios({
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            url: 'http://localhost:3001/api/v1/user/login',
-            data: {
-                email,
-                password
-            }
-        })
-        console.log(res.data.data.user)
-        return res
-    } catch (err) {
-        console.error(err)
-    }
-}
+import { useForm } from '../../../../hooks';
+import { userLogin } from '../../../../services/api/users';
+
 
 const INITIAL_STATE = {
     email: "",
@@ -52,12 +33,10 @@ const INITIAL_STATE = {
 
 const AuthLoginView = (isPasswordVisible, setPasswordVisibility) => {
     const classes = useStyles();
-
     const { handleChange, handleSubmit, values } = useForm(submit, INITIAL_STATE);
 
     function submit() {
-        login(values.email, values.password)
-        // login("admin@gmail.com", "admin123")
+        userLogin({ "email": values.email, "password": values.password })
     }
 
     return (
@@ -76,12 +55,6 @@ const AuthLoginView = (isPasswordVisible, setPasswordVisibility) => {
                         <FontAwesomeIcon className={classes.icon} width={24} icon="envelope" />
                     </Grid>
                     <Grid item>
-                        {/* <input
-                                name="email"
-                                type="email"
-                                value={values.email}
-                                onChange={handleChange}>
-                            </input> */}
                         <TextField
                             name="email"
                             type="email"
@@ -100,12 +73,12 @@ const AuthLoginView = (isPasswordVisible, setPasswordVisibility) => {
                         {/* <TextField id="input-with-icon-grid" label="Email" /> */}
                         <FormControl>
                             <InputLabel
+                                htmlFor="auth-login-password">Password</InputLabel>
+                            <Input
                                 name="password"
                                 type="password"
                                 value={values.password}
                                 onChange={handleChange}
-                                htmlFor="auth-login-password">Password</InputLabel>
-                            <Input
                                 id="auth-login-password"
                                 type={isPasswordVisible ? 'text' : 'password'}
                                 endAdornment={

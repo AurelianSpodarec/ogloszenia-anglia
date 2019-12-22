@@ -14,13 +14,14 @@ import {
     Box
 } from '@material-ui/core';
 
-import { fetchProduct } from './../../../../../services/api/product';
+// import { fetchProduct } from './../../../../../services/api/product';
 
 const CarView = ({ match, location }) => {
     const classes = useStyles();
 
     if (!match || !match.params.id) return;
-    const car = fetchProduct("car", parseInt(match.params.id))
+    // const car = fetchProduct("car", parseInt(match.params.id))
+    const car = {};
 
     return (
         <Container>
