@@ -36,18 +36,12 @@ const INITIAL_STATE = {
     password: ""
 }
 
-const AuthRegisterView = (isPasswordVisible, setPasswordVisibility) => {
+const AuthRegisterView = ({ setView }, isPasswordVisible, setPasswordVisibility) => {
     const classes = useStyles();
 
     const { handleChange, handleSubmit, values } = useForm(submit, INITIAL_STATE)
 
     function submit() {
-        console.log({
-            "firstName": values.firstName,
-            "lastName": values.lastName,
-            "email": values.email,
-            "password": values.password
-        })
         userRegister({
             "firstName": values.firstName,
             "lastName": values.lastName,
@@ -134,7 +128,7 @@ const AuthRegisterView = (isPasswordVisible, setPasswordVisibility) => {
                 </Grid>
                 <Box>
                     <Button type="submit">Sign Up</Button>
-                    <Button>Already have an account?</Button>
+                    <Button onClick={() => setView('AuthLoginView')}>Already have an account?</Button>
                 </Box>
             </form>
 

@@ -10,7 +10,9 @@ import {
     DialogContent,
     DialogContentText,
     Box,
-    DialogTitle
+    DialogTitle,
+    Modal,
+    Fade
 } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useStyles from './styles';
@@ -29,7 +31,7 @@ function AuthDialog({ onClose, selectedValue, open }) {
 
     const handleClose = () => {
         onClose(selectedValue);
-        // setView('AuthSocialView')
+        setView('AuthSocialView')
     };
 
     let viewToRender;
@@ -47,34 +49,42 @@ function AuthDialog({ onClose, selectedValue, open }) {
             viewToRender = <AuthRegisterView setView={setView} />;
             break;
         default:
-            viewToRender = <AuthSocialView setView={setView} />;
+            // viewToRender = <AuthSocialView setView={setView} />;
+            viewToRender = <AuthLoginView setView={setView} />;
+
     }
 
     return (
-        <Dialog onClose={handleClose} open={open} maxWidth={false}>
-            <Box className={classes.authWrap}>
-                <Box className={classes.authBannerBox}>
-                    {AuthBanner(handleClose)}
-                </Box>
-                <Box className={classes.authBody}>
-                    <DialogContent className={classes.authBodyContent}>
-                        <Box className={classes.socialConnectBox}>
+        <>
+            <Modal
+                className={classes.authModal}
+                onClose={handleClose}
+                open={open}
+            >
+                <Fade in={open}>
+                    <Box className={classes.authModalInner}>
 
-                            {/* <Box className={classes.AuthHeader}>
-                                <Box onClick={() => setView('AuthSocialView')}>
-                                    <FontAwesomeIcon icon="arrow-left" />
-                                </Box>
 
-                                <Typography>Log In</Typography>
-                                {/* <Typography>Create a new account</Typography> */}
-                            {/* </Box> */}
-
-                            {viewToRender}
+                        <Box className={classes.authBanner}>
+                            {<AuthBanner />}
                         </Box>
-                    </DialogContent>
-                </Box>
-            </Box>
-        </Dialog >
+
+                        <Box className={classes.authContent}>
+                            <Box className={classes.authTitle}>
+                                Login | Register | Password Reset
+                            </Box>
+                            <Box className={classes.authBody}>
+
+                                {viewToRender}
+
+                            </Box>
+                        </Box>
+
+                    </Box>
+
+                </Fade>
+            </Modal>
+        </>
     );
 }
 

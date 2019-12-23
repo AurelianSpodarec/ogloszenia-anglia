@@ -1,61 +1,107 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
-    auth: {
-        overflow: 'hidden'
+    authModal: {
+        overflow: "hidden",
+        // background: "red"
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        // width: '100%',
+        // height: '500px',
+        // minHeight: '500px'
+
     },
-    authWrap: {
+    authModalInner: {
         display: "flex",
         flexDirection: "row",
         textAlign: 'center',
-        width: '100%',
+        backgroundColor: '#fff',
+        overflow: "hidden",
+        // minHeight: '270px',
         height: '500px',
-        maxHeight: '500px',
-        // overflowY: 'scroll',
-        // overflow: 'hidden'
-    },
-    authBannerBox: {
-        maxWidth: '300px',
-        color: '#fff'
-    },
-    authBannerClose: {
-        textAlign: 'left',
-        cursor: 'pointer'
-    },
-    authBannerBody: {
-        marginTop: '40px',
+        maxHeight: 'calc(100% - 64px)'
     },
     authBanner: {
         height: '100%',
         boxShadow: 'inset 0px -79px 61px 46px rgba(0,0,0,0.26)',
+    },
 
+    authBodyWrap: {
+        maxWidth: '420px',
+        width: '420px',
+        position: 'relative',
+        overflowY: 'auto',
+        height: '100%',
     },
-    authBannerInner: {
-        // color: '#fff'
-    },
-    featureTitle: {
-        fontWeight: 'bold',
-        fontSize: '20px',
-        textAlign: 'left',
-        color: '#fff'
-    },
-    featureUnlock: {
+    authContent: {
+        // padding: theme.spacing(2, 4, 3),
+        height: '100%',
         display: 'flex',
-        alignItems: 'center',
-    },
-    featureUnlockIcon: {
-        marginRight: '12px',
-        width: '22px'
+        flexDirection: 'column',
+        width: '420px'
     },
     authBody: {
-        width: '420px',
-        overflowY: 'auto'
-    },
-    authBodyContent: {
-        // height: '100%',
-        // position: 'relative',
-        overflow: 'hidden'
+        overflowY: 'auto',
+        height: '100%'
     }
+
+
+
+    // auth: {
+    //     overflow: 'hidden'
+    // },
+    // authWrap: {
+    //     display: "flex",
+    //     flexDirection: "row",
+    //     textAlign: 'center',
+    //     width: '100%',
+    //     height: '500px',
+    //     maxHeight: '500px',
+    //     // overflowY: 'scroll',
+    //     // overflow: 'hidden'
+    // },
+    // authBannerBox: {
+    //     maxWidth: '300px',
+    //     color: '#fff'
+    // },
+    // authBannerClose: {
+    //     textAlign: 'left',
+    //     cursor: 'pointer'
+    // },
+    // authBannerBody: {
+    //     marginTop: '40px',
+    // },
+    // authBanner: {
+    //     height: '100%',
+    //     boxShadow: 'inset 0px -79px 61px 46px rgba(0,0,0,0.26)',
+
+    // },
+    // authBannerInner: {
+    //     // color: '#fff'
+    // },
+    // featureTitle: {
+    //     fontWeight: 'bold',
+    //     fontSize: '20px',
+    //     textAlign: 'left',
+    //     color: '#fff'
+    // },
+    // featureUnlock: {
+    //     display: 'flex',
+    //     alignItems: 'center',
+    // },
+    // featureUnlockIcon: {
+    //     marginRight: '12px',
+    //     width: '22px'
+    // },
+    // authBodyContent: {
+    //     height: '100%',
+    //     // position: 'relative',
+    //     overflow: 'hidden'
+    // },
+    // dialog: {
+    //     overflowX: 'hidden'
+    // }
 }));
 
 export default useStyles;
