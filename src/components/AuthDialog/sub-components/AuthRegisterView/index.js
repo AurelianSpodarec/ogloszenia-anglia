@@ -29,6 +29,8 @@ import axios from 'axios';
 import { useForm } from '../../../../hooks';
 import { userRegister } from '../../../../services/api/users';
 
+import PasswordInput from './../../../PasswordInput/PasswordInput';
+
 const INITIAL_STATE = {
     firstName: "",
     lastName: "",
@@ -36,7 +38,7 @@ const INITIAL_STATE = {
     password: ""
 }
 
-const AuthRegisterView = ({ setView }, isPasswordVisible, setPasswordVisibility) => {
+const AuthRegisterView = ({ setView }) => {
     const classes = useStyles();
 
     const { handleChange, handleSubmit, values } = useForm(submit, INITIAL_STATE)
@@ -89,9 +91,8 @@ const AuthRegisterView = ({ setView }, isPasswordVisible, setPasswordVisibility)
                 <Grid container spacing={1} alignItems="flex-end">
                     <Grid item>
                         <FontAwesomeIcon width={24} icon="envelope" />
-                    </Grid>
-                    <Grid item>
                         <TextField
+                            fullWidth
                             name="email"
                             value={values.email}
                             onChange={handleChange}
@@ -102,27 +103,9 @@ const AuthRegisterView = ({ setView }, isPasswordVisible, setPasswordVisibility)
                 <Grid container spacing={1} alignItems="flex-end">
                     <Grid item>
                         <FontAwesomeIcon width={24} icon="lock" />
-                    </Grid>
-                    <Grid item>
-                        <FormControl>
+                        <FormControl fullWidth>
                             <InputLabel htmlFor="auth-login-password">Password</InputLabel>
-                            <Input
-                                name="password"
-                                id="auth-login-password"
-                                type={isPasswordVisible ? 'text' : 'password'}
-                                value={values.password}
-                                onChange={handleChange}
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={() => setPasswordVisibility(!isPasswordVisible)}
-                                        >
-                                            {isPasswordVisible ? <FontAwesomeIcon icon="eye-slash" /> : <FontAwesomeIcon icon="eye" />}
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
-                            />
+                            <PasswordInput value={values.password} onChange={handleChange} />
                         </FormControl>
                     </Grid>
                 </Grid>

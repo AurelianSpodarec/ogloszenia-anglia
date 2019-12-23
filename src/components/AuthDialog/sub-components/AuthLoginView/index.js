@@ -33,7 +33,7 @@ const INITIAL_STATE = {
     password: ""
 }
 
-const AuthLoginView = () => {
+const AuthLoginView = ({ setView }) => {
     const classes = useStyles();
     const { handleChange, handleSubmit, values } = useForm(submit, INITIAL_STATE);
 
@@ -72,8 +72,8 @@ const AuthLoginView = () => {
             </form>
 
             <Box>
-                <Button>Forgot your password?</Button>
-                <Button>Don't have an account?</Button>
+                <Button onClick={() => setView('AuthForgotPasswordView')}>Forgot your password?</Button>
+                <Button onClick={() => setView('AuthRegisterView')}>Don't have an account?</Button>
             </Box>
 
         </Box>

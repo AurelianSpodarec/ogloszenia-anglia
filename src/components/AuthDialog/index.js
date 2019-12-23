@@ -25,13 +25,16 @@ import {
 } from './sub-components';
 
 const AuthTitle = function ({ title, setView }) {
+    const classes = useStyles();
+
     return (
-        <>
-            <Box onClick={() => setView('AuthSocialView')}>
+        // TODO: The button must have width: auto - currently it spans across the entire whitespace
+        <Box className={classes.authTitleWrap} onClick={() => setView('AuthSocialView')}>
+            <Box className={classes.authTitle}>
                 <FontAwesomeIcon icon="arrow-left" />
+                <Typography>{title}</Typography>
             </Box>
-            <Typography>{title}</Typography>
-        </>
+        </Box>
     )
 }
 
@@ -64,36 +67,31 @@ function AuthDialog({ onClose, selectedValue, open }) {
             titleToRender = <AuthTitle setView={setView} title="Password Reset" />
             break;
         default:
-            // viewToRender = <AuthSocialView setView={setView} />;
-            titleToRender = <AuthTitle setView={setView} title="Login" />
-            viewToRender = <AuthLoginView setView={setView} />;
+            // viewToRender = <AuthLoginView setView={setView} title="Login" />;
+            viewToRender = <AuthSocialView setView={setView} />;
+        // titleToRender = <AuthTitle setView={setView} />
     }
 
     return (
         <>
             <Modal
-                className={classes.authModal}
+                className={classes.authModalBackground}
                 onClose={handleClose}
                 open={open}
             >
                 <Fade in={open}>
-                    <Box className={classes.authModalInner}>
-
+                    <Box className={classes.authModal}>
 
                         <Box className={classes.authBanner}>
                             {<AuthBanner />}
                         </Box>
 
                         <Box className={classes.authContent}>
-                            <Box className={classes.authTitle}>
+                            <Box>
                                 {titleToRender}
-
-                                {/* Login | Register | Password Reset */}
                             </Box>
                             <Box className={classes.authBody}>
-
                                 {viewToRender}
-
                             </Box>
                         </Box>
 
