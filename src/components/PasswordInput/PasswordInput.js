@@ -23,10 +23,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const PasswordInput = ({ value, onChange }) => {
     const [isPasswordVisible, setPasswordVisibility] = useState(false)
 
-    const onToggleVisibility = () => {
-        setPasswordVisibility(!isPasswordVisible)
-    }
-    console.log(value, "sdsjfnskjd")
     return (
         <Input
             name="password"

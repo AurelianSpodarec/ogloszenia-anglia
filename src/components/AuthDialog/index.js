@@ -24,6 +24,16 @@ import {
     AuthBanner
 } from './sub-components';
 
+const AuthTitle = function ({ title, setView }) {
+    return (
+        <>
+            <Box onClick={() => setView('AuthSocialView')}>
+                <FontAwesomeIcon icon="arrow-left" />
+            </Box>
+            <Typography>{title}</Typography>
+        </>
+    )
+}
 
 function AuthDialog({ onClose, selectedValue, open }) {
     const classes = useStyles();
@@ -35,23 +45,28 @@ function AuthDialog({ onClose, selectedValue, open }) {
     };
 
     let viewToRender;
+    let titleToRender;
     switch (currentView) {
         case "AuthSocialView":
             viewToRender = <AuthSocialView setView={setView} />;
+            titleToRender = null;
             break;
         case "AuthLoginView":
             viewToRender = <AuthLoginView setView={setView} />;
+            titleToRender = <AuthTitle setView={setView} title="Login" />
             break;
         case "AuthRegisterView":
             viewToRender = <AuthRegisterView setView={setView} />;
+            titleToRender = <AuthTitle setView={setView} title="Register" />
             break;
         case "AuthForgotPasswordView":
             viewToRender = <AuthRegisterView setView={setView} />;
+            titleToRender = <AuthTitle setView={setView} title="Password Reset" />
             break;
         default:
             // viewToRender = <AuthSocialView setView={setView} />;
+            titleToRender = <AuthTitle setView={setView} title="Login" />
             viewToRender = <AuthLoginView setView={setView} />;
-
     }
 
     return (
@@ -71,7 +86,9 @@ function AuthDialog({ onClose, selectedValue, open }) {
 
                         <Box className={classes.authContent}>
                             <Box className={classes.authTitle}>
-                                Login | Register | Password Reset
+                                {titleToRender}
+
+                                {/* Login | Register | Password Reset */}
                             </Box>
                             <Box className={classes.authBody}>
 

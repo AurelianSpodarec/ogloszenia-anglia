@@ -43,9 +43,16 @@ const useStyles = makeStyles(theme => ({
     },
     authBody: {
         overflowY: 'auto',
-        height: '100%'
+        overflowX: 'hidden',
+        height: '100%',
+        padding: " 0 25px 15px"
+    },
+    authTitle: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: '15px 20px',
     }
-
 
 
     // auth: {

@@ -7,22 +7,23 @@ const useStyles = makeStyles(theme => ({
         textAlign: 'center',
         flexDirection: 'row'
     },
-    icon: {
-        width: '22px',
-        height: '22px'
-    },
+
     AuthHeader: {
         position: 'absolute',
         width: '100%',
         display: 'flex',
         alignItems: 'center'
     },
-    aaa: {
-        // position: 'relative',
+    inputWrap: {
+        display: 'flex',
+        alignItems: 'center'
     },
-    bbb: {
-        position: 'relative',
-    }
+    inputIcon: {
+        width: '22px',
+        height: '22px',
+        marginTop: '14px',
+        marginRight: '10px'
+    },
 
 }));
 
