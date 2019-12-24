@@ -37,8 +37,9 @@ const AuthLoginView = ({ setView }) => {
     const classes = useStyles();
     const { handleChange, handleSubmit, values } = useForm(submit, INITIAL_STATE);
 
-    function submit() {
-        userLogin({ "email": values.email, "password": values.password })
+    async function submit() {
+        const data = await userLogin({ "email": values.email, "password": values.password })
+        console.log("MMMMMMMMMMMMMMUSER", data)
     }
     return (
         <Box>

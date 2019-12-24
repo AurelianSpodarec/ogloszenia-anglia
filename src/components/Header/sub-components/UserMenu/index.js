@@ -17,6 +17,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { fade, makeStyles, withStyles } from '@material-ui/core/styles';
+import { userLogin, userLogout } from '../../../../services/api/users';
 
 const StyledMenu = withStyles({
     paper: {
@@ -99,7 +100,7 @@ const UserMenu = function () {
                     <ListItemText primary="Settings" />
                 </StyledMenuItem>
                 <Divider />
-                <StyledMenuItem>
+                <StyledMenuItem onClick={() => userLogout()}>
                     <ListItemIcon>
                         <FontAwesomeIcon icon="sign-out-alt" />
                     </ListItemIcon>

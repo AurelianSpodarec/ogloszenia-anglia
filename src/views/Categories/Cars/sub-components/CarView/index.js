@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import useStyles from './styles'
@@ -13,16 +13,23 @@ import {
     CardMedia,
     Box
 } from '@material-ui/core';
-
-// import { fetchProduct } from './../../../../../services/api/product';
+import { getCarById } from '../../../../../services/api/categories/car';
 
 const CarView = ({ match, location }) => {
     const classes = useStyles();
+    const [car, setCar] = useState([]);
 
-    if (!match || !match.params.id) return;
-    // const car = fetchProduct("car", parseInt(match.params.id))
-    const car = {};
+    // if (!match || !match.params.id) { return }
 
+    useEffect(() => {
+        const fetchCar = async () => {
+            const result = await getCarById(match.params.id)
+            setCar(result.data.data.car);
+        };
+        fetchCar();
+    }, []);
+
+    // 
     return (
         <Container>
             <Box className={classes.carView}>
@@ -30,28 +37,28 @@ const CarView = ({ match, location }) => {
                 <Box className={classes.col}>
                     <CardMedia
                         className={classes.mainImg}
-                        image={car.media[0].img}
-                        title={car.name}
+                        // image={car.media[0].img}
+                        title={car.title}
                     />
                     <Box>
-                        {car.media.map(img => {
+                        {/* {car.media.map(img => {
                             return <CardMedia
                                 className={classes.thumbnails}
                                 image={img.img}
                             // title={car.alt}
                             />
-                        })}
+                        })} */}
                     </Box>
                 </Box>
 
                 <Box className={[classes.col, classes.details]}>
                     <Box>
-                        <Typography className={classes.price}>{car.price}</Typography>
-                        <Typography className={classes.name}>{car.name}</Typography>
+                        <Typography className={classes.price}>£{car.price}</Typography>
+                        <Typography className={classes.name}>{car.title}</Typography>
                     </Box>
                     <Box>
                         <Typography>Description</Typography>
-                        <Typography>Amazing car, it run on oil and fire. When angry, it gets all green and treas are green but burn in fire</Typography>
+                        <Typography>{car.description}</Typography>
                     </Box>
                 </Box>
 

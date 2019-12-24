@@ -15,7 +15,16 @@ const userLogin = async (data) => {
         console.warn(err)
     }
 }
-// credentials: 'include',
+
+const userLogout = async () => {
+    try {
+        const res = await axios.get('http://localhost:3001/api/v1/user/logout')
+        console.log(res)
+        if (res.data.status === 'success') window.location.reload(true)
+    } catch (err) {
+        console.warn(err)
+    }
+}
 
 const userRegister = async (data) => {
     try {
@@ -34,5 +43,6 @@ const getUsers = async () => {
 export {
     userLogin,
     userRegister,
+    userLogout,
     getUsers
 }

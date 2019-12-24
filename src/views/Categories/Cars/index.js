@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 
 import CarItem from './sub-components/CarItem/';
-import { getCars } from './../../../services/api/categories/car';
+import { getCars, getCarById } from './../../../services/api/categories/car';
 import useStyles from './styles'
 import axios from 'axios';
 // All Possibilities
@@ -34,18 +34,21 @@ import axios from 'axios';
 // Reviews
 const CarsView = function () {
     const classes = useStyles();
-    const [data, setData] = useState({ hits: [] });
+    const [data, setData] = useState([]);
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const result = await axios(
-    //             'http://localhost:3001/api/v1/cars',
-    //         );
-    //         setData(result.data);
-    //     };
-    //     fetchData();
-    // }, []);
-    // console.log(data)
+    useEffect(() => {
+        const fetchData = async () => {
+            // const result = await axios(
+            //     'http://localhost:3001/api/v1/cars',
+            // );
+            const result = await getCars();
+            setData(result.data);
+        };
+        fetchData();
+    }, []);
+
+    console.log(data)
+
     return (
         <Container>
             <Typography>Uzywane auta w Leicester</Typography>
@@ -61,10 +64,10 @@ const CarsView = function () {
                     </Card>
                 </Grid>
                 <Grid item md={9}>
-
-                    {/* {data.hits.map(car => {
-                        return <CarItem key={car.id} car={car} />
-                    })} */}
+                    {data.map(car => {
+                        return <CarItem key={car._id} car={car} />
+                    })}
+                    {/* <CarList data={data.hits} /> */}
 
                 </Grid>
 

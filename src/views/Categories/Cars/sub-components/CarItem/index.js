@@ -13,27 +13,26 @@ import {
 
 import useStyles from './styles';
 
-
 const CarItem = function (props) {
     const classes = useStyles();
     let { path } = useRouteMatch();
 
     return (
-        <Link className={classes.link} to={`${path}/${props.car.id}`}>
+        <Link className={classes.link} to={`${path}/${props.car._id}`}>
             <Card className={classes.card}>
                 <CardMedia
                     className={classes.media}
-                    image={props.car.media[0].img}
+                    // image={props.car.media[0].img}
                     title="Paella dish"
                 />
                 <CardContent className={classes.details}>
                     <Box justifyContent="space-between" className={classes.detail}>
-                        <Typography className={classes.title}>{props.car.name}</Typography>
-                        <Typography className={classes.price}>${props.car.price}</Typography>
+                        <Typography className={classes.title}>{props.car.title}</Typography>
+                        <Typography className={classes.price}>£{props.car.price}</Typography>
                     </Box>
                     <Box className={classes.detail}>
-                        <Typography>Nissan - Versa - 2008</Typography>
-                        <Typography>147,239ml</Typography>
+                        <Typography>{props.car.brand} - {props.car.model} - {props.car.year}</Typography>
+                        <Typography>{props.car.milleage}ml</Typography>
                     </Box>
                     <Box justifyContent="space-between" className={classes.detail}>
                         <Box display="flex">
