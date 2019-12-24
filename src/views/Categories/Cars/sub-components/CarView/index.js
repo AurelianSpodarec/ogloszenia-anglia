@@ -37,7 +37,7 @@ const CarView = ({ match, location }) => {
                 <Box className={classes.col}>
                     <CardMedia
                         className={classes.mainImg}
-                        // image={car.media[0].img}
+                        image={car.coverImage}
                         title={car.title}
                     />
                     <Box>
