@@ -124,20 +124,20 @@ const CarsView = function () {
     }, []);
 
     console.log(data)
-    // const marks = [
-    //     {
-    //         value: -20,
-    //     },
-    //     {
-    //         value: 20,
-    //     },
-    //     {
-    //         value: 37,
-    //     },
-    //     {
-    //         value: 1300,
-    //     },
-    // ];
+    const marks = [
+        {
+            value: 1900,
+        },
+        {
+            value: 20,
+        },
+        {
+            value: 37,
+        },
+        {
+            value: 2300,
+        },
+    ];
     return (
         <Container>
             <Typography>Uzywane auta w Leicester</Typography>
@@ -151,21 +151,21 @@ const CarsView = function () {
                             <FontAwesomeIcon icon="circle-right" />
                         </Toolbar>
                         <Toolbar>
-                            {/* <AirbnbSlider
+                            <AirbnbSlider
                                 ThumbComponent={AirbnbThumbComponent}
                                 marks={marks}
                                 getAriaLabel={index => (index === 0 ? 'Minimum price' : 'Maximum price')}
                                 defaultValue={[1900, 2020]
                                 }
-                            /> */}
-                            <Slider
+                            />
+                            {/* <Slider
                                 value={value}
                                 // marks={marks}
                                 onChange={handleChange}
                                 valueLabelDisplay="auto"
                                 aria-labelledby="range-slider"
                                 getAriaValueText={valuetext}
-                            />
+                            /> */}
                         </Toolbar>
                     </Card>
                 </Grid>
