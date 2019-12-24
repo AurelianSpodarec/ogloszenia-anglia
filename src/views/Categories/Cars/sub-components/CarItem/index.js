@@ -22,7 +22,8 @@ const CarItem = function (props) {
             <Card className={classes.card}>
                 <CardMedia
                     className={classes.media}
-                    image={props.car.coverImage}
+                    // image={props.car.coverImage}
+                    image={'https://iproxy2.motortrak.com/2014/ferrari/458_italia/rosso_corsa_ds_322-Stratstone_Manchester-ZFF67NHC000201564-1024-0.jpg'}
                     title="Paella dish"
                 />
                 <CardContent className={classes.details}>

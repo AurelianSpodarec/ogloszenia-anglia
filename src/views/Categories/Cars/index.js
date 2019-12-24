@@ -6,8 +6,12 @@ import {
     Card,
     Typography,
     Container,
-    Toolbar
+    Toolbar,
+    Slider,
+    Tooltip,
+    withStyles
 } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 import CarItem from './sub-components/CarItem/';
 import { getCars, getCarById } from './../../../services/api/categories/car';
@@ -32,10 +36,82 @@ import axios from 'axios';
 // Product Listing view: Some JSON
 // Location? 
 // Reviews
+function ValueLabelComponent(props) {
+    const { children, open, value } = props;
+
+    return (
+        <Tooltip open={open} enterTouchDelay={0} placement="top" title={value}>
+            {children}
+        </Tooltip>
+    );
+}
+
+ValueLabelComponent.propTypes = {
+    children: PropTypes.element.isRequired,
+    open: PropTypes.bool.isRequired,
+    value: PropTypes.number.isRequired,
+};
+const AirbnbSlider = withStyles({
+    root: {
+        color: '#3a8589',
+        height: 3,
+        padding: '13px 0',
+    },
+    thumb: {
+        height: 27,
+        width: 27,
+        backgroundColor: '#fff',
+        border: '1px solid currentColor',
+        marginTop: -12,
+        marginLeft: -13,
+        boxShadow: '#ebebeb 0px 2px 2px',
+        '&:focus,&:hover,&$active': {
+            boxShadow: '#ccc 0px 2px 3px 1px',
+        },
+        '& .bar': {
+            // display: inline-block !important;
+            height: 9,
+            width: 1,
+            backgroundColor: 'currentColor',
+            marginLeft: 1,
+            marginRight: 1,
+        },
+    },
+    active: {},
+    valueLabel: {
+        left: 'calc(-50% + 4px)',
+    },
+    track: {
+        height: 3,
+    },
+    rail: {
+        color: '#d8d8d8',
+        opacity: 1,
+        height: 3,
+    },
+})(Slider);
+
+function AirbnbThumbComponent(props) {
+    return (
+        <span {...props}>
+            <span className="bar" />
+            <span className="bar" />
+            <span className="bar" />
+        </span>
+    );
+}
+function valuetext(value) {
+    return `${value}°C`;
+}
 const CarsView = function () {
     const classes = useStyles();
     const [data, setData] = useState([]);
+    const [value, setValue] = React.useState([1900, 2020]);
 
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+    console.log(value)
     useEffect(() => {
         const fetchData = async () => {
             // const result = await axios(
@@ -48,7 +124,20 @@ const CarsView = function () {
     }, []);
 
     console.log(data)
-
+    // const marks = [
+    //     {
+    //         value: -20,
+    //     },
+    //     {
+    //         value: 20,
+    //     },
+    //     {
+    //         value: 37,
+    //     },
+    //     {
+    //         value: 1300,
+    //     },
+    // ];
     return (
         <Container>
             <Typography>Uzywane auta w Leicester</Typography>
@@ -61,8 +150,26 @@ const CarsView = function () {
                             <Typography>Posted by</Typography>
                             <FontAwesomeIcon icon="circle-right" />
                         </Toolbar>
+                        <Toolbar>
+                            {/* <AirbnbSlider
+                                ThumbComponent={AirbnbThumbComponent}
+                                marks={marks}
+                                getAriaLabel={index => (index === 0 ? 'Minimum price' : 'Maximum price')}
+                                defaultValue={[1900, 2020]
+                                }
+                            /> */}
+                            <Slider
+                                value={value}
+                                // marks={marks}
+                                onChange={handleChange}
+                                valueLabelDisplay="auto"
+                                aria-labelledby="range-slider"
+                                getAriaValueText={valuetext}
+                            />
+                        </Toolbar>
                     </Card>
                 </Grid>
+
                 <Grid item md={9}>
                     {data.map(car => {
                         return <CarItem key={car._id} car={car} />
