@@ -9,7 +9,8 @@ import {
     Toolbar,
     Slider,
     Tooltip,
-    withStyles
+    withStyles,
+    Box
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
@@ -108,36 +109,18 @@ const CarsView = function () {
     const [data, setData] = useState([]);
     const [value, setValue] = React.useState([1900, 2020]);
 
-    const handleChange = (event, newValue) => {
+    const onChangeValue = (event, newValue) => {
         setValue(newValue);
     };
-    console.log(value)
+
     useEffect(() => {
         const fetchData = async () => {
-            // const result = await axios(
-            //     'http://localhost:3001/api/v1/cars',
-            // );
             const result = await getCars();
             setData(result.data);
         };
         fetchData();
     }, []);
 
-    console.log(data)
-    const marks = [
-        {
-            value: 1900,
-        },
-        {
-            value: 20,
-        },
-        {
-            value: 37,
-        },
-        {
-            value: 2300,
-        },
-    ];
     return (
         <Container>
             <Typography>Uzywane auta w Leicester</Typography>
@@ -151,21 +134,31 @@ const CarsView = function () {
                             <FontAwesomeIcon icon="circle-right" />
                         </Toolbar>
                         <Toolbar>
-                            <AirbnbSlider
+                            <Box>
+                                <Typography>Year</Typography>
+                                <Typography>{value[0]}-{value[1]}</Typography>
+                            </Box>
+                            {/* <AirbnbSlider
                                 ThumbComponent={AirbnbThumbComponent}
-                                marks={marks}
+                                // marks={marks}
+                                min={1900}
+                                max={2020}
+                                value={value}
+                                onChange={onChangeValue}
                                 getAriaLabel={index => (index === 0 ? 'Minimum price' : 'Maximum price')}
                                 defaultValue={[1900, 2020]
                                 }
-                            />
-                            {/* <Slider
+                            /> */}
+                            <Slider
+                                min={1900}
+                                max={2020}
                                 value={value}
                                 // marks={marks}
-                                onChange={handleChange}
-                                valueLabelDisplay="auto"
+                                onChange={onChangeValue}
+                                // valueLabelDisplay="auto"
                                 aria-labelledby="range-slider"
                                 getAriaValueText={valuetext}
-                            /> */}
+                            />
                         </Toolbar>
                     </Card>
                 </Grid>
