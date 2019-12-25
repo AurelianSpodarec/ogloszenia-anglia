@@ -19,6 +19,7 @@ import { getCars, getCarById } from './../../../services/api/categories/car';
 import useStyles from './styles'
 import axios from 'axios';
 import Sidebar from '../components/Sidebar';
+import PageTitle from '../components/Title';
 // All Possibilities
 // 
 // Posted By: ["All", "Individual", "Dealership"]
@@ -53,7 +54,7 @@ const CarsView = function () {
 
     return (
         <Container>
-            <Typography>Uzywane auta w Leicester</Typography>
+            {<PageTitle title="Used Cars" />}
             {console.log(data)}
             <Grid container spacing={3}>
 
