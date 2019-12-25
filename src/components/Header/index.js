@@ -13,31 +13,18 @@ import {
     Divider
 } from '@material-ui/core';
 
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import { withStyles } from '@material-ui/core/styles';
 
+import UserMenu from './sub-components/UserMenu'
 import AuthDialog from '../AuthDialog';
 import useStyles from './styles'
 
-import UserMenu from './sub-components/UserMenu'
 
 const Header = function () {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [selectedValue, setSelectedValue] = React.useState();
-    // const [user, setUser] = useState()
-    const [anchorEl, setAnchorEl] = React.useState(null);
-
-    const handleMenu = event => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleMenuClose = () => {
-        setAnchorEl(null);
-    };
+    const [isLogged, setIsLogged] = React.useState(true)
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -48,59 +35,49 @@ const Header = function () {
         setSelectedValue(value);
     };
 
-    const isUserLogged = (boolean) => {
-        if (boolean) {
-            return (
-                <>
-                    {UserMenu()}
-                </>
-            )
-        } else {
-            return (
-                <>
-                    <Button onClick={handleClickOpen} color="inherit">Log In</Button>
-                    <Button onClick={handleClickOpen} color="inherit">Sign Up</Button>
-                </>
-            )
-        }
-    }
-
     return (
-        <div>
-            <div className={classes.grow}>
-                <AppBar className={classes.header}>
-                    <Toolbar>
+        <>
+            <AppBar className={classes.header}>
+                <Toolbar>
 
-                        <Typography className={classes.logoText}>Ogloszenia Anglia</Typography>
-                        <div className={classes.search}>
-                            <div className={classes.searchIcon}>
-                                <FontAwesomeIcon icon="search" />
-                            </div>
-                            <InputBase
-                                placeholder="Search…"
-                                classes={{
-                                    root: classes.inputRoot,
-                                    input: classes.inputInput,
-                                }}
-                                inputProps={{ 'aria-label': 'search' }}
-                            />
-                        </div>
+                    <Typography className={classes.logoText}>Ogloszenia Anglia</Typography>
 
-                        <div className={classes.grow, classes.userSection}>
-                            <Button onClick={handleClickOpen} variant="contained" color="secondary">
-                                <FontAwesomeIcon icon="bullhorn" />
-                                Add Listing
-                                </Button>
-                            <br />
-                            {isUserLogged(true)}
-                        </div>
+                    <Box className={classes.search}>
+                        <Box className={classes.searchIcon}>
+                            <FontAwesomeIcon icon="search" />
+                        </Box>
+                        <InputBase
+                            placeholder="Search…"
+                            classes={{
+                                root: classes.inputRoot,
+                                input: classes.inputInput,
+                            }}
+                            inputProps={{ 'aria-label': 'search' }}
+                        />
+                    </Box>
+
+                    <Box className={classes.grow, classes.userSection}>
+                        <Button onClick={handleClickOpen} variant="contained" color="secondary">
+                            <FontAwesomeIcon icon="bullhorn" />
+                            <Typography>Add Listing</Typography>
+                        </Button>
+
+                        {isLogged ?
+                            <UserMenu /> :
+                            <>
+                                <Button onClick={handleClickOpen} color="inherit">Log In</Button>
+                                <Button onClick={handleClickOpen} color="inherit">Sign Up</Button>
+                            </>
+                        }
+                    </Box>
 
 
-                    </Toolbar>
-                </AppBar>
-            </div>
+                </Toolbar>
+            </AppBar>
+
             <AuthDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
-        </div>
+
+        </>
     )
 }
 
