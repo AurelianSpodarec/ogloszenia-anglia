@@ -62,6 +62,10 @@ const Header = function () {
                             <Typography>Add Listing</Typography>
                         </Button>
 
+                        <Box>
+                            <FontAwesomeIcon icon="bars" />
+                        </Box>
+
                         {isLogged ?
                             <UserMenu /> :
                             <>

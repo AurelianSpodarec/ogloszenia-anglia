@@ -34,6 +34,7 @@ import {
     faUser,
     faBullhorn,
     faAngleRight,
+    faBars
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -72,6 +73,7 @@ library.add(
     faUser,
     faBullhorn,
     faAngleRight,
+    faBars
 )
 
 
