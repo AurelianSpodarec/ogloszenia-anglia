@@ -44,7 +44,9 @@ function Layout(props) {
             <>
                 <Header />
 
-                <Category />
+                <div>
+                    <Category />
+                </div>
 
                 <Footer />
             </>

@@ -30,97 +30,107 @@ const router = {
     ],
     categories: [
         {
-            "label": "Motoryzacja",
+            "label": "cars",
             "icon": "car",
+            "bgColor": "#327FB6",
             "component": CarsView,
             "exact": true,
             "route": {
-                "url": "/motoryzacja",
+                "url": "/cars",
             }
         },
         // {
         //     "component": CarView,
         //     "route": {
-        //         "url": "/motoryzacja/:carID",
+        //         "url": "/cars/:carID",
         //     }
         // },
         {
-            "label": "Nieruchomosc",
+            "label": "homes",
             "icon": "home",
+            "bgColor": "#A175D9",
             "component": DefaultView,
             "route": {
-                "url": "/nieruchomosc",
+                "url": "/homes",
             }
         },
         {
-            "label": "Oddam za darmo",
+            "label": "Free Stuff",
             "icon": "gift",
+            "bgColor": "#FF3F55",
             "component": DefaultView,
             "route": {
-                "url": "/oddam-sa-darmo",
+                "url": "/free-stuff",
             }
         },
         {
-            "label": "Electronika",
+            "label": "Electronics",
             "color": "default",
             "icon": "mobile-alt",
+            "bgColor": "#6BCEBB",
             "component": DefaultView,
             "route": {
-                "url": "/elektronika",
+                "url": "/electronics",
             }
         },
         {
-            "label": "Dom i Ogród",
+            "label": "Housing and Garden",
             "color": "default",
             "icon": "couch",
+            "bgColor": "#FFD200",
             "component": DefaultView,
             "route": {
-                "url": "/dom-i-ogrod",
+                "url": "/home-garden",
             }
         },
         {
-            "label": "Motocykly i inne pojazdy",
+            "label": "Motorcycles and Other Vehicles",
             "color": "default",
             "icon": "motorcycle",
+            "bgColor": "#FB8636",
             "component": DefaultView,
             "route": {
-                "url": "/motocykly-i-inne-pojazdy",
+                "url": "/cars-motors",
             }
         },
         {
-            "label": "Sport, rozrywka, gry",
+            "label": "Sports, Leisue and Games",
             "color": "default",
             "icon": "dumbbell",
+            "bgColor": "#A3CE71",
             "component": DefaultView,
             "route": {
-                "url": "/sport-rozrywka-gry",
+                "url": "/sports-leasure-games"
             }
         },
         {
-            "label": "Eventy",
+            "label": "Events",
             "color": "default",
             "icon": "calendar-alt",
+            "bgColor": "#000",
             "component": DefaultView,
             "route": {
-                "url": "/eventy",
+                "url": "/events",
             }
         },
         {
-            "label": "Inne",
+            "label": "Others",
             "color": "default",
             "icon": "cubes",
+            "bgColor": "#000",
             "component": DefaultView,
             "route": {
-                "url": "/inne",
+                "url": "/others",
             }
         },
         {
-            "label": "Praca i Serwisy",
+            "label": "Jobs and Services",
             "color": "default",
             "icon": "handshake",
+            "bgColor": "#E34A6B",
             "component": DefaultView,
             "route": {
-                "url": "/praca-i-serwisy",
+                "url": "/services-jobs",
             }
         }
     ]
@@ -136,10 +146,11 @@ function Category() {
                 container
                 direction="row"
                 justify="center"
-                alignItems="center"
+                alignItems="baseline"
             >
                 {router.categories.map(category => {
                     return <CategoryItem
+                        bgColor={category.bgColor}
                         key={category.route.url}
                         label={category.label}
                         icon={category.icon}
@@ -150,22 +161,18 @@ function Category() {
             </Grid>
 
             <Switch>
-                {/* <Route exact path="homes" component={HomesView} /> */}
-                {/* {categories.map(category => {
-                    return <Route exact={category.path ? true : undefined} path={category.path} component={category.component} />
-                })} */}
-                <Route exact path="/motoryzacja" component={CarsView} />
-                <Route path={`/motoryzacja/:id`} component={CarView} />
+                <Route exact path="/cars" component={CarsView} />
+                <Route path={`/cars/:id`} component={CarView} />
 
-                <Route path="/nieruchomosc" component={HomesView} />
-                <Route path="/oddam-sa-darmo" component={DefaultView} />
-                <Route path="/elektronika" component={DefaultView} />
-                <Route path="/dom-i-ogrod" component={DefaultView} />
-                <Route path="/motocykly-i-inne-pojazdy" component={DefaultView} />
-                <Route path="/sport-rozrywka-gry" component={DefaultView} />
-                <Route path="/eventy" component={DefaultView} />
-                <Route path="/inne" component={DefaultView} />
-                <Route path="/praca-i-serwisy" component={DefaultView} />
+                <Route path="/homes" component={HomesView} />
+                <Route path="/free-stuff" component={DefaultView} />
+                <Route path="/electronics" component={DefaultView} />
+                <Route path="/home-garden" component={DefaultView} />
+                <Route path="/cars-motors" component={DefaultView} />
+                <Route path="/sports-leasure-games" component={DefaultView} />
+                <Route path="/events" component={DefaultView} />
+                <Route path="/others" component={DefaultView} />
+                <Route path="/services-jobs" component={DefaultView} />
                 <Route component={NotFound} />
             </Switch>
         </Router>

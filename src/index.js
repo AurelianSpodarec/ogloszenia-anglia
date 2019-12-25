@@ -32,7 +32,8 @@ import {
     faSignOutAlt,
     faCog,
     faUser,
-    faBullhorn
+    faBullhorn,
+    faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -69,7 +70,8 @@ library.add(
     faSignOutAlt,
     faCog,
     faUser,
-    faBullhorn
+    faBullhorn,
+    faAngleRight,
 )
 
 

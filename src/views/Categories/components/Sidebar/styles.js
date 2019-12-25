@@ -8,6 +8,15 @@ const useStyles = makeStyles(theme => ({
     item: {
 
     },
+    itemMenu: {
+        display: 'flex',
+        justifyContent: 'space-between'
+    },
+    itemMoreInfo: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
     itemTitle: {
         fontWeight: 'bold'
     },

@@ -14,9 +14,15 @@ import {
     Box
 } from '@material-ui/core';
 import useStyles from './styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-// const drawerWidth = 240;
 
+
+// const customSlider = function(min, max) {
+//     const [value, setValue = React.useState([min, max])]
+
+
+// }
 
 const Sidebar = function () {
     const classes = useStyles();
@@ -24,7 +30,7 @@ const Sidebar = function () {
     // TODO: Refactor into one component the slides
     const [year, setValue] = React.useState([1900, 2020]);
     const [milleage, setMilleage] = React.useState([0, 300000]);
-    const [seats, setSeats] = React.useState([1, 8]);
+    const [seats, setSeats] = React.useState([1, 9]);
 
     const onChangeYear = (event, newValue) => {
         setValue(newValue);
@@ -40,6 +46,14 @@ const Sidebar = function () {
 
     return (
         <sidebar className={classes.sidebar} >
+            <Box className={[classes.item, classes.itemMenu]}>
+                <Typography className={classes.itemTitle}>Posted by</Typography>
+                <Box className={classes.itemMoreInfo}>
+                    <Typography>All</Typography>
+                    <FontAwesomeIcon icon="angle-right" />
+                </Box>
+            </Box>
+            <Divider />
             <Box className={classes.item}>
                 <Box className={classes.itemSliderInfo}>
                     <Typography className={classes.itemTitle}>Year</Typography>
@@ -53,7 +67,7 @@ const Sidebar = function () {
                     aria-labelledby="range-slider"
                 />
             </Box>
-            <Divider />
+
             <Box className={classes.item}>
                 <Box className={classes.itemSliderInfo}>
                     <Typography className={classes.itemTitle}>Milleage</Typography>
@@ -75,16 +89,14 @@ const Sidebar = function () {
                 </Box>
                 <Slider
                     min={1}
-                    max={8}
+                    max={9}
                     value={seats}
                     // marks={marks}
                     onChange={onChangeSeats}
                     aria-labelledby="range-slider"
                 />
             </Box>
-            <Box className={classes.sidebarItem}>
 
-            </Box>
             <Button>Save filters</Button>
         </sidebar>
     )
@@ -117,4 +129,45 @@ export default Sidebar;
                             />
                         </Toolbar>
 
-                    </Card> */}
+                    // </Card> */}
+
+                    // {
+                    //     bmw: {
+                    //         {
+                    //             "year": 2020,
+                    //             "car": "ALPINA B6 Gran Coupe"
+                    //         }
+                    //         {
+                    //             "year": 2019,
+                    //             "car": "ALPINA B6 Gran Coupe"
+                    //         }
+                    //     }
+                    //     bmw: {
+                    //         {
+                    //             "year": 2020,
+                    //             "car": "ALPINA B6 Gran Coupe"
+                    //         }
+                    //     }
+
+                    // }
+
+
+                    // {[
+                    //     _2020: [
+                    //         bmw: [
+                    //             {"car": "ALPINA B6 Gran Coupe"}
+                    //         ]
+                    //     ],
+                    //     _2019: [
+                    //         bwm: [
+                    //             {"car": "ALPINA B6 Gran Coupe"}
+                    //         ]
+                    //     ]
+                    // ]}
+
+                    // //User Query: Year 2019, BWM, ALPINA B6 Gran Coupe
+                    // {
+                    //     "year": 2019, // User will search Year first
+                    //     "make": "BWM", // Pick brand to see cars 
+                    //     "model": "ALPINA B6 Gran Coupe", // Pick car model from the year
+                    // }
