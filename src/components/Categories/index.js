@@ -147,6 +147,7 @@ function Category() {
                 direction="row"
                 justify="center"
                 alignItems="baseline"
+                style={{ marginTop: '48px' }}
             >
                 {router.categories.map(category => {
                     return <CategoryItem

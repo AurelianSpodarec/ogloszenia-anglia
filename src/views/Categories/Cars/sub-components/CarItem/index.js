@@ -13,6 +13,8 @@ import {
 
 import useStyles from './styles';
 
+// import Skeleton from '@material-ui/lab/Skeleton'; // Skeleton when the content is loading
+
 const CarItem = function (props) {
     const classes = useStyles();
     let { path } = useRouteMatch();

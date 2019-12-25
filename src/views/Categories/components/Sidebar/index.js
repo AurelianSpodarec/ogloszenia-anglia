@@ -11,7 +11,7 @@ import {
     Tooltip,
     Button,
     withStyles,
-    Box
+    Box,
 } from '@material-ui/core';
 import useStyles from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -46,58 +46,105 @@ const Sidebar = function () {
 
     return (
         <sidebar className={classes.sidebar} >
-            <Box className={[classes.item, classes.itemMenu]}>
-                <Typography className={classes.itemTitle}>Posted by</Typography>
-                <Box className={classes.itemMoreInfo}>
-                    <Typography>All</Typography>
-                    <FontAwesomeIcon icon="angle-right" />
+            <Card>
+                <Box className={[classes.item, classes.itemMenu]}>
+                    <Typography className={classes.itemTitle}>Posted by</Typography>
+                    <Box className={classes.itemMoreInfo}>
+                        <Typography>All</Typography>
+                        <FontAwesomeIcon icon="angle-right" />
+                    </Box>
                 </Box>
-            </Box>
-            <Divider />
-            <Box className={classes.item}>
-                <Box className={classes.itemSliderInfo}>
-                    <Typography className={classes.itemTitle}>Year</Typography>
-                    <Typography>{year[0]}-{year[1]}</Typography>
+                <Divider />
+                <Box className={[classes.item, classes.itemMenu]}>
+                    <Typography className={classes.itemTitle}>Make</Typography>
+                    <Box className={classes.itemMoreInfo}>
+                        <Typography>Astron Martin</Typography>
+                    </Box>
                 </Box>
-                <Slider
-                    min={1900}
-                    max={2020}
-                    value={year}
-                    onChange={onChangeYear}
-                    aria-labelledby="range-slider"
-                />
-            </Box>
+                <Box className={[classes.item, classes.itemMenu]}>
+                    <Typography className={classes.itemTitle}>Model</Typography>
+                    <Box className={classes.itemMoreInfo}>
+                        <Typography>Lagonda</Typography>
+                    </Box>
+                </Box>
+                <Box className={classes.item}>
+                    <Box className={classes.itemSliderInfo}>
+                        <Typography className={classes.itemTitle}>Year</Typography>
+                        <Typography>{year[0]}-{year[1]}</Typography>
+                    </Box>
+                    <Slider
+                        min={1900}
+                        max={2020}
+                        value={year}
+                        onChange={onChangeYear}
+                        aria-labelledby="range-slider"
+                    />
+                </Box>
+                <Divider />
+                <Box className={classes.item}>
+                    <Box className={classes.itemSliderInfo}>
+                        <Typography className={classes.itemTitle}>Milleage</Typography>
+                        <Typography>{milleage[0]}-{milleage[1]} mi</Typography>
+                    </Box>
+                    <Slider
+                        min={0}
+                        max={300000}
+                        value={milleage}
+                        // marks={marks}
+                        onChange={onChangeMilleage}
+                        aria-labelledby="range-slider"
+                    />
+                </Box>
+                <Divider />
 
-            <Box className={classes.item}>
-                <Box className={classes.itemSliderInfo}>
-                    <Typography className={classes.itemTitle}>Milleage</Typography>
-                    <Typography>{milleage[0]}-{milleage[1]} mi</Typography>
+                <Box className={[classes.item, classes.itemMenu]}>
+                    <Typography className={classes.itemTitle}>Body Style</Typography>
+                    <Box className={classes.itemMoreInfo}>
+                        <Typography>All</Typography>
+                        <FontAwesomeIcon icon="angle-right" />
+                    </Box>
                 </Box>
-                <Slider
-                    min={0}
-                    max={300000}
-                    value={milleage}
-                    // marks={marks}
-                    onChange={onChangeMilleage}
-                    aria-labelledby="range-slider"
-                />
-            </Box>
-            <Box className={classes.item}>
-                <Box className={classes.itemSliderInfo}>
-                    <Typography className={classes.itemTitle}>Seats</Typography>
-                    <Typography>{seats[0]}-{seats[1]} seats</Typography>
+                <Box className={[classes.item, classes.itemMenu]}>
+                    <Typography className={classes.itemTitle}>Transmission</Typography>
+                    <Box className={classes.itemMoreInfo}>
+                        <Typography>All</Typography>
+                        <FontAwesomeIcon icon="angle-right" />
+                    </Box>
                 </Box>
-                <Slider
-                    min={1}
-                    max={9}
-                    value={seats}
-                    // marks={marks}
-                    onChange={onChangeSeats}
-                    aria-labelledby="range-slider"
-                />
-            </Box>
+                <Box className={[classes.item, classes.itemMenu]}>
+                    <Typography className={classes.itemTitle}>Fuel</Typography>
+                    <Box className={classes.itemMoreInfo}>
+                        <Typography>All</Typography>
+                        <FontAwesomeIcon icon="angle-right" />
+                    </Box>
+                </Box>
+                <Box className={[classes.item, classes.itemMenu]}>
+                    <Typography className={classes.itemTitle}>Drivetrain</Typography>
+                    <Box className={classes.itemMoreInfo}>
+                        <Typography>All</Typography>
+                        <FontAwesomeIcon icon="angle-right" />
+                    </Box>
+                </Box>
 
-            <Button>Save filters</Button>
+                <Divider />
+                <Box className={classes.item}>
+                    <Box className={classes.itemSliderInfo}>
+                        <Typography className={classes.itemTitle}>Seats</Typography>
+                        <Typography>{seats[0]}-{seats[1]} seats</Typography>
+                    </Box>
+                    <Slider
+                        min={1}
+                        max={9}
+                        value={seats}
+                        // marks={marks}
+                        onChange={onChangeSeats}
+                        aria-labelledby="range-slider"
+                    />
+                </Box>
+                <Box className={classes.item}>
+                    <Button fullWidth variant="contained" color="secondary">Save filters</Button>
+                </Box>
+            </Card>
         </sidebar>
     )
 }

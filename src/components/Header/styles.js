@@ -2,8 +2,13 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
     header: {
-        // backgroundColor: '#ffffff',
+        backgroundColor: '#ffffff',
         borderBottom: '1px sold grey',
+    },
+    logoText: {
+        color: 'orange',
+        fontSize: '1.6em',
+        fontWeight: 'bold'
     },
     sectionDesktop: {
         display: 'none',
@@ -17,11 +22,11 @@ const useStyles = makeStyles(theme => ({
     search: {
         position: 'relative',
         flex: 1,
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: fade(theme.palette.common.white, 0.15),
-        '&:hover': {
-            backgroundColor: fade(theme.palette.common.white, 0.25),
-        },
+        borderRadius: '15px', //theme.shape.borderRadius,
+        backgroundColor: '#eeeeee',
+        // '&:hover': {
+        //     backgroundColor: fade(theme.palette.common.white, 0.25),
+        // },
         marginRight: theme.spacing(2),
         marginLeft: 0,
         width: '100%',

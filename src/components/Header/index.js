@@ -69,36 +69,34 @@ const Header = function () {
         <div>
             <div className={classes.grow}>
                 <AppBar className={classes.header}>
-                    <Container>
-                        <Toolbar>
+                    <Toolbar>
 
-                            <Typography>Ogloszenia Anglia</Typography>
-                            <div className={classes.search}>
-                                <div className={classes.searchIcon}>
-                                    <FontAwesomeIcon icon="search" />
-                                </div>
-                                <InputBase
-                                    placeholder="Search…"
-                                    classes={{
-                                        root: classes.inputRoot,
-                                        input: classes.inputInput,
-                                    }}
-                                    inputProps={{ 'aria-label': 'search' }}
-                                />
+                        <Typography className={classes.logoText}>Ogloszenia Anglia</Typography>
+                        <div className={classes.search}>
+                            <div className={classes.searchIcon}>
+                                <FontAwesomeIcon icon="search" />
                             </div>
+                            <InputBase
+                                placeholder="Search…"
+                                classes={{
+                                    root: classes.inputRoot,
+                                    input: classes.inputInput,
+                                }}
+                                inputProps={{ 'aria-label': 'search' }}
+                            />
+                        </div>
 
-                            <div className={classes.grow, classes.userSection}>
-                                <Button onClick={handleClickOpen} variant="contained" color="secondary">
-                                    <FontAwesomeIcon icon="bullhorn" />
-                                    Add Listing
+                        <div className={classes.grow, classes.userSection}>
+                            <Button onClick={handleClickOpen} variant="contained" color="secondary">
+                                <FontAwesomeIcon icon="bullhorn" />
+                                Add Listing
                                 </Button>
-                                <br />
-                                {isUserLogged(true)}
-                            </div>
+                            <br />
+                            {isUserLogged(true)}
+                        </div>
 
 
-                        </Toolbar>
-                    </Container>
+                    </Toolbar>
                 </AppBar>
             </div>
             <AuthDialog selectedValue={selectedValue} open={open} onClose={handleClose} />

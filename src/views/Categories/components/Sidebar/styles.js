@@ -6,7 +6,7 @@ const useStyles = makeStyles(theme => ({
 
     },
     item: {
-
+        padding: '12px 12px 16px',
     },
     itemMenu: {
         display: 'flex',

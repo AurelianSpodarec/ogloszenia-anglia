@@ -57,12 +57,11 @@ function Layout(props) {
 
 const styles = theme => ({
     "@global": {
-
         boxSizing: "borderBox",
-
         body: {
             height: "100%",
-            margin: '64px 0 0 0',
+            margin: '0',
+            padding: '64px 0 0 0',
         },
 
     }
