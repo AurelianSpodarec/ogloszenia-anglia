@@ -1,4 +1,6 @@
 import React from 'react';
+
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     Container,
@@ -40,7 +42,7 @@ const Header = function () {
             <AppBar className={classes.header}>
                 <Toolbar>
 
-                    <Typography className={classes.logoText}>Ogloszenia Anglia</Typography>
+                    <Typography className={classes.logoText}>Logoszh</Typography>
 
                     <Box className={classes.search}>
                         <Box className={classes.searchIcon}>
@@ -57,12 +59,12 @@ const Header = function () {
                     </Box>
 
                     <Box className={classes.grow, classes.userSection}>
-                        <Button onClick={handleClickOpen} variant="contained" color="secondary">
+                        <Button className={classes.listingButton} onClick={handleClickOpen} variant="contained" color="secondary">
                             <FontAwesomeIcon icon="bullhorn" />
                             <Typography>Add Listing</Typography>
                         </Button>
 
-                        <Box>
+                        <Box className={classes.mobileMenuToggle}>
                             <FontAwesomeIcon icon="bars" />
                         </Box>
 

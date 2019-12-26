@@ -11,21 +11,30 @@ const useStyles = makeStyles(theme => ({
     },
     card: {
         display: 'flex',
-        flexDirection: 'row',
-        marginBottom: theme.spacing(3)
+        flexDirection: 'column',
+        marginBottom: theme.spacing(3),
+        [theme.breakpoints.up('md')]: {
+            flexDirection: 'row',
+        }
     },
     media: {
+        borderRadius: "6px",
         height: 150,
-        width: 200,
-        maxWidth: 220,
-        minWidth: 220,
-        borderRadius: "6px"
+        width: '100%',
+        [theme.breakpoints.up('md')]: {
+            width: 200,
+            maxWidth: 220,
+            minWidth: 220,
+        }
     },
+
     details: {
         display: "flex",
         flexDirection: "column",
-        alignItems: "flex-start",
-        flex: "1 1 auto"
+        flex: "1 1 auto",
+        [theme.breakpoints.up('md')]: {
+            alignItems: "flex-start",
+        }
     },
     detail: {
         width: "100%",

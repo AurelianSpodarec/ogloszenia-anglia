@@ -19,6 +19,7 @@ import HomesView from '../../views/Categories/Homes';
 import DefaultView from '../../views/Categories/Default';
 import CarView from '../../views/Categories/Cars/sub-components/CarView';
 
+import useStyles from './styles'
 const router = {
     menu: [
         {
@@ -138,17 +139,11 @@ const router = {
 }
 
 function Category() {
-
+    const classes = useStyles()
     const [activeCategory, setCategory] = useState(false)
     return (
         <Router>
-            <Grid
-                container
-                direction="row"
-                justify="center"
-                alignItems="baseline"
-                style={{ marginTop: '48px' }}
-            >
+            <Grid className={classes.categoryWrap}>
                 {router.categories.map(category => {
                     return <CategoryItem
                         bgColor={category.bgColor}

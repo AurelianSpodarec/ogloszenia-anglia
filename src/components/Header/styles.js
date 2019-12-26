@@ -16,8 +16,21 @@ const useStyles = makeStyles(theme => ({
             display: 'flex',
         },
     },
+    mobileMenuToggle: {
+        color: 'black',
+
+        [theme.breakpoints.up('md')]: {
+            display: 'none',
+        },
+    },
     logo: {
         color: "green"
+    },
+    listingButton: {
+        display: 'none',
+        [theme.breakpoints.up('md')]: {
+            display: 'flex'
+        }
     },
     search: {
         position: 'relative',
