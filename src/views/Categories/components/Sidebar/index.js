@@ -16,138 +16,20 @@ import useStyles from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { shortenWord } from '../../../../utils/functions';
 
-
-
-// const customSlider = function(min, max) {
-//     const [value, setValue = React.useState([min, max])]
-
-
-// }
-
-const placeholderCarFilter = {
-    postedBy: [
-        { name: 'Individual' },
-        { name: 'Dealership' }
-    ],
-    //TODO: In future... Do: cars -> make -> year. If they select 2019 and the model doesn't exist
-    cars: [
-        { bwm: ['600', 'M2'] },
-        { astronMartin: ['B6 COver', 'Covert'] }
-    ],
-    year: [1960, 2020],
-    mileage: [0, 300000],
-    bodyStyle: [
-        {
-            name: "Sedan",
-            icon: "default"
-        },
-        {
-            name: "Hybrid",
-            icon: "default"
-        },
-        {
-            name: "Convertible",
-            icon: "default"
-        },
-        {
-            name: "Truck",
-            icon: "default"
-        },
-        {
-            name: "Coupe",
-            icon: "default"
-        },
-        {
-            name: "Hatchback",
-            icon: "default"
-        },
-        {
-            name: "Minivan",
-            icon: "default"
-        },
-        {
-            name: "Wagon",
-            icon: "default"
-        },
-        {
-            name: "SUV",
-            icon: "default"
-        },
-        {
-            name: "Others",
-            icon: "default"
-        }
-
-    ],
-    transmition: [
-        {
-            name: "Automatic",
-            icon: "default"
-        },
-        {
-            name: "Manual",
-            icon: "default"
-        }
-    ],
-    fuel: [
-        {
-            name: "Disel",
-            icon: "default"
-        },
-        {
-            name: "Electric",
-            icon: "default"
-        },
-        {
-            name: "Flex",
-            icon: "default"
-        },
-        {
-            name: "Gas",
-            icon: "default"
-        },
-        {
-            name: "Hybrid",
-            icon: "default"
-        },
-        {
-            name: "Others",
-            icon: "default"
-        }
-    ],
-    driveTrain: [
-        {
-            name: "4WD",
-            icon: "default"
-        },
-        {
-            name: "AWD",
-            icon: "default"
-        },
-        {
-            name: "FWD",
-            icon: "default"
-        },
-        {
-            name: "RWD",
-            icon: "default"
-        }
-    ],
-    seats: [1, 9],
-
-    // Location['Leicester', 'Manchester'] - perhaps later use google maps for proximity and such
-    // Price[min, max], 
-    // Sort By['Relevance', 'Date (most recent)', 'Price: low to high', 'Price: high to low', 'CLosest first']
-    // postedWithin: ['All Listings', 'The last 24 hours', 'The last 7 days', 'The last 30days']
-}
+import { placeholderCarFilter } from './menu';
+import { CustomItem } from './sub-components';
 
 const Sidebar = function () {
     const classes = useStyles();
+    // 
 
     // TODO: Refactor into one component the slides
     const [year, setValue] = React.useState([placeholderCarFilter.year[0], placeholderCarFilter.year[1]]);
     const [mileage, setMileage] = React.useState([placeholderCarFilter.mileage[0], placeholderCarFilter.mileage[1]]);
     const [seats, setSeats] = React.useState([placeholderCarFilter.seats[0], placeholderCarFilter.seats[1]]);
+
+    const [make, setMake] = React.useState();
+
 
     const onChangeYear = (event, newValue) => {
         setValue(newValue);
@@ -162,111 +44,10 @@ const Sidebar = function () {
     }
 
     const openCarMenu = (value) => {
-
-        let b = dropdownList(value)
-        // console.log(b)
-        return b;
-    }
-
-    const dropdownList = (category) => {
-        const a = placeholderCarFilter[category]
-        return (
-            <Box>
-
-                {
-                    a.map(item => {
-                        dropdownItem(item)
-                    })
-                }
-            </Box>
-        )
-    }
-
-    const dropdownItem = (item) => {
-        let value;
-        if (!item.name) {
-            value = item;
-        } else {
-            value = item.name;
-        }
-        // console.log(value)
-        return (
-            <Typography onClick={() => console.log(value)}>{value}</Typography>
-        )
-    }
-
-    const ItemA = (name, menu) => {
-        // If nothing is selected, display: All
-        // If one item is selected, display it
-        // If more than three items are selected, display: Item1, Item2, ...
-
-        // if (selected) {
-        //     // Display Item Name
-        // } else {
-        //     return (<>All</>)
-        // }
-
-        return (
-            <Box onClick={openCarMenu} value="postedBy" className={[classes.item, classes.itemMenu]}>
-                <Typography className={classes.itemTitle}>{name}</Typography>
-
-                <Box className={classes.itemMoreInfo}>
-                    <Typography>All</Typography>
-                    <FontAwesomeIcon icon="angle-right" />
-                </Box>
-                {/* Menu */}
-                <Box>
-                    {/* <Typography>{value}</Typography> */}
-                    {dropdownItem(name)}
-                </Box>
-            </Box>
-        )
+        return 1;
     }
 
 
-    const CustomItem = ({ name, value }) => {
-        const [selected, setSelected] = React.useState([]);
-        const result = placeholderCarFilter[value] || [];
-
-        let label;
-        if (selected.length === 0 || selected.length === result.length) {
-            label = "All";
-        } else {
-            label = shortenWord(selected.join(", "), 20)
-        }
-
-        const onClickSelected = function (value) {
-            const isSelected = selected.find(item => item === value);
-            if (isSelected === value) {
-                setSelected(selected.filter(item => item !== value))
-            } else {
-                setSelected(selected => [...selected, value])
-            }
-        }
-
-        return (
-            <Box onClick={() => openCarMenu(value)} className={[classes.item, classes.itemMenu]}>
-                <Typography className={classes.itemTitle}>{name}</Typography>
-                <Box className={classes.itemMoreInfo}>
-                    <Typography>{label}</Typography>
-                    <FontAwesomeIcon icon="angle-right" />
-                </Box>
-
-                <Box>
-                    {
-                        result.map(item => {
-                            return (
-                                <Box onClick={() => onClickSelected(item.name)} value={item.name}>
-                                    <Typography>{item.name}</Typography>
-                                </Box>
-                            )
-                        })
-                    }
-
-                </Box>
-            </Box>
-        )
-    }
 
     const CustomSlider = () => {
         return (
@@ -275,45 +56,25 @@ const Sidebar = function () {
             </>
         )
     }
-
+    console.log(placeholderCarFilter["make"][0].models)
     return (
         <sidebar className={classes.sidebar} >
             <Card>
+                {/* TODO: Refactor JSON so I can loop this with map */}
                 <CustomItem
                     name="Posted by"
                     value="postedBy"
                 />
-                {/* <CustomItem
-                    name="Fuel"
-                    value="fuel"
-                />
+                <Divider />
                 <CustomItem
                     name="Make"
-                    value=""
-                /> */}
-                {/* <ItemA name="postedBy">
-                
-                </ItemA>
-                <Box onClick={() => openCarMenu('postedBy')} value="postedBy" className={[classes.item, classes.itemMenu]}>
-                    <Typography className={classes.itemTitle}>Posted by</Typography>
-                    <Box className={classes.itemMoreInfo}>
-                        <Typography>All</Typography>
-                        <FontAwesomeIcon icon="angle-right" />
-                    </Box>
-                </Box>
-                <Divider />
-                <Box className={[classes.item, classes.itemMenu]}>
-                    <Typography className={classes.itemTitle}>Make</Typography>
-                    <Box className={classes.itemMoreInfo}>
-                        <Typography>Astron Martin</Typography>
-                    </Box>
-                </Box>
-                <Box className={[classes.item, classes.itemMenu]}>
-                    <Typography className={classes.itemTitle}>Model</Typography>
-                    <Box className={classes.itemMoreInfo}>
-                        <Typography>Lagonda</Typography>
-                    </Box>
-                </Box>
+                    value="make"
+                />
+                <CustomItem
+                    name="Model" // 
+                    // value={make.model} // Model based on the selected make
+                    value={placeholderCarFilter["make"][0].models}
+                />
                 <Box className={classes.item}>
                     <Box className={classes.itemSliderInfo}>
                         <Typography className={classes.itemTitle}>Year</Typography>
@@ -344,35 +105,22 @@ const Sidebar = function () {
                 </Box>
                 <Divider />
 
-                <Box className={[classes.item, classes.itemMenu]}>
-                    <Typography className={classes.itemTitle}>Body Style</Typography>
-                    <Box className={classes.itemMoreInfo}>
-                        <Typography>All</Typography>
-                        <FontAwesomeIcon icon="angle-right" />
-                    </Box>
-                </Box>
-                <Box className={[classes.item, classes.itemMenu]}>
-                    <Typography className={classes.itemTitle}>Transmission</Typography>
-                    <Box className={classes.itemMoreInfo}>
-                        <Typography>All</Typography>
-                        <FontAwesomeIcon icon="angle-right" />
-                    </Box>
-                </Box>
-                <Box className={[classes.item, classes.itemMenu]}>
-                    <Typography className={classes.itemTitle}>Fuel</Typography>
-                    <Box className={classes.itemMoreInfo}>
-                        <Typography>All</Typography>
-                        <FontAwesomeIcon icon="angle-right" />
-                    </Box>
-                </Box>
-                <Box onClick={() => openCarMenu('driveTrain')} className={[classes.item, classes.itemMenu]}>
-                    <Typography className={classes.itemTitle}>Drivetrain</Typography>
-                    <Box className={classes.itemMoreInfo}>
-                        <Typography>All</Typography>
-                        <FontAwesomeIcon icon="angle-right" />
-                    </Box>
-                </Box>
-
+                <CustomItem
+                    name="Body Style"
+                    value="bodyStyle"
+                />
+                <CustomItem
+                    name="Transmission"
+                    value="transmission"
+                />
+                <CustomItem
+                    name="Fuel"
+                    value="fuel"
+                />
+                <CustomItem
+                    name="Drivetrain"
+                    value="drivetrain"
+                />
                 <Divider />
                 <Box className={classes.item}>
                     <Box className={classes.itemSliderInfo}>
@@ -390,7 +138,7 @@ const Sidebar = function () {
                 </Box>
                 <Box className={classes.item}>
                     <Button fullWidth variant="contained" color="secondary">Save filters</Button>
-                </Box> */}
+                </Box>
             </Card>
         </sidebar >
     )
