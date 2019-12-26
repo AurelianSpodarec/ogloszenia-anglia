@@ -21,26 +21,6 @@ import axios from 'axios';
 import Sidebar from '../components/Sidebar';
 import PageTitle from '../components/Title';
 
-const carFilter = {
-    postedBy: ['All', 'Individual', 'Dealership'],
-    cars: [
-        { bwm: ['600', 'M2'] },
-        { astronMartin: ['B6 COver', 'Covert'] }
-    ],
-    year: [1960, 2020],
-    mileage: [0, 300000],
-    bodyStyle: ["All", "Sedan", "Hybrid", "Convertible", "Truck", "Coupe", "Hatchback", "Minivan", "Wagon", "SUV", "Others"],
-    transmition: ["All", "Automatic", "Manual"],
-    fuel: ["Disel", "Electric", "Flex", "Gas", "Hybrid", "Others"],
-    drivetrain: ["4WD", "AWD", "FWD", "RWD"],
-    seats: [1, 9],
-
-    // Location['Leicester', 'Manchester'] - perhaps later use google maps for proximity and such
-    // Price[min, max], 
-    // Sort By['Relevance', 'Date (most recent)', 'Price: low to high', 'Price: high to low', 'CLosest first']
-    // postedWithin: ['All Listings', 'The last 24 hours', 'The last 7 days', 'The last 30days']
-}
-
 const CarsView = function () {
     const classes = useStyles();
     const [data, setData] = useState([]);

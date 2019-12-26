@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import {
     Grid,
@@ -10,7 +10,6 @@ import {
     Slider,
     Tooltip,
     Button,
-    withStyles,
     Box,
 } from '@material-ui/core';
 import useStyles from './styles';
@@ -24,30 +23,148 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // }
 
+const placeholderCarFilter = {
+    postedBy: ['All', 'Individual', 'Dealership'],
+    //TODO: In future... Do: cars -> make -> year. If they select 2019 and the model doesn't exist
+    cars: [
+        { bwm: ['600', 'M2'] },
+        { astronMartin: ['B6 COver', 'Covert'] }
+    ],
+    year: [1960, 2020],
+    mileage: [0, 300000],
+    bodyStyle: ["All", "Sedan", "Hybrid", "Convertible", "Truck", "Coupe", "Hatchback", "Minivan", "Wagon", "SUV", "Others"],
+    transmition: [
+        {
+            name: "Automatic",
+            icon: "default"
+        },
+        {
+            name: "Manual",
+            icon: "default"
+        }
+    ],
+    fuel: [
+        {
+            name: "Disel",
+            icon: "default"
+        },
+        {
+            name: "Electric",
+            icon: "default"
+        },
+        {
+            name: "Flex",
+            icon: "default"
+        },
+        {
+            name: "Gas",
+            icon: "default"
+        },
+        {
+            name: "Hybrid",
+            icon: "default"
+        },
+        {
+            name: "Others",
+            icon: "default"
+        }
+    ],
+    driveTrain: [
+        {
+            name: "4WD",
+            icon: "default"
+        },
+        {
+            name: "AWD",
+            icon: "default"
+        },
+        {
+            name: "FWD",
+            icon: "default"
+        },
+        {
+            name: "RWD",
+            icon: "default"
+        }
+    ],
+    seats: [1, 9],
+
+    // Location['Leicester', 'Manchester'] - perhaps later use google maps for proximity and such
+    // Price[min, max], 
+    // Sort By['Relevance', 'Date (most recent)', 'Price: low to high', 'Price: high to low', 'CLosest first']
+    // postedWithin: ['All Listings', 'The last 24 hours', 'The last 7 days', 'The last 30days']
+}
+
 const Sidebar = function () {
     const classes = useStyles();
 
     // TODO: Refactor into one component the slides
-    const [year, setValue] = React.useState([1900, 2020]);
-    const [milleage, setMilleage] = React.useState([0, 300000]);
-    const [seats, setSeats] = React.useState([1, 9]);
+    const [year, setValue] = React.useState([placeholderCarFilter.year[0], placeholderCarFilter.year[1]]);
+    const [mileage, setMileage] = React.useState([placeholderCarFilter.mileage[0], placeholderCarFilter.mileage[1]]);
+    const [seats, setSeats] = React.useState([placeholderCarFilter.seats[0], placeholderCarFilter.seats[1]]);
 
     const onChangeYear = (event, newValue) => {
         setValue(newValue);
     };
 
-    const onChangeMilleage = (event, newValue) => {
-        setMilleage(newValue)
+    const onChangeMileage = (event, newValue) => {
+        setMileage(newValue)
     }
 
     const onChangeSeats = (event, newValue) => {
         setSeats(newValue)
     }
 
+    const openCarMenu = (value) => {
+
+        let b = dropdownList(value)
+        console.log(b)
+        return b;
+    }
+
+    const dropdownList = (category) => {
+        const a = placeholderCarFilter[category]
+        return (
+            <Box>
+
+                {
+                    a.map(item => {
+                        dropdownItem(item)
+                    })
+                }
+            </Box>
+        )
+    }
+
+    const dropdownItem = (item) => {
+        let value;
+        if (!item.name) {
+            value = item;
+        } else {
+            value = item.name;
+        }
+        console.log(value)
+        return (
+            <Typography>{value}</Typography>
+        )
+    }
+
+    // const Item = () => {
+    //     return (
+    //         <Box onClick={openCarMenu} value="postedBy" className={[classes.item, classes.itemMenu]}>
+    //             <Typography className={classes.itemTitle}>Posted by</Typography>
+    //             <Box className={classes.itemMoreInfo}>
+    //                 <Typography>All</Typography>
+    //                 <FontAwesomeIcon icon="angle-right" />
+    //             </Box>
+    //         </Box>
+    //     )
+    // }
+
     return (
         <sidebar className={classes.sidebar} >
             <Card>
-                <Box className={[classes.item, classes.itemMenu]}>
+                <Box onClick={() => openCarMenu('postedBy')} value="postedBy" className={[classes.item, classes.itemMenu]}>
                     <Typography className={classes.itemTitle}>Posted by</Typography>
                     <Box className={classes.itemMoreInfo}>
                         <Typography>All</Typography>
@@ -73,8 +190,8 @@ const Sidebar = function () {
                         <Typography>{year[0]}-{year[1]}</Typography>
                     </Box>
                     <Slider
-                        min={1900}
-                        max={2020}
+                        min={placeholderCarFilter.year[0]}
+                        max={placeholderCarFilter.year[1]}
                         value={year}
                         onChange={onChangeYear}
                         aria-labelledby="range-slider"
@@ -83,15 +200,15 @@ const Sidebar = function () {
                 <Divider />
                 <Box className={classes.item}>
                     <Box className={classes.itemSliderInfo}>
-                        <Typography className={classes.itemTitle}>Milleage</Typography>
-                        <Typography>{milleage[0]}-{milleage[1]} mi</Typography>
+                        <Typography className={classes.itemTitle}>Mileage</Typography>
+                        <Typography>{mileage[0]}-{mileage[1]} mi</Typography>
                     </Box>
                     <Slider
-                        min={0}
-                        max={300000}
-                        value={milleage}
+                        min={placeholderCarFilter.mileage[0]}
+                        max={placeholderCarFilter.mileage[1]}
+                        value={mileage}
                         // marks={marks}
-                        onChange={onChangeMilleage}
+                        onChange={onChangeMileage}
                         aria-labelledby="range-slider"
                     />
                 </Box>
@@ -118,7 +235,7 @@ const Sidebar = function () {
                         <FontAwesomeIcon icon="angle-right" />
                     </Box>
                 </Box>
-                <Box className={[classes.item, classes.itemMenu]}>
+                <Box onClick={() => openCarMenu('driveTrain')} className={[classes.item, classes.itemMenu]}>
                     <Typography className={classes.itemTitle}>Drivetrain</Typography>
                     <Box className={classes.itemMoreInfo}>
                         <Typography>All</Typography>
@@ -133,8 +250,8 @@ const Sidebar = function () {
                         <Typography>{seats[0]}-{seats[1]} seats</Typography>
                     </Box>
                     <Slider
-                        min={1}
-                        max={9}
+                        min={placeholderCarFilter.seats[0]}
+                        max={placeholderCarFilter.seats[1]}
                         value={seats}
                         // marks={marks}
                         onChange={onChangeSeats}
@@ -145,7 +262,7 @@ const Sidebar = function () {
                     <Button fullWidth variant="contained" color="secondary">Save filters</Button>
                 </Box>
             </Card>
-        </sidebar>
+        </sidebar >
     )
 }
 
