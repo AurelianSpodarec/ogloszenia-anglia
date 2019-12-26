@@ -26,6 +26,7 @@ const CustomItem = ({ name, value }) => {
     const [selected, setSelected] = React.useState([]);
     const result = placeholderCarFilter[value] || [];
     console.log(result)
+
     let label;
     if (selected.length === 0 || selected.length === result.length) {
         label = "All";
@@ -33,24 +34,25 @@ const CustomItem = ({ name, value }) => {
         label = shortenWord(selected.join(", "), 20)
     }
 
-    const onClickSelected = function (value) {
-        const isSelected = selected.find(item => item === value);
-        if (isSelected === value) {
-            setSelected(selected.filter(item => item !== value))
+    const onClickSelected = function (selectedItemName) {
+        const isSelected = selected.find(item => item === selectedItemName);
+        if (isSelected === selectedItemName) {
+            setSelected(selected.filter(item => item !== selectedItemName))
         } else {
-            setSelected(selected => [...selected, value])
+            setSelected(selected => [...selected, selectedItemName])
         }
     }
 
     return (
         <Box className={[classes.item, classes.itemMenu]}>
+
             <Typography className={classes.itemTitle}>{name}</Typography>
             <Box className={classes.itemMoreInfo}>
                 <Typography>{label}</Typography>
                 <FontAwesomeIcon icon="angle-right" />
             </Box>
 
-            <Box>
+            <Box className={classes.menu}>
                 {
                     result.map(item => {
                         return (
@@ -60,7 +62,6 @@ const CustomItem = ({ name, value }) => {
                         )
                     })
                 }
-
             </Box>
         </Box>
     )

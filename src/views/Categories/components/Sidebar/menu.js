@@ -6,17 +6,25 @@
 
 export const placeholderCarFilter = {
     postedBy: [
-        { name: 'Individual' },
-        { name: 'Dealership' }
+        {
+            name: "individual",
+            displayName: 'Individual'
+        },
+        {
+            name: "dealership",
+            displayName: 'Dealership'
+        }
     ],
     //TODO: In future... Do: cars -> make -> year. If they select 2019 and the model doesn't exist
     make: [
         {
-            name: "BWM",
+            name: "bwm",
+            displayName: "BWM",
             models: ['600', 'M2']
         },
         {
-            name: "Astron Martin",
+            name: "astronMartin",
+            displayName: "Astron Martin",
             models: ['B6 COver', 'Covert']
         }
     ],
@@ -24,98 +32,120 @@ export const placeholderCarFilter = {
     mileage: [0, 300000],
     bodyStyle: [
         {
-            name: "Sedan",
+            name: "sedan",
+            displayName: "Sedan",
             icon: "default"
         },
         {
-            name: "Hybrid",
+            name: "hybrid",
+            displayName: "Hybrid",
             icon: "default"
         },
         {
-            name: "Convertible",
+            name: "convertible",
+            displayName: "Convertible",
             icon: "default"
         },
         {
-            name: "Truck",
+            name: "truck",
+            displayName: "Truck",
             icon: "default"
         },
         {
-            name: "Coupe",
+            name: "coupe",
+            displayName: "Coupe",
             icon: "default"
         },
         {
-            name: "Hatchback",
+            name: "hatchback",
+            displayName: "Hatchback",
             icon: "default"
         },
         {
-            name: "Minivan",
+            name: "minivan",
+            displayName: "Minivan",
             icon: "default"
         },
         {
-            name: "Wagon",
+            name: "wagon",
+            displayName: "Wagon",
             icon: "default"
         },
         {
-            name: "SUV",
+            name: "suv",
+            displayName: "SUV",
             icon: "default"
         },
         {
-            name: "Others",
+            name: "others",
+            displayName: "Others",
             icon: "default"
         }
 
     ],
     transmission: [
         {
-            name: "Automatic",
+            name: "automatic",
+            displayName: "Automatic",
             icon: "default"
         },
         {
-            name: "Manual",
+            name: "manual",
+            displayName: "Manual",
             icon: "default"
         }
     ],
     fuel: [
         {
-            name: "Disel",
+            name: "disel",
+            displayName: "Disel",
             icon: "default"
         },
         {
-            name: "Electric",
+            name: "electric",
+            displayName: "Electric",
             icon: "default"
         },
         {
-            name: "Flex",
+            name: "flex",
+            displayName: "Flex",
             icon: "default"
         },
         {
-            name: "Gas",
+            name: "gas",
+            displayName: "Gas",
             icon: "default"
         },
         {
-            name: "Hybrid",
+            name: "hybrid",
+            displayName: "Hybrid",
             icon: "default"
         },
         {
-            name: "Others",
+            name: "others",
+            displayName: "Others",
             icon: "default"
         }
     ],
     driveTrain: [
         {
-            name: "4WD",
+            name: "4wd",
+            displayName: "4WD",
             icon: "default"
         },
         {
-            name: "AWD",
+            name: "aws",
+            displayName: "AWD",
             icon: "default"
         },
         {
-            name: "FWD",
+            name: "fwd",
+            displayName: "FWD",
             icon: "default"
         },
         {
-            name: "RWD",
+            name: "rwd",
+            displayName: "RWD",
             icon: "default"
         }
     ],
