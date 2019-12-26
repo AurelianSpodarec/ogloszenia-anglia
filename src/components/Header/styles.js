@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
         },
     },
     mobileMenuToggle: {
-        color: 'black',
+        color: 'orange',
 
         [theme.breakpoints.up('md')]: {
             display: 'none',

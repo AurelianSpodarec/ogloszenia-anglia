@@ -19,11 +19,12 @@ const useStyles = makeStyles(theme => ({
     },
     media: {
         borderRadius: "6px",
-        height: 150,
+        height: 170,
         width: '100%',
         [theme.breakpoints.up('md')]: {
+            height: 150,
             width: 200,
-            maxWidth: 220,
+            // maxWidth: 220,
             minWidth: 220,
         }
     },

@@ -20,25 +20,26 @@ import useStyles from './styles'
 import axios from 'axios';
 import Sidebar from '../components/Sidebar';
 import PageTitle from '../components/Title';
-// All Possibilities
-// 
-// Posted By: ["All", "Individual", "Dealership"]
-// Body Style: ["All", "Sedan", "Hybrid", "Convertible", "Truck", "Coupe", "Hatchback", "Minivan", "Wagon", "SUV", "Others"]
-// Transmision: ["All", "Automatic", "Manual"]
-// Fuel: ["Disel", "Electric", "Flex", "Gas", "Hybrid"]
-// Drivetrain: ["4WD", "AWD", "FWD", "RWD"]
-// 
-// Car Post
 
-// DB
+const carFilter = {
+    postedBy: ['All', 'Individual', 'Dealership'],
+    cars: [
+        { bwm: ['600', 'M2'] },
+        { astronMartin: ['B6 COver', 'Covert'] }
+    ],
+    year: [1960, 2020],
+    mileage: [0, 300000],
+    bodyStyle: ["All", "Sedan", "Hybrid", "Convertible", "Truck", "Coupe", "Hatchback", "Minivan", "Wagon", "SUV", "Others"],
+    transmition: ["All", "Automatic", "Manual"],
+    fuel: ["Disel", "Electric", "Flex", "Gas", "Hybrid", "Others"],
+    drivetrain: ["4WD", "AWD", "FWD", "RWD"],
+    seats: [1, 9],
 
-// Users
-// Posts
-// Categories: Cars, Homes, etc
-// Single Product view: Full JSON
-// Product Listing view: Some JSON
-// Location? 
-// Reviews
+    // Location['Leicester', 'Manchester'] - perhaps later use google maps for proximity and such
+    // Price[min, max], 
+    // Sort By['Relevance', 'Date (most recent)', 'Price: low to high', 'Price: high to low', 'CLosest first']
+    // postedWithin: ['All Listings', 'The last 24 hours', 'The last 7 days', 'The last 30days']
+}
 
 const CarsView = function () {
     const classes = useStyles();

@@ -58,24 +58,24 @@ const Header = function () {
                         />
                     </Box>
 
-                    <Box className={classes.grow, classes.userSection}>
-                        <Button className={classes.listingButton} onClick={handleClickOpen} variant="contained" color="secondary">
-                            <FontAwesomeIcon icon="bullhorn" />
-                            <Typography>Add Listing</Typography>
-                        </Button>
-
-                        <Box className={classes.mobileMenuToggle}>
-                            <FontAwesomeIcon icon="bars" />
-                        </Box>
-
-                        {isLogged ?
-                            <UserMenu /> :
-                            <>
-                                <Button onClick={handleClickOpen} color="inherit">Log In</Button>
-                                <Button onClick={handleClickOpen} color="inherit">Sign Up</Button>
-                            </>
-                        }
+                    <Box className={classes.mobileMenuToggle}>
+                        <FontAwesomeIcon icon="sliders-h" />
                     </Box>
+
+                    {/* <Box className={classes.grow, classes.userSection}> */}
+                    <Button className={classes.listingButton} onClick={handleClickOpen} variant="contained" color="secondary">
+                        <FontAwesomeIcon icon="bullhorn" />
+                        <Typography>Add Listing</Typography>
+                    </Button>
+
+                    {isLogged ?
+                        <UserMenu /> :
+                        <>
+                            <Button onClick={handleClickOpen} color="inherit">Log In</Button>
+                            <Button onClick={handleClickOpen} color="inherit">Sign Up</Button>
+                        </>
+                    }
+                    {/* </Box> */}
 
 
                 </Toolbar>
