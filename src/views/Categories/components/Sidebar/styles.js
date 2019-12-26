@@ -12,6 +12,9 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         justifyContent: 'space-between'
     },
+    sidebarInner: {
+        overflow: 'initial'
+    },
     itemMoreInfo: {
         display: 'flex',
         justifyContent: 'space-between',

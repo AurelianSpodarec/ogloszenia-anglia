@@ -1,7 +1,19 @@
+//TODO in future:
+// ford
+//   2019
+//     fusion
+//       se
+//       srt
+//     escape
+//       basic
+//       limited
+//   2018
+//     fusion
+//       se
+//       srt
+//     edge
 
-// Dropdown of Car Name, BWM, Astron Martin
-// Select Car e.g: BWM
-
+// Result: 2019 Ford Fusion SE
 
 
 export const placeholderCarFilter = {
@@ -15,7 +27,6 @@ export const placeholderCarFilter = {
             displayName: 'Dealership'
         }
     ],
-    //TODO: In future... Do: cars -> make -> year. If they select 2019 and the model doesn't exist
     make: [
         {
             name: "bwm",

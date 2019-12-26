@@ -30,6 +30,9 @@ const Sidebar = function () {
 
     const [make, setMake] = React.useState();
 
+    // Set make here. Access the make models and display it in CustomItem
+    // Custom Item add a handle for just arrays without key:value, just make it value 
+
 
     const onChangeYear = (event, newValue) => {
         setValue(newValue);
@@ -43,23 +46,10 @@ const Sidebar = function () {
         setSeats(newValue)
     }
 
-    const openCarMenu = (value) => {
-        return 1;
-    }
-
-
-
-    const CustomSlider = () => {
-        return (
-            <>
-
-            </>
-        )
-    }
     console.log(placeholderCarFilter["make"][0].models)
     return (
         <sidebar className={classes.sidebar} >
-            <Card>
+            <Card className={classes.sidebarInner}>
                 {/* TODO: Refactor JSON so I can loop this with map */}
                 <CustomItem
                     name="Posted by"
@@ -69,10 +59,13 @@ const Sidebar = function () {
                 <CustomItem
                     name="Make"
                     value="make"
+                    selectLimit="1"
+                    search
                 />
                 <CustomItem
                     name="Model" // 
                     // value={make.model} // Model based on the selected make
+                    // value={make[bwm].models}
                     value={placeholderCarFilter["make"][0].models}
                 />
                 <Box className={classes.item}>

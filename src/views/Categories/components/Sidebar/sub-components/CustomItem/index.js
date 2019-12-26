@@ -21,11 +21,15 @@ import { shortenWord } from '../../../../../../utils/functions';
 
 
 //TODO: Functionality to add: Toggle between check boxes and single select
-const CustomItem = ({ name, value }) => {
+const CustomItem = ({ name, value, search }) => {
     const classes = useStyles();
+
     const [selected, setSelected] = React.useState([]);
+
+    let [searchQuery, setSearcyQuery] = React.useState([])
+    let [searchResult, setSearchResult] = React.useState([])
+
     const result = placeholderCarFilter[value] || [];
-    console.log(result)
 
     let label;
     if (selected.length === 0 || selected.length === result.length) {
@@ -43,6 +47,10 @@ const CustomItem = ({ name, value }) => {
         }
     }
 
+    const onSearch = function () {
+        // let searchDisplay = selected.find()
+    }
+
     return (
         <Box className={[classes.item, classes.itemMenu]}>
 
@@ -53,6 +61,20 @@ const CustomItem = ({ name, value }) => {
             </Box>
 
             <Box className={classes.menu}>
+                {search ?
+                    <Box>
+                        <input placeholder="Search" />
+                        {/* <TextField
+                            fullWidth
+                            name="search"
+                            type="text"
+                            value={search.email}
+                            id="input-with-icon-grid"
+                            label="Search"
+                            onChange={onSearch}
+                        /> */}
+                    </Box>
+                    : null}
                 {
                     result.map(item => {
                         return (

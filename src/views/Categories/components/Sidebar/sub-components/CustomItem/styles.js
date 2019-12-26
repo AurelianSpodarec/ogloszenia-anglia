@@ -7,6 +7,7 @@ const useStyles = makeStyles(theme => ({
     },
     item: {
         padding: '12px 12px 16px',
+        position: 'relative'
     },
     itemMenu: {
         display: 'flex',
@@ -23,6 +24,13 @@ const useStyles = makeStyles(theme => ({
     itemSliderInfo: {
         display: 'flex',
         justifyContent: 'space-between'
+    },
+
+    menu: {
+        position: 'absolute',
+        top: '0',
+        left: '100%',
+        backgroundColor: "#FFF"
     }
 }));
 
