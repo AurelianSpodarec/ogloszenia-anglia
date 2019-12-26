@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core';
 import useStyles from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { shortenWord } from '../../../../utils/functions';
 
 
 
@@ -24,7 +25,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // }
 
 const placeholderCarFilter = {
-    postedBy: ['All', 'Individual', 'Dealership'],
+    postedBy: [
+        { name: 'Individual' },
+        { name: 'Dealership' }
+    ],
     //TODO: In future... Do: cars -> make -> year. If they select 2019 and the model doesn't exist
     cars: [
         { bwm: ['600', 'M2'] },
@@ -32,7 +36,49 @@ const placeholderCarFilter = {
     ],
     year: [1960, 2020],
     mileage: [0, 300000],
-    bodyStyle: ["All", "Sedan", "Hybrid", "Convertible", "Truck", "Coupe", "Hatchback", "Minivan", "Wagon", "SUV", "Others"],
+    bodyStyle: [
+        {
+            name: "Sedan",
+            icon: "default"
+        },
+        {
+            name: "Hybrid",
+            icon: "default"
+        },
+        {
+            name: "Convertible",
+            icon: "default"
+        },
+        {
+            name: "Truck",
+            icon: "default"
+        },
+        {
+            name: "Coupe",
+            icon: "default"
+        },
+        {
+            name: "Hatchback",
+            icon: "default"
+        },
+        {
+            name: "Minivan",
+            icon: "default"
+        },
+        {
+            name: "Wagon",
+            icon: "default"
+        },
+        {
+            name: "SUV",
+            icon: "default"
+        },
+        {
+            name: "Others",
+            icon: "default"
+        }
+
+    ],
     transmition: [
         {
             name: "Automatic",
@@ -118,7 +164,7 @@ const Sidebar = function () {
     const openCarMenu = (value) => {
 
         let b = dropdownList(value)
-        console.log(b)
+        // console.log(b)
         return b;
     }
 
@@ -143,7 +189,7 @@ const Sidebar = function () {
         } else {
             value = item.name;
         }
-        console.log(value)
+        // console.log(value)
         return (
             <Typography onClick={() => console.log(value)}>{value}</Typography>
         )
@@ -179,22 +225,30 @@ const Sidebar = function () {
 
 
     const CustomItem = ({ name, value }) => {
-        const [selected, updateSelected] = React.useState([]);
+        const [selected, setSelected] = React.useState([]);
         const result = placeholderCarFilter[value] || [];
+
+        let label;
+        if (selected.length === 0 || selected.length === result.length) {
+            label = "All";
+        } else {
+            label = shortenWord(selected.join(", "), 20)
+        }
 
         const onClickSelected = function (value) {
             const isSelected = selected.find(item => item === value);
             if (isSelected === value) {
-                return updateSelected(selected.filter(item => item !== value))
+                setSelected(selected.filter(item => item !== value))
+            } else {
+                setSelected(selected => [...selected, value])
             }
-            return updateSelected(selected => [...selected, value])
         }
 
         return (
-            <Box onClick={() => openCarMenu('postedBy')} value="postedBy" className={[classes.item, classes.itemMenu]}>
+            <Box onClick={() => openCarMenu(value)} className={[classes.item, classes.itemMenu]}>
                 <Typography className={classes.itemTitle}>{name}</Typography>
                 <Box className={classes.itemMoreInfo}>
-                    <Typography>{!selected === [] ? 'All' : selected}</Typography>
+                    <Typography>{label}</Typography>
                     <FontAwesomeIcon icon="angle-right" />
                 </Box>
 
@@ -202,8 +256,8 @@ const Sidebar = function () {
                     {
                         result.map(item => {
                             return (
-                                <Box onClick={() => onClickSelected(item)} value={item}>
-                                    <Typography>{item}</Typography>
+                                <Box onClick={() => onClickSelected(item.name)} value={item.name}>
+                                    <Typography>{item.name}</Typography>
                                 </Box>
                             )
                         })
@@ -229,6 +283,14 @@ const Sidebar = function () {
                     name="Posted by"
                     value="postedBy"
                 />
+                {/* <CustomItem
+                    name="Fuel"
+                    value="fuel"
+                />
+                <CustomItem
+                    name="Make"
+                    value=""
+                /> */}
                 {/* <ItemA name="postedBy">
                 
                 </ItemA>
