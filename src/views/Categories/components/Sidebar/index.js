@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import {
@@ -145,25 +145,93 @@ const Sidebar = function () {
         }
         console.log(value)
         return (
-            <Typography>{value}</Typography>
+            <Typography onClick={() => console.log(value)}>{value}</Typography>
         )
     }
 
-    // const Item = () => {
-    //     return (
-    //         <Box onClick={openCarMenu} value="postedBy" className={[classes.item, classes.itemMenu]}>
-    //             <Typography className={classes.itemTitle}>Posted by</Typography>
-    //             <Box className={classes.itemMoreInfo}>
-    //                 <Typography>All</Typography>
-    //                 <FontAwesomeIcon icon="angle-right" />
-    //             </Box>
-    //         </Box>
-    //     )
-    // }
+    const ItemA = (name, menu) => {
+        // If nothing is selected, display: All
+        // If one item is selected, display it
+        // If more than three items are selected, display: Item1, Item2, ...
+
+        // if (selected) {
+        //     // Display Item Name
+        // } else {
+        //     return (<>All</>)
+        // }
+
+        return (
+            <Box onClick={openCarMenu} value="postedBy" className={[classes.item, classes.itemMenu]}>
+                <Typography className={classes.itemTitle}>{name}</Typography>
+
+                <Box className={classes.itemMoreInfo}>
+                    <Typography>All</Typography>
+                    <FontAwesomeIcon icon="angle-right" />
+                </Box>
+                {/* Menu */}
+                <Box>
+                    {/* <Typography>{value}</Typography> */}
+                    {dropdownItem(name)}
+                </Box>
+            </Box>
+        )
+    }
+
+
+    const CustomItem = ({ name, value }) => {
+        const [selected, updateSelected] = React.useState([]);
+        const result = placeholderCarFilter[value] || [];
+
+        const onClickSelected = function (value) {
+            const isSelected = selected.find(item => item === value);
+            if (isSelected === value) {
+                return updateSelected(selected.filter(item => item !== value))
+            }
+            return updateSelected(selected => [...selected, value])
+        }
+
+        return (
+            <Box onClick={() => openCarMenu('postedBy')} value="postedBy" className={[classes.item, classes.itemMenu]}>
+                <Typography className={classes.itemTitle}>{name}</Typography>
+                <Box className={classes.itemMoreInfo}>
+                    <Typography>{!selected === [] ? 'All' : selected}</Typography>
+                    <FontAwesomeIcon icon="angle-right" />
+                </Box>
+
+                <Box>
+                    {
+                        result.map(item => {
+                            return (
+                                <Box onClick={() => onClickSelected(item)} value={item}>
+                                    <Typography>{item}</Typography>
+                                </Box>
+                            )
+                        })
+                    }
+
+                </Box>
+            </Box>
+        )
+    }
+
+    const CustomSlider = () => {
+        return (
+            <>
+
+            </>
+        )
+    }
 
     return (
         <sidebar className={classes.sidebar} >
             <Card>
+                <CustomItem
+                    name="Posted by"
+                    value="postedBy"
+                />
+                {/* <ItemA name="postedBy">
+                
+                </ItemA>
                 <Box onClick={() => openCarMenu('postedBy')} value="postedBy" className={[classes.item, classes.itemMenu]}>
                     <Typography className={classes.itemTitle}>Posted by</Typography>
                     <Box className={classes.itemMoreInfo}>
@@ -260,7 +328,7 @@ const Sidebar = function () {
                 </Box>
                 <Box className={classes.item}>
                     <Button fullWidth variant="contained" color="secondary">Save filters</Button>
-                </Box>
+                </Box> */}
             </Card>
         </sidebar >
     )
