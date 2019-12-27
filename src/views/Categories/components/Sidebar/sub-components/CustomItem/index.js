@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import {
@@ -27,14 +27,18 @@ const CustomItem = ({ name, value, search, selectedLimit }) => {
 
     const [selected, setSelected] = React.useState([]);
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-    let [searchQuery, setSearcyQuery] = React.useState([]);
-    let [searchResult, setSearchResult] = React.useState([]);
-
+    let [menu, setMenu] = useState(placeholderCarFilter[value] || []);
+    let [searchQuery, setSearchQuery] = React.useState();
+    let [searchResults, setSearchResults] = React.useState([]);
+    console.log(menu)
+    // const menu = function() {
     const result = placeholderCarFilter[value] || [];
+    //     setMenu(result)
+    // }
+
 
     let label;
-    if (selected.length === 0 || selected.length === result.length) {
+    if (selected.length === 0 || selected.length === menu.length) {
         label = "All";
     } else {
         label = shortenWord(selected.join(", "), 20)
@@ -49,16 +53,22 @@ const CustomItem = ({ name, value, search, selectedLimit }) => {
         }
     }
 
-    const onSearch = function () {
-        // let searchDisplay = selected.find()
+    const onSearch = function (event, userInput) {
+        setSearchQuery(event.target.value)
     }
 
-    const onToggleMenu = function () {
-
-    }
+    useEffect(() => {
+        if (!searchQuery) {
+            setMenu(result)
+        } else {
+            console.log(searchQuery.toString().toLowerCase())
+            const filteredResult = result.filter(item => item.name.includes(searchQuery.toString().toLowerCase()))
+            setMenu(filteredResult);
+        }
+    }, [searchQuery])
 
     return (
-        <Box onClick={() => setIsMenuOpen(!isMenuOpen)} className={[classes.item, classes.itemMenu]}>
+        <Box onClick={() => setIsMenuOpen(true)} className={[classes.item, classes.itemMenu]}>
 
             <Typography className={classes.itemTitle}>{name}</Typography>
             <Box className={classes.itemMoreInfo}>
@@ -73,27 +83,22 @@ const CustomItem = ({ name, value, search, selectedLimit }) => {
                             fullWidth
                             placeholder="Search makes"
                             variant="outlined"
-                        />
-                        {/* <TextField
-                            fullWidth
-                            name="search"
-                            type="text"
-                            value={search.email}
-                            id="input-with-icon-grid"
-                            label="Search"
+                            value={searchQuery}
                             onChange={onSearch}
-                        /> */}
+                        />
                     </Box>
                     : null}
-                {
-                    result.map(item => {
-                        return (
-                            <Box className={classes.item} onClick={() => onClickSelected(item.name)} value={item.name}>
-                                <Typography>{item.displayName}</Typography>
-                            </Box>
-                        )
-                    })
-                }
+                <Box className={classes.searchMenu}>
+                    {
+                        menu.map(item => {
+                            return (
+                                <Box className={classes.item} onClick={() => onClickSelected(item.name)} value={item.name}>
+                                    <Typography>{item.displayName}</Typography>
+                                </Box>
+                            )
+                        })
+                    }
+                </Box>
             </Card>
         </Box>
     )

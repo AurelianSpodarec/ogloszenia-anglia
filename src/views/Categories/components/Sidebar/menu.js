@@ -34,7 +34,32 @@ export const placeholderCarFilter = {
             models: ['600', 'M2']
         },
         {
-            name: "astronMartin",
+            name: "alabama",
+            displayName: "Alabama",
+            models: ['600', 'M2']
+        },
+        {
+            name: "assertion",
+            displayName: "Assertion",
+            models: ['600', 'M2']
+        },
+        {
+            name: "transformation",
+            displayName: "Transformation",
+            models: ['600', 'M2']
+        },
+        {
+            name: "united kingdom",
+            displayName: "United Kingdom",
+            models: ['600', 'M2']
+        },
+        {
+            name: "bulldog",
+            displayName: "Bulldog",
+            models: ['600', 'M2']
+        },
+        {
+            name: "astron martin",
             displayName: "Astron Martin",
             models: ['B6 COver', 'Covert']
         }

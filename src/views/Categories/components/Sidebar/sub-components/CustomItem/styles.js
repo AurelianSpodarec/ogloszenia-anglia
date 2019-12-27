@@ -25,7 +25,10 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         justifyContent: 'space-between'
     },
-
+    searchMenu: {
+        maxHeight: '300px',
+        overflowY: 'auto'
+    },
     menu: {
         position: 'absolute',
         top: '0',
