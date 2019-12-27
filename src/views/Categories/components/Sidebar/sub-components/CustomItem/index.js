@@ -10,6 +10,7 @@ import {
     Slider,
     Tooltip,
     Button,
+    TextField,
     Box,
 } from '@material-ui/core';
 import useStyles from './styles';
@@ -21,13 +22,14 @@ import { shortenWord } from '../../../../../../utils/functions';
 
 
 //TODO: Functionality to add: Toggle between check boxes and single select
-const CustomItem = ({ name, value, search }) => {
+const CustomItem = ({ name, value, search, selectedLimit }) => {
     const classes = useStyles();
 
     const [selected, setSelected] = React.useState([]);
+    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-    let [searchQuery, setSearcyQuery] = React.useState([])
-    let [searchResult, setSearchResult] = React.useState([])
+    let [searchQuery, setSearcyQuery] = React.useState([]);
+    let [searchResult, setSearchResult] = React.useState([]);
 
     const result = placeholderCarFilter[value] || [];
 
@@ -51,8 +53,12 @@ const CustomItem = ({ name, value, search }) => {
         // let searchDisplay = selected.find()
     }
 
+    const onToggleMenu = function () {
+
+    }
+
     return (
-        <Box className={[classes.item, classes.itemMenu]}>
+        <Box onClick={() => setIsMenuOpen(!isMenuOpen)} className={[classes.item, classes.itemMenu]}>
 
             <Typography className={classes.itemTitle}>{name}</Typography>
             <Box className={classes.itemMoreInfo}>
@@ -60,10 +66,14 @@ const CustomItem = ({ name, value, search }) => {
                 <FontAwesomeIcon icon="angle-right" />
             </Box>
 
-            <Box className={classes.menu}>
+            <Card className={classes.menu} style={{ display: isMenuOpen ? 'block' : 'none' }}>
                 {search ?
                     <Box>
-                        <input placeholder="Search" />
+                        <TextField
+                            fullWidth
+                            placeholder="Search makes"
+                            variant="outlined"
+                        />
                         {/* <TextField
                             fullWidth
                             name="search"
@@ -78,13 +88,13 @@ const CustomItem = ({ name, value, search }) => {
                 {
                     result.map(item => {
                         return (
-                            <Box onClick={() => onClickSelected(item.name)} value={item.name}>
+                            <Box className={classes.item} onClick={() => onClickSelected(item.name)} value={item.name}>
                                 <Typography>{item.name}</Typography>
                             </Box>
                         )
                     })
                 }
-            </Box>
+            </Card>
         </Box>
     )
 }
