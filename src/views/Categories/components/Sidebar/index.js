@@ -40,7 +40,6 @@ const Sidebar = function () {
                 <CustomItem
                     name="Make"
                     value="make"
-                    selectLimit="1"
                     search
                 />
                 <CustomItem
@@ -62,18 +61,22 @@ const Sidebar = function () {
                 <CustomItem
                     name="Body Style"
                     value="bodyStyle"
+                    multiSelect
                 />
                 <CustomItem
                     name="Transmission"
                     value="transmission"
+                    multiSelect
                 />
                 <CustomItem
                     name="Fuel"
                     value="fuel"
+                    multiSelect
                 />
                 <CustomItem
                     name="Drivetrain"
                     value="driveTrain"
+                    multiSelect
                 />
                 <Divider />
                 <CustomSlider

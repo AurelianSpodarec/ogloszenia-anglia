@@ -28,6 +28,7 @@ const CustomSlider = function (props) {
         setValues(newValues)
     }
 
+
     return (
         <Box className={classes.item} >
             <Box className={classes.itemSliderInfo}>

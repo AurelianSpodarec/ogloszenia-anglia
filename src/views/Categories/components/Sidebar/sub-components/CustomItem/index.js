@@ -22,36 +22,47 @@ import { shortenWord } from '../../../../../../utils/functions';
 
 
 //TODO: Functionality to add: Toggle between check boxes and single select
-const CustomItem = ({ name, value, search, selectedLimit }) => {
+const CustomItem = ({ name, value, search, multiSelect }) => {
     const classes = useStyles();
 
-    const [selected, setSelected] = React.useState([]);
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const [selected, setSelected] = useState([]);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     let [menu, setMenu] = useState(placeholderCarFilter[value] || []);
-    let [searchQuery, setSearchQuery] = React.useState();
-    let [searchResults, setSearchResults] = React.useState([]);
-    console.log(menu)
-    // const menu = function() {
+    let [searchQuery, setSearchQuery] = useState();
+    const [multiSelectValue, setmltiSelectValue] = useState(multiSelect)
     const result = placeholderCarFilter[value] || [];
-    //     setMenu(result)
-    // }
+
+    // multiSelect: Allow user select multiple options
+    // search: Enable search 
+
+    // Functionality: If multiselect is NOT enabled, close the menu upon clicking item, but not search
+    // Functionality: If multiselect is enabled, close the menu ONLY when theuser has clicked away from it
+
+    // If one select, let the user click once and automaticlaly close menu
+
 
 
     let label;
     if (selected.length === 0 || selected.length === menu.length) {
         label = "All";
     } else {
-        label = shortenWord(selected.join(", "), 20)
+        label = multiSelectValue ? shortenWord(selected.join(", "), 20) : selected;
     }
 
     const onClickSelected = function (selectedItemName) {
-        const isSelected = selected.find(item => item === selectedItemName);
-        if (isSelected === selectedItemName) {
-            setSelected(selected.filter(item => item !== selectedItemName))
+        if (multiSelectValue) {
+            const isSelected = selected.find(item => item === selectedItemName);
+            if (isSelected === selectedItemName) {
+                setSelected(selected.filter(item => item !== selectedItemName))
+            } else {
+                setSelected(selected => [...selected, selectedItemName])
+            }
         } else {
-            setSelected(selected => [...selected, selectedItemName])
+            setSelected(selectedItemName)
         }
+
     }
+
 
     const onSearch = function (event, userInput) {
         setSearchQuery(event.target.value)
@@ -67,8 +78,29 @@ const CustomItem = ({ name, value, search, selectedLimit }) => {
         }
     }, [searchQuery])
 
+    const onClickItem = (itemName) => {
+        console.log("Fired")
+        if (!multiSelectValue) {
+            setIsMenuOpen(false)
+            console.log("Fied in")
+        } else {
+            console.log("fied out")
+        }
+        onClickSelected(itemName)
+    }
+
+    const onOpenMenu = function () {
+        // Is menu open and multiselect, don't trigger the open menu again
+        if (!isMenuOpen) {
+            setIsMenuOpen(true)
+        }
+
+        // If menu is open, and its not clicked, close it
+    }
+
+    console.log(isMenuOpen)
     return (
-        <Box onClick={() => setIsMenuOpen(true)} className={[classes.item, classes.itemMenu]}>
+        <Box onClick={() => onOpenMenu(true)} className={[classes.item, classes.itemMenu]}>
 
             <Typography className={classes.itemTitle}>{name}</Typography>
             <Box className={classes.itemMoreInfo}>
@@ -88,11 +120,14 @@ const CustomItem = ({ name, value, search, selectedLimit }) => {
                         />
                     </Box>
                     : null}
-                <Box className={classes.searchMenu}>
+
+                {/* If multiselect TRUE: Onclick don't close menu */}
+                {/* If multiselect FALSE: Onclick 'item' close menu */}
+                <Box onClick={() => multiSelectValue ? setIsMenuOpen(true) : setIsMenuOpen(false)} className={classes.searchMenu}>
                     {
                         menu.map(item => {
                             return (
-                                <Box className={classes.item} onClick={() => onClickSelected(item.name)} value={item.name}>
+                                <Box className={classes.item} onClick={() => onClickItem(item.name)} value={item.name}>
                                     <Typography>{item.displayName}</Typography>
                                 </Box>
                             )
