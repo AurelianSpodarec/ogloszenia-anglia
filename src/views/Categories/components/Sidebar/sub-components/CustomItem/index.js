@@ -89,7 +89,7 @@ const CustomItem = ({ name, value, search, selectedLimit }) => {
                     result.map(item => {
                         return (
                             <Box className={classes.item} onClick={() => onClickSelected(item.name)} value={item.name}>
-                                <Typography>{item.name}</Typography>
+                                <Typography>{item.displayName}</Typography>
                             </Box>
                         )
                     })
