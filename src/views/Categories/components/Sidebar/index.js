@@ -22,6 +22,53 @@ import { placeholderCarFilter } from './menu';
 
 
 const INITIAL_STATE = {
+    postedBy: [
+        {
+            name: "individual",
+            displayName: 'Individual'
+        },
+        {
+            name: "dealership",
+            displayName: 'Dealership'
+        }
+    ],
+    make: [
+        {
+            name: "bwm",
+            displayName: "BWM",
+            models: ['600', 'M2']
+        },
+        {
+            name: "alabama",
+            displayName: "Alabama",
+            models: ['600', 'M2']
+        },
+        {
+            name: "assertion",
+            displayName: "Assertion",
+            models: ['600', 'M2']
+        },
+        {
+            name: "transformation",
+            displayName: "Transformation",
+            models: ['600', 'M2']
+        },
+        {
+            name: "united kingdom",
+            displayName: "United Kingdom",
+            models: ['600', 'M2']
+        },
+        {
+            name: "bulldog",
+            displayName: "Bulldog",
+            models: ['600', 'M2']
+        },
+        {
+            name: "astron martin",
+            displayName: "Astron Martin",
+            models: ['B6 COver', 'Covert']
+        }
+    ],
     year: [1960, 2020],
     mileage: [0, 300000],
     seats: [1, 9]
@@ -50,43 +97,56 @@ const Sidebar = function () {
         setSeats(newValues)
     }
 
+    const onChangeSlide = function () {
 
+    }
 
+    const onChangeItem = function () {
+
+    }
+
+    // Use ref?
+    const customMenu = function (props) {
+        <div>
+            <Typography>{props.name}</Typography>
+            {icon ? <span>{props.icon}</span> : null}
+        </div>
+    }
+    // Menu data 
     return (
         <sidebar className={classes.sidebar} >
             <Card className={classes.sidebarInner}>
 
                 {/* TODO: Refactor JSON so I can loop this with map */}
-                {/* <CustomItem
-                    label="Fuel"
-                    menuData={placeholderCarFilter.fuel}
-                />
+
                 <CustomItem
                     label="Make"
                     menuData={placeholderCarFilter.make.models}
                     multiSelect// If true let the user select many options, if not, only one option avaiable
                     disabled // Enable if CUstomItem 1 has been selected
-                /> */}
-                {/* //<Divider />
-                //
-                //<CustomItem
-                //     name="Make"
-                //     value="make"
-                //     search
-                // />
-                // <CustomItem
-                //     name="Model" // 
-                //     // value={make.model} // Model based on the selected make
-                //     // value={make[bwm].models}
-                //     value={placeholderCarFilter["make"][0].models}
-                // /> */}
+                />
+                {/* {/* //<Divider /> */}
+
+                <CustomItem
+                    name="Make"
+                    value="make"
+                    search
+                    menuData={}
+                    menu={customMenu}
+                />
+                {/* <CustomItem
+                    name="Model" 
+                    value={make.model} //Model based on the selected make
+                    value={make[bwm].models}
+                    value={placeholderCarFilter["make"][0].models}
+                />  */}
                 <CustomSlider
                     // slideBeforeLabel
-                    // slideAfterLabel
+                    leftBeforeSlideMaxLabel={"Before"}
                     label="Year"
                     valueMatchLabel="Any year" // If values match display 'Any year', instead of 1960-2020
-                    min={1960}
-                    max={2020}
+                    min={INITIAL_STATE.year[0]}
+                    max={INITIAL_STATE.year[1]}
                     value={year}
                     onChange={onValueChange}
                 />
@@ -94,8 +154,8 @@ const Sidebar = function () {
                 <CustomSlider
                     label="Mileage"
                     labelRight={"+ mi"}
-                    min={0}
-                    max={300000}
+                    min={INITIAL_STATE.mileage[0]}
+                    max={INITIAL_STATE.mileage[1]}
                     value={mileage}
                     onChange={onMileageChange}
                 />
@@ -128,8 +188,8 @@ const Sidebar = function () {
                     // labelLeft
                     // labelSlideLeft
                     // labelSlideRight
-                    min={1}
-                    max={9}
+                    min={INITIAL_STATE.seats[0]}
+                    max={INITIAL_STATE.seats[1]}
                     value={seats}
                     onChange={onSeatsChange}
                 />

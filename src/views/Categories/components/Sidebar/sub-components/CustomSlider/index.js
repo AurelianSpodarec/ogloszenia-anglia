@@ -16,7 +16,7 @@ import {
 import useStyles from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const CustomSlider = function ({ label, min, max, onChange, value, valueMatchLabel, labelRight }) {
+const CustomSlider = function ({ label, min, max, onChange, value, valueMatchLabel, labelRight, leftBeforeSlideMaxLabel }) {
     const classes = useStyles();
 
     let values;
@@ -26,14 +26,13 @@ const CustomSlider = function ({ label, min, max, onChange, value, valueMatchLab
         values = `${value[0]}-${value[1]} ${labelRight ? labelRight : ""}`
     }
 
-
+    // leftBeforeSlideMaxLabel
 
     return (
         <Box className={classes.item} >
             <Box className={classes.itemSliderInfo}>
                 <Typography className={classes.itemTitle}>{label}</Typography>
                 <Typography>{values}</Typography>
-                {/* Add before and after */}
             </Box>
             <Slider
                 min={min}
