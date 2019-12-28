@@ -1,5 +1,5 @@
 import CustomItem from './CustomItem';
-import CustomSlider from './CustomSlider'
+import CustomSlider from './CustomSlider';
 
 export {
     CustomItem,

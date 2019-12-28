@@ -16,7 +16,7 @@ import {
 import useStyles from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { shortenWord } from '../../../../../../utils/functions';
+import { shortenWord } from './../../utils/functions';
 
 
 const CustomItem = ({ data, name, value, search, multiSelect }) => {
@@ -28,13 +28,6 @@ const CustomItem = ({ data, name, value, search, multiSelect }) => {
     let [searchQuery, setSearchQuery] = useState();
     const [multiSelectValue, setmltiSelectValue] = useState(multiSelect)
     const result = data[value] || [];
-
-
-    // Functionality: If multiselect is NOT enabled, close the menu upon clicking item, but not search
-    // Functionality: If multiselect is enabled, close the menu ONLY when theuser has clicked away from it
-
-    // If one select, let the user click once and automaticlaly close menu
-
 
     let label;
     if (selected.length === 0 || selected.length === menu.length) {
@@ -73,7 +66,6 @@ const CustomItem = ({ data, name, value, search, multiSelect }) => {
     }, [searchQuery])
 
     const onClickItem = (itemName) => {
-        console.log("Fired")
         if (!multiSelectValue) {
             setIsMenuOpen(false)
             console.log("Fied in")

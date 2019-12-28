@@ -14,9 +14,10 @@ import {
 } from '@material-ui/core';
 import useStyles from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { CustomItem, CustomSlider } from '../../../../components';
 
 // import { placeholderCarFilter } from './menu';
-import { CustomItem, CustomSlider } from './sub-components';
+// import { CustomItem, CustomSlider } from './sub-components';
 
 import { placeholderCarFilter } from './menu';
 
@@ -85,7 +86,24 @@ const Sidebar = function () {
     const [mileage, setMileage] = useState([INITIAL_STATE.mileage[0], INITIAL_STATE.mileage[1]]);
     const [seats, setSeats] = useState([INITIAL_STATE.seats[0], INITIAL_STATE.seats[1]]);
 
-    const onValueChange = function (event, newValues) {
+    const [state, setState] = useState({
+        year: [1960, 2020],
+        mileage: [0, 300000],
+        seats: [1, 9]
+    })
+
+    // const handleChange = e => {
+    //     const { name, value } = e.target
+    //     console.log(name, value)
+    //     setState(prevState => ({
+    //         ...prevState,
+    //         [name]: value
+    //     }))
+    // }
+    // console.log(state, state.year)
+
+
+    const onYearChange = function (event, newValues) {
         setYear(newValues)
     }
 
@@ -97,21 +115,21 @@ const Sidebar = function () {
         setSeats(newValues)
     }
 
-    const onChangeSlide = function () {
+    // const onChangeSlide = function () {
 
-    }
+    // }
 
-    const onChangeItem = function () {
+    // const onChangeItem = function () {
 
-    }
+    // }
 
     // Use ref?
-    const customMenu = function (props) {
-        <div>
-            <Typography>{props.name}</Typography>
-            {icon ? <span>{props.icon}</span> : null}
-        </div>
-    }
+    // const customMenu = function (props) {
+    //     <div>
+    //         <Typography>{props.name}</Typography>
+    //         {icon ? <span>{props.icon}</span> : null}
+    //     </div>
+    // }
     // Menu data 
     return (
         <sidebar className={classes.sidebar} >
@@ -125,15 +143,22 @@ const Sidebar = function () {
                     multiSelect// If true let the user select many options, if not, only one option avaiable
                     disabled // Enable if CUstomItem 1 has been selected
                 />
+                {/* This has icons */}
+                <CustomItem
+                    name="Body Style"
+                    value="bodyStyle"
+                    multiSelect
+                />
+
                 {/* {/* //<Divider /> */}
 
-                <CustomItem
+                {/* <CustomItem
                     name="Make"
                     value="make"
                     search
                     menuData={}
                     menu={customMenu}
-                />
+                /> */}
                 {/* <CustomItem
                     name="Model" 
                     value={make.model} //Model based on the selected make
@@ -147,8 +172,10 @@ const Sidebar = function () {
                     valueMatchLabel="Any year" // If values match display 'Any year', instead of 1960-2020
                     min={INITIAL_STATE.year[0]}
                     max={INITIAL_STATE.year[1]}
-                    value={year}
-                    onChange={onValueChange}
+                    name="year"
+                    value={state.year}
+                    // onChange={handleChange}
+                    onChange={onYearChange}
                 />
                 <Divider />
                 <CustomSlider
@@ -156,15 +183,13 @@ const Sidebar = function () {
                     labelRight={"+ mi"}
                     min={INITIAL_STATE.mileage[0]}
                     max={INITIAL_STATE.mileage[1]}
-                    value={mileage}
+                    name="mileage"
+                    value={state.mileage}
+                    // onChange={handleChange}
                     onChange={onMileageChange}
                 />
                 <Divider />
-                {/* <CustomItem
-                    name="Body Style"
-                    value="bodyStyle"
-                    multiSelect
-                />
+                {/*
                 <CustomItem
                     name="Transmission"
                     value="transmission"
@@ -190,7 +215,9 @@ const Sidebar = function () {
                     // labelSlideRight
                     min={INITIAL_STATE.seats[0]}
                     max={INITIAL_STATE.seats[1]}
-                    value={seats}
+                    name="seats"
+                    value={state.seats}
+                    // onChange={handleChange}
                     onChange={onSeatsChange}
                 />
                 <Box className={classes.item}>
