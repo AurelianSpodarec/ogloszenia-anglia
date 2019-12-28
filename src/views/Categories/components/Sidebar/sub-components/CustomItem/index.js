@@ -16,30 +16,24 @@ import {
 import useStyles from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { placeholderCarFilter } from './../../menu';
 import { shortenWord } from '../../../../../../utils/functions';
 
 
-
-//TODO: Functionality to add: Toggle between check boxes and single select
-const CustomItem = ({ name, value, search, multiSelect }) => {
+const CustomItem = ({ data, name, value, search, multiSelect }) => {
     const classes = useStyles();
 
     const [selected, setSelected] = useState([]);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    let [menu, setMenu] = useState(placeholderCarFilter[value] || []);
+    let [menu, setMenu] = useState(data[value] || []);
     let [searchQuery, setSearchQuery] = useState();
     const [multiSelectValue, setmltiSelectValue] = useState(multiSelect)
-    const result = placeholderCarFilter[value] || [];
+    const result = data[value] || [];
 
-    // multiSelect: Allow user select multiple options
-    // search: Enable search 
 
     // Functionality: If multiselect is NOT enabled, close the menu upon clicking item, but not search
     // Functionality: If multiselect is enabled, close the menu ONLY when theuser has clicked away from it
 
     // If one select, let the user click once and automaticlaly close menu
-
 
 
     let label;
@@ -92,12 +86,13 @@ const CustomItem = ({ name, value, search, multiSelect }) => {
     const onOpenMenu = function () {
         // Is menu open and multiselect, don't trigger the open menu again
         if (!isMenuOpen) {
-            setIsMenuOpen(true)
+            setIsMenuOpen(!isMenuOpen)
         }
 
         // If menu is open, and its not clicked, close it
     }
 
+    {/* DISABLED untill soemthing else is selected and load the data*/ }
     console.log(isMenuOpen)
     return (
         <Box onClick={() => onOpenMenu(true)} className={[classes.item, classes.itemMenu]}>

@@ -15,29 +15,51 @@ import {
 import useStyles from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { placeholderCarFilter } from './menu';
+// import { placeholderCarFilter } from './menu';
 import { CustomItem, CustomSlider } from './sub-components';
+
+import { placeholderCarFilter } from './menu';
 
 const Sidebar = function () {
     const classes = useStyles();
 
     const [make, setMake] = useState();
+    const [model, setModel] = useState();
+    // Dont change starting values
+    const [values, setValues] = useState([1960, 2020]);
 
-    // Set make here. Access the make models and display it in CustomItem
-    // Custom Item add a handle for just arrays without key:value, just make it value 
+    const onValueChange = function (event, newValues) {
+        setValues(newValues)
+    }
 
 
-    console.log(placeholderCarFilter["make"][0].models)
+
     return (
         <sidebar className={classes.sidebar} >
             <Card className={classes.sidebarInner}>
-                {/* TODO: Refactor JSON so I can loop this with map */}
-                <CustomItem
-                    name="Posted by"
-                    value="postedBy"
+                <CustomSlider
+                    // slideBeforeLabel
+                    // slideAfterLabel
+                    label="Year"
+                    valuesMatch="Any year" // If values match display 'Any year', instead of 1960-2020
+                    min={1960}
+                    max={2020}
+                    value={values}
+                    onChange={onValueChange}
                 />
-                <Divider />
+                {/* TODO: Refactor JSON so I can loop this with map */}
+                {/* <CustomItem
+                    label="Fuel"
+                    menuData={placeholderCarFilter.fuel}
+                />
                 <CustomItem
+                    label="Make"
+                    menuData={placeholderCarFilter.make.models}
+                    multiSelect// If true let the user select many options, if not, only one option avaiable
+                    disabled // Enable if CUstomItem 1 has been selected
+                /> */}
+                <Divider />
+                {/* <CustomItem
                     name="Make"
                     value="make"
                     search
@@ -49,8 +71,12 @@ const Sidebar = function () {
                     value={placeholderCarFilter["make"][0].models}
                 />
                 <CustomSlider
+                    // slideBeforeLabel
+                    // slideAfterLabel
+                    valuesMatch="Any year" // instead of 1960-2020
                     name="Year"
                     value="year"
+                    data=""
                 />
                 <Divider />
                 <CustomSlider
@@ -82,7 +108,7 @@ const Sidebar = function () {
                 <CustomSlider
                     name="Seats"
                     value="seats"
-                />
+                /> */}
                 <Box className={classes.item}>
                     <Button fullWidth variant="contained" color="secondary">Save filters</Button>
                 </Box>
