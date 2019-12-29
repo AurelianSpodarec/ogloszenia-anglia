@@ -43,7 +43,7 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
     }, [searchQuery])
 
     const onToggleMenu = () => {
-        setMenuOpen(prevOpen => !menuOpen)
+        if (!disabled) { setMenuOpen(prevOpen => !menuOpen) }
     }
 
     const handleClose = event => {

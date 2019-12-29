@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
         fontWeight: 'bold'
     },
     itemTitleDisabled: {
-        color: 'BDBDBD',
+        color: '#BDBDBD',
     },
     itemSliderInfo: {
         display: 'flex',

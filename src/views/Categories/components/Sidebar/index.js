@@ -267,8 +267,7 @@ const Sidebar = function () {
     // const onChangeItem = function () {
 
     // }
-    console.log(bodyStyle)
-    // console.log(INITIAL_STATE.carMake)
+
     return (
         <sidebar className={classes.sidebar} >
 
@@ -290,7 +289,8 @@ const Sidebar = function () {
                     label="Model"
                     data={findModel(carMake)}
                     // onClick={findModel}
-                    disabled
+                    disabled={carMake === undefined || null}
+                // disabled
                 />
                 <CustomSlider
                     // slideBeforeLabel
