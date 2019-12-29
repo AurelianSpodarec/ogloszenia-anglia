@@ -75,10 +75,11 @@ const CustomItem = ({ label, search, data, icon, multiSelect }) => {
 
     {/* DISABLED untill soemthing else is selected and load the data*/ }
 
+    let [menu, setMenu] = useState(data || []);
+    let [searchQuery, setSearchQuery] = useState();
+    let [selected, setSelected] = useState([]);
     const [menuOpen, setMenuOpen] = useState(false);
     const anchorRef = useRef(null);
-    let [searchQuery, setSearchQuery] = useState();
-    let [menu, setMenu] = useState(data || []);
 
     // let menuData = data
     // // If use search
@@ -130,7 +131,29 @@ const CustomItem = ({ label, search, data, icon, multiSelect }) => {
 
         prevOpen.current = menuOpen;
     }, [menuOpen]);
-    console.log(multiSelect)
+
+
+    let labelValue;
+    if (selected.length === 0 || selected.length === data.length) {
+        labelValue = "All";
+    } else {
+        labelValue = multiSelect ? shortenWord(selected.join(", "), 20) : selected;
+    }
+
+    const onClickMenuItem = (value) => {
+        if (multiSelect === undefined) {
+            setSelected(value.name)
+            onMenuClose()
+        } else {
+            const isSelected = selected.find(item => item === value.name);
+            if (isSelected === value.name) {
+                setSelected(selected.filter(item => item !== value.name))
+            } else {
+                setSelected(selected => [...selected, value.name])
+            }
+        }
+    }
+
     return (
 
         <Box className={[classes.customItem]}>
@@ -140,7 +163,7 @@ const CustomItem = ({ label, search, data, icon, multiSelect }) => {
 
                 <Typography className={classes.itemTitle}>{label}</Typography>
                 <Box className={classes.itemMoreInfo}>
-                    <Typography>Aa</Typography>
+                    <Typography>{labelValue}</Typography>
                     <FontAwesomeIcon icon="angle-right" />
                 </Box>
 
@@ -164,7 +187,7 @@ const CustomItem = ({ label, search, data, icon, multiSelect }) => {
 
                         {data && data.map(item => {
                             return (
-                                <Box onClick={multiSelect === undefined ? onMenuClose : null} value={item.name} onKeyDown={onTabPress} className={classes.customItemContent}>
+                                <Box onClick={() => onClickMenuItem(item)} value={item.name} onKeyDown={onTabPress} className={classes.customItemContent}>
                                     <Typography>{item.displayName}</Typography>
                                 </Box>
                             )
