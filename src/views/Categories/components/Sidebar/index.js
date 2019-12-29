@@ -197,8 +197,8 @@ const INITIAL_STATE = {
 const Sidebar = function () {
     const classes = useStyles();
 
-    const [make, setMake] = useState();
-    const [model, setModel] = useState();
+    const [carMake, setCarMake] = useState();
+    const [models, setModels] = useState();
 
 
     const [year, setYear] = useState([INITIAL_STATE.year[0], INITIAL_STATE.year[1]]);
@@ -211,6 +211,15 @@ const Sidebar = function () {
     //     seats: [1, 9]
     // })
 
+    // const findModel = function (brandName) {
+    //     const make = INITIAL_STATE.make.map(item => item.name === brandName);
+    //     const carModels = make.models
+    //     // console.log(models)
+    //     setModels(models)
+    //     return models;
+    // }
+    // console.log(models)
+
     // const handleChange = e => {
     //     const { name, value } = e.target
     //     console.log(name, value)
@@ -220,7 +229,6 @@ const Sidebar = function () {
     //     }))
     // }
     // console.log(state, state.year)
-
 
     const onYearChange = function (event, newValues) {
         setYear(newValues)
@@ -234,6 +242,11 @@ const Sidebar = function () {
         setSeats(newValues)
     }
 
+    const onSelectMake = function (event, newValue) {
+        console.log("sd", carMake, event, event.target.value, newValue)
+        setCarMake(newValue)
+    }
+
     // const onChangeSlide = function () {
 
     // }
@@ -242,51 +255,29 @@ const Sidebar = function () {
 
     // }
 
-    // Use ref?
-    // const customMenu = function (props) {
-    //     <div>
-    //         <Typography>{props.name}</Typography>
-    //         {icon ? <span>{props.icon}</span> : null}
-    //     </div>
-    // }
-    // Menu data 
-    console.log("AAAAAAAAAAAAA", INITIAL_STATE.make)
     return (
         <sidebar className={classes.sidebar} >
+
             <Card className={classes.sidebarInner}>
 
-                {/* TODO: Refactor JSON so I can loop this with map */}
+                <CustomItem
+                    label="Posted by"
+                    multiSelect
+                    data={INITIAL_STATE.postedBy}
+                />
+                <Divider />
                 <CustomItem
                     label="Make"
                     search
-
-
+                    onClick={onSelectMake}
                     data={INITIAL_STATE.make}
-                    // multiSelect// If true let the user select many options, if not, only one option avaiable
-                    disabled // Enable if CUstomItem 1 has been selected
                 />
-                {/* This has icons */}
                 <CustomItem
-                    label="Body Style"
-                    multiSelect
-                    data={INITIAL_STATE.bodyStyle}
+                    label="Model"
+                    // data={INITIAL_STATE.findModel(carMake)}
+                    // onClick={findModel}
+                    disabled
                 />
-
-                {/* {/* //<Divider /> */}
-
-                {/* <CustomItem
-                    name="Make"
-                    value="make"
-                    search
-                    menuData={}
-                    menu={customMenu}
-                /> */}
-                {/* <CustomItem
-                    name="Model" 
-                    value={make.model} //Model based on the selected make
-                    value={make[bwm].models}
-                    value={placeholderCarFilter["make"][0].models}
-                />  */}
                 <CustomSlider
                     // slideBeforeLabel
                     leftBeforeSlideMaxLabel={"Before"}
@@ -311,22 +302,27 @@ const Sidebar = function () {
                     onChange={onMileageChange}
                 />
                 <Divider />
-                {/*
+
                 <CustomItem
-                    name="Transmission"
-                    value="transmission"
+                    label="Body Style"
+                    data={INITIAL_STATE.bodyStyle}
                     multiSelect
                 />
                 <CustomItem
-                    name="Fuel"
-                    value="fuel"
+                    label="Transmission"
+                    data={INITIAL_STATE.transmission}
                     multiSelect
                 />
                 <CustomItem
-                    name="Drivetrain"
-                    value="driveTrain"
+                    label="Fuel"
+                    data={INITIAL_STATE.fuel}
                     multiSelect
-                /> */}
+                />
+                <CustomItem
+                    label="Drivetrain"
+                    data={INITIAL_STATE.driveTrain}
+                    multiSelect
+                />
                 <Divider />
                 <CustomSlider
                     label="Seats"
