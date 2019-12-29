@@ -2,17 +2,27 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles(theme => ({
-    sidebar: {
-
-    },
-    item: {
-        padding: '12px 12px 16px',
-        position: 'relative'
-    },
-    itemMenu: {
+    customItem: {
+        position: 'relative',
         display: 'flex',
         justifyContent: 'space-between'
     },
+    customItemContent: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        width: '100%',
+        padding: '12px 12px 16px',
+        // cursor: 'pointer'
+    },
+    customItemMenu: {
+        position: 'absolute',
+        top: '0',
+        left: '100%',
+        width: '270px',
+        backgroundColor: "#FFF"
+    },
+
+
     itemMoreInfo: {
         display: 'flex',
         justifyContent: 'space-between',
@@ -29,13 +39,7 @@ const useStyles = makeStyles(theme => ({
         maxHeight: '300px',
         overflowY: 'auto'
     },
-    menu: {
-        position: 'absolute',
-        top: '0',
-        left: '100%',
-        width: '270px',
-        backgroundColor: "#FFF"
-    }
+
 }));
 
 export default useStyles;

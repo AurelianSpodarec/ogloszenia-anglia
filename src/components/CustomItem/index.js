@@ -4,6 +4,7 @@ import {
     Typography,
     TextField,
     Box,
+    ClickAwayListener,
 } from '@material-ui/core';
 import useStyles from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,11 +12,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { shortenWord } from './../../utils/functions';
 
 
-const CustomItem = ({ data, name, value, search, multiSelect }) => {
+
+
+//  1 - User clicks item 
+//     1.1 - It opens the menu
+//     1.2 - It closes the menu
+// 
+//  2 - User clicks menu item
+//      2.1 - If its not multiselect, on select close menu OR click away
+//      2.2 - If its multiselect, select multiple values without closing OR click away
+//      2.3 - If search bar is clicked, don't close the menu
+
+
+const CustomItem = ({ label, search }) => {
     const classes = useStyles();
 
+
     // const [selected, setSelected] = useState([]);
-    // const [isMenuOpen, setIsMenuOpen] = useState(false);
+    // const [isOpen, setisOpen] = useState(false);
     // let [menu, setMenu] = useState(data[value] || []);
     // let [searchQuery, setSearchQuery] = useState();
     // const [multiSelectValue, setmltiSelectValue] = useState(multiSelect)
@@ -59,7 +73,7 @@ const CustomItem = ({ data, name, value, search, multiSelect }) => {
 
     // const onClickItem = (itemName) => {
     //     if (!multiSelectValue) {
-    //         setIsMenuOpen(false)
+    //         setisOpen(false)
     //         console.log("Fied in")
     //     } else {
     //         console.log("fied out")
@@ -69,26 +83,113 @@ const CustomItem = ({ data, name, value, search, multiSelect }) => {
 
     // const onOpenMenu = function () {
     //     // Is menu open and multiselect, don't trigger the open menu again
-    //     if (!isMenuOpen) {
-    //         setIsMenuOpen(!isMenuOpen)
+    //     if (!isOpen) {
+    //         setisOpen(!isOpen)
     //     }
 
     //     // If menu is open, and its not clicked, close it
     // }
 
     {/* DISABLED untill soemthing else is selected and load the data*/ }
-   
+
+    const [menuOpen, setMenuOpen] = useState(false);
+    const anchorRef = React.useRef(null);
+    // const [isSearch, setIsSearch] = useState(false);
+    // const anchorRef = React.useRef(null);
+    //  1 - User clicks item 
+    //     1.1 - It opens the menu
+    //     1.2 - It closes the menu
+    // 
+    //  2 - User clicks menu item
+    //      2.1 - If its not multiselect, on select close menu OR click away
+    //      2.2 - If its multiselect, select multiple values without closing OR click away
+    //      2.3 - If search bar is clicked, don't close the menu
+
+    // const toggleMenu = event => {
+    //     setisOpen(previsOpen => !previsOpen)
+    // }
+
+    // const handleClose = event => {
+    //     if (anchorRef.current && anchorRef.current.contains(event.target)) {
+    //         return;
+    //     }
+
+    //     setisOpen(false);
+    // };
+
+    // const previsOpen = React.useRef(open);
+    // React.useEffect(() => {
+    //     if (previsOpen.current === true && open === false) {
+    //         anchorRef.current.focus();
+    //     }
+
+    //     previsOpen.current = open;
+    // }, [open]);
+
+    const toggleMenu = () => {
+        setMenuOpen(prevOpen => !menuOpen)
+    }
+
+    const handleClose = event => {
+        if (anchorRef.current && anchorRef.current.contains(event.target)) {
+            return;
+        }
+        setMenuOpen(false)
+    }
+
+    const pressTab = event => {
+        if (event.key === 'Tab') {
+            event.preventDefault();
+            setMenuOpen(false)
+        }
+    }
+
+    const prevOpen = React.useRef(menuOpen);
+    React.useEffect(() => {
+        if (prevOpen.current === true && menuOpen === false) {
+            anchorRef.current.focus();
+        }
+
+        prevOpen.current = menuOpen;
+    }, [menuOpen]);
+
     return (
-        <Box>
-            {/* // <Box onClick={() => onOpenMenu(true)} className={[classes.item, classes.itemMenu]}> */}
-            Custom Item content
-    {/* <Typography className={classes.itemTitle}>{name}</Typography>
-            <Box className={classes.itemMoreInfo}>
-                <Typography>{label}</Typography>
-                <FontAwesomeIcon icon="angle-right" />
+        <Box className={[classes.customItem]}>
+
+
+            <Box className={classes.customItemContent} ref={anchorRef} onClick={toggleMenu}>
+
+                <Typography className={classes.itemTitle}>{label}</Typography>
+                <Box className={classes.itemMoreInfo}>
+                    <Typography>Aa</Typography>
+                    <FontAwesomeIcon icon="angle-right" />
+                </Box>
+
             </Box>
 
-            <Card className={classes.menu} style={{ display: isMenuOpen ? 'block' : 'none' }}>
+            <Card className={classes.customItemMenu} anchorEl={anchorRef.current} style={{ display: menuOpen ? 'block' : 'none' }}>
+                <ClickAwayListener onClickAway={handleClose}>
+                    {search ?
+                        <Box>
+                            <TextField
+                                fullWidth
+                                placeholder="Search makes"
+                                variant="outlined"
+                            // value={searchQuery}
+                            // onChange={onSearch}
+                            />
+                        </Box>
+                        : null}
+
+                    <Box className={classes.customItemContent}>
+                        <Typography>Mike</Typography>
+                    </Box>
+
+                </ClickAwayListener>
+            </Card>
+
+            {/* 
+            <Card className={classes.menu} style={{ display: isOpen ? 'block' : 'none' }}>
                 {search ?
                     <Box>
                         <TextField
@@ -103,7 +204,7 @@ const CustomItem = ({ data, name, value, search, multiSelect }) => {
 
                 {/* If multiselect TRUE: Onclick don't close menu */}
             {/* If multiselect FALSE: Onclick 'item' close menu */}
-            {/* <Box onClick={() => multiSelectValue ? setIsMenuOpen(true) : setIsMenuOpen(false)} className={classes.searchMenu}>
+            {/* <Box onClick={() => multiSelectValue ? setisOpen(true) : setisOpen(false)} className={classes.searchMenu}>
                     {
                         menu.map(item => {
                             return (

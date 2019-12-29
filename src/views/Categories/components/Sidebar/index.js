@@ -139,6 +139,9 @@ const Sidebar = function () {
 
                 <CustomItem
                     label="Make"
+                    search
+
+
                     menuData={placeholderCarFilter.make.models}
                     multiSelect// If true let the user select many options, if not, only one option avaiable
                     disabled // Enable if CUstomItem 1 has been selected
