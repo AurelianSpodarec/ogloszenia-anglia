@@ -14,7 +14,7 @@ import { shortenWord } from './../../utils/functions';
 import useStyles from './styles';
 
 
-const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick }) => {
+const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, disabled }) => {
     const classes = useStyles();
 
     let [menu, setMenu] = useState(data || []);
@@ -111,10 +111,14 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick }) 
 
             <Box ref={anchorRef} className={classes.customItemContent} onClick={onToggleMenu}>
 
-                <Typography className={classes.itemTitle}>{label}</Typography>
+                <Typography className={[classes.itemTitle, disabled ? classes.itemTitleDisabled : null]}>{label}</Typography>
                 <Box className={classes.itemMoreInfo}>
-                    <Typography>{labelValue}</Typography>
+                    {disabled ? null :
+                        <Typography>{labelValue}</Typography>
+                    }
                     <FontAwesomeIcon icon="angle-right" />
+
+
                 </Box>
 
             </Box>

@@ -14,6 +14,7 @@ const useStyles = makeStyles(theme => ({
         padding: '12px 12px 16px',
         // cursor: 'pointer'
     },
+
     customItemMenu: {
         position: 'absolute',
         top: '0',
@@ -30,6 +31,9 @@ const useStyles = makeStyles(theme => ({
     },
     itemTitle: {
         fontWeight: 'bold'
+    },
+    itemTitleDisabled: {
+        color: 'BDBDBD',
     },
     itemSliderInfo: {
         display: 'flex',

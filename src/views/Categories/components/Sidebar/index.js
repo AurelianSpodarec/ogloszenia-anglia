@@ -199,6 +199,7 @@ const Sidebar = function () {
 
     const [carMake, setCarMake] = useState();
     const [models, setModels] = useState();
+    const [bodyStyle, setBodyStyle] = useState([]);
 
 
     const [year, setYear] = useState([INITIAL_STATE.year[0], INITIAL_STATE.year[1]]);
@@ -215,10 +216,13 @@ const Sidebar = function () {
     //     const make = INITIAL_STATE.make.map(item => item.name === brandName);
     //     const carModels = make.models
     //     // console.log(models)
-    //     setModels(models)
-    //     return models;
+    //     setModels(carModels)
     // }
-    // console.log(models)
+    const findModel = function (carBrand) {
+        const models = INITIAL_STATE.make.find(item => item.name === 'bwm').models
+        return models;
+    }
+    // console.log()
 
     // const handleChange = e => {
     //     const { name, value } = e.target
@@ -243,8 +247,17 @@ const Sidebar = function () {
     }
 
     const onSelectMake = function (event, newValue) {
-        console.log("sd", carMake, event, event.target.value, newValue)
         setCarMake(newValue)
+    }
+
+    const onSelectBodyStyle = (event, newValue) => {
+        const isSelected = bodyStyle.find(item => item === newValue);
+
+        if (isSelected === newValue) {
+            setBodyStyle(bodyStyle.filter(item => item !== newValue))
+        } else {
+            setBodyStyle([...bodyStyle, newValue])
+        }
     }
 
     // const onChangeSlide = function () {
@@ -254,7 +267,8 @@ const Sidebar = function () {
     // const onChangeItem = function () {
 
     // }
-
+    console.log(bodyStyle)
+    // console.log(INITIAL_STATE.carMake)
     return (
         <sidebar className={classes.sidebar} >
 
@@ -274,7 +288,7 @@ const Sidebar = function () {
                 />
                 <CustomItem
                     label="Model"
-                    // data={INITIAL_STATE.findModel(carMake)}
+                    data={findModel(carMake)}
                     // onClick={findModel}
                     disabled
                 />
@@ -305,6 +319,7 @@ const Sidebar = function () {
 
                 <CustomItem
                     label="Body Style"
+                    onClick={onSelectBodyStyle}
                     data={INITIAL_STATE.bodyStyle}
                     multiSelect
                 />
