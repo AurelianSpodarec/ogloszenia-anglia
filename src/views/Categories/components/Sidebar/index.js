@@ -72,7 +72,126 @@ const INITIAL_STATE = {
     ],
     year: [1960, 2020],
     mileage: [0, 300000],
-    seats: [1, 9]
+    bodyStyle: [
+        {
+            name: "sedan",
+            displayName: "Sedan",
+            icon: "default"
+        },
+        {
+            name: "hybrid",
+            displayName: "Hybrid",
+            icon: "default"
+        },
+        {
+            name: "convertible",
+            displayName: "Convertible",
+            icon: "default"
+        },
+        {
+            name: "truck",
+            displayName: "Truck",
+            icon: "default"
+        },
+        {
+            name: "coupe",
+            displayName: "Coupe",
+            icon: "default"
+        },
+        {
+            name: "hatchback",
+            displayName: "Hatchback",
+            icon: "default"
+        },
+        {
+            name: "minivan",
+            displayName: "Minivan",
+            icon: "default"
+        },
+        {
+            name: "wagon",
+            displayName: "Wagon",
+            icon: "default"
+        },
+        {
+            name: "suv",
+            displayName: "SUV",
+            icon: "default"
+        },
+        {
+            name: "others",
+            displayName: "Others",
+            icon: "default"
+        }
+
+    ],
+    transmission: [
+        {
+            name: "automatic",
+            displayName: "Automatic",
+            icon: "default"
+        },
+        {
+            name: "manual",
+            displayName: "Manual",
+            icon: "default"
+        }
+    ],
+    fuel: [
+        {
+            name: "disel",
+            displayName: "Disel",
+            icon: "default"
+        },
+        {
+            name: "electric",
+            displayName: "Electric",
+            icon: "default"
+        },
+        {
+            name: "flex",
+            displayName: "Flex",
+            icon: "default"
+        },
+        {
+            name: "gas",
+            displayName: "Gas",
+            icon: "default"
+        },
+        {
+            name: "hybrid",
+            displayName: "Hybrid",
+            icon: "default"
+        },
+        {
+            name: "others",
+            displayName: "Others",
+            icon: "default"
+        }
+    ],
+    driveTrain: [
+        {
+            name: "4wd",
+            displayName: "4WD",
+            icon: "default"
+        },
+        {
+            name: "aws",
+            displayName: "AWD",
+            icon: "default"
+        },
+        {
+            name: "fwd",
+            displayName: "FWD",
+            icon: "default"
+        },
+        {
+            name: "rwd",
+            displayName: "RWD",
+            icon: "default"
+        }
+    ],
+    seats: [1, 9],
 }
 
 const Sidebar = function () {
@@ -86,11 +205,11 @@ const Sidebar = function () {
     const [mileage, setMileage] = useState([INITIAL_STATE.mileage[0], INITIAL_STATE.mileage[1]]);
     const [seats, setSeats] = useState([INITIAL_STATE.seats[0], INITIAL_STATE.seats[1]]);
 
-    const [state, setState] = useState({
-        year: [1960, 2020],
-        mileage: [0, 300000],
-        seats: [1, 9]
-    })
+    // const [state, setState] = useState({
+    //     year: [1960, 2020],
+    //     mileage: [0, 300000],
+    //     seats: [1, 9]
+    // })
 
     // const handleChange = e => {
     //     const { name, value } = e.target
@@ -131,26 +250,26 @@ const Sidebar = function () {
     //     </div>
     // }
     // Menu data 
+    console.log("AAAAAAAAAAAAA", INITIAL_STATE.make)
     return (
         <sidebar className={classes.sidebar} >
             <Card className={classes.sidebarInner}>
 
                 {/* TODO: Refactor JSON so I can loop this with map */}
-
                 <CustomItem
                     label="Make"
                     search
 
 
-                    menuData={placeholderCarFilter.make.models}
-                    multiSelect// If true let the user select many options, if not, only one option avaiable
+                    data={INITIAL_STATE.make}
+                    // multiSelect// If true let the user select many options, if not, only one option avaiable
                     disabled // Enable if CUstomItem 1 has been selected
                 />
                 {/* This has icons */}
                 <CustomItem
-                    name="Body Style"
-                    value="bodyStyle"
+                    label="Body Style"
                     multiSelect
+                    data={INITIAL_STATE.bodyStyle}
                 />
 
                 {/* {/* //<Divider /> */}
@@ -176,7 +295,7 @@ const Sidebar = function () {
                     min={INITIAL_STATE.year[0]}
                     max={INITIAL_STATE.year[1]}
                     name="year"
-                    value={state.year}
+                    value={year}
                     // onChange={handleChange}
                     onChange={onYearChange}
                 />
@@ -187,7 +306,7 @@ const Sidebar = function () {
                     min={INITIAL_STATE.mileage[0]}
                     max={INITIAL_STATE.mileage[1]}
                     name="mileage"
-                    value={state.mileage}
+                    value={mileage}
                     // onChange={handleChange}
                     onChange={onMileageChange}
                 />
@@ -219,7 +338,7 @@ const Sidebar = function () {
                     min={INITIAL_STATE.seats[0]}
                     max={INITIAL_STATE.seats[1]}
                     name="seats"
-                    value={state.seats}
+                    value={seats}
                     // onChange={handleChange}
                     onChange={onSeatsChange}
                 />

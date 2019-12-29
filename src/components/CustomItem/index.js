@@ -24,7 +24,7 @@ import { shortenWord } from './../../utils/functions';
 //      2.3 - If search bar is clicked, don't close the menu
 
 
-const CustomItem = ({ label, search }) => {
+const CustomItem = ({ label, search, data, icon, multiSelect }) => {
     const classes = useStyles();
 
 
@@ -57,9 +57,9 @@ const CustomItem = ({ label, search }) => {
     // }
 
 
-    // const onSearch = function (event, userInput) {
-    //     setSearchQuery(event.target.value)
-    // }
+    const onSearch = function (event, userInput) {
+        setSearchQuery(event.target.value)
+    }
 
     // useEffect(() => {
     //     if (!searchQuery) {
@@ -77,16 +77,22 @@ const CustomItem = ({ label, search }) => {
 
     const [menuOpen, setMenuOpen] = useState(false);
     const anchorRef = useRef(null);
-    // const [isSearch, setIsSearch] = useState(false);
-    // const anchorRef = React.useRef(null);
-    //  1 - User clicks item 
-    //     1.1 - It opens the menu
-    //     1.2 - It closes the menu
-    // 
-    //  2 - User clicks menu item
-    //      2.1 - If its not multiselect, on select close menu OR click away
-    //      2.2 - If its multiselect, select multiple values without closing OR click away
-    //      2.3 - If search bar is clicked, don't close the menu
+    let [searchQuery, setSearchQuery] = useState();
+    let [menu, setMenu] = useState(data || []);
+
+    // let menuData = data
+    // // If use search
+    // useEffect(() => {
+    //     if (searchQuery) {
+    //         // menuData = data
+    //         menuData = menu.filter(item => item.name.includes(searchQuery.toString().toLowerCase()))
+    //     } else if (searchQuery) {
+    //     } else {
+    //         menuData = "No results found :("// No result found
+    //     }
+    // }, [searchQuery])
+    // const multiSelect
+
 
     const onToggleMenu = () => {
         setMenuOpen(prevOpen => !menuOpen)
@@ -98,8 +104,6 @@ const CustomItem = ({ label, search }) => {
             return;
         }
         setMenuOpen(false)
-        // if (!event.target === menuOpen) {
-        // }
     }
 
     const onTabPress = event => {
@@ -107,6 +111,15 @@ const CustomItem = ({ label, search }) => {
             event.preventDefault();
             setMenuOpen(false)
         }
+    }
+
+
+    const onMenuOpen = function () {
+        setMenuOpen(true)
+    }
+
+    const onMenuClose = function () {
+        setMenuOpen(false)
     }
 
     const prevOpen = React.useRef(menuOpen);
@@ -117,8 +130,9 @@ const CustomItem = ({ label, search }) => {
 
         prevOpen.current = menuOpen;
     }, [menuOpen]);
-
+    console.log(multiSelect)
     return (
+
         <Box className={[classes.customItem]}>
 
 
@@ -141,47 +155,24 @@ const CustomItem = ({ label, search }) => {
                                     fullWidth
                                     placeholder="Search makes"
                                     variant="outlined"
-                                // value={searchQuery}
-                                // onChange={onSearch}
+                                    value={searchQuery}
+                                    onChange={onSearch}
                                 />
                             </Box>
                             : null}
-                        {/* Children */}
-                        <Box onKeyDown={onTabPress} className={classes.customItemContent}>
-                            <Typography>Mike</Typography>
-                        </Box>
-                    </Box>
-                </ClickAwayListener>
-            </Card>
+                        {/* Put data in search state, up */}
 
-            {/* 
-            <Card className={classes.menu} style={{ display: isOpen ? 'block' : 'none' }}>
-                {search ?
-                    <Box>
-                        <TextField
-                            fullWidth
-                            placeholder="Search makes"
-                            variant="outlined"
-                            value={searchQuery}
-                            onChange={onSearch}
-                        />
-                    </Box>
-                    : null}
-
-                {/* If multiselect TRUE: Onclick don't close menu */}
-            {/* If multiselect FALSE: Onclick 'item' close menu */}
-            {/* <Box onClick={() => multiSelectValue ? setisOpen(true) : setisOpen(false)} className={classes.searchMenu}>
-                    {
-                        menu.map(item => {
+                        {data && data.map(item => {
                             return (
-                                <Box className={classes.item} onClick={() => onClickItem(item.name)} value={item.name}>
+                                <Box onClick={multiSelect === undefined ? onMenuClose : null} value={item.name} onKeyDown={onTabPress} className={classes.customItemContent}>
                                     <Typography>{item.displayName}</Typography>
                                 </Box>
                             )
-                        })
-                    }
-                </Box> */}
-            {/* </Card> */}
+                        })};
+
+                    </Box>
+                </ClickAwayListener>
+            </Card>
         </Box >
     )
 }
