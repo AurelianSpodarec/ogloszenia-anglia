@@ -87,17 +87,21 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
     }
 
     const onClickMenuItem = (e, value) => {
-        onClick(e, value.name)
+
+
+        onClick(e, value || value.name)
+
+
         if (multiSelect === undefined) {
-            setSelected(value.name)
+            setSelected(value.name || value)
             onMenuClose()
         } else {
-            const isSelected = selected.find(item => item === value.name);
+            const isSelected = selected.find(item => item === value.name || value);
             if (isSelected === value.name) {
-                setSelected(selected.filter(item => item !== value.name))
+                setSelected(selected.filter(item => item !== value.name || value))
 
             } else {
-                setSelected(selected => [...selected, value.name])
+                setSelected(selected => [...selected, value.name || value])
 
             }
         }
@@ -140,9 +144,9 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
 
                         {menu && menu.map(item => {
                             return (
-                                <Box onCustomClick={item} onClick={(e) => onClickMenuItem(e, item)} value={item.name} onKeyDown={onTabPress} className={classes.customItemContent}>
+                                <Box onCustomClick={item} onClick={(e) => onClickMenuItem(e, item)} value={item.name || item} onKeyDown={onTabPress} className={classes.customItemContent}>
                                     {/* <Box onClick={(e) => onClick(e, item.name)} value="BB"> */}
-                                    <Typography>{item.displayName}</Typography>
+                                    <Typography>{item.displayName || item}</Typography>
                                 </Box>
                             )
                         })}

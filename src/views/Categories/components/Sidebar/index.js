@@ -198,7 +198,7 @@ const Sidebar = function () {
     const classes = useStyles();
 
     const [carMake, setCarMake] = useState();
-    const [models, setModels] = useState();
+    const [model, setModel] = useState();
     const [bodyStyle, setBodyStyle] = useState([]);
 
 
@@ -250,6 +250,10 @@ const Sidebar = function () {
         setCarMake(newValue)
     }
 
+    const onSelectModel = function (event, newValue) {
+        setModel(newValue)
+    }
+
     const onSelectBodyStyle = (event, newValue) => {
         const isSelected = bodyStyle.find(item => item === newValue);
 
@@ -288,7 +292,7 @@ const Sidebar = function () {
                 <CustomItem
                     label="Model"
                     data={findModel(carMake)}
-                    // onClick={findModel}
+                    onClick={onSelectModel}
                     disabled={carMake === undefined || null}
                 // disabled
                 />
