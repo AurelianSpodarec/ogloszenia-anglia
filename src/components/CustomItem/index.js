@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
     Card,
     Typography,
@@ -71,29 +71,12 @@ const CustomItem = ({ label, search }) => {
     //     }
     // }, [searchQuery])
 
-    // const onClickItem = (itemName) => {
-    //     if (!multiSelectValue) {
-    //         setisOpen(false)
-    //         console.log("Fied in")
-    //     } else {
-    //         console.log("fied out")
-    //     }
-    //     onClickSelected(itemName)
-    // }
 
-    // const onOpenMenu = function () {
-    //     // Is menu open and multiselect, don't trigger the open menu again
-    //     if (!isOpen) {
-    //         setisOpen(!isOpen)
-    //     }
-
-    //     // If menu is open, and its not clicked, close it
-    // }
 
     {/* DISABLED untill soemthing else is selected and load the data*/ }
 
     const [menuOpen, setMenuOpen] = useState(false);
-    const anchorRef = React.useRef(null);
+    const anchorRef = useRef(null);
     // const [isSearch, setIsSearch] = useState(false);
     // const anchorRef = React.useRef(null);
     //  1 - User clicks item 
@@ -105,39 +88,21 @@ const CustomItem = ({ label, search }) => {
     //      2.2 - If its multiselect, select multiple values without closing OR click away
     //      2.3 - If search bar is clicked, don't close the menu
 
-    // const toggleMenu = event => {
-    //     setisOpen(previsOpen => !previsOpen)
-    // }
-
-    // const handleClose = event => {
-    //     if (anchorRef.current && anchorRef.current.contains(event.target)) {
-    //         return;
-    //     }
-
-    //     setisOpen(false);
-    // };
-
-    // const previsOpen = React.useRef(open);
-    // React.useEffect(() => {
-    //     if (previsOpen.current === true && open === false) {
-    //         anchorRef.current.focus();
-    //     }
-
-    //     previsOpen.current = open;
-    // }, [open]);
-
-    const toggleMenu = () => {
+    const onToggleMenu = () => {
         setMenuOpen(prevOpen => !menuOpen)
     }
 
     const handleClose = event => {
+        console.log("Close", event)
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
             return;
         }
         setMenuOpen(false)
+        // if (!event.target === menuOpen) {
+        // }
     }
 
-    const pressTab = event => {
+    const onTabPress = event => {
         if (event.key === 'Tab') {
             event.preventDefault();
             setMenuOpen(false)
@@ -145,7 +110,7 @@ const CustomItem = ({ label, search }) => {
     }
 
     const prevOpen = React.useRef(menuOpen);
-    React.useEffect(() => {
+    useEffect(() => {
         if (prevOpen.current === true && menuOpen === false) {
             anchorRef.current.focus();
         }
@@ -157,7 +122,7 @@ const CustomItem = ({ label, search }) => {
         <Box className={[classes.customItem]}>
 
 
-            <Box className={classes.customItemContent} ref={anchorRef} onClick={toggleMenu}>
+            <Box ref={anchorRef} className={classes.customItemContent} onClick={onToggleMenu}>
 
                 <Typography className={classes.itemTitle}>{label}</Typography>
                 <Box className={classes.itemMoreInfo}>
@@ -166,25 +131,26 @@ const CustomItem = ({ label, search }) => {
                 </Box>
 
             </Box>
-
-            <Card className={classes.customItemMenu} anchorEl={anchorRef.current} style={{ display: menuOpen ? 'block' : 'none' }}>
+            {console.log(anchorRef)}
+            <Card anchorEl={anchorRef.current} className={classes.customItemMenu} style={{ display: menuOpen ? 'block' : 'none' }}>
                 <ClickAwayListener onClickAway={handleClose}>
-                    {search ?
-                        <Box>
-                            <TextField
-                                fullWidth
-                                placeholder="Search makes"
-                                variant="outlined"
-                            // value={searchQuery}
-                            // onChange={onSearch}
-                            />
+                    <Box>
+                        {search ?
+                            <Box>
+                                <TextField
+                                    fullWidth
+                                    placeholder="Search makes"
+                                    variant="outlined"
+                                // value={searchQuery}
+                                // onChange={onSearch}
+                                />
+                            </Box>
+                            : null}
+                        {/* Children */}
+                        <Box onKeyDown={onTabPress} className={classes.customItemContent}>
+                            <Typography>Mike</Typography>
                         </Box>
-                        : null}
-
-                    <Box className={classes.customItemContent}>
-                        <Typography>Mike</Typography>
                     </Box>
-
                 </ClickAwayListener>
             </Card>
 
