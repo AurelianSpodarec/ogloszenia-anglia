@@ -11,17 +11,19 @@ function useAuthData() {
 }
 
 function AuthProvider({ children }) {
-    const [authData, setAuthData] = useState([{
-        user: "Anonymous User",
-        isAuthenticated: false
-    }]);
+    const [authData, setAuthData] = useState(
+        {
+            user: "Anonymous User",
+            isAuthenticated: false
+
+        });
 
     const authProps = {
         authData,
         async login(username, password) {
             const data = await userLogin(username, password);
             console.log("AuthProv", data)
-            setAuthData([...authData, data]);
+            setAuthData(data);
         },
         logout() {
             setAuthData();

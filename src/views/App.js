@@ -50,7 +50,7 @@ function Layout(props) {
             <Header />
             {authContext.authData.isAuthenticated ? "Logged" : "No"}
             {console.log("adsd", authContext.user)}
-
+            {/* {!authContext.authData.data.data.user.email ? "Hsd" : authContext.authData.data.data.user.email} */}
             <div>
                 <Category />
             </div>
