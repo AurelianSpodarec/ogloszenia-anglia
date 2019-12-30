@@ -39,7 +39,7 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
         } else {
             setMenu(data)
         }
-        // If nothing matches, display: Not found
+        // TODO:If nothing matches, display: Not found
     }, [searchQuery])
 
     const onToggleMenu = () => {
@@ -87,22 +87,16 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
     }
 
     const onClickMenuItem = (e, value) => {
-
-
-        onClick(e, value || value.name)
-
-
+        onClick(e, value || e, value.name)
         if (multiSelect === undefined) {
             setSelected(value.name || value)
             onMenuClose()
         } else {
-            const isSelected = selected.find(item => item === value.name || value);
-            if (isSelected === value.name) {
-                setSelected(selected.filter(item => item !== value.name || value))
-
+            const isSelected = selected.find(item => item === value || item === value.name);
+            if (isSelected === value.name || isSelected === value) {
+                setSelected(selected.filter(item => item !== value && item !== value.name))
             } else {
-                setSelected(selected => [...selected, value.name || value])
-
+                setSelected(selected => [...selected, value.name ? value.name : value])
             }
         }
     }

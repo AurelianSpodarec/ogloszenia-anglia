@@ -37,17 +37,17 @@ const INITIAL_STATE = {
         {
             name: "bwm",
             displayName: "BWM",
-            models: ['600', 'M2']
+            models: ['600', 'M2', 'popo']
         },
-        {
-            name: "alabama",
-            displayName: "Alabama",
-            models: ['600', 'M2']
-        },
+        // {
+        //     name: "alabama",
+        //     displayName: "Alabama",
+        //     models: ['sdsss', 'ewewew']
+        // },
         {
             name: "assertion",
             displayName: "Assertion",
-            models: ['600', 'M2']
+            models: ['njijnj600', 'okiokM2', 'ghjnk']
         },
         {
             name: "transformation",
@@ -199,6 +199,7 @@ const Sidebar = function () {
 
     const [carMake, setCarMake] = useState();
     const [model, setModel] = useState();
+    // const [models, setModels] = useState([]);
     const [bodyStyle, setBodyStyle] = useState([]);
 
 
@@ -248,6 +249,7 @@ const Sidebar = function () {
 
     const onSelectMake = function (event, newValue) {
         setCarMake(newValue)
+        // setModels(findModel(carMake))
     }
 
     const onSelectModel = function (event, newValue) {
@@ -255,12 +257,12 @@ const Sidebar = function () {
     }
 
     const onSelectBodyStyle = (event, newValue) => {
-        const isSelected = bodyStyle.find(item => item === newValue);
+        const isSelected = bodyStyle.find(item => item === newValue.name);
 
-        if (isSelected === newValue) {
-            setBodyStyle(bodyStyle.filter(item => item !== newValue))
+        if (isSelected === newValue.name) {
+            setBodyStyle(bodyStyle.filter(item => item !== newValue.name))
         } else {
-            setBodyStyle([...bodyStyle, newValue])
+            setBodyStyle([...bodyStyle, newValue.name])
         }
     }
 
@@ -271,7 +273,7 @@ const Sidebar = function () {
     // const onChangeItem = function () {
 
     // }
-
+    console.log(bodyStyle)
     return (
         <sidebar className={classes.sidebar} >
 
