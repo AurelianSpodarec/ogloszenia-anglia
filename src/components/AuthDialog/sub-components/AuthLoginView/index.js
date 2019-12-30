@@ -26,7 +26,7 @@ import {
 import { useForm } from '../../../../hooks';
 import { userLogin } from '../../../../services/api/users';
 import PasswordInput from './../../../PasswordInput/PasswordInput';
-
+import { AuthProvider, useAuthData } from '../../../../context/AuthContext';
 
 const INITIAL_STATE = {
     email: "",
@@ -36,10 +36,12 @@ const INITIAL_STATE = {
 const AuthLoginView = ({ setView }) => {
     const classes = useStyles();
     const { handleChange, handleSubmit, values } = useForm(submit, INITIAL_STATE);
+    const { login } = useAuthData()
 
     async function submit() {
-        const data = await userLogin({ "email": values.email, "password": values.password })
-        console.log("MMMMMMMMMMMMMMUSER", data)
+        // const data = await userLogin({ "email": values.email, "password": values.password })
+        login({ "email": values.email, "password": values.password })
+        // console.log("MMMMMMMMMMMMMMUSER", a)
     }
     return (
         <Box>

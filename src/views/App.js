@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import { Route, Link, Switch, BrowserRouter as Router } from 'react-router-dom'
 
-import Header from './../components/Header'
-import Footer from './../components/Footer'
-import Categories from './../components/Categories'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import Categories from '../components/Categories'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -18,11 +18,14 @@ import {
 import CarsView from './Categories/Cars';
 import HomesView from './Categories/Homes';
 import NotFound from './NotFound';
-import Category from './../components/Categories';
+import Category from '../components/Categories';
 
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import './Layout.css';
+import { AuthProvider, useAuthData } from '../context/AuthContext';
+// import { AuthProvider, useAuthData } from './../context/AuthContex';
+
 
 const theme = createMuiTheme({
     typography: {
@@ -36,22 +39,34 @@ const theme = createMuiTheme({
     }
 });
 
-
-
 function Layout(props) {
+    const authContext = useAuthData()
     return (
+
         <ThemeProvider theme={theme}>
-            <>
-                <Header />
+            {console.log(authContext.authData.name, "sdsdsddss")}
+            {authContext.user}
 
-                <div>
-                    <Category />
-                </div>
+            <Header />
+            {authContext.authData.isAuthenticated ? "Logged" : "No"}
+            {console.log("adsd", authContext.user)}
 
-                <Footer />
-            </>
+            <div>
+                <Category />
+            </div>
+
+            <Footer />
 
         </ThemeProvider>
+
+    )
+}
+
+function App() {
+
+
+    return (
+        <AuthProvider><Layout></Layout></AuthProvider>
     )
 }
 
@@ -67,6 +82,6 @@ const styles = theme => ({
     }
 });
 
-export default withStyles(styles)(Layout);
+export default withStyles(styles)(App);
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Layout from './views/Layout';
+import App from './views/App';
 
 // Font Awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -79,4 +79,4 @@ library.add(
 )
 
 
-ReactDOM.render(<Layout />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));

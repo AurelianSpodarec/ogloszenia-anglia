@@ -22,7 +22,7 @@ import AuthDialog from '../AuthDialog';
 import useStyles from './styles'
 
 
-const Header = function () {
+const Header = function (props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [selectedValue, setSelectedValue] = React.useState();
@@ -36,7 +36,7 @@ const Header = function () {
         setOpen(false);
         setSelectedValue(value);
     };
-
+    // console.log(authProps)
     return (
         <>
             <AppBar className={classes.header}>
@@ -67,14 +67,17 @@ const Header = function () {
                         <FontAwesomeIcon icon="bullhorn" />
                         <Typography>Add Listing</Typography>
                     </Button>
-
+                    {/* 
                     {isLogged ?
-                        <UserMenu /> :
+                        <> */}
+                    <span>Username: {props.value ? "SDSD" : "sdsd"}</span>
+                    {/* <UserMenu /> :
+                        </>
                         <>
                             <Button onClick={handleClickOpen} color="inherit">Log In</Button>
                             <Button onClick={handleClickOpen} color="inherit">Sign Up</Button>
                         </>
-                    }
+                    } */}
                     {/* </Box> */}
 
 
