@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
 import {
-    Container,
-    Grid,
     Typography,
-    Dialog,
     CardMedia,
     DialogContent,
     DialogContentText,
     Box
 } from '@material-ui/core';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useStyles from './styles';
 
