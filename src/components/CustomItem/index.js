@@ -87,7 +87,8 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
     }
 
     const onClickMenuItem = (e, value) => {
-        onClick(e, value || e, value.name)
+        console.log((value))
+        onClick(e, value)
         if (multiSelect === undefined) {
             setSelected(value.name || value)
             onMenuClose()
@@ -138,7 +139,7 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
 
                         {menu && menu.map(item => {
                             return (
-                                <Box onCustomClick={item} onClick={(e) => onClickMenuItem(e, item)} value={item.name || item} onKeyDown={onTabPress} className={classes.customItemContent}>
+                                <Box onClick={(e) => onClickMenuItem(e, item)} value={item.name || item} onKeyDown={onTabPress} className={classes.customItemContent}>
                                     {/* <Box onClick={(e) => onClick(e, item.name)} value="BB"> */}
                                     <Typography>{item.displayName || item}</Typography>
                                 </Box>

@@ -199,6 +199,7 @@ const Sidebar = function () {
 
     const [carMake, setCarMake] = useState();
     const [model, setModel] = useState();
+    const [postedBy, setPostedBy] = useState();
     // const [models, setModels] = useState([]);
     const [bodyStyle, setBodyStyle] = useState([]);
 
@@ -220,7 +221,8 @@ const Sidebar = function () {
     //     setModels(carModels)
     // }
     const findModel = function (carBrand) {
-        const models = INITIAL_STATE.make.find(item => item.name === 'bwm').models
+        if (!carMake) { return };
+        const models = INITIAL_STATE.make.find(item => item.name === carBrand.name).models
         return models;
     }
     // console.log()
@@ -245,6 +247,10 @@ const Sidebar = function () {
 
     const onSeatsChange = function (event, newValues) {
         setSeats(newValues)
+    }
+
+    const onPostedBy = function (event, newValues) {
+        setPostedBy(newValues)
     }
 
     const onSelectMake = function (event, newValue) {
@@ -273,7 +279,7 @@ const Sidebar = function () {
     // const onChangeItem = function () {
 
     // }
-    console.log(bodyStyle)
+
     return (
         <sidebar className={classes.sidebar} >
 
@@ -281,7 +287,7 @@ const Sidebar = function () {
 
                 <CustomItem
                     label="Posted by"
-                    multiSelect
+                    onClick={onPostedBy}
                     data={INITIAL_STATE.postedBy}
                 />
                 <Divider />
@@ -293,7 +299,8 @@ const Sidebar = function () {
                 />
                 <CustomItem
                     label="Model"
-                    data={findModel(carMake)}
+                    // data={findModel(carMake)}
+                    data={INITIAL_STATE.make[0].models}
                     onClick={onSelectModel}
                     disabled={carMake === undefined || null}
                 // disabled
