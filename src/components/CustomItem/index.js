@@ -17,12 +17,12 @@ import useStyles from './styles';
 const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, disabled }) => {
     const classes = useStyles();
 
-    let [menu, setMenu] = useState(data || []);
+    const [menu, setMenu] = useState(data || []);
 
     let [searchQuery, setSearchQuery] = useState();
 
-    let [selected, setSelected] = useState();
-    let [multiSelected, setMultiSelected] = useState([])
+    const [selected, setSelected] = useState();
+    const [multiSelected, setMultiSelected] = useState([])
 
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -80,40 +80,40 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
         prevOpen.current = menuOpen;
     }, [menuOpen]);
 
-
     let labelValue;
     if (multiSelect) {
+
         if (multiSelected.length === 0 || multiSelected.length === data.length) {
             labelValue = "All"
         } else {
-            labelValue = shortenWord(multiSelected.join(", "), 20);
+            labelValue = shortenWord(multiSelected.map(item => item.displayName).join(", "), 20);
         }
+
     } else {
+
         if (selected === undefined) {
             labelValue = "All"
         } else {
-            labelValue = selected;
+            labelValue = selected.displayName;
         }
+
     }
 
 
-
     const onClickMenuItem = (e, value) => {
-        console.log("CLick menu item", value)
-        onClick(e, value)
+        onClick(e, value.slug)
 
         if (multiSelect) {
-
-            const isSelected = multiSelected.find(item => item === value || item === value.slug);
-            if (isSelected === value.slug || isSelected === value) {
-                setMultiSelected(multiSelected.filter(item => item !== value && item !== value.slug))
+            const isSelected = multiSelected.find(item => item.slug === value.slug)
+            if (isSelected) {
+                setMultiSelected(multiSelected.filter(item => item.slug !== value.slug))
             } else {
-                setMultiSelected(multiSelected => [...multiSelected, value.slug ? value.slug : value])
+                setMultiSelected(multiSelected => [...multiSelected, value])
             }
 
         } else {
             setMenuOpen(false)
-            setSelected(value.slug ? value.slug : value)
+            setSelected(value)
         }
 
     }
@@ -152,11 +152,10 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
                             </Box>
                             : null}
                         {/* Put data in search state, up */}
-                        {console.log("MENUUU", menu)}
                         <Box className={classes.customItemMenuContent}>
                             {menu.map(item => {
                                 return (
-                                    <Box onClick={(e) => onClickMenuItem(e, item)} value={item.name || item} onKeyDown={onTabPress} className={classes.customItemContent}>
+                                    <Box onClick={(e) => onClickMenuItem(e, item)} onKeyDown={onTabPress} className={classes.customItemContent}>
                                         {/* <Box onClick={(e) => onClick(e, item.name)} value="BB"> */}
                                         <Typography>{item.displayName || item}</Typography>
                                     </Box>

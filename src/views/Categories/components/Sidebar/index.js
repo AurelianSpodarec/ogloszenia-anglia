@@ -16,251 +16,6 @@ import { CustomItem, CustomSlider } from '../../../../components';
 
 import { INITIAL_STATE } from './menu';
 
-// const INITIAL_STATE = {
-//     postedBy: [
-//         {
-//             name: "individual",
-//             displayName: 'Individual'
-//         },
-//         {
-//             name: "dealership",
-//             displayName: 'Dealership'
-//         }
-//     ],
-//     make: [
-//         {
-//             name: "acura",
-//             displayName: "Acura",
-//             models: [
-//                 "CL",
-//                 "CSX",
-//                 "EL",
-//                 "ILX",
-//                 "Integra",
-//                 "Legend",
-//                 "MDX",
-//                 "NSX",
-//                 "RDX",
-//                 "RL",
-//                 "RLX",
-//                 "RSX",
-//                 "SLX",
-//                 "TL",
-//                 "TLX",
-//                 "TSX",
-//                 "Vigor",
-//                 "ZDX",
-//             ]
-//         },
-//         {
-//             name: "aston martin",
-//             displayName: "Aston Martin",
-//             models: [
-//                 "DB11",
-//                 "DB7",
-//                 "DB9",
-//                 "Lagonda",
-//                 "Rapide",
-//                 "V12 Vanquish",
-//                 "V8",
-//                 "DBS",
-//                 "V12 Vantage",
-//                 "V8 Vantage",
-//                 "V8 Vantage Roadster",
-//                 "V8 Vantage Roadster SPORTSHIFT",
-//                 "V8 Vantage SPORTSHIFT",
-//                 "Vanquish",
-//                 "Virage",
-//             ]
-//         },
-//         {
-//             name: "bwm",
-//             displayName: "BWM",
-//             models: [
-//                 "600",
-//                 "M2",
-//                 "3-Series",
-//                 "M3",
-//                 "4-Series",
-//                 "M4",
-//                 "5-Series",
-//                 "M5",
-//                 "6-Series",
-//                 "M6",
-//                 "7-Series",
-//                 "8-Series",
-//                 "i3",
-//                 "i8",
-//                 "New Class",
-//                 "New Six",
-//                 "X1",
-//                 "X3",
-//                 "X4",
-//                 "X5",
-//                 "X6",
-//                 "Z3",
-//                 "Z3 M",
-//                 "Z4",
-//                 "Z4 M",
-//                 "Z8",
-//                 "1 Series",
-//                 "2 Series",
-//                 "3 Series",
-//                 "4 Series",
-//                 "5 Series",
-//                 "6 Series",
-//                 "6 Series Convertible",
-//                 "6 Series Coupe",
-//                 "6 Series Gran Coupe",
-//                 "6 Series Gran Turismo",
-//                 "7 Series",
-//                 "8 Series",
-//                 "ALPINA B6 Gran Coupe",
-//                 "M",
-//                 "M Series",
-//                 "M2 Coupe",
-//                 "M3 Sedan",
-//                 "M4 Convertible",
-//                 "M4 Coupe",
-//                 "M5 Sedan",
-//                 "M6 Convertible",
-//                 "M6 Coupe",
-//                 "M6 Gran Coupe",
-//                 "X2",
-//                 "X2 M",
-//                 "X3 M",
-//                 "X4 M",
-//                 "X5 M",
-//                 "X6 M",
-//                 "X7",
-//             ]
-//         },
-//     ],
-//     year: [1960, 2020],
-//     mileage: [0, 300000],
-//     bodyStyle: [
-//         {
-//             name: "sedan",
-//             displayName: "Sedan",
-//             icon: "default"
-//         },
-//         {
-//             name: "hybrid",
-//             displayName: "Hybrid",
-//             icon: "default"
-//         },
-//         {
-//             name: "convertible",
-//             displayName: "Convertible",
-//             icon: "default"
-//         },
-//         {
-//             name: "truck",
-//             displayName: "Truck",
-//             icon: "default"
-//         },
-//         {
-//             name: "coupe",
-//             displayName: "Coupe",
-//             icon: "default"
-//         },
-//         {
-//             name: "hatchback",
-//             displayName: "Hatchback",
-//             icon: "default"
-//         },
-//         {
-//             name: "minivan",
-//             displayName: "Minivan",
-//             icon: "default"
-//         },
-//         {
-//             name: "wagon",
-//             displayName: "Wagon",
-//             icon: "default"
-//         },
-//         {
-//             name: "suv",
-//             displayName: "SUV",
-//             icon: "default"
-//         },
-//         {
-//             name: "others",
-//             displayName: "Others",
-//             icon: "default"
-//         }
-
-//     ],
-//     transmission: [
-//         {
-//             name: "automatic",
-//             displayName: "Automatic",
-//             icon: "default"
-//         },
-//         {
-//             name: "manual",
-//             displayName: "Manual",
-//             icon: "default"
-//         }
-//     ],
-//     fuel: [
-//         {
-//             name: "disel",
-//             displayName: "Disel",
-//             icon: "default"
-//         },
-//         {
-//             name: "electric",
-//             displayName: "Electric",
-//             icon: "default"
-//         },
-//         {
-//             name: "flex",
-//             displayName: "Flex",
-//             icon: "default"
-//         },
-//         {
-//             name: "gas",
-//             displayName: "Gas",
-//             icon: "default"
-//         },
-//         {
-//             name: "hybrid",
-//             displayName: "Hybrid",
-//             icon: "default"
-//         },
-//         {
-//             name: "others",
-//             displayName: "Others",
-//             icon: "default"
-//         }
-//     ],
-//     driveTrain: [
-//         {
-//             name: "4wd",
-//             displayName: "4WD",
-//             icon: "default"
-//         },
-//         {
-//             name: "aws",
-//             displayName: "AWD",
-//             icon: "default"
-//         },
-//         {
-//             name: "fwd",
-//             displayName: "FWD",
-//             icon: "default"
-//         },
-//         {
-//             name: "rwd",
-//             displayName: "RWD",
-//             icon: "default"
-//         }
-//     ],
-//     seats: [1, 9],
-// }
-// }
-
 const Sidebar = function () {
     const classes = useStyles();
 
@@ -296,6 +51,7 @@ const Sidebar = function () {
         const selectedCarModel = INITIAL_STATE.make.find(item => item.name === carBrand.name).models
         return selectedCarModel;
     }
+    console.log(bodyStyle, carMake, model)
     // console.log()
 
     // const handleChange = e => {
@@ -327,23 +83,19 @@ const Sidebar = function () {
     const onSelectMake = function (event, newValue) {
         setCarMake(newValue)
         setModels(findModel(newValue))
-        console.log(model, "KKKK") // Model is set
     }
-    console.log(model, "LKLKL") // Model is set, but doesn't updae the component on the state change
 
     const onSelectModel = function (event, newValue) {
-        console.log("FIREDDDD MODEL", newValue) // Not firing, 
-        console.log(model, "OIOII   ")
         setModel(newValue)
     }
 
     const onSelectBodyStyle = (event, newValue) => {
-        const isSelected = bodyStyle.find(item => item === newValue.name);
+        const isSelected = bodyStyle.find(item => item === newValue);
 
-        if (isSelected === newValue.name) {
-            setBodyStyle(bodyStyle.filter(item => item !== newValue.name))
+        if (isSelected) {
+            setBodyStyle(bodyStyle.filter(item => item !== newValue))
         } else {
-            setBodyStyle([...bodyStyle, newValue.name])
+            setBodyStyle([...bodyStyle, newValue])
         }
     }
 
@@ -364,6 +116,7 @@ const Sidebar = function () {
     // const onChangeItem = function () {
 
     // }
+
     return (
         <sidebar className={classes.sidebar} >
 
@@ -386,7 +139,7 @@ const Sidebar = function () {
                     search
                     data={models}
                     onClick={onSelectModel}
-                    disabled={carMake === undefined || null}
+                    disabled={!carMake}
                 />
                 <CustomSlider
                     // slideBeforeLabel
