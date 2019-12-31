@@ -82,13 +82,17 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
 
     let labelValue;
     if (multiSelect) {
-        if (multiSelected.lenght === 0 && multiSelected.lenght === data.lenght) {
+        if (multiSelected.length === 0 || multiSelected.length === data.length) {
             labelValue = "All"
         } else {
             labelValue = shortenWord(multiSelected.join(", "), 20);
         }
     } else {
-        labelValue = selected;
+        if (selected === undefined) {
+            labelValue = "All"
+        } else {
+            labelValue = selected;
+        }
     }
 
 
