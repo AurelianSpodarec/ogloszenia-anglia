@@ -198,7 +198,8 @@ const Sidebar = function () {
     const classes = useStyles();
 
     const [carMake, setCarMake] = useState();
-    const [model, setModel] = useState([]);
+    const [model, setModel] = useState();
+    const [models, setModels] = useState([])
     const [postedBy, setPostedBy] = useState();
     // const [models, setModels] = useState([]);
     const [bodyStyle, setBodyStyle] = useState([]);
@@ -258,7 +259,7 @@ const Sidebar = function () {
 
     const onSelectMake = function (event, newValue) {
         setCarMake(newValue)
-        setModel(findModel(newValue))
+        setModels(findModel(newValue))
         console.log(model, "KKKK") // Model is set
     }
     console.log(model, "LKLKL") // Model is set, but doesn't updae the component on the state change
@@ -315,7 +316,7 @@ const Sidebar = function () {
                 />
                 <CustomItem
                     label="Model"
-                    data={model}
+                    data={models}
                     onClick={onSelectModel}
                     disabled={carMake === undefined || null}
                 />

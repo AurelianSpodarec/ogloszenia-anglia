@@ -134,7 +134,7 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
             <Card anchorEl={anchorRef.current} className={classes.customItemMenu} style={{ display: menuOpen ? 'block' : 'none' }}>
                 <ClickAwayListener onClickAway={handleClose}>
                     <Box>
-                        {search ?
+                        {/* {search ?
                             <Box>
                                 <TextField
                                     fullWidth
@@ -144,7 +144,7 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
                                     onChange={onSearch}
                                 />
                             </Box>
-                            : null}
+                            : null} */}
                         {/* Put data in search state, up */}
                         {console.log("MENUUU", menu)}
                         {menu.map(item => {
