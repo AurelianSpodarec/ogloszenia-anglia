@@ -40,6 +40,7 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
 
     useEffect(() => {
         if (searchQuery) {
+            // TODO: Fix the search
             const filteredResult = menu.filter(item => item.name.includes(searchQuery.toString().toLowerCase()))
             setMenu(filteredResult)
         } else {
@@ -103,16 +104,16 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
 
         if (multiSelect) {
 
-            const isSelected = multiSelected.find(item => item === value || item === value.name);
-            if (isSelected === value.name || isSelected === value) {
-                setMultiSelected(multiSelected.filter(item => item !== value && item !== value.name))
+            const isSelected = multiSelected.find(item => item === value || item === value.slug);
+            if (isSelected === value.slug || isSelected === value) {
+                setMultiSelected(multiSelected.filter(item => item !== value && item !== value.slug))
             } else {
-                setMultiSelected(multiSelected => [...multiSelected, value.name ? value.name : value])
+                setMultiSelected(multiSelected => [...multiSelected, value.slug ? value.slug : value])
             }
 
         } else {
             setMenuOpen(false)
-            setSelected(value.name ? value.name : value)
+            setSelected(value.slug ? value.slug : value)
         }
 
     }
