@@ -81,11 +81,21 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
 
     //TODO: This has a bug when the first element index is 0, it it makes it false, insead of checking if its empty
     let labelValue;
-    console.log(selected, selected.length === 0)
-    if (!selected.length || selected.length === data.length) {
-        labelValue = "All";
+    // console.log(selected, selected.length === 0)
+    console.log("Selected", selected)
+    if (!multiSelect) {
+        if (selected.length === 0 || selected.length === data.length) {
+            labelValue = "All";
+        } else {
+            labelValue = multiSelect ? shortenWord(selected.join(", "), 20) : selected;
+        }
     } else {
-        labelValue = multiSelect ? shortenWord(selected.join(", "), 20) : selected;
+        console.log(2, selected)
+        if (selected.lenght === 0) {
+            labelValue = "All"
+        } else {
+            labelValue = selected
+        }
     }
 
     const onClickMenuItem = (e, value) => {

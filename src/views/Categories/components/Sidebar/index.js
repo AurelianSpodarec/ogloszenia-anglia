@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import {
     Grid,
@@ -37,7 +37,7 @@ const INITIAL_STATE = {
         {
             name: "bwm",
             displayName: "BWM",
-            models: ['600', 'M2', 'popo']
+            models: ['M2', 'popo', 'AA', 'TT5']
         },
         // {
         //     name: "alabama",
@@ -198,7 +198,7 @@ const Sidebar = function () {
     const classes = useStyles();
 
     const [carMake, setCarMake] = useState();
-    const [model, setModel] = useState();
+    const [model, setModel] = useState([]);
     const [postedBy, setPostedBy] = useState();
     // const [models, setModels] = useState([]);
     const [bodyStyle, setBodyStyle] = useState([]);
@@ -220,10 +220,12 @@ const Sidebar = function () {
     //     // console.log(models)
     //     setModels(carModels)
     // }
+    console.log(model, "Model")
     const findModel = function (carBrand) {
-        if (!carMake) { return };
-        const models = INITIAL_STATE.make.find(item => item.name === carBrand.name).models
-        return models;
+        if (!carBrand) return;
+        // if (!carMake) { return };
+        const selectedCarModel = INITIAL_STATE.make.find(item => item.name === carBrand.name).models
+        return selectedCarModel;
     }
     // console.log()
 
@@ -255,10 +257,14 @@ const Sidebar = function () {
 
     const onSelectMake = function (event, newValue) {
         setCarMake(newValue)
-        // setModels(findModel(carMake))
+        setModel(findModel(newValue))
+        console.log(model, "KKKK") // Model is set
     }
+    console.log(model, "LKLKL") // Model is set, but doesn't updae the component on the state change
 
     const onSelectModel = function (event, newValue) {
+        console.log("FIREDDDD MODEL", newValue) // Not firing, 
+        console.log(model, "OIOII   ")
         setModel(newValue)
     }
 
@@ -299,8 +305,7 @@ const Sidebar = function () {
                 />
                 <CustomItem
                     label="Model"
-                    // data={findModel(carMake)}
-                    data={INITIAL_STATE.make[0].models}
+                    data={model}
                     onClick={onSelectModel}
                     disabled={carMake === undefined || null}
                 // disabled
