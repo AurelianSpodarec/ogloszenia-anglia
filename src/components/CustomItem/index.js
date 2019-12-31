@@ -19,9 +19,11 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
 
     let [menu, setMenu] = useState(data || []);
 
-
     let [searchQuery, setSearchQuery] = useState();
-    let [selected, setSelected] = useState([]);
+
+    let [selected, setSelected] = useState();
+    let [multiSelected, setMultiSelected] = useState([])
+
     const [menuOpen, setMenuOpen] = useState(false);
 
     const anchorRef = useRef(null);
@@ -31,6 +33,10 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
         setSearchQuery(event.target.value)
         console.log(event.target.value)
     }
+
+    useEffect(() => {
+        setMenu(data)
+    })
 
     useEffect(() => {
         if (searchQuery) {
@@ -60,11 +66,6 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
         }
     }
 
-
-    const onMenuOpen = function () {
-        setMenuOpen(true)
-    }
-
     const onMenuClose = function () {
         setMenuOpen(false)
     }
@@ -79,39 +80,36 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
     }, [menuOpen]);
 
 
-    //TODO: This has a bug when the first element index is 0, it it makes it false, insead of checking if its empty
     let labelValue;
-    // console.log(selected, selected.length === 0)
-    console.log("Selected", selected)
-    if (!multiSelect) {
-        if (selected.length === 0 || selected.length === data.length) {
-            labelValue = "All";
-        } else {
-            labelValue = multiSelect ? shortenWord(selected.join(", "), 20) : selected;
-        }
-    } else {
-        console.log(2, selected)
-        if (selected.lenght === 0) {
+    if (multiSelect) {
+        if (multiSelected.lenght === 0 && multiSelected.lenght === data.lenght) {
             labelValue = "All"
         } else {
-            labelValue = selected
+            labelValue = shortenWord(multiSelected.join(", "), 20);
         }
+    } else {
+        labelValue = selected;
     }
 
+
+
     const onClickMenuItem = (e, value) => {
-        console.log((value))
+        console.log("CLick menu item", value)
         onClick(e, value)
-        if (multiSelect === undefined) {
-            setSelected(value.name || value)
-            onMenuClose()
-        } else {
-            const isSelected = selected.find(item => item === value || item === value.name);
+
+        if (multiSelect) {
+
+            const isSelected = multiSelected.find(item => item === value || item === value.name);
             if (isSelected === value.name || isSelected === value) {
-                setSelected(selected.filter(item => item !== value && item !== value.name))
+                setMultiSelected(multiSelected.filter(item => item !== value && item !== value.name))
             } else {
-                setSelected(selected => [...selected, value.name ? value.name : value])
+                setMultiSelected(multiSelected => [...multiSelected, value.name ? value.name : value])
             }
+
+        } else {
+            setSelected(value.name ? value.name : value)
         }
+
     }
 
 
@@ -148,8 +146,8 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
                             </Box>
                             : null}
                         {/* Put data in search state, up */}
-
-                        {menu && menu.map(item => {
+                        {console.log("MENUUU", menu)}
+                        {menu.map(item => {
                             return (
                                 <Box onClick={(e) => onClickMenuItem(e, item)} value={item.name || item} onKeyDown={onTabPress} className={classes.customItemContent}>
                                     {/* <Box onClick={(e) => onClick(e, item.name)} value="BB"> */}

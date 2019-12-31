@@ -202,6 +202,7 @@ const Sidebar = function () {
     const [postedBy, setPostedBy] = useState();
     // const [models, setModels] = useState([]);
     const [bodyStyle, setBodyStyle] = useState([]);
+    const [transmission, setTransmission] = useState([]);
 
 
     const [year, setYear] = useState([INITIAL_STATE.year[0], INITIAL_STATE.year[1]]);
@@ -278,6 +279,16 @@ const Sidebar = function () {
         }
     }
 
+    const onSelectTransmission = (event, newValue) => {
+        const isSelected = transmission.find(item => item === newValue.name);
+
+        if (isSelected === newValue.name) {
+            setTransmission(transmission.filter(item => item !== newValue.name))
+        } else {
+            setTransmission([...transmission, newValue.name])
+        }
+    }
+
     // const onChangeSlide = function () {
 
     // }
@@ -285,7 +296,6 @@ const Sidebar = function () {
     // const onChangeItem = function () {
 
     // }
-
     return (
         <sidebar className={classes.sidebar} >
 
@@ -308,7 +318,6 @@ const Sidebar = function () {
                     data={model}
                     onClick={onSelectModel}
                     disabled={carMake === undefined || null}
-                // disabled
                 />
                 <CustomSlider
                     // slideBeforeLabel
@@ -343,6 +352,7 @@ const Sidebar = function () {
                 />
                 <CustomItem
                     label="Transmission"
+                    onClick={onSelectTransmission}
                     data={INITIAL_STATE.transmission}
                     multiSelect
                 />

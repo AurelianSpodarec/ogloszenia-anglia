@@ -44,7 +44,7 @@ const CarsView = function () {
 
                 <Grid item sm={12} md={9}>
                     <Grid container>
-                        {data.map(car => {
+                        {data && data.map(car => {
                             return <CarItem key={car._id} car={car} />
                         })}
                     </Grid>
