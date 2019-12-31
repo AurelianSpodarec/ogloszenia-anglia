@@ -107,6 +107,7 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
             }
 
         } else {
+            setMenuOpen(false)
             setSelected(value.name ? value.name : value)
         }
 
@@ -118,7 +119,7 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
         <Box className={[classes.customItem]}>
 
 
-            <Box ref={anchorRef} className={classes.customItemContent} onClick={onToggleMenu}>
+            <Box ref={anchorRef} className={[classes.customItemContent, menuOpen ? classes.customItemContentActive : null]} onClick={onToggleMenu}>
 
                 <Typography className={[classes.itemTitle, disabled ? classes.itemTitleDisabled : null]}>{label}</Typography>
                 <Box className={classes.itemMoreInfo}>
@@ -134,7 +135,7 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
             <Card anchorEl={anchorRef.current} className={classes.customItemMenu} style={{ display: menuOpen ? 'block' : 'none' }}>
                 <ClickAwayListener onClickAway={handleClose}>
                     <Box>
-                        {/* {search ?
+                        {search ?
                             <Box>
                                 <TextField
                                     fullWidth
@@ -144,18 +145,19 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
                                     onChange={onSearch}
                                 />
                             </Box>
-                            : null} */}
+                            : null}
                         {/* Put data in search state, up */}
                         {console.log("MENUUU", menu)}
-                        {menu.map(item => {
-                            return (
-                                <Box onClick={(e) => onClickMenuItem(e, item)} value={item.name || item} onKeyDown={onTabPress} className={classes.customItemContent}>
-                                    {/* <Box onClick={(e) => onClick(e, item.name)} value="BB"> */}
-                                    <Typography>{item.displayName || item}</Typography>
-                                </Box>
-                            )
-                        })}
-
+                        <Box className={classes.customItemMenuContent}>
+                            {menu.map(item => {
+                                return (
+                                    <Box onClick={(e) => onClickMenuItem(e, item)} value={item.name || item} onKeyDown={onTabPress} className={classes.customItemContent}>
+                                        {/* <Box onClick={(e) => onClick(e, item.name)} value="BB"> */}
+                                        <Typography>{item.displayName || item}</Typography>
+                                    </Box>
+                                )
+                            })}
+                        </Box>
                     </Box>
                 </ClickAwayListener>
             </Card>
