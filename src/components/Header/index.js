@@ -40,6 +40,12 @@ const Header = function (props) {
         }
     };
 
+    // React.useEffect(() => {
+    //     if (auth.isAuthenticated) {
+    //         setOpen(false)
+    //     }
+    // })
+
     const handleClose = value => {
         setOpen(false);
         setSelectedValue(value);

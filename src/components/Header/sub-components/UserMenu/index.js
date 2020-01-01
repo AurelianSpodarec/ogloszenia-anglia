@@ -9,54 +9,23 @@ import {
     Divider
 } from '@material-ui/core';
 
+
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import useStyles from './styles';
 
-// import { StyledMenuItem, StyledMenu} from '.'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import { fade, makeStyles, withStyles } from '@material-ui/core/styles';
-import { userLogin, userLogout } from '../../../../services/api/users';
 import { useAuthData } from '../../../../context/AuthContext';
+import CustomMenuItem from '../CustomMenuItem';
 
-const StyledMenu = withStyles({
-    paper: {
-        border: '1px solid #d3d4d5',
-    },
-})(props => (
-    <Menu
-        elevation={0}
-        getContentAnchorEl={null}
-        anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center',
-        }}
-        transformOrigin={{
-            vertical: 'top',
-            horizontal: 'center',
-        }}
-        {...props}
-    />
-));
-
-const StyledMenuItem = withStyles(theme => ({
-    root: {
-        '&:focus': {
-            backgroundColor: theme.palette.primary.main,
-            '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
-                color: theme.palette.common.white,
-            },
-        },
-    },
-}))(MenuItem);
 
 const UserMenu = function ({ props }) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const auth = useAuthData();
-    // console.log("MMMMMMMMMMM", auth.user)
+
     const handleMenu = event => {
         setAnchorEl(event.currentTarget);
     };
@@ -73,45 +42,45 @@ const UserMenu = function ({ props }) {
                     <Avatar alt="Remy Sharp" src="https://yt3.ggpht.com/a/AGF-l7_j2YKzYtvVhpKBVXaxWf6y3K0VUBJA1qZTDw=s900-c-k-c0xffffffff-no-rj-mo" />
                 </div>
             </Box>
-            <StyledMenu
-                id="customized-menu"
+
+            <Menu
                 anchorEl={anchorEl}
                 keepMounted
                 open={Boolean(anchorEl)}
                 onClose={handleMenuClose}
+                elevation={0}
+                getContentAnchorEl={null}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'center', }}
+                transformOrigin={{ vertical: 'top', horizontal: 'center', }}
             >
 
                 {auth.user.role === 'admin' ?
                     <>
-                        <StyledMenuItem>
-                            <ListItemIcon>
-                                <FontAwesomeIcon icon="tachometer-alt" />
-                            </ListItemIcon>
-                            <ListItemText primary="Dashboard" />
-                        </StyledMenuItem>
+                        <CustomMenuItem
+                            label="Dashboard"
+                            icon="tachometer-alt"
+                        />
                         <Divider />
                     </>
                     : null}
-                <StyledMenuItem>
-                    <ListItemIcon>
-                        <FontAwesomeIcon icon="user" />
-                    </ListItemIcon>
-                    <ListItemText primary="My Profile" />
-                </StyledMenuItem>
-                <StyledMenuItem>
-                    <ListItemIcon>
-                        <FontAwesomeIcon icon="cog" />
-                    </ListItemIcon>
-                    <ListItemText primary="Settings" />
-                </StyledMenuItem>
+                <CustomMenuItem
+                    label="My Profile"
+                    icon="user"
+                />
+                <CustomMenuItem
+                    label="Settings"
+                    icon="cog"
+                // onClick={() => auth.methods.logout()}
+                />
+
                 <Divider />
-                <StyledMenuItem onClick={() => auth.methods.logout()}>
-                    <ListItemIcon>
-                        <FontAwesomeIcon icon="sign-out-alt" />
-                    </ListItemIcon>
-                    <ListItemText primary="Logout" />
-                </StyledMenuItem>
-            </StyledMenu>
+                <CustomMenuItem
+                    label="Logout"
+                    icon="sign-out-alt"
+                    onClick={() => auth.methods.logout()}
+                />
+
+            </Menu>
         </>
     )
 }
