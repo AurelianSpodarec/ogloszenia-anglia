@@ -18,6 +18,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { fade, makeStyles, withStyles } from '@material-ui/core/styles';
 import { userLogin, userLogout } from '../../../../services/api/users';
+import { useAuthData } from '../../../../context/AuthContext';
 
 const StyledMenu = withStyles({
     paper: {
@@ -50,9 +51,12 @@ const StyledMenuItem = withStyles(theme => ({
     },
 }))(MenuItem);
 
-const UserMenu = function () {
+const UserMenu = function ({ props }) {
     // const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const user = useAuthData().authData.user;
+    const userFun = useAuthData()
+    // const isAuth = userAuthData().isAuthenticated;
 
     const handleMenu = event => {
         setAnchorEl(event.currentTarget);
@@ -66,6 +70,7 @@ const UserMenu = function () {
         <>
             <Box onClick={handleMenu}>
                 <div>
+                    <Typography>{user.firstName}</Typography>
                     <Avatar alt="Remy Sharp" src="https://yt3.ggpht.com/a/AGF-l7_j2YKzYtvVhpKBVXaxWf6y3K0VUBJA1qZTDw=s900-c-k-c0xffffffff-no-rj-mo" />
                 </div>
             </Box>
@@ -76,17 +81,17 @@ const UserMenu = function () {
                 open={Boolean(anchorEl)}
                 onClose={handleMenuClose}
             >
-                {/* START IS ADMIN */}
-                {/* {user.role === 'admin' ? } */}
-                <StyledMenuItem>
-                    <ListItemIcon>
-                        <FontAwesomeIcon icon="tachometer-alt" />
-                    </ListItemIcon>
-                    <ListItemText primary="Dashboard" />
-                </StyledMenuItem>
-                <Divider />
-                {/* // : } */}
-                {/* END IS ADMIN */}
+
+                {user.role === 'admin' ?
+                    <>
+                        <StyledMenuItem>
+                            <ListItemIcon>
+                                <FontAwesomeIcon icon="tachometer-alt" />
+                            </ListItemIcon>
+                            <ListItemText primary="Dashboard" />
+                        </StyledMenuItem>
+                        <Divider />
+                    </> : null}
                 <StyledMenuItem>
                     <ListItemIcon>
                         <FontAwesomeIcon icon="user" />
@@ -100,7 +105,7 @@ const UserMenu = function () {
                     <ListItemText primary="Settings" />
                 </StyledMenuItem>
                 <Divider />
-                <StyledMenuItem onClick={() => userLogout()}>
+                <StyledMenuItem onClick={() => userFun.logout()}>
                     <ListItemIcon>
                         <FontAwesomeIcon icon="sign-out-alt" />
                     </ListItemIcon>

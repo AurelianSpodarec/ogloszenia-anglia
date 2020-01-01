@@ -19,11 +19,14 @@ import { INITIAL_STATE } from './menu';
 const Sidebar = function () {
     const classes = useStyles();
 
+    const [models, setModels] = useState([])
+
+
+
+    const [postedBy, setPostedBy] = useState();
     const [carMake, setCarMake] = useState();
     const [model, setModel] = useState();
-    const [models, setModels] = useState([])
-    const [postedBy, setPostedBy] = useState();
-    // const [models, setModels] = useState([]);
+
     const [bodyStyle, setBodyStyle] = useState([]);
     const [transmission, setTransmission] = useState([]);
 
@@ -32,27 +35,25 @@ const Sidebar = function () {
     const [mileage, setMileage] = useState([INITIAL_STATE.mileage[0], INITIAL_STATE.mileage[1]]);
     const [seats, setSeats] = useState([INITIAL_STATE.seats[0], INITIAL_STATE.seats[1]]);
 
+    const [state, setState] = useState({
+        make: 'all',
+        model: 'all',
+        postedBy: 'all'
+    });
+
+
     // const [state, setState] = useState({
     //     year: [1960, 2020],
     //     mileage: [0, 300000],
     //     seats: [1, 9]
     // })
 
-    // const findModel = function (brandName) {
-    //     const make = INITIAL_STATE.make.map(item => item.name === brandName);
-    //     const carModels = make.models
-    //     // console.log(models)
-    //     setModels(carModels)
-    // }
-    console.log(model, "Model")
     const findModel = function (carBrand) {
         if (!carBrand) return;
         // if (!carMake) { return };
         const selectedCarModel = INITIAL_STATE.make.find(item => item.name === carBrand.name).models
         return selectedCarModel;
     }
-    console.log(bodyStyle, carMake, model)
-    // console.log()
 
     // const handleChange = e => {
     //     const { name, value } = e.target

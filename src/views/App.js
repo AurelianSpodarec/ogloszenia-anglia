@@ -41,20 +41,15 @@ const theme = createMuiTheme({
 
 function Layout(props) {
     const authContext = useAuthData()
+
     return (
 
         <ThemeProvider theme={theme}>
-            {console.log(authContext.authData.name, "sdsdsddss")}
-            {authContext.user}
 
             <Header />
-            {authContext.authData.isAuthenticated ? "Logged" : "No"}
-            {console.log("adsd", authContext.user)}
-            {/* {!authContext.authData.data.data.user.email ? "Hsd" : authContext.authData.data.data.user.email} */}
             <div>
                 <Category />
             </div>
-
             <Footer />
 
         </ThemeProvider>

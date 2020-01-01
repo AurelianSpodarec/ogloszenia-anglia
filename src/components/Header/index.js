@@ -20,6 +20,7 @@ import { withStyles } from '@material-ui/core/styles';
 import UserMenu from './sub-components/UserMenu'
 import AuthDialog from '../AuthDialog';
 import useStyles from './styles'
+import { useAuthData } from '../../context/AuthContext';
 
 
 const Header = function (props) {
@@ -27,6 +28,8 @@ const Header = function (props) {
     const [open, setOpen] = React.useState(false);
     const [selectedValue, setSelectedValue] = React.useState();
     const [isLogged, setIsLogged] = React.useState(true)
+
+    const authContext = useAuthData();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -67,18 +70,18 @@ const Header = function (props) {
                         <FontAwesomeIcon icon="bullhorn" />
                         <Typography>Add Listing</Typography>
                     </Button>
-                    {/* 
-                    {isLogged ?
-                        <> */}
-                    <span>Username: {props.value ? "SDSD" : "sdsd"}</span>
-                    {/* <UserMenu /> :
-                        </>
-                        <>
-                            <Button onClick={handleClickOpen} color="inherit">Log In</Button>
-                            <Button onClick={handleClickOpen} color="inherit">Sign Up</Button>
-                        </>
-                    } */}
-                    {/* </Box> */}
+
+                    <Box>
+                        {authContext.authData.isAuthenticated ?
+
+                            <UserMenu /> :
+
+                            <>
+                                <Button onClick={handleClickOpen} color="inherit">Log In</Button>
+                                <Button onClick={handleClickOpen} color="inherit">Sign Up</Button>
+                            </>
+                        }
+                    </Box>
 
 
                 </Toolbar>

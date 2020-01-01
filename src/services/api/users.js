@@ -16,6 +16,19 @@ const userLogin = async (data) => {
     }
 }
 
+const isLoggedIn = async () => {
+    const res = await axios.get('http://localhost:3001/api/v1/isLoggedIn')
+    // .then(res => {
+    //     if (res.data.isLogged === true) {
+    //         return res;
+    //     } else {
+    //         return res;
+    //     }
+    // })
+    console.log(res)
+    return res;
+}
+
 const userLogout = async () => {
     try {
         const res = await axios.get('http://localhost:3001/api/v1/user/logout')
@@ -44,5 +57,6 @@ export {
     userLogin,
     userRegister,
     userLogout,
-    getUsers
+    getUsers,
+    isLoggedIn
 }
