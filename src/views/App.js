@@ -24,8 +24,6 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import './Layout.css';
 import { AuthProvider, useAuthData } from '../context/AuthContext';
-// import { AuthProvider, useAuthData } from './../context/AuthContex';
-
 
 const theme = createMuiTheme({
     typography: {

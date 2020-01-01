@@ -3,7 +3,6 @@ import axios from 'axios';
 
 axios.defaults.withCredentials = true
 
-
 const getCars = async () => {
     try {
         const res = await axios.get(`${config.apiUrl}cars`)
@@ -20,6 +19,14 @@ const getCarById = async (id) => {
     } catch (err) {
         console.log("Car", err)
     }
+}
+
+const createCar = async (car) => {
+
+}
+
+const deleteCar = async (id) => {
+
 }
 
 export {
