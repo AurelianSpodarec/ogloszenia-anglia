@@ -1,30 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useStyles from './styles';
-import axios from 'axios';
 import {
-    Container,
     Grid,
-    Typography,
     Box,
-    AppBar,
-    Toolbar,
     Button,
-    InputBase,
-    Dialog,
-    DialogTitle,
-    CardMedia,
-    Input,
     TextField,
     InputLabel,
-    IconButton,
-    InputAdornment,
     FormControl,
-    FilledInput
 } from '@material-ui/core';
 
 import { useForm } from '../../../../hooks';
-import { userLogin } from '../../../../services/api/users';
 import PasswordInput from './../../../PasswordInput/PasswordInput';
 import { AuthProvider, useAuthData } from '../../../../context/AuthContext';
 
@@ -36,13 +22,13 @@ const INITIAL_STATE = {
 const AuthLoginView = ({ setView }) => {
     const classes = useStyles();
     const { handleChange, handleSubmit, values } = useForm(submit, INITIAL_STATE);
+
     const { login } = useAuthData()
 
     async function submit() {
-        // const data = await userLogin({ "email": values.email, "password": values.password })
         login({ "email": values.email, "password": values.password })
-        // console.log("MMMMMMMMMMMMMMUSER", a)
     }
+
     return (
         <Box>
             <form onSubmit={handleSubmit} noValidate autoComplete="off">

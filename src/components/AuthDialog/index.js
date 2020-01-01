@@ -108,5 +108,5 @@ export default AuthDialog;
 AuthDialog.propTypes = {
     onClose: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired,
-    selectedValue: PropTypes.string.isRequired,
+    selectedValue: PropTypes.string,
 };

@@ -118,15 +118,14 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
 
     }
 
-
     return (
 
-        <Box className={[classes.customItem]}>
+        <Box className={classes.customItem}>
 
 
-            <Box ref={anchorRef} className={[classes.customItemContent, menuOpen ? classes.customItemContentActive : null]} onClick={onToggleMenu}>
+            <Box ref={anchorRef} className={[classes.customItemContent, menuOpen ? classes.customItemContentActive : null].join(" ")} onClick={onToggleMenu}>
 
-                <Typography className={[classes.itemTitle, disabled ? classes.itemTitleDisabled : null]}>{label}</Typography>
+                <Typography className={[classes.itemTitle, disabled ? classes.itemTitleDisabled : null].join(" ")}>{label}</Typography>
                 <Box className={classes.itemMoreInfo}>
                     {disabled ? null :
                         <Typography>{labelValue}</Typography>
@@ -137,7 +136,7 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
                 </Box>
 
             </Box>
-            <Card anchorEl={anchorRef.current} className={classes.customItemMenu} style={{ display: menuOpen ? 'block' : 'none' }}>
+            <Card anchorel={anchorRef.current} className={classes.customItemMenu} style={{ display: menuOpen ? 'block' : 'none' }}>
                 <ClickAwayListener onClickAway={handleClose}>
                     <Box>
                         {search ?
@@ -155,7 +154,7 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
                         <Box className={classes.customItemMenuContent}>
                             {menu.map(item => {
                                 return (
-                                    <Box onClick={(e) => onClickMenuItem(e, item)} onKeyDown={onTabPress} className={classes.customItemContent}>
+                                    <Box key={item.slug} onClick={(e) => onClickMenuItem(e, item)} onKeyDown={onTabPress} className={classes.customItemContent}>
                                         {/* <Box onClick={(e) => onClick(e, item.name)} value="BB"> */}
                                         <Typography>{item.displayName || item}</Typography>
                                     </Box>

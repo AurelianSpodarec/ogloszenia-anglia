@@ -54,8 +54,8 @@ const StyledMenuItem = withStyles(theme => ({
 const UserMenu = function ({ props }) {
     // const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const user = useAuthData().authData.user;
-    const userFun = useAuthData()
+    const user = useAuthData();
+    // const userFun = useAuthData()
     // const isAuth = userAuthData().isAuthenticated;
 
     const handleMenu = event => {
@@ -70,7 +70,7 @@ const UserMenu = function ({ props }) {
         <>
             <Box onClick={handleMenu}>
                 <div>
-                    <Typography>{user.firstName}</Typography>
+                    {/* <Typography>{user.firstName}</Typography> */}
                     <Avatar alt="Remy Sharp" src="https://yt3.ggpht.com/a/AGF-l7_j2YKzYtvVhpKBVXaxWf6y3K0VUBJA1qZTDw=s900-c-k-c0xffffffff-no-rj-mo" />
                 </div>
             </Box>
@@ -82,16 +82,17 @@ const UserMenu = function ({ props }) {
                 onClose={handleMenuClose}
             >
 
-                {user.role === 'admin' ?
-                    <>
-                        <StyledMenuItem>
-                            <ListItemIcon>
-                                <FontAwesomeIcon icon="tachometer-alt" />
-                            </ListItemIcon>
-                            <ListItemText primary="Dashboard" />
-                        </StyledMenuItem>
-                        <Divider />
-                    </> : null}
+                {/* {user.role === 'admin' ? */}
+                <>
+                    <StyledMenuItem>
+                        <ListItemIcon>
+                            <FontAwesomeIcon icon="tachometer-alt" />
+                        </ListItemIcon>
+                        <ListItemText primary="Dashboard" />
+                    </StyledMenuItem>
+                    <Divider />
+                </>
+                {/* : null} */}
                 <StyledMenuItem>
                     <ListItemIcon>
                         <FontAwesomeIcon icon="user" />
@@ -105,7 +106,8 @@ const UserMenu = function ({ props }) {
                     <ListItemText primary="Settings" />
                 </StyledMenuItem>
                 <Divider />
-                <StyledMenuItem onClick={() => userFun.logout()}>
+                {/* <StyledMenuItem onClick={() => userFun.logout()}> */}
+                <StyledMenuItem>
                     <ListItemIcon>
                         <FontAwesomeIcon icon="sign-out-alt" />
                     </ListItemIcon>

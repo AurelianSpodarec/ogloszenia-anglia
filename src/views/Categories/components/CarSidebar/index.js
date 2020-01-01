@@ -1,22 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import React, { useState } from 'react';
 import {
-    Grid,
     Card,
-    Typography,
-    Container,
-    Tooltip,
     Button,
     Divider,
     Box,
 } from '@material-ui/core';
 import useStyles from './styles';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CustomItem, CustomSlider } from '../../../../components';
 
 import { INITIAL_STATE } from './menu';
 
-const Sidebar = function () {
+const CarSidebar = function () {
     const classes = useStyles();
 
     const [models, setModels] = useState([])
@@ -35,25 +29,11 @@ const Sidebar = function () {
     const [mileage, setMileage] = useState([INITIAL_STATE.mileage[0], INITIAL_STATE.mileage[1]]);
     const [seats, setSeats] = useState([INITIAL_STATE.seats[0], INITIAL_STATE.seats[1]]);
 
-    const [state, setState] = useState({
-        make: 'all',
-        model: 'all',
-        postedBy: 'all'
-    });
 
-
-    // const [state, setState] = useState({
-    //     year: [1960, 2020],
-    //     mileage: [0, 300000],
-    //     seats: [1, 9]
-    // })
-
-    const findModel = function (carBrand) {
-        if (!carBrand) return;
-        // if (!carMake) { return };
-        const selectedCarModel = INITIAL_STATE.make.find(item => item.name === carBrand.name).models
-        return selectedCarModel;
+    function submit() {
+        // TODO: Take the values and form it into a URL to query the database
     }
+
 
     // const handleChange = e => {
     //     const { name, value } = e.target
@@ -63,8 +43,18 @@ const Sidebar = function () {
     //         [name]: value
     //     }))
     // }
-    // console.log(state, state.year)
 
+
+    // const [state, setState] = useState({
+    //     make: 'all',
+    //     model: 'all',
+    //     postedBy: 'all',
+    //     year: [1960, 2020],
+    //     mileage: [0, 300000],
+    //     seats: [1, 9]
+    // });
+
+    //TODO: Refactor this into something that is like above maybe
     const onYearChange = function (event, newValues) {
         setYear(newValues)
     }
@@ -101,13 +91,20 @@ const Sidebar = function () {
     }
 
     const onSelectTransmission = (event, newValue) => {
-        const isSelected = transmission.find(item => item === newValue.name);
+        const isSelected = transmission.find(item => item === newValue);
 
-        if (isSelected === newValue.name) {
-            setTransmission(transmission.filter(item => item !== newValue.name))
+        if (isSelected) {
+            setTransmission(transmission.filter(item => item !== newValue))
         } else {
-            setTransmission([...transmission, newValue.name])
+            setTransmission([...transmission, newValue])
         }
+    }
+
+    const findModel = function (carBrand) {
+        if (!carBrand) return;
+        // if (!carMake) { return };
+        const selectedCarModel = INITIAL_STATE.make.find(item => item.name === carBrand.name).models
+        return selectedCarModel;
     }
 
     // const onChangeSlide = function () {
@@ -119,7 +116,8 @@ const Sidebar = function () {
     // }
 
     return (
-        <sidebar className={classes.sidebar} >
+
+        <Box className={classes.sidebar} >
 
             <Card className={classes.sidebarInner}>
 
@@ -208,8 +206,8 @@ const Sidebar = function () {
                     <Button fullWidth variant="contained" color="secondary">Save filters</Button>
                 </Box>
             </Card>
-        </sidebar >
+        </Box>
     )
 }
 
-export default Sidebar;
+export default CarSidebar;

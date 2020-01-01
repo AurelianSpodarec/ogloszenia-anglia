@@ -29,7 +29,8 @@ const Header = function (props) {
     const [selectedValue, setSelectedValue] = React.useState();
     const [isLogged, setIsLogged] = React.useState(true)
 
-    const authContext = useAuthData();
+    const auth = useAuthData();
+    console.log("SDSDSDSS", auth)
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -39,7 +40,6 @@ const Header = function (props) {
         setOpen(false);
         setSelectedValue(value);
     };
-    // console.log(authProps)
     return (
         <>
             <AppBar className={classes.header}>
@@ -72,7 +72,7 @@ const Header = function (props) {
                     </Button>
 
                     <Box>
-                        {authContext.authData.isAuthenticated ?
+                        {auth.isAuthenticated ?
 
                             <UserMenu /> :
 
@@ -80,7 +80,7 @@ const Header = function (props) {
                                 <Button onClick={handleClickOpen} color="inherit">Log In</Button>
                                 <Button onClick={handleClickOpen} color="inherit">Sign Up</Button>
                             </>
-                        }
+                        } }
                     </Box>
 
 

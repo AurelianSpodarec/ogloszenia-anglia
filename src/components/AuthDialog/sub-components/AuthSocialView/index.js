@@ -1,30 +1,11 @@
-import React, { useState } from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useStyles from './styles';
 import {
-    Container,
-    Grid,
     Typography,
     Box,
-    AppBar,
-    Toolbar,
-    Button,
-    InputBase,
-    Dialog,
-    DialogTitle,
-    CardMedia,
-    Input,
-    TextField,
-    InputLabel,
-    IconButton,
-    InputAdornment,
-    FormControl
+    Button
 } from '@material-ui/core';
-import clsx from 'clsx';
-
 
 const AuthSocialView = ({ setView }) => {
     const classes = useStyles();

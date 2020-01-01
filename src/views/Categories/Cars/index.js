@@ -18,7 +18,7 @@ import CarItem from './sub-components/CarItem/';
 import { getCars, getCarById } from './../../../services/api/categories/car';
 import useStyles from './styles'
 import axios from 'axios';
-import Sidebar from '../components/Sidebar';
+import CarSidebar from '../components/CarSidebar';
 import PageTitle from '../components/Title';
 
 const CarsView = function () {
@@ -39,7 +39,7 @@ const CarsView = function () {
             <Grid container spacing={3}>
 
                 <Grid item sm={12} md={3}>
-                    <Sidebar />
+                    <CarSidebar />
                 </Grid>
 
                 <Grid item sm={12} md={9}>

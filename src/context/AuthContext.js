@@ -1,4 +1,4 @@
-import React, { createContext, useContext, Component, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 
 import { userLogin, isLoggedIn, userLogout } from '../services/api/users';
 
@@ -6,8 +6,16 @@ import { userLogin, isLoggedIn, userLogout } from '../services/api/users';
 const AuthContext = createContext();
 
 function useAuthData() {
-    console.log("USE AUTH DATA", useContext(AuthContext))
-    return useContext(AuthContext);
+
+    const context = useContext(AuthContext);
+
+    const a = {
+        "user": context.authData.user,
+        "isAuthenticated": context.isAuthenticated,
+        "methods": context
+    }
+    console.log(a, "sds")
+    return a;
 }
 
 function AuthProvider({ children }) {
@@ -17,7 +25,6 @@ function AuthProvider({ children }) {
             isAuthenticated: false
         }
     );
-    const [checkUser, setCheckUser] = useState(false)
 
     const isLogged = async function () {
         const data = await isLoggedIn();
@@ -30,15 +37,9 @@ function AuthProvider({ children }) {
         }
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         isLogged()
     }, [])
-
-    // if(!isAuthenticated) {
-    //     isLogged()
-    // } else {
-
-    // }
 
     const authProps = {
         authData,
@@ -46,13 +47,10 @@ function AuthProvider({ children }) {
             const data = await userLogin(username, password);
 
             if (data.status === 200) {
-                console.log("SDSDSDS", data.data.data.user)
-                // setAuthData({ isAuthenticated: true })
                 setAuthData({ user: data.data.data.user, isAuthenticated: true });
             } else {
                 setAuthData({ user: {}, isAuthenticated: false })
             }
-            console.log("AuthProv", data)
         },
         logout() {
             userLogout()
