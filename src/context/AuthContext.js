@@ -11,7 +11,7 @@ function useAuthData() {
 
     const a = {
         "user": context.authData.user,
-        "isAuthenticated": context.isAuthenticated,
+        "isAuthenticated": context.authData.isAuthenticated,
         "methods": context
     }
     console.log(a, "sds")

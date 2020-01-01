@@ -23,10 +23,10 @@ const AuthLoginView = ({ setView }) => {
     const classes = useStyles();
     const { handleChange, handleSubmit, values } = useForm(submit, INITIAL_STATE);
 
-    const { login } = useAuthData()
+    const auth = useAuthData()
 
     async function submit() {
-        login({ "email": values.email, "password": values.password })
+        auth.methods.login({ "email": values.email, "password": values.password })
     }
 
     return (

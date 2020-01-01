@@ -30,16 +30,21 @@ const Header = function (props) {
     const [isLogged, setIsLogged] = React.useState(true)
 
     const auth = useAuthData();
-    console.log("SDSDSDSS", auth)
 
     const handleClickOpen = () => {
-        setOpen(true);
+        if (auth.isAuthenticated) {
+            // Redirect to a create page to add listing
+            console.log("Open Add Listing")
+        } else {
+            setOpen(true);
+        }
     };
 
     const handleClose = value => {
         setOpen(false);
         setSelectedValue(value);
     };
+
     return (
         <>
             <AppBar className={classes.header}>
@@ -73,14 +78,12 @@ const Header = function (props) {
 
                     <Box>
                         {auth.isAuthenticated ?
-
                             <UserMenu /> :
-
                             <>
                                 <Button onClick={handleClickOpen} color="inherit">Log In</Button>
                                 <Button onClick={handleClickOpen} color="inherit">Sign Up</Button>
                             </>
-                        } }
+                        }
                     </Box>
 
 
