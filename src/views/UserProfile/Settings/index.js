@@ -5,12 +5,6 @@ import {
     Grid,
     Typography,
     Box,
-    AppBar,
-    Toolbar,
-    Button,
-    InputBase,
-    Avatar,
-    Divider
 } from '@material-ui/core';
 
 import useStyles from './styles'
@@ -18,8 +12,9 @@ import useStyles from './styles'
 
 const Settings = function (props) {
     const classes = useStyles();
+
     return (
-        <Box>
+        <Box className={classes.box}>
             <Typography>SETTINGS</Typography>
         </Box>
     )

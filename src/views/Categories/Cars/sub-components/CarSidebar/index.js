@@ -6,7 +6,7 @@ import {
     Box,
 } from '@material-ui/core';
 import useStyles from './styles';
-import { CustomItem, CustomSlider } from '../../../../components';
+import { CustomItem, CustomSlider } from '../../../../../components';
 
 import { INITIAL_STATE } from './menu';
 

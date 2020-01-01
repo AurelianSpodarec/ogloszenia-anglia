@@ -18,7 +18,7 @@ import CarItem from './sub-components/CarItem/';
 import { getCars, getCarById } from './../../../services/api/categories/car';
 import useStyles from './styles'
 import axios from 'axios';
-import CarSidebar from '../components/CarSidebar';
+import CarSidebar from './sub-components/CarSidebar';
 import PageTitle from '../components/Title';
 
 const CarsView = function () {

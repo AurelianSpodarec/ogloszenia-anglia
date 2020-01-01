@@ -1,16 +1,23 @@
 import React from 'react';
 
+import {
+    Container,
+    Grid,
+    Typography,
+    Box,
+} from '@material-ui/core';
 
-// import useStyles from './styles'
+import useStyles from './styles'
 
-const DefaultView = function () {
-    // const classes = useStyles();
+
+const Default = function (props) {
+    const classes = useStyles();
 
     return (
-        <div>
-            <h1>Default</h1>
-        </div>
+        <Box className={classes.box}>
+            <Typography>Default</Typography>
+        </Box>
     )
 }
 
-export default DefaultView;
+export default Default;
