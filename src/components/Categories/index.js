@@ -157,7 +157,7 @@ function Category() {
                 })}
             </Grid>
             <Switch>
-                <Route path="/" component={AddListing} />
+                <Route exact path="/" component={AddListing} />
                 <Route exact path="/cars" component={CarsView} />
                 <Route path={`/cars/:id`} component={CarView} />
 

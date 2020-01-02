@@ -26,12 +26,22 @@ const useStyles = makeStyles(theme => ({
     logo: {
         color: "green"
     },
+
+
     listingButton: {
         display: 'none',
         [theme.breakpoints.up('md')]: {
             display: 'flex'
         }
     },
+    listingButtonIcon: {
+
+    },
+    listingButtonName: {
+        marginLeft: '8px'
+    },
+
+
     search: {
         position: 'relative',
         flex: 1,
@@ -59,6 +69,7 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        color: 'grey',
     },
     inputRoot: {
         color: 'inherit',
@@ -67,7 +78,12 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(1, 1, 1, 7),
         transition: theme.transitions.create('width'),
         width: '100%',
+        color: 'grey'
     },
+
+
+
+
     grow: {
         flexGrow: 1,
     },

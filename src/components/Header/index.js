@@ -63,6 +63,7 @@ const Header = function (props) {
                             <FontAwesomeIcon icon="search" />
                         </Box>
                         <InputBase
+                            fullWidth
                             placeholder="Search…"
                             classes={{
                                 root: classes.inputRoot,
@@ -77,8 +78,8 @@ const Header = function (props) {
                     </Box>
 
                     <Button className={classes.listingButton} onClick={handleClickOpen} variant="contained" color="secondary">
-                        <FontAwesomeIcon icon="bullhorn" />
-                        <Typography>Add Listing</Typography>
+                        <FontAwesomeIcon className={classes.listingButtonIcon} icon="bullhorn" />
+                        <Typography className={classes.listingButtonName}>Add Listing</Typography>
                     </Button>
 
                     <Box>

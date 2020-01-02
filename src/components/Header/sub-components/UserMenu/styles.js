@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
         marginLeft: '10px'
     },
     userInfoName: {
-
+        marginRight: '4px'
     },
     userInfoAvatar: {
 
