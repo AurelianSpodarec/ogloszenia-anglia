@@ -16,6 +16,18 @@ const Settings = function (props) {
     return (
         <Box className={classes.box}>
             <Typography>SETTINGS</Typography>
+
+            <Box>
+
+                <Box>
+                    <Typography>Password</Typography>
+                </Box>
+
+                <Box>
+                    Here change your password
+                </Box>
+
+            </Box>
         </Box>
     )
 }

@@ -21,13 +21,13 @@ const getCarById = async (id) => {
     }
 }
 
-const createCar = async (car) => {
+// const createCar = async (car) => {
 
-}
+// }
 
-const deleteCar = async (id) => {
+// const deleteCar = async (id) => {
 
-}
+// }
 
 export {
     getCars,

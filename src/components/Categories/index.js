@@ -20,6 +20,7 @@ import DefaultView from '../../views/Categories/Default';
 import CarView from '../../views/Categories/Cars/sub-components/CarView';
 
 import useStyles from './styles'
+import AddListing from '../../views/AddListing';
 const router = {
     menu: [
         {
@@ -155,8 +156,8 @@ function Category() {
                     />
                 })}
             </Grid>
-
             <Switch>
+                <Route path="/" component={AddListing} />
                 <Route exact path="/cars" component={CarsView} />
                 <Route path={`/cars/:id`} component={CarView} />
 
@@ -169,7 +170,8 @@ function Category() {
                 <Route path="/events" component={DefaultView} />
                 <Route path="/others" component={DefaultView} />
                 <Route path="/services-jobs" component={DefaultView} />
-                <Route component={NotFound} />
+
+                <Route path="*" component={NotFound} />
             </Switch>
         </Router>
     )
