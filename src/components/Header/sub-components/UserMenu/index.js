@@ -36,11 +36,9 @@ const UserMenu = function ({ props }) {
 
     return (
         <>
-            <Box onClick={handleMenu}>
-                <div className={classes.menuIconWrap}>
-                    <Typography>{auth.user.firstName}</Typography>
-                    <Avatar alt="Remy Sharp" src="https://yt3.ggpht.com/a/AGF-l7_j2YKzYtvVhpKBVXaxWf6y3K0VUBJA1qZTDw=s900-c-k-c0xffffffff-no-rj-mo" />
-                </div>
+            <Box className={classes.userInfo} onClick={handleMenu}>
+                <Typography className={classes.userInfoName}>{auth.user.firstName}</Typography>
+                <Avatar className={classes.userInfoAvatar} alt="Remy Sharp" src="https://yt3.ggpht.com/a/AGF-l7_j2YKzYtvVhpKBVXaxWf6y3K0VUBJA1qZTDw=s900-c-k-c0xffffffff-no-rj-mo" />
             </Box>
 
             <Menu

@@ -5,10 +5,17 @@ import Menu from '@material-ui/core/Menu';
 
 
 const useStyles = makeStyles(theme => ({
-    menuIconWrap: {
+    userInfo: {
         display: 'flex',
         color: 'black',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginLeft: '10px'
+    },
+    userInfoName: {
+
+    },
+    userInfoAvatar: {
+
     }
 }));
 

@@ -5,6 +5,9 @@ const useStyles = makeStyles(theme => ({
         // backgroundColor: "#000",
         // width: '300px',
         // height: '300px',
+    },
+    customTextAreaLimit: {
+        textAlign: 'right'
     }
 }));
 

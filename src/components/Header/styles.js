@@ -6,7 +6,7 @@ const useStyles = makeStyles(theme => ({
         borderBottom: '1px sold grey',
     },
     logoText: {
-        color: 'orange',
+        color: 'black',
         fontSize: '1.6em',
         fontWeight: 'bold'
     },

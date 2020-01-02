@@ -56,7 +56,7 @@ const Header = function (props) {
             <AppBar className={classes.header}>
                 <Toolbar>
 
-                    <Typography className={classes.logoText}>Logoszh</Typography>
+                    <Typography className={classes.logoText}>BUBA</Typography>
 
                     <Box className={classes.search}>
                         <Box className={classes.searchIcon}>
@@ -76,7 +76,6 @@ const Header = function (props) {
                         <FontAwesomeIcon icon="sliders-h" />
                     </Box>
 
-                    {/* <Box className={classes.grow, classes.userSection}> */}
                     <Button className={classes.listingButton} onClick={handleClickOpen} variant="contained" color="secondary">
                         <FontAwesomeIcon icon="bullhorn" />
                         <Typography>Add Listing</Typography>
