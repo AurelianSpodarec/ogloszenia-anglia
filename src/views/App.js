@@ -70,6 +70,7 @@ const styles = theme => ({
             height: "100%",
             margin: '0',
             padding: '64px 0 0 0',
+            background: '#f1f1f1',
         },
 
     }

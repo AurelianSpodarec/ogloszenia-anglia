@@ -21,22 +21,27 @@ import UserMenu from './sub-components/UserMenu'
 import AuthDialog from '../AuthDialog';
 import useStyles from './styles'
 import { useAuthData } from '../../context/AuthContext';
+import AddListing from '../../views/AddListing';
 
 
 const Header = function (props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
+    const [selectedListingValues, setSelectedListingValues] = React.useState();
     const [selectedValue, setSelectedValue] = React.useState();
     const [isLogged, setIsLogged] = React.useState(true)
+
+    const [openListing, setOpenListing] = React.useState(false);
 
     const auth = useAuthData();
 
     const handleClickOpen = () => {
         if (auth.isAuthenticated) {
-            // Redirect to a create page to add listing
             console.log("Open Add Listing")
+            // setOpenListing(true)
         } else {
             setOpen(true);
+            console.log("open 3 ")
         }
     };
 
@@ -45,10 +50,20 @@ const Header = function (props) {
     //         setOpen(false)
     //     }
     // })
+    console.log('ope 3')
+
+    const onCloseListing = value => {
+        // set
+        // setOpenListing(value);
+    }
+
+    const onOpenListing = value => {
+        // setOpenListing(true);
+    }
 
     const handleClose = value => {
         setOpen(false);
-        setSelectedValue(value);
+        // setSelectedValue(false);
     };
 
     return (
@@ -101,6 +116,8 @@ const Header = function (props) {
             </AppBar>
 
             <AuthDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
+            <AddListing selectedValue={openListing} open={onOpenListing} onClose={onCloseListing} />
+
 
         </>
     )

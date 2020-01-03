@@ -24,6 +24,7 @@ import CarView from '../../views/Categories/Cars/sub-components/CarView';
 import useStyles from './styles'
 import AddListing from '../../views/AddListing';
 import Profile from '../../views/UserProfile/Profile';
+import Settings from '../../views/UserProfile/Settings';
 const router = {
     menu: [
         {
@@ -160,7 +161,7 @@ function Category() {
                 })} */}
             </Grid>
             <Switch>
-                <Route exact path="/" component={AddListing} />
+                {/* <Route exact path="/" component={AddListing} /> */}
                 <Route exact path="/cars" component={CarsView} />
                 <Route path={`/cars/:id`} component={CarView} />
 
@@ -174,8 +175,9 @@ function Category() {
                 <Route path="/others" component={DefaultView} />
                 <Route path="/services-jobs" component={DefaultView} />
 
+                <Route path="/addlisting" component={AddListing} />
                 <Route path="/myprofile" component={Profile} />
-                <Route path="/settings" component={DefaultView} />
+                <Route path="/settings" component={Settings} />
 
                 <Route path="*" component={NotFound} />
             </Switch>
