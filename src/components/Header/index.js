@@ -54,46 +54,50 @@ const Header = function (props) {
     return (
         <>
             <AppBar className={classes.header}>
-                <Toolbar>
+                <Container maxWidth="xl">
 
-                    <Typography className={classes.logoText}>BUBA</Typography>
+                    <Toolbar disableGutters>
 
-                    <Box className={classes.search}>
-                        <Box className={classes.searchIcon}>
-                            <FontAwesomeIcon icon="search" />
+                        <Typography className={classes.logoText}>BUBA</Typography>
+
+                        <Box className={classes.search}>
+                            <Box className={classes.searchIcon}>
+                                <FontAwesomeIcon icon="search" />
+                            </Box>
+                            <InputBase
+                                fullWidth
+                                placeholder="Search…"
+                                classes={{
+                                    root: classes.inputRoot,
+                                    input: classes.inputInput,
+                                }}
+                                inputProps={{ 'aria-label': 'search' }}
+                            />
                         </Box>
-                        <InputBase
-                            fullWidth
-                            placeholder="Search…"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </Box>
 
-                    <Box className={classes.mobileMenuToggle}>
-                        <FontAwesomeIcon icon="sliders-h" />
-                    </Box>
+                        <Box className={classes.mobileMenuToggle}>
+                            <FontAwesomeIcon icon="sliders-h" />
+                        </Box>
 
-                    <Button className={classes.listingButton} onClick={handleClickOpen} variant="contained" color="secondary">
-                        <FontAwesomeIcon className={classes.listingButtonIcon} icon="bullhorn" />
-                        <Typography className={classes.listingButtonName}>Add Listing</Typography>
-                    </Button>
+                        <Button className={classes.listingButton} onClick={handleClickOpen} variant="contained" color="secondary">
+                            <FontAwesomeIcon className={classes.listingButtonIcon} icon="plus" /> {/* //icon="bullhorn" /> */}
+                            <Typography className={classes.listingButtonName}>Add Listing</Typography>
+                        </Button>
 
-                    <Box>
-                        {auth.isAuthenticated ?
-                            <UserMenu /> :
-                            <>
-                                <Button onClick={handleClickOpen} color="inherit">Log In</Button>
-                                <Button onClick={handleClickOpen} color="inherit">Sign Up</Button>
-                            </>
-                        }
-                    </Box>
+                        <Box>
+                            {auth.isAuthenticated ?
+                                <UserMenu /> :
+                                <>
+                                    <Button onClick={handleClickOpen} color="inherit">Log In</Button>
+                                    <Button onClick={handleClickOpen} color="inherit">Sign Up</Button>
+                                </>
+                            }
+                        </Box>
 
 
-                </Toolbar>
+                    </Toolbar>
+
+                </Container>
             </AppBar>
 
             <AuthDialog selectedValue={selectedValue} open={open} onClose={handleClose} />

@@ -40,7 +40,8 @@ import {
 
 import {
     faFacebookF,
-    faGoogle
+    faGoogle,
+    faInstagram
 } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
@@ -75,7 +76,8 @@ library.add(
     faBullhorn,
     faAngleRight,
     faBars,
-    faSlidersH
+    faSlidersH,
+    faInstagram
 )
 
 

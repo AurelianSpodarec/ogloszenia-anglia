@@ -8,6 +8,15 @@ const useStyles = makeStyles(theme => ({
     },
     customTextAreaLimit: {
         textAlign: 'right'
+    },
+    dropzone: {
+
+    },
+    dropzoneInner: {
+        // position
+    },
+    dropzoneText: {
+
     }
 }));
 

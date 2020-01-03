@@ -171,6 +171,8 @@ function Category() {
                 <Route path="/others" component={DefaultView} />
                 <Route path="/services-jobs" component={DefaultView} />
 
+                <Route path="/myprofile" component={DefaultView} />
+
                 <Route path="*" component={NotFound} />
             </Switch>
         </Router>

@@ -5,6 +5,10 @@ import Menu from '@material-ui/core/Menu';
 
 
 const useStyles = makeStyles(theme => ({
+    customMenu: {
+        border: '1px solid #ccc',
+        backgroundColor: '#000'
+    },
     userInfo: {
         display: 'flex',
         color: 'black',
@@ -15,7 +19,7 @@ const useStyles = makeStyles(theme => ({
         marginRight: '4px'
     },
     userInfoAvatar: {
-
+        width: '40px',
     }
 }));
 

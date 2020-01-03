@@ -23,7 +23,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const CustomMenuItem = function (props) {
     return (
-        <MenuItem onClick={props.onClick}>
+        <MenuItem href={props.href} onClick={props.onClick}>
             <ListItemIcon>
                 <FontAwesomeIcon icon={props.icon} />
             </ListItemIcon>

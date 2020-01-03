@@ -30,6 +30,8 @@ const useStyles = makeStyles(theme => ({
 
     listingButton: {
         display: 'none',
+        textTransform: 'inherit',
+        borderRadius: '17px',
         [theme.breakpoints.up('md')]: {
             display: 'flex'
         }
