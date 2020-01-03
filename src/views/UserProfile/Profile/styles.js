@@ -1,10 +1,17 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
-    box: {
-        backgroundColor: "#000",
-        width: '300px',
-        height: '300px',
+    profileSidebar: {
+        backgroundColor: '#fff',
+        marginTop: '-70px'
+    },
+    userInfoAvatar: {
+        width: '140px',
+        height: '140px'
+    },
+    banner: {
+        height: '270px',
+        width: '100%'
     }
 }));
 

@@ -19,8 +19,11 @@ import HomesView from '../../views/Categories/Homes';
 import DefaultView from '../../views/Categories/Default';
 import CarView from '../../views/Categories/Cars/sub-components/CarView';
 
+
+
 import useStyles from './styles'
 import AddListing from '../../views/AddListing';
+import Profile from '../../views/UserProfile/Profile';
 const router = {
     menu: [
         {
@@ -145,7 +148,7 @@ function Category() {
     return (
         <Router>
             <Grid className={classes.categoryWrap}>
-                {router.categories.map(category => {
+                {/* {router.categories.map(category => {
                     return <CategoryItem
                         bgColor={category.bgColor}
                         key={category.route.url}
@@ -154,7 +157,7 @@ function Category() {
                         path={category.route.url}
                         component={category.component}
                     />
-                })}
+                })} */}
             </Grid>
             <Switch>
                 <Route exact path="/" component={AddListing} />
@@ -171,7 +174,8 @@ function Category() {
                 <Route path="/others" component={DefaultView} />
                 <Route path="/services-jobs" component={DefaultView} />
 
-                <Route path="/myprofile" component={DefaultView} />
+                <Route path="/myprofile" component={Profile} />
+                <Route path="/settings" component={DefaultView} />
 
                 <Route path="*" component={NotFound} />
             </Switch>
