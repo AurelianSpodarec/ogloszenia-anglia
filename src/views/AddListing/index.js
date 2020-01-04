@@ -21,29 +21,11 @@ import {
 } from '@material-ui/core/'
 
 import useStyles from './styles'
+import { CustomItem } from '../../components';
+import { INITIAL_STATE } from './../Categories/Cars/sub-components/CarSidebar/menu'
 
 
-const AddListingCar = function () {
-    return (
-        <Box>
 
-            <Typography>Car model</Typography>
-            Year
-            Make
-            Model
-            Trim
-
-            <Typography>Car details</Typography>
-            Body Style
-            TRansmision
-            Fuel
-            Drivetrain
-            Seats
-
-            Mileage
-        </Box>
-    )
-}
 
 const Location = function () {
     return (
@@ -54,12 +36,65 @@ const Location = function () {
     )
 }
 
-const ChooseCategory = function () {
+const ListingChooseCar = function () {
     return (
         <Box>
+            <Typography>Car model</Typography>
+            Year
+        <CustomItem
+                label="Make"
+                // onClick={onPostedBy}
+                search
+                data={INITIAL_STATE.make}
+                menuPosition="bottom"
+            />
+            Model
+            Trim
+
+        <Typography>Car details</Typography>
+            Body Style
+            TRansmision
+            Fuel
+            Drivetrain
+            Seats
+            Mileage
+        </Box>
+    )
+}
+
+const ChooseCategory = function () {
+    const classes = useStyles();
+
+    return (
+        <Box>
+            <Typography>Choose a category</Typography>
             <Box>Cars</Box>
             <Box>Housing</Box>
             <Box>Jobs</Box>
+        </Box>
+    )
+}
+
+
+// TODO: Make dropzone global
+const Dropzone = function () {
+    const classes = useStyles();
+
+    return (
+        <Box className={classes.dropzone}>
+            <Box className={classes.dropzoneInner}>
+                <Box className={classes.dropzoneText}>
+                    <Typography>Drop & Drop or browser</Typography>
+                    <Typography>Upload up to 10photos of what you're selling. Images must be in PNG or JPG format and under 5mb.</Typography>
+                    {/* <Typography>or</Typography>
+                            <Button>Browse Files</Button> */}
+                </Box>
+            </Box>
+
+            {/* <Box>
+                        Image
+                    </Box>
+                    <Box></Box> */}
         </Box>
     )
 }
@@ -104,13 +139,13 @@ const CustomTextArea = function () {
 
     return (
         <Box className={classes.customTextArea}>
-            <FormControl fullWidth className={classes.margin} variant="outlined">
+            <FormControl fullWidth className={classes.margin} >
                 <TextField
                     id="outlined-multiline-static"
                     label="Description"
                     multiline
                     rows="4"
-                    variant="outlined"
+
                     value={text}
                     onChange={(e) => onChange(e)}
                 />
@@ -140,25 +175,24 @@ const AddListing = function ({ onClose, selectedValue, open }) {
 
     return (
         <Dialog maxWidth="sm" fullWidth={true} onClose={onClose} aria-labelledby="simple-dialog-title" open={open}>
-            <DialogTitle id="simple-dialog-title">Add new listing</DialogTitle>
+            <DialogTitle fontWeight="fontWeightBold" className={classes.dialogTitle} id="simple-dialog-title">Add new listing</DialogTitle>
 
             <DialogContent dividers='paper'>
 
-                <Typography>Photos</Typography>
 
-                <Typography>Choose a category</Typography>
+                <ListingChooseCar />
 
-                <Box className={classes.dropzone}>
-                    <Box className={classes.dropzoneText}>
-                        <Typography>Drop & Drop files here</Typography>
-                        <Typography>or</Typography>
-                        <Button>Browse Files</Button>
-                    </Box>
-                </Box>
+                <Dropzone />
 
-                <FormControl fullWidth className={classes.listingForm} variant="outlined">
-                    <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
-                    <OutlinedInput
+
+                {/* <ListingCarDetails /> */}
+
+
+
+                <FormControl fullWidth className={classes.listingForm} >
+                    {/* <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel> */}
+                    <TextField
+                        label="Amount"
                         id="outlined-adornment-amount"
                         // value={values.amount}
                         // onChange={handleChange('amount')}
@@ -168,12 +202,12 @@ const AddListing = function ({ onClose, selectedValue, open }) {
                 </FormControl>
 
                 <Box>
-                    <FormControl fullWidth className={classes.listingForm} variant="outlined">
+                    <FormControl fullWidth className={classes.listingForm} >
                         <TextField
                             required
                             id="outlined-required"
                             label="Title"
-                            variant="outlined"
+
                         />
                     </FormControl>
                     <CustomTextArea className={classes.listingForm} />
@@ -181,64 +215,12 @@ const AddListing = function ({ onClose, selectedValue, open }) {
 
             </DialogContent>
 
-            <DialogActions>
-                <Button variant="contained" color="secondary" fullWidth>List it!</Button>
+            <DialogActions className={classes.dialogActions}>
+                <Button className={classes.dialogActionsButton} variant="contained" color="secondary" fullWidth>List it!</Button>
             </DialogActions>
 
 
-        </Dialog >
-        // <Card>
-        //     <Box>
-        //         <Typography variant="h3">Add new listing</Typography>
-        //     </Box>
-
-        //     <Box>
-        //         <Box>
-
-        //         </Box>
-        //     </Box>
-
-        //     <Box>
-        //         <Typography>Photos</Typography>
-
-        //         <Typography>Choose a category</Typography>
-
-        //         <Box className={classes.dropzone}>
-        //             <Box className={classes.dropzoneText}>
-        //                 <Typography>Drop & Drop files here</Typography>
-        //                 <Typography>or</Typography>
-        //                 <Button>Browse Files</Button>
-        //             </Box>
-        //         </Box>
-
-        //         <FormControl fullWidth className={classes.margin} variant="outlined">
-        //             <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
-        //             <OutlinedInput
-        //                 id="outlined-adornment-amount"
-        //                 // value={values.amount}
-        //                 // onChange={handleChange('amount')}
-        //                 startAdornment={<InputAdornment position="start">$</InputAdornment>}
-        //                 labelWidth={60}
-        //             />
-        //         </FormControl>
-
-        //         <Box>
-        //             <FormControl fullWidth className={classes.margin} variant="outlined">
-        //                 <TextField
-        //                     required
-        //                     id="outlined-required"
-        //                     label="Title"
-        //                     variant="outlined"
-        //                 />
-        //             </FormControl>
-        //             <CustomTextArea />
-        //         </Box>
-
-        //         <Button variant="contained" color="primary" fullWidth>List it!</Button>
-
-
-        //     </Box>
-        // </Card>
+        </Dialog>
 
     )
 }

@@ -14,7 +14,7 @@ import { shortenWord } from './../../utils/functions';
 import useStyles from './styles';
 
 
-const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, disabled }) => {
+const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, disabled, menuPosition }) => {
     const classes = useStyles();
 
     const [menu, setMenu] = useState(data || []);
@@ -27,6 +27,19 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
     const [menuOpen, setMenuOpen] = useState(false);
 
     const anchorRef = useRef(null);
+
+
+    let customMenuPosition;
+    switch (menuPosition) {
+        case 'bottom':
+            customMenuPosition = 'customItemMenuBottom'
+            break;
+        case 'right':
+            customMenuPosition = 'customItemMenuRight'
+            break;
+        default:
+            customMenuPosition = 'customItemMenuBottom'
+    }
 
 
     const onSearch = function (event, userInput) {
@@ -136,7 +149,7 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
                 </Box>
 
             </Box>
-            <Card anchorel={anchorRef.current} className={classes.customItemMenu} style={{ display: menuOpen ? 'block' : 'none' }}>
+            <Card anchorel={anchorRef.current} className={[classes.customItemMenu, classes[customMenuPosition]].join(" ")} style={{ display: menuOpen ? 'block' : 'none' }}>
                 <ClickAwayListener onClickAway={handleClose}>
                     <Box>
                         {search ?

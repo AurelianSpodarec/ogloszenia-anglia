@@ -27,12 +27,22 @@ const useStyles = makeStyles(theme => ({
         overflowY: 'auto',
         overflowX: 'hidden',
     },
+
     customItemMenu: {
         position: 'absolute',
-        top: '0',
-        left: '100%',
+        backgroundColor: "#FFF",
+        zIndex: 10,
         width: '270px',
-        backgroundColor: "#FFF"
+
+        // top: '0',
+        // left: '100%',
+    },
+    customItemMenuBottom: {
+        top: '50px',
+    },
+    customItemMenuRight: {
+        top: '0',
+        left: '100%'
     },
 
 
