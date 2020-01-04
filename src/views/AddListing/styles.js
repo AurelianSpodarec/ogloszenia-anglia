@@ -17,6 +17,10 @@ const useStyles = makeStyles(theme => ({
     },
     dropzoneText: {
 
+    },
+
+    listingForm: {
+        marginBottom: '24px',
     }
 }));
 

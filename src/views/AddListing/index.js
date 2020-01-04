@@ -13,7 +13,12 @@ import Dialog from '@material-ui/core/Dialog';
 import Typography from '@material-ui/core/Typography';
 import { blue } from '@material-ui/core/colors';
 
-import { Box, FormControl, TextField } from '@material-ui/core/'
+import {
+    Box, FormControl, TextField, InputLabel,
+    DialogContent,
+    DialogActions,
+    OutlinedInput, InputAdornment
+} from '@material-ui/core/'
 
 import useStyles from './styles'
 
@@ -119,36 +124,69 @@ const CustomTextArea = function () {
 const AddListing = function ({ onClose, selectedValue, open }) {
     const classes = useStyles();
     const [category, setCategory] = useState();
-    const [open, setOpen] = useState();
-    const { onClose, selectedValue, open } = props;
+    // const [open, setOpen] = useState();
+    // const { onClose, selectedValue, open } = props;
 
     console.log(selectedValue, 'mkmkmkmkmkmkmkmkmk')
 
-    const handleClose = () => {
-        // onSetClose(selectedValue);
-        setOpen(false)
-    };
+    // const handleClose = () => {
+    //     // onSetClose(selectedValue);
+    //     setOpen(falsselectedValuee)
+    // };
 
     // const handleMenu = event => {
     //     set(event.currentTarget);
     // };
 
     return (
-        <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
-            <DialogTitle id="simple-dialog-title">Set backup account</DialogTitle>
-            <List>
+        <Dialog maxWidth="sm" fullWidth={true} onClose={onClose} aria-labelledby="simple-dialog-title" open={open}>
+            <DialogTitle id="simple-dialog-title">Add new listing</DialogTitle>
+
+            <DialogContent dividers='paper'>
+
+                <Typography>Photos</Typography>
+
+                <Typography>Choose a category</Typography>
+
+                <Box className={classes.dropzone}>
+                    <Box className={classes.dropzoneText}>
+                        <Typography>Drop & Drop files here</Typography>
+                        <Typography>or</Typography>
+                        <Button>Browse Files</Button>
+                    </Box>
+                </Box>
+
+                <FormControl fullWidth className={classes.listingForm} variant="outlined">
+                    <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
+                    <OutlinedInput
+                        id="outlined-adornment-amount"
+                        // value={values.amount}
+                        // onChange={handleChange('amount')}
+                        startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                        labelWidth={60}
+                    />
+                </FormControl>
+
+                <Box>
+                    <FormControl fullWidth className={classes.listingForm} variant="outlined">
+                        <TextField
+                            required
+                            id="outlined-required"
+                            label="Title"
+                            variant="outlined"
+                        />
+                    </FormControl>
+                    <CustomTextArea className={classes.listingForm} />
+                </Box>
+
+            </DialogContent>
+
+            <DialogActions>
+                <Button variant="contained" color="secondary" fullWidth>List it!</Button>
+            </DialogActions>
 
 
-                <ListItem autoFocus button>
-                    <ListItemAvatar>
-                        <Avatar>
-
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="add account" />
-                </ListItem>
-            </List>
-        </Dialog>
+        </Dialog >
         // <Card>
         //     <Box>
         //         <Typography variant="h3">Add new listing</Typography>

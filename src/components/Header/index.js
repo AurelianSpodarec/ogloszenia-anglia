@@ -27,38 +27,41 @@ import AddListing from '../../views/AddListing';
 const Header = function (props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
+    const [onOpenListing, setOnOpenListing] = React.useState(false);
+
     const [selectedListingValues, setSelectedListingValues] = React.useState();
     const [selectedValue, setSelectedValue] = React.useState();
     const [isLogged, setIsLogged] = React.useState(true)
 
-    const [openListing, setOpenListing] = React.useState(false);
 
     const auth = useAuthData();
 
     const handleClickOpen = () => {
         if (auth.isAuthenticated) {
-            console.log("Open Add Listing")
-            // setOpenListing(true)
+            setOnOpenListing(true)
+            console.log("sds")
         } else {
             setOpen(true);
-            console.log("open 3 ")
+            console.log("mmm")
         }
     };
 
+    // If is Authenticated, close setOpen(false) automatically. 
+
+
+    // const prevSignUpIdRef = React.useRef();
     // React.useEffect(() => {
-    //     if (auth.isAuthenticated) {
-    //         setOpen(false)
-    //     }
+    //     prevSignUpIdRef.current = open;
     // })
-    console.log('ope 3')
+    // const prevSignUpId = prevSignUpIdRef.current;
 
     const onCloseListing = value => {
         // set
-        // setOpenListing(value);
+        setOnOpenListing(false);
     }
 
-    const onOpenListing = value => {
-        // setOpenListing(true);
+    const openListing = value => {
+        setOnOpenListing(true);
     }
 
     const handleClose = value => {
@@ -116,7 +119,7 @@ const Header = function (props) {
             </AppBar>
 
             <AuthDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
-            <AddListing selectedValue={openListing} open={onOpenListing} onClose={onCloseListing} />
+            <AddListing selectedValue={onOpenListing} open={onOpenListing} onClose={onCloseListing} />
 
 
         </>
