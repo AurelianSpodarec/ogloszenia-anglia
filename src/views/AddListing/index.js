@@ -40,22 +40,54 @@ const ListingChooseCar = function () {
     return (
         <Box>
             <Typography>Car model</Typography>
-            Year
-        <CustomItem
+
+            <CustomItem
+                label="Year"
+                // onClick={onPostedBy}
+                search
+                data={INITIAL_STATE.year}
+            />
+            <CustomItem
                 label="Make"
                 // onClick={onPostedBy}
                 search
                 data={INITIAL_STATE.make}
-                menuPosition="bottom"
             />
-            Model
-            Trim
+            {/* Get by id selected */}
+            {/* <CustomItem
+                label="Model"
+                // onClick={onPostedBy}
+                search
+                data={INITIAL_STATE.model}
+            /> */}
 
-        <Typography>Car details</Typography>
-            Body Style
-            TRansmision
-            Fuel
-            Drivetrain
+            <Typography>Car details</Typography>
+
+
+            <CustomItem
+                label="Body Style"
+                // onClick={onSelectBodyStyle}
+                data={INITIAL_STATE.bodyStyle}
+                multiSelect
+            />
+            <CustomItem
+                label="Transmission"
+                // onClick={onSelectTransmission}
+                data={INITIAL_STATE.transmission}
+                multiSelect
+            />
+            <CustomItem
+                label="Fuel"
+                data={INITIAL_STATE.fuel}
+                multiSelect
+            />
+            <CustomItem
+                label="Drivetrain"
+                data={INITIAL_STATE.driveTrain}
+                multiSelect
+            />
+            {/* <Divider /> */}
+
             Seats
             Mileage
         </Box>
@@ -180,10 +212,10 @@ const AddListing = function ({ onClose, selectedValue, open }) {
             <DialogContent dividers='paper'>
 
 
-                <ListingChooseCar />
 
                 <Dropzone />
 
+                <ListingChooseCar />
 
                 {/* <ListingCarDetails /> */}
 

@@ -14,11 +14,12 @@ import {
     Box
 } from '@material-ui/core';
 import { getCarById } from '../../../../../services/api/categories/car';
+import { getUser } from '../../../../../services/api/users';
 
 const CarView = ({ match, location }) => {
     const classes = useStyles();
     const [car, setCar] = useState([]);
-
+    const [user, setUser] = useState();
     // if (!match || !match.params.id) { return }
 
     useEffect(() => {
@@ -26,9 +27,13 @@ const CarView = ({ match, location }) => {
             const result = await getCarById(match.params.id)
             setCar(result.data.data.car);
         };
+        const fetchUser = async () => {
+            // fetchUser = await getUserById()
+            console.log(car, "car")
+        }
         fetchCar();
     }, []);
-
+    console.log(car, "mmsdksdksjdksdjskdjsk")
     // 
     return (
         <Container>
