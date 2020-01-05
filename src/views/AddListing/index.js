@@ -22,7 +22,7 @@ import {
 
 import useStyles from './styles'
 import { CustomItem } from '../../components';
-import { INITIAL_STATE } from './../Categories/Cars/sub-components/CarSidebar/menu'
+import { INITIAL_STATE } from './../../utils/data/menu'
 
 
 

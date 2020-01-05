@@ -8,7 +8,7 @@ import {
 import useStyles from './styles';
 import { CustomItem, CustomSlider } from '../../../../../components';
 
-import { INITIAL_STATE } from './menu';
+import { INITIAL_STATE } from '../../../../../utils/data/menu';
 
 const CarSidebar = function () {
     const classes = useStyles();
