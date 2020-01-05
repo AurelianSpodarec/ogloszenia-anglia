@@ -16,7 +16,7 @@
 // Result: 2019 Ford Fusion SE
 
 
-export const INITIAL_STATE = {
+export const INITIAL_CAR_STATE = {
     postedBy: [
         {
             slug: "individual",
