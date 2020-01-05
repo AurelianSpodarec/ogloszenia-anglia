@@ -8,7 +8,7 @@ import {
 import useStyles from './styles';
 import { CustomItem, CustomSlider } from '../../../../../components';
 
-import { INITIAL_STATE } from '../../../../../utils/data/menu';
+import { INITIAL_CAR_STATE } from '../../../../../utils/data/menu';
 
 const CarSidebar = function () {
     const classes = useStyles();
@@ -25,9 +25,9 @@ const CarSidebar = function () {
     const [transmission, setTransmission] = useState([]);
 
 
-    const [year, setYear] = useState([INITIAL_STATE.year[0], INITIAL_STATE.year[1]]);
-    const [mileage, setMileage] = useState([INITIAL_STATE.mileage[0], INITIAL_STATE.mileage[1]]);
-    const [seats, setSeats] = useState([INITIAL_STATE.seats[0], INITIAL_STATE.seats[1]]);
+    const [year, setYear] = useState([INITIAL_CAR_STATE.year[0], INITIAL_CAR_STATE.year[1]]);
+    const [mileage, setMileage] = useState([INITIAL_CAR_STATE.mileage[0], INITIAL_CAR_STATE.mileage[1]]);
+    const [seats, setSeats] = useState([INITIAL_CAR_STATE.seats[0], INITIAL_CAR_STATE.seats[1]]);
 
 
     function submit() {
@@ -103,7 +103,7 @@ const CarSidebar = function () {
     const findModel = function (carBrand) {
         if (!carBrand) return;
         // if (!carMake) { return };
-        const selectedCarModel = INITIAL_STATE.make.find(item => item.name === carBrand.name).models
+        const selectedCarModel = INITIAL_CAR_STATE.make.find(item => item.name === carBrand.name).models
         return selectedCarModel;
     }
 
@@ -124,14 +124,14 @@ const CarSidebar = function () {
                 <CustomItem
                     label="Posted by"
                     onClick={onPostedBy}
-                    data={INITIAL_STATE.postedBy}
+                    data={INITIAL_CAR_STATE.postedBy}
                 />
                 <Divider />
                 <CustomItem
                     label="Make"
                     search
                     onClick={onSelectMake}
-                    data={INITIAL_STATE.make}
+                    data={INITIAL_CAR_STATE.make}
                 />
                 <CustomItem
                     label="Model"
@@ -145,8 +145,8 @@ const CarSidebar = function () {
                     leftBeforeSlideMaxLabel={"Before"}
                     label="Year"
                     valueMatchLabel="Any year" // If values match display 'Any year', instead of 1960-2020
-                    min={INITIAL_STATE.year[0]}
-                    max={INITIAL_STATE.year[1]}
+                    min={INITIAL_CAR_STATE.year[0]}
+                    max={INITIAL_CAR_STATE.year[1]}
                     name="year"
                     value={year}
                     // onChange={handleChange}
@@ -156,8 +156,8 @@ const CarSidebar = function () {
                 <CustomSlider
                     label="Mileage"
                     labelRight={"+ mi"}
-                    min={INITIAL_STATE.mileage[0]}
-                    max={INITIAL_STATE.mileage[1]}
+                    min={INITIAL_CAR_STATE.mileage[0]}
+                    max={INITIAL_CAR_STATE.mileage[1]}
                     name="mileage"
                     value={mileage}
                     // onChange={handleChange}
@@ -168,23 +168,23 @@ const CarSidebar = function () {
                 <CustomItem
                     label="Body Style"
                     onClick={onSelectBodyStyle}
-                    data={INITIAL_STATE.bodyStyle}
+                    data={INITIAL_CAR_STATE.bodyStyle}
                     multiSelect
                 />
                 <CustomItem
                     label="Transmission"
                     onClick={onSelectTransmission}
-                    data={INITIAL_STATE.transmission}
+                    data={INITIAL_CAR_STATE.transmission}
                     multiSelect
                 />
                 <CustomItem
                     label="Fuel"
-                    data={INITIAL_STATE.fuel}
+                    data={INITIAL_CAR_STATE.fuel}
                     multiSelect
                 />
                 <CustomItem
                     label="Drivetrain"
-                    data={INITIAL_STATE.driveTrain}
+                    data={INITIAL_CAR_STATE.driveTrain}
                     multiSelect
                 />
                 <Divider />
@@ -195,8 +195,8 @@ const CarSidebar = function () {
                     // labelLeft
                     // labelSlideLeft
                     // labelSlideRight
-                    min={INITIAL_STATE.seats[0]}
-                    max={INITIAL_STATE.seats[1]}
+                    min={INITIAL_CAR_STATE.seats[0]}
+                    max={INITIAL_CAR_STATE.seats[1]}
                     name="seats"
                     value={seats}
                     // onChange={handleChange}

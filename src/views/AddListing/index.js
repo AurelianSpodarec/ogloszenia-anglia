@@ -22,7 +22,7 @@ import {
 
 import useStyles from './styles'
 import { CustomItem } from '../../components';
-import { INITIAL_STATE } from './../../utils/data/menu'
+import { INITIAL_CAR_STATE } from './../../utils/data/menu'
 
 
 
@@ -45,20 +45,20 @@ const ListingChooseCar = function () {
                 label="Year"
                 // onClick={onPostedBy}
                 search
-                data={INITIAL_STATE.year}
+                data={INITIAL_CAR_STATE.year}
             />
             <CustomItem
                 label="Make"
                 // onClick={onPostedBy}
                 search
-                data={INITIAL_STATE.make}
+                data={INITIAL_CAR_STATE.make}
             />
             {/* Get by id selected */}
             {/* <CustomItem
                 label="Model"
                 // onClick={onPostedBy}
                 search
-                data={INITIAL_STATE.model}
+                data={INITIAL_CAR_STATE.model}
             /> */}
 
             <Typography>Car details</Typography>
@@ -67,23 +67,23 @@ const ListingChooseCar = function () {
             <CustomItem
                 label="Body Style"
                 // onClick={onSelectBodyStyle}
-                data={INITIAL_STATE.bodyStyle}
+                data={INITIAL_CAR_STATE.bodyStyle}
                 multiSelect
             />
             <CustomItem
                 label="Transmission"
                 // onClick={onSelectTransmission}
-                data={INITIAL_STATE.transmission}
+                data={INITIAL_CAR_STATE.transmission}
                 multiSelect
             />
             <CustomItem
                 label="Fuel"
-                data={INITIAL_STATE.fuel}
+                data={INITIAL_CAR_STATE.fuel}
                 multiSelect
             />
             <CustomItem
                 label="Drivetrain"
-                data={INITIAL_STATE.driveTrain}
+                data={INITIAL_CAR_STATE.driveTrain}
                 multiSelect
             />
             {/* <Divider /> */}
