@@ -39,34 +39,41 @@ const CarView = ({ match, location }) => {
         <Container>
             <Box className={classes.carView}>
 
-                <Box className={classes.col}>
-                    <CardMedia
-                        className={classes.mainImg}
-                        image={car.coverImage}
-                        title={car.title}
-                    />
-                    <Box>
-                        {/* {car.media.map(img => {
+
+                <Grid container>
+
+                    <Grid item className={classes.col}>
+                        <CardMedia
+                            className={classes.mainImg}
+                            image={car.coverImage}
+                            title={car.title}
+                        />
+                        <Box>
+                            {/* {car.media.map(img => {
                             return <CardMedia
                                 className={classes.thumbnails}
                                 image={img.img}
                             // title={car.alt}
                             />
                         })} */}
-                    </Box>
-                </Box>
+                        </Box>
+                    </Grid>
 
-                <Box className={[classes.col, classes.details]}>
-                    <Box>
-                        <Typography className={classes.price}>£{car.price}</Typography>
-                        <Typography className={classes.name}>{car.title}</Typography>
-                    </Box>
-                    <Box>
-                        <Typography>Description</Typography>
-                        <Typography>{car.description}</Typography>
-                    </Box>
-                </Box>
+                    <Grid item className={[classes.col, classes.details]}>
+                        <Box>
+                            <Typography className={classes.price}>£{car.price}</Typography>
+                            <Typography className={classes.name}>{car.title}</Typography>
+                        </Box>
+                        <Box>
+                            <Typography>Description</Typography>
+                            <Typography>{car.description}</Typography>
+                        </Box>
 
+                    </Grid>
+                </Grid>
+                <Grid container>
+                    <Grid item> D</Grid>
+                </Grid>
             </Box>
         </Container>
     )

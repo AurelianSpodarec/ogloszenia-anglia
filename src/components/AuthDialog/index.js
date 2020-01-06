@@ -14,8 +14,6 @@ import {
     Modal,
     Fade
 } from '@material-ui/core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import useStyles from './styles';
 
 import {
     AuthSocialView,
@@ -23,6 +21,9 @@ import {
     AuthLoginView,
     AuthBanner
 } from './sub-components';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useStyles from './styles';
 
 const AuthTitle = function ({ title, setView }) {
     const classes = useStyles();
