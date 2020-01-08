@@ -35,7 +35,8 @@ import {
     faBullhorn,
     faAngleRight,
     faBars,
-    faSlidersH
+    faSlidersH,
+    faShareSquare
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -77,7 +78,8 @@ library.add(
     faAngleRight,
     faBars,
     faSlidersH,
-    faInstagram
+    faInstagram,
+    faShareSquare
 )
 
 

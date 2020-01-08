@@ -18,8 +18,12 @@ const useStyles = makeStyles(theme => ({
     userInfoName: {
         marginRight: '4px'
     },
-    userInfoAvatar: {
+    userInfoName: {
         width: '40px',
+        display: 'none',
+        [theme.breakpoints.up('md')]: {
+            display: 'block'
+        }
     }
 }));
 

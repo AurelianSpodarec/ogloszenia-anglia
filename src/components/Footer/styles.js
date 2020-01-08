@@ -28,7 +28,8 @@ const useStyles = makeStyles(theme => ({
 
 
     footerLinksWrap: {
-        display: 'flex'
+        display: 'flex',
+        flexWrap: 'wrap',
     },
     footerLinks: {
         marginLeft: '9px'

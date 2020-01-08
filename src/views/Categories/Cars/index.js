@@ -36,13 +36,26 @@ const CarsView = function () {
     return (
         <Container>
             <PageTitle title="Used Cars" />
-            <Grid container spacing={3}>
 
-                <Grid item sm={12} md={3}>
+            <Grid container spacing={4}>
+
+                <Grid item xs={12} md={3}>
                     <CarSidebar />
                 </Grid>
 
-                <Grid item sm={12} md={9}>
+                <Grid item xs={12} md={9}>
+                    <Grid container>
+                        <Grid item md={12}>
+
+                            <Box>
+                                <Typography>Search Result:</Typography><Typography>(234)</Typography>
+                            </Box>
+
+                            <Box>
+                                Col, List
+                        </Box>
+                        </Grid>
+                    </Grid>
                     <Grid container>
                         {data && data.map(car => {
                             return <CarItem key={car._id} car={car} />

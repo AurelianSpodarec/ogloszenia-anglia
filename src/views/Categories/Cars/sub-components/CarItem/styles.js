@@ -7,7 +7,7 @@ const useStyles = makeStyles(theme => ({
     },
     title: {
         fontWeight: "bold",
-        fontSize: "18px"
+        fontSize: "20px"
     },
     card: {
         display: 'flex',
@@ -28,14 +28,24 @@ const useStyles = makeStyles(theme => ({
             minWidth: 220,
         }
     },
+    mediaBox: {
+        padding: '12px',
+    },
 
     details: {
         display: "flex",
         flexDirection: "column",
         flex: "1 1 auto",
+        padding: '16px',
         [theme.breakpoints.up('md')]: {
             alignItems: "flex-start",
         }
+    },
+    detailsInner: {
+        display: 'flex',
+        flexDirection: "column",
+        width: '100%',
+        height: '100%',
     },
     detail: {
         width: "100%",
