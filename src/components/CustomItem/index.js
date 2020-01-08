@@ -141,7 +141,7 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
                 <Typography className={[classes.itemTitle, disabled ? classes.itemTitleDisabled : null].join(" ")}>{label}</Typography>
                 <Box className={classes.itemMoreInfo}>
                     {disabled ? null :
-                        <Typography>{labelValue}</Typography>
+                        <Typography className={classes.itemLabelValue}>{labelValue}</Typography>
                     }
                     <FontAwesomeIcon icon="angle-right" />
 

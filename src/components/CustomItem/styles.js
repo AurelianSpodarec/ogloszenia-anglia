@@ -44,8 +44,9 @@ const useStyles = makeStyles(theme => ({
         top: '0',
         left: '100%'
     },
-
-
+    itemLabelValue: {
+        marginRight: '8px'
+    },
     itemMoreInfo: {
         display: 'flex',
         justifyContent: 'space-between',
