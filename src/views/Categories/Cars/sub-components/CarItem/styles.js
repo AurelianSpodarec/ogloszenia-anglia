@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     card: {
         display: 'flex',
         flexDirection: 'column',
-        marginBottom: theme.spacing(3),
+        // marginBottom: theme.spacing(2),
         [theme.breakpoints.up('md')]: {
             flexDirection: 'row',
         }

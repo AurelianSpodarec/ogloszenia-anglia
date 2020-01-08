@@ -39,7 +39,7 @@ const CarsView = function () {
 
             <Grid container spacing={4}>
 
-                <Grid item xs={12} md={3}>
+                <Grid className={classes.sidebar} item xs={12} md={3}>
                     <CarSidebar />
                 </Grid>
 
@@ -56,7 +56,7 @@ const CarsView = function () {
                         </Box>
                         </Grid>
                     </Grid>
-                    <Grid container>
+                    <Grid container spacing={2}>
                         {data && data.map(car => {
                             return <CarItem key={car._id} car={car} />
                         })}

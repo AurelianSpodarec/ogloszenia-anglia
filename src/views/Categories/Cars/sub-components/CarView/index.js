@@ -43,10 +43,16 @@ const CarView = ({ match, location }) => {
                 <Grid container>
 
                     <Grid item className={classes.col}>
-                        <CardMedia
+                        {/* <CardMedia
                             className={classes.mainImg}
                             image={car.coverImage}
                             title={car.title}
+                        /> */}
+                        <CardMedia
+                            // className={classes.media}
+                            // image={props.car.coverImage}
+                            image={'https://iproxy2.motortrak.com/2014/ferrari/458_italia/rosso_corsa_ds_322-Stratstone_Manchester-ZFF67NHC000201564-1024-0.jpg'}
+                            title="Paella dish"
                         />
                         <Box>
                             {/* {car.media.map(img => {
