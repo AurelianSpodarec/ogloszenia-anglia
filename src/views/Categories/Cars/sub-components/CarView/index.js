@@ -72,8 +72,26 @@ const CarView = ({ match, location }) => {
                             <Typography className={classes.name}>{car.title}</Typography>
                         </Box>
 
-                        <Box>
+                        <Box className="">
+                            <Box>Added Yesterday</Box>
 
+                            <Box>
+                                <Box>Views: 238</Box>
+                                <Box>Fav: 8</Box>
+                            </Box>
+                        </Box>
+
+                        <Box>
+                            <Typography>Car details</Typography>
+
+                            <Box>
+                                <Box>BMW</Box>
+                            </Box>
+
+                            <Box className={classes.carDetailsGenes}>
+                                Icon
+                                <Typography>Sedan</Typography>
+                            </Box>
                         </Box>
 
                         <Box>
