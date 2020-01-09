@@ -34,8 +34,14 @@ const useStyles = makeStyles(theme => ({
     },
 
 
+    userInfo: {
+        display: 'flex',
+    },
     userAvatar: {
         height: '40px',
+    },
+    userContactDetails: {
+        display: 'flex',
     }
 
 }));
