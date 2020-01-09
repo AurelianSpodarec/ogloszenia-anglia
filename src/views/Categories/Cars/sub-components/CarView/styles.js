@@ -31,6 +31,11 @@ const useStyles = makeStyles(theme => ({
         maxWidth: "50%",
         flexDirection: 'column',
         boxSizing: "border-box",
+    },
+
+
+    userAvatar: {
+        height: '40px',
     }
 
 }));
