@@ -16,7 +16,8 @@ const useStyles = makeStyles(theme => ({
         marginLeft: '10px'
     },
     userInfoName: {
-        marginRight: '4px'
+        marginRight: '4px',
+        display: 'block'
     },
     userInfoName: {
         width: '40px',
