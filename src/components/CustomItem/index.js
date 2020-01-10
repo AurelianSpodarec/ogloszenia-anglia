@@ -38,7 +38,7 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
             customMenuPosition = 'customItemMenuRight'
             break;
         default:
-            customMenuPosition = 'customItemMenuBottom'
+            customMenuPosition = 'customItemMenuRight'
     }
 
 
