@@ -85,7 +85,7 @@ const CarView = ({ match, location }) => {
                             </Grid>
                         </Grid>
 
-                        <Grid>
+                        <Grid md={12}>
                             <Typography className={classes.title}>{car.title}</Typography>
                         </Grid>
 
@@ -148,10 +148,13 @@ const CarView = ({ match, location }) => {
                                 </Grid>
                             </Grid>
 
-                            <Grid item>
+                            <Grid item className={classes.userButtons}>
                                 <Grid container direction="row">
                                     <Grid item md={6}>
-                                        <Button fullWidth variant="outlined" color="secondary">Show Mobile</Button>
+
+                                        <Button fullWidth variant="outlined" color="secondary">
+                                            <FontAwesomeIcon icon="heart" />Show Mobile
+                                            </Button>
                                     </Grid>
                                     <Grid item md={6}>
                                         <Button fullWidth variant="contained" color="secondary">Show Email</Button>

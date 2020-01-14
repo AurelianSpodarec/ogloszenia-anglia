@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: '#fff'
     },
     mainImgWrap: {
-        height: '400px',
+        height: '500px',
         background: 'black',
         padding: '50px 0',
         borderRadius: "8px",
@@ -31,13 +31,15 @@ const useStyles = makeStyles(theme => ({
     },
     title: {
         fontWeight: "600",
-        fontSize: "22px"
+        fontSize: "22px",
+        marginBottom: '16px'
     },
     description: {
         fontWeight: 400,
         lineHeight: '20px',
         color: '#616161',
-        fontSize: '16px'
+        fontSize: '16px',
+        margin: '24px 0'
     },
     col: {
         // flexBasis: "50%",
@@ -46,9 +48,23 @@ const useStyles = makeStyles(theme => ({
         boxSizing: "border-box",
     },
 
+    section: {
+
+    },
 
     userInfo: {
         display: 'flex',
+        borderWidth: "1px",
+        borderStyle: "solid",
+        borderColor: '#e0e0e0',
+        borderImage: "initial",
+        padding: "16px",
+        borderRadius: "8px",
+    },
+    userButtons: {
+        marginTop: "20px",
+        borderTop: "1px solid silver",
+        paddingTop: "20px",
     },
     userAvatar: {
         height: '40px',
