@@ -13,6 +13,7 @@ import {
     CardMedia,
     Box,
     Avatar,
+    Chip,
     Button
 } from '@material-ui/core';
 import { getCarById } from '../../../../../services/api/categories/car';
@@ -46,17 +47,17 @@ const CarView = ({ match, location }) => {
             <Box className={classes.carView}>
                 <Grid container>
 
-                    <Grid item className={classes.col}>
-                        <CardMedia
-                            className={classes.mainImg}
-                            image={'https://iproxy2.motortrak.com/2014/ferrari/458_italia/rosso_corsa_ds_322-Stratstone_Manchester-ZFF67NHC000201564-1024-0.jpg'}
-                            title={car.title}
-                        />
-                        <Box>
+                    <Grid md="6" item className={classes.col}>
+                        <Box className={classes.mainImgWrap}>
+                            <CardMedia
+                                className={classes.mainImg}
+                                image={'https://iproxy2.motortrak.com/2014/ferrari/458_italia/rosso_corsa_ds_322-Stratstone_Manchester-ZFF67NHC000201564-1024-0.jpg'}
+                                title={car.title}
+                            />
                         </Box>
                     </Grid>
 
-                    <Grid item className={[classes.col, classes.details]}>
+                    <Grid md="6" item className={[classes.col, classes.details].join(" ")}>
 
                         <Grid item xs={12} sm container>
                             <Grid
@@ -94,12 +95,14 @@ const CarView = ({ match, location }) => {
                             justify="space-between"
                             alignItems="center"
                         >
-                            <Box>Added Yesterday</Box>
+                            {/* <Box>Added Yesterday</Box> */}
+
+                            <Chip icon={<FontAwesomeIcon icon="clock" />} label="1+ month" />
 
                             <Grid item>
                                 <Grid container item direction="row">
-                                    <Box><FontAwesomeIcon icon="eye" />238</Box>
-                                    <Box><FontAwesomeIcon icon="heart" />8</Box>
+                                    <Chip icon={<FontAwesomeIcon icon="eye" />} label="234" />
+                                    <Chip icon={<FontAwesomeIcon icon="heart" />} label="8" />
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -126,20 +129,40 @@ const CarView = ({ match, location }) => {
 
 
                         <Box>
-                            <Typography>{car.description}</Typography>
+                            <Typography className={classes.description}>{car.description}</Typography>
                         </Box>
 
-                        <Box className={classes.userInfo}>
-                            <Avatar className={classes.userAvatar} alt="Remy Sharp"
-                                src="https://scontent-lht6-1.xx.fbcdn.net/v/t31.0-8/p960x960/11080291_10203728876572192_3782466732363772984_o.jpg?_nc_cat=108&_nc_ohc=ET3DslV_LR8AQlBIecnnU-MjALac5jGlxeqs-Jg1-jWpqk-4g7y2ovMWg&_nc_ht=scontent-lht6-1.xx&oh=d229dbd507595da4a547768270195b4d&oe=5E9DFDBD" />
-                            <Box>
-                                <Typography>Aurelian Spodarec</Typography>
-                                <Box className={classes.userContactDetails}>
-                                    <Spoiler button="Show Mobile" info="0745232" />
-                                    <Spoiler button="Show Email" info="ads@gmail.com" />
-                                </Box>
-                            </Box>
-                        </Box>
+
+
+                        <Grid container direction="column" className={classes.userInfo}>
+                            <Grid item>
+                                <Grid
+                                    container
+                                    alignItems="center"
+                                    display="flex"
+                                    direction="row"
+                                >
+                                    <Avatar className={classes.userAvatar} alt="Remy Sharp"
+                                        src="https://scontent-lht6-1.xx.fbcdn.net/v/t31.0-8/p960x960/11080291_10203728876572192_3782466732363772984_o.jpg?_nc_cat=108&_nc_ohc=ET3DslV_LR8AQlBIecnnU-MjALac5jGlxeqs-Jg1-jWpqk-4g7y2ovMWg&_nc_ht=scontent-lht6-1.xx&oh=d229dbd507595da4a547768270195b4d&oe=5E9DFDBD" />
+                                    <Typography className={classes.userName}>Aurelian Spodarec</Typography>
+                                </Grid>
+                            </Grid>
+
+                            <Grid item>
+                                <Grid container direction="row">
+                                    <Grid item md={6}>
+                                        <Button fullWidth variant="outlined" color="secondary">Show Mobile</Button>
+                                    </Grid>
+                                    <Grid item md={6}>
+                                        <Button fullWidth variant="contained" color="secondary">Show Email</Button>
+                                    </Grid>
+                                    {/* <Box className={classes.userContactDetails}> */}
+                                    {/* <Spoiler button="Show Mobile" info="0745232" /> */}
+                                    {/* <Spoiler button="Show Email" info="ads@gmail.com" /> */}
+                                    {/* </Box> */}
+                                </Grid>
+                            </Grid>
+                        </Grid>
 
 
                     </Grid>
@@ -166,7 +189,7 @@ const Spoiler = function ({ button, info }) {
 
     return (
         <Box onClick={onOpen}>
-            {!open ? <Button>{button}</Button>
+            {!open ? <Button >{button}</Button>
                 :
                 <Typography>{info}</Typography>
             }
