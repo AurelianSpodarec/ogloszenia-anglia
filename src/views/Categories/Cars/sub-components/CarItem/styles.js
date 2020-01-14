@@ -7,7 +7,9 @@ const useStyles = makeStyles(theme => ({
     },
     title: {
         fontWeight: "bold",
-        fontSize: "20px"
+        fontSize: "20px",
+        maxWidth: '300px',
+        overflow: 'hidden'
     },
     card: {
         display: 'flex',
