@@ -65,7 +65,8 @@ const CarsView = function () {
                                 </Grid>
 
                                 <Grid item>
-                                    Col, List
+                                    <FontAwesomeIcon icon="th-large" />
+                                    <FontAwesomeIcon icon="square" />
                                 </Grid>
                             </Grid>
                         </Grid>
