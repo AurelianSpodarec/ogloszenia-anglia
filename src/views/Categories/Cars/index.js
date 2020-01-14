@@ -47,7 +47,7 @@ const CarsView = function () {
                     <Grid container>
 
 
-                        <Grid item md={12}>
+                        <Grid className={classes.listingBar} item md={12}>
                             <Grid
                                 container
                                 direction="row"
@@ -59,7 +59,7 @@ const CarsView = function () {
                                         container
                                         direction="row"
                                     >
-                                        <Typography>Search Result </Typography>
+                                        <Typography>Search Result</Typography>
                                         <Typography className={classes.resultNumber}>(234)</Typography>
                                     </Grid>
                                 </Grid>

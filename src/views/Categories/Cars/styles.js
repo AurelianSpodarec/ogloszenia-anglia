@@ -12,7 +12,11 @@ const useStyles = makeStyles(theme => ({
         }
     },
     resultNumber: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginLeft: '8px'
+    },
+    listingBar: {
+        marginBottom: '8px'
     }
 
 
