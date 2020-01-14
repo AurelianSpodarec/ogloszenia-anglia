@@ -27,12 +27,9 @@ const CarView = ({ match, location }) => {
     useEffect(() => {
         const fetchCar = async () => {
             const result = await getCarById(match.params.id)
+            console.log("DSDDSDSDSDS", result)
             setCar(result.data.data.car);
         };
-        const fetchUser = async () => {
-            // fetchUser = await getUserById()
-            console.log(car, "car")
-        }
         fetchCar();
     }, []);
 
@@ -56,46 +53,79 @@ const CarView = ({ match, location }) => {
                             title={car.title}
                         />
                         <Box>
-                            {/* {car.media.map(img => {
-                            return <CardMedia
-                                className={classes.thumbnails}
-                                image={img.img}
-                            // title={car.alt}
-                            />
-                        })} */}
                         </Box>
                     </Grid>
 
                     <Grid item className={[classes.col, classes.details]}>
-                        <Box>
-                            <Typography className={classes.price}>£{car.price}</Typography>
-                            <Typography className={classes.name}>{car.title}</Typography>
-                        </Box>
 
-                        <Box className="">
+                        <Grid item xs={12} sm container>
+                            <Grid
+                                container
+                                direction="row"
+                                justify="space-between"
+                                alignItems="center"
+                            >
+                                <Grid item xs>
+                                    <Typography className={classes.price}>£{car.price}</Typography>
+                                </Grid>
+
+                                <Grid item>
+                                    <Grid container item direction="row">
+                                        <Grid item className={classes.icons}>
+                                            <FontAwesomeIcon icon="heart" />
+                                            <Typography>Save</Typography>
+                                        </Grid>
+                                        <Grid item className={classes.icons}>
+                                            <FontAwesomeIcon icon="ellipsis-v" />
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+
+                            </Grid>
+                        </Grid>
+
+                        <Grid>
+                            <Typography className={classes.title}>{car.title}</Typography>
+                        </Grid>
+
+                        <Grid
+                            container
+                            direction="row"
+                            justify="space-between"
+                            alignItems="center"
+                        >
                             <Box>Added Yesterday</Box>
 
-                            <Box>
-                                <Box>Views: 238</Box>
-                                <Box>Fav: 8</Box>
-                            </Box>
-                        </Box>
+                            <Grid item>
+                                <Grid container item direction="row">
+                                    <Box><FontAwesomeIcon icon="eye" />238</Box>
+                                    <Box><FontAwesomeIcon icon="heart" />8</Box>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+
+
+
+                        <Grid
+                            container
+
+                        >
+                            <Grid item>
+                                <Typography>Car details</Typography>
+                            </Grid>
+                            <Grid direction="row"
+                                alignItems="center">
+                                <Box>
+                                    <Box>BMW</Box>
+                                </Box>
+                                <Box className={classes.carDetailsGenes}>
+                                    <Typography>Sedan</Typography>
+                                </Box>
+                            </Grid>
+                        </Grid>
+
 
                         <Box>
-                            <Typography>Car details</Typography>
-
-                            <Box>
-                                <Box>BMW</Box>
-                            </Box>
-
-                            <Box className={classes.carDetailsGenes}>
-                                Icon
-                                <Typography>Sedan</Typography>
-                            </Box>
-                        </Box>
-
-                        <Box>
-                            <Typography>Description</Typography>
                             <Typography>{car.description}</Typography>
                         </Box>
 
