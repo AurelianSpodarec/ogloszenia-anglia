@@ -10,6 +10,9 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.up('md')]: {
             display: 'block'
         }
+    },
+    resultNumber: {
+        fontWeight: 'bold'
     }
 
 

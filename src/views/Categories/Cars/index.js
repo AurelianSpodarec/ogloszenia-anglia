@@ -43,19 +43,33 @@ const CarsView = function () {
                     <CarSidebar />
                 </Grid>
 
-                <Grid item xs={12} md={9}>
+                <Grid item xs={12} md={8}>
                     <Grid container>
+
+
                         <Grid item md={12}>
+                            <Grid
+                                container
+                                direction="row"
+                                justify="space-between"
+                                alignItems="center"
+                            >
+                                <Grid item>
+                                    <Grid
+                                        container
+                                        direction="row">
+                                        <Typography>Search Result:</Typography>
+                                        <Typography className={classes.resultNumber}>(234)</Typography>
+                                    </Grid>
+                                </Grid>
 
-                            <Box>
-                                <Typography>Search Result:</Typography><Typography>(234)</Typography>
-                            </Box>
-
-                            <Box>
-                                Col, List
-                        </Box>
+                                <Grid item>
+                                    Col, List
+                                </Grid>
+                            </Grid>
                         </Grid>
                     </Grid>
+
                     <Grid container spacing={2}>
                         {data && data.map(car => {
                             return <CarItem key={car._id} car={car} />
@@ -63,8 +77,8 @@ const CarsView = function () {
                     </Grid>
                 </Grid>
 
-            </Grid>
-        </Container>
+            </Grid >
+        </Container >
     )
 }
 

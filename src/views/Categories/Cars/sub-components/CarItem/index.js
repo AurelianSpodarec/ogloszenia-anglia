@@ -21,7 +21,7 @@ const CarItem = function (props) {
     let { path } = useRouteMatch();
     console.log(props)
     return (
-        <Grid item xs={12} sm={6} md={10}>
+        <Grid item xs={12} sm={6} md={12}>
             <Link className={classes.link} to={`${path}/${props.car._id}`}>
                 <Card className={classes.card}>
                     <Box className={classes.mediaBox}>
