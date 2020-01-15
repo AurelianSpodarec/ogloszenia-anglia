@@ -24,11 +24,13 @@ import PageTitle from '../components/Title';
 const CarsView = function () {
     const classes = useStyles();
     const [data, setData] = useState([]);
+    const [dataLength, setDataLength] = useState("0");
 
     useEffect(() => {
         const fetchData = async () => {
             const result = await getCars();
-            setData(result.data);
+            setDataLength(result.data.length)
+            setData(result.data.cars);
         };
         fetchData();
     }, []);
@@ -60,7 +62,7 @@ const CarsView = function () {
                                         direction="row"
                                     >
                                         <Typography>Search Result</Typography>
-                                        <Typography className={classes.resultNumber}>(234)</Typography>
+                                        <Typography className={classes.resultNumber}>({dataLength})</Typography>
                                     </Grid>
                                 </Grid>
 
