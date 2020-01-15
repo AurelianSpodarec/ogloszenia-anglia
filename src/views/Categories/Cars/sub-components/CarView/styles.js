@@ -9,10 +9,13 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: '#fff'
     },
     mainImgWrap: {
-        height: '500px',
+        height: '320px',
         background: 'black',
-        padding: '50px 0',
         borderRadius: "8px",
+        [theme.breakpoints.up('md')]: {
+            padding: '50px 0',
+            height: '500px',
+        }
     },
     mainImg: {
         height: "100%",
@@ -32,7 +35,8 @@ const useStyles = makeStyles(theme => ({
     title: {
         fontWeight: "600",
         fontSize: "22px",
-        marginBottom: '16px'
+        marginBottom: '16px',
+        overflow: 'hidden',
     },
     description: {
         fontWeight: 400,

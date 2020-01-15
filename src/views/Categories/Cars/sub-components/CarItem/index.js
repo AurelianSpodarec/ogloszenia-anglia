@@ -42,7 +42,10 @@ const CarItem = function (props) {
                             </Box>
                             <Box className={classes.detail}>
                                 <Typography>{props.car.brand} - {props.car.model} - {props.car.year}</Typography>
-                                <Typography>{props.car.milleage}ml</Typography>
+                                {props.car.milleage ?
+                                    <Typography>{props.car.milleage}ml</Typography>
+                                    : null
+                                }
                             </Box>
                             <Box justifyContent="space-between" style={{ marginTop: 'auto' }} className={classes.detail}>
                                 <Box display="flex">

@@ -47,7 +47,7 @@ const CarView = ({ match, location }) => {
             <Box className={classes.carView}>
                 <Grid container>
 
-                    <Grid md="6" item className={classes.col}>
+                    <Grid xs="12" md="6" item className={classes.col}>
                         <Box className={classes.mainImgWrap}>
                             <CardMedia
                                 className={classes.mainImg}
@@ -57,7 +57,7 @@ const CarView = ({ match, location }) => {
                         </Box>
                     </Grid>
 
-                    <Grid md="6" item className={[classes.col, classes.details].join(" ")}>
+                    <Grid xs="12" md="6" item className={[classes.col, classes.details].join(" ")}>
 
                         <Grid item xs={12} sm container>
                             <Grid
