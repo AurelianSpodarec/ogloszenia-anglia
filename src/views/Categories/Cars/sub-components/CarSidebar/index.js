@@ -30,6 +30,16 @@ const CarSidebar = function () {
     const [seats, setSeats] = useState([INITIAL_CAR_STATE.seats[0], INITIAL_CAR_STATE.seats[1]]);
 
 
+
+    // Create context API for car search
+    // Whatever gets selected here, should relfect onto context api and update the search field
+
+    const carQuery = {}
+
+
+
+
+
     function submit() {
         // TODO: Take the values and form it into a URL to query the database
     }
@@ -78,6 +88,15 @@ const CarSidebar = function () {
 
     const onSelectModel = function (event, newValue) {
         setModel(newValue)
+    }
+
+    const onSlide = (event, newValue) => {
+        const type = event.target.value;
+        const isSelected.type.find(item => item === newValue);
+
+        if(isSelected) {
+            
+        }
     }
 
     const onSelectBodyStyle = (event, newValue) => {
