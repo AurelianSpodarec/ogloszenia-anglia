@@ -31,7 +31,6 @@ function CarListProvider({ children }) {
         console.log("FETCHHHHHHHHHHHHHHHHHHHHHHHHHHHHHh")
         try {
             const cars = await getCars();
-            console.log("KKKKKK", cars)
             setCarList(cars.data.cars)
             setLoading(false)
         } catch (e) {
