@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -20,28 +20,41 @@ import useStyles from './styles'
 import CarSidebar from './sub-components/CarSidebar';
 import PageTitle from '../components/Title';
 
+
+import { CarListContext } from '../../../context/CarsListProvider';
+
 const CarsView = function () {
     const classes = useStyles();
     const [data, setData] = useState([]);
     const [dataLength, setDataLength] = useState("0");
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const result = await getCars();
-            setDataLength(result.data.length)
-            setData(result.data.cars);
-        };
-        fetchData();
-    }, []);
+    const carProvider = useContext(CarListContext)
+
+    console.log("MMMMMMMMMMMMMMMMMM", carProvider.carList.cars)
+
+
+
+    // Replace With Context
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const result = await getCars();
+    //         setDataLength(result.data.length)
+    //         setData(result.data.cars);
+    //     };
+    //     fetchData();
+    // }, []);
+
 
     return (
+        // <CarListProvider>
+
         <Container>
             <PageTitle title="Used Cars" />
 
             <Grid container spacing={4}>
 
                 <Grid className={classes.sidebar} item xs={12} md={3}>
-                    <CarSidebar />
+                    {/* <CarSidebar /> */}
                 </Grid>
 
                 <Grid item xs={12} md={8}>
@@ -74,14 +87,16 @@ const CarsView = function () {
                     </Grid>
 
                     <Grid container spacing={2}>
-                        {data && data.map(car => {
-                            return <CarItem key={car._id} car={car} />
-                        })}
+                        {
+                            carProvider.carList.map(car => {
+                                return <CarItem key={car._id} car={car} />
+                            })}
                     </Grid>
                 </Grid>
 
             </Grid >
         </Container >
+        // </CarListProvider>
     )
 }
 

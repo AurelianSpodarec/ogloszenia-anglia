@@ -23,7 +23,9 @@ import Category from '../components/Categories';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import './App.css';
+
 import { AuthProvider, useAuthData } from '../context/AuthContext';
+import { CarListProvider } from './../context/CarsListProvider';
 
 const theme = createMuiTheme({
     typography: {
@@ -59,7 +61,11 @@ function App() {
 
 
     return (
-        <AuthProvider><Layout></Layout></AuthProvider>
+        <AuthProvider>
+            <CarListProvider>
+                <Layout></Layout>
+            </CarListProvider>
+        </AuthProvider>
     )
 }
 
