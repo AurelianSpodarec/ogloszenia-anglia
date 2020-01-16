@@ -15,10 +15,8 @@ const CarSidebar = function () {
 
     const [models, setModels] = useState([])
 
-
-
     const [postedBy, setPostedBy] = useState();
-    const [carMake, setCarMake] = useState();
+    const [make, setMake] = useState();
     const [model, setModel] = useState();
 
     const [bodyStyle, setBodyStyle] = useState([]);
@@ -34,9 +32,14 @@ const CarSidebar = function () {
     // Create context API for car search
     // Whatever gets selected here, should relfect onto context api and update the search field
 
-    const carQuery = {}
+    const carQuery = {
+        // make,
+        seats
+        // model,
+        // year
+    }
 
-
+    
 
 
 
@@ -82,7 +85,7 @@ const CarSidebar = function () {
     }
 
     const onSelectMake = function (event, newValue) {
-        setCarMake(newValue)
+        setMake(newValue)
         setModels(findModel(newValue))
     }
 
@@ -90,14 +93,14 @@ const CarSidebar = function () {
         setModel(newValue)
     }
 
-    const onSlide = (event, newValue) => {
-        const type = event.target.value;
-        const isSelected.type.find(item => item === newValue);
+    // const onSlide = (event, newValue) => {
+    //     const type = event.target.value;
+    //     const isSelected.type.find(item => item === newValue);
 
-        if(isSelected) {
-            
-        }
-    }
+    //     if(isSelected) {
+
+    //     }
+    // }
 
     const onSelectBodyStyle = (event, newValue) => {
         const isSelected = bodyStyle.find(item => item === newValue);
@@ -121,7 +124,7 @@ const CarSidebar = function () {
 
     const findModel = function (carBrand) {
         if (!carBrand) return;
-        // if (!carMake) { return };
+        // if (!Make) { return };
         const selectedCarModel = INITIAL_CAR_STATE.make.find(item => item.name === carBrand.name).models
         return selectedCarModel;
     }
@@ -157,7 +160,7 @@ const CarSidebar = function () {
                     search
                     data={models}
                     onClick={onSelectModel}
-                    disabled={!carMake}
+                    disabled={!make}
                 />
                 <CustomSlider
                     // slideBeforeLabel

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 axios.defaults.withCredentials = true
 
-const getCars = async () => {
+const getCars = async (data) => {
     try {
         const res = await axios.get(`${config.apiUrl}cars`)
         return res;
