@@ -14,129 +14,90 @@ import { CarListContext } from '../../../../../context/CarsListContext';
 
 const CarSidebar = function () {
     const classes = useStyles();
-    console.log("PPPPPPPPPPPPPPPOOOOOOOo", useContext(CarListContext))
-    // const [models, setModels] = useState([])
     const useCarContext = useContext(CarListContext);
 
+}
+
+
+// const handleChange = e => {
+//     const { name, value } = e.target
+//     console.log(name, value)
+//     setState(prevState => ({
+//         ...prevState,
+//         [name]: value
+//     }))
+// }
 
 
 
+// const onSelectMake = function (event, newValue) {
+//     setMake(newValue)
+//     setModels(findModel(newValue))
+// }
+
+// const onSlide = (event, newValue) => {
+//     const type = event.target.value;
+//     const isSelected.type.find(item => item === newValue);
+
+//     if(isSelected) {
+
+//     }
+// }
+
+// const onSelectBodyStyle = (event, newValue) => {
+//     const isSelected = bodyStyle.find(item => item === newValue);
+
+//     if (isSelected) {
+//         setBodyStyle(bodyStyle.filter(item => item !== newValue))
+//     } else {
+//         setBodyStyle([...bodyStyle, newValue])
+//     }
+// }
+
+// const onSelectTransmission = (event, newValue) => {
+//     const isSelected = transmission.find(item => item === newValue);
+
+//     if (isSelected) {
+//         setTransmission(transmission.filter(item => item !== newValue))
+//     } else {
+//         setTransmission([...transmission, newValue])
+//     }
+// }
+
+// const findModel = function (carBrand) {
+//     if (!carBrand) return;
+//     // if (!Make) { return };
+//     const selectedCarModel = INITIAL_CAR_STATE.make.find(item => item.name === carBrand.name).models
+//     return selectedCarModel;
+// }
 
 
+return (
 
-    function submit() {
-        // TODO: Take the values and form it into a URL to query the database
-    }
+    <Box className={classes.sidebar} >
 
+        <Card className={classes.sidebarInner}>
 
-    // const handleChange = e => {
-    //     const { name, value } = e.target
-    //     console.log(name, value)
-    //     setState(prevState => ({
-    //         ...prevState,
-    //         [name]: value
-    //     }))
-    // }
-
-
-    // const [state, setState] = useState({
-    //     make: 'all',
-    //     model: 'all',
-    //     postedBy: 'all',
-    //     year: [1960, 2020],
-    //     mileage: [0, 300000],
-    //     seats: [1, 9]
-    // });
-
-    //TODO: Refactor this into something that is like above maybe
-    // const onYearChange = function (event, newValues) {
-    //     setYear(newValues)
-    // }
-
-    // const onMileageChange = function (event, newValues) {
-    //     setMileage(newValues)
-    // }
-
-    // const onSeatsChange = function (event, newValues) {
-    //     setSeats(newValues)
-    // }
-
-    // const onPostedBy = function (event, newValues) {
-    //     setPostedBy(newValues)
-    // }
-
-    // const onSelectMake = function (event, newValue) {
-    //     setMake(newValue)
-    //     setModels(findModel(newValue))
-    // }
-
-    // const onSelectModel = function (event, newValue) {
-    //     setModel(newValue)
-    // }
-
-    // const onSlide = (event, newValue) => {
-    //     const type = event.target.value;
-    //     const isSelected.type.find(item => item === newValue);
-
-    //     if(isSelected) {
-
-    //     }
-    // }
-
-    // const onSelectBodyStyle = (event, newValue) => {
-    //     const isSelected = bodyStyle.find(item => item === newValue);
-
-    //     if (isSelected) {
-    //         setBodyStyle(bodyStyle.filter(item => item !== newValue))
-    //     } else {
-    //         setBodyStyle([...bodyStyle, newValue])
-    //     }
-    // }
-
-    // const onSelectTransmission = (event, newValue) => {
-    //     const isSelected = transmission.find(item => item === newValue);
-
-    //     if (isSelected) {
-    //         setTransmission(transmission.filter(item => item !== newValue))
-    //     } else {
-    //         setTransmission([...transmission, newValue])
-    //     }
-    // }
-
-    // const findModel = function (carBrand) {
-    //     if (!carBrand) return;
-    //     // if (!Make) { return };
-    //     const selectedCarModel = INITIAL_CAR_STATE.make.find(item => item.name === carBrand.name).models
-    //     return selectedCarModel;
-    // }
-
-
-    return (
-
-        <Box className={classes.sidebar} >
-
-            <Card className={classes.sidebarInner}>
-
-                {/* <CustomItem
+            {/* <CustomItem
                     label="Posted by"
                     onClick={onPostedBy}
                     data={INITIAL_CAR_STATE.postedBy}
                 />
                 <Divider /> */}
-                <CustomItem
-                    label="Make"
-                    search
-                    onClick={useCarContext.onSelectMake}
-                    data={INITIAL_CAR_STATE.make}
-                />
-                {/* <CustomItem
+            <CustomItem
+                label="Make"
+                search
+                onClick={useCarContext.onSelectMake}
+                data={INITIAL_CAR_STATE.make}
+            />
+            {/* <CustomItem
                     label="Model"
                     search
                     data={models}
                     onClick={useCarContext.onSelectModel}
                     disabled={!make}
                 /> */}
-                {/*<CustomSlider
+            {/*<CustomSlider
                     // slideBeforeLabel
                     leftBeforeSlideMaxLabel={"Before"}
                     label="Year"
@@ -160,7 +121,7 @@ const CarSidebar = function () {
                     onChange={onMileageChange}
                 />
                 <Divider /> */}
-                {/* 
+            {/* 
                 <CustomItem
                     label="Body Style"
                     onClick={onSelectBodyStyle}
@@ -184,7 +145,7 @@ const CarSidebar = function () {
                     multiSelect
                 />
                 <Divider /> */}
-                {/* <CustomSlider
+            {/* <CustomSlider
                     label="Seats"
                     valueMatchLabel="Any"
                     labelRight="seats"
@@ -198,12 +159,12 @@ const CarSidebar = function () {
                     // onChange={handleChange}
                     onChange={onSeatsChange}
                 /> */}
-                <Box className={classes.item}>
-                    <Button fullWidth variant="contained" color="secondary">Save filters</Button>
-                </Box>
-            </Card>
-        </Box>
-    )
+            <Box className={classes.item}>
+                <Button fullWidth variant="contained" color="secondary">Save filters</Button>
+            </Box>
+        </Card>
+    </Box>
+)
 }
 
 export default CarSidebar;
