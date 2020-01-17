@@ -10,22 +10,36 @@ function CarListProvider({ children }) {
 
     const [models, setModels] = useState([])
 
-    const [postedBy, setPostedBy] = useState();
+
+    // const [postedBy, setPostedBy] = useState();
     const [make, setMake] = useState();
-    const [model, setModel] = useState();
+    // const [model, setModel] = useState();
 
-    const [bodyStyle, setBodyStyle] = useState([]);
-    const [transmission, setTransmission] = useState([]);
+    // const [bodyStyle, setBodyStyle] = useState([]);
+    // const [transmission, setTransmission] = useState([]);
 
 
-    const [year, setYear] = useState([INITIAL_CAR_STATE.year[0], INITIAL_CAR_STATE.year[1]]);
-    const [mileage, setMileage] = useState([INITIAL_CAR_STATE.mileage[0], INITIAL_CAR_STATE.mileage[1]]);
-    const [seats, setSeats] = useState([INITIAL_CAR_STATE.seats[0], INITIAL_CAR_STATE.seats[1]]);
+    // const [year, setYear] = useState([INITIAL_CAR_STATE.year[0], INITIAL_CAR_STATE.year[1]]);
+    // const [mileage, setMileage] = useState([INITIAL_CAR_STATE.mileage[0], INITIAL_CAR_STATE.mileage[1]]);
+    // const [seats, setSeats] = useState([INITIAL_CAR_STATE.seats[0], INITIAL_CAR_STATE.seats[1]]);
 
+
+    const [car, setCar] = useState({
+        // postedBy,
+        make,
+        // model,
+        // bodyStyle,
+        // transmission,
+        // year,
+        // mileage,
+        // seats
+    })
 
     const [carList, setCarList] = useState([])
     const [loading, setLoading] = useState(true)
-    console.log("CAR PROVIDERRRRRRRRRRRRRRRRRRRRR")
+
+
+    // NEED BIG REFACTOR
 
     const fetchCarList = async () => {
         console.log("FETCHHHHHHHHHHHHHHHHHHHHHHHHHHHHHh")
@@ -38,6 +52,15 @@ function CarListProvider({ children }) {
         }
     }
 
+    const onSelectMake = function (event, newValue) {
+        setMake(newValue)
+        // setModels(findModel(newValue))
+    }
+
+    // const onSelectModel = function (event, newValue) {
+    //     setModel(newValue)
+    // }
+
     useEffect(() => {
         console.log("useEffect")
         fetchCarList()
@@ -46,7 +69,9 @@ function CarListProvider({ children }) {
     return (
         <CarListContext.Provider value={{
             carList,
-            loading
+            loading,
+            // onSelectModel,
+            onSelectMake
         }} >
             {children}
         </CarListContext.Provider >

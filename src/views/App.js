@@ -25,7 +25,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import './App.css';
 
 import { AuthProvider, useAuthData } from '../context/AuthContext';
-import { CarListProvider } from './../context/CarsListProvider';
+import { CarListProvider } from './../context/CarsListContext';
 
 const theme = createMuiTheme({
     typography: {

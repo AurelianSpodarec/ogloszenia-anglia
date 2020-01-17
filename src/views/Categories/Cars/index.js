@@ -21,7 +21,7 @@ import CarSidebar from './sub-components/CarSidebar';
 import PageTitle from '../components/Title';
 
 
-import { CarListContext } from '../../../context/CarsListProvider';
+import { CarListContext } from '../../../context/CarsListContext';
 
 const CarsView = function () {
     const classes = useStyles();
@@ -54,7 +54,7 @@ const CarsView = function () {
             <Grid container spacing={4}>
 
                 <Grid className={classes.sidebar} item xs={12} md={3}>
-                    {/* <CarSidebar /> */}
+                    <CarSidebar />
                 </Grid>
 
                 <Grid item xs={12} md={8}>
@@ -87,10 +87,9 @@ const CarsView = function () {
                     </Grid>
 
                     <Grid container spacing={2}>
-                        {
-                            carProvider.carList.map(car => {
-                                return <CarItem key={car._id} car={car} />
-                            })}
+                        {carProvider.carList.map(car => {
+                            return <CarItem key={car._id} car={car} />
+                        })}
                     </Grid>
                 </Grid>
 
