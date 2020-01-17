@@ -16,88 +16,86 @@ const CarSidebar = function () {
     const classes = useStyles();
     const useCarContext = useContext(CarListContext);
 
-}
 
-
-// const handleChange = e => {
-//     const { name, value } = e.target
-//     console.log(name, value)
-//     setState(prevState => ({
-//         ...prevState,
-//         [name]: value
-//     }))
-// }
+    // const handleChange = e => {
+    //     const { name, value } = e.target
+    //     console.log(name, value)
+    //     setState(prevState => ({
+    //         ...prevState,
+    //         [name]: value
+    //     }))
+    // }
 
 
 
-// const onSelectMake = function (event, newValue) {
-//     setMake(newValue)
-//     setModels(findModel(newValue))
-// }
+    // const onSelectMake = function (event, newValue) {
+    //     setMake(newValue)
+    //     setModels(findModel(newValue))
+    // }
 
-// const onSlide = (event, newValue) => {
-//     const type = event.target.value;
-//     const isSelected.type.find(item => item === newValue);
+    // const onSlide = (event, newValue) => {
+    //     const type = event.target.value;
+    //     const isSelected.type.find(item => item === newValue);
 
-//     if(isSelected) {
+    //     if(isSelected) {
 
-//     }
-// }
+    //     }
+    // }
 
-// const onSelectBodyStyle = (event, newValue) => {
-//     const isSelected = bodyStyle.find(item => item === newValue);
+    // const onSelectBodyStyle = (event, newValue) => {
+    //     const isSelected = bodyStyle.find(item => item === newValue);
 
-//     if (isSelected) {
-//         setBodyStyle(bodyStyle.filter(item => item !== newValue))
-//     } else {
-//         setBodyStyle([...bodyStyle, newValue])
-//     }
-// }
+    //     if (isSelected) {
+    //         setBodyStyle(bodyStyle.filter(item => item !== newValue))
+    //     } else {
+    //         setBodyStyle([...bodyStyle, newValue])
+    //     }
+    // }
 
-// const onSelectTransmission = (event, newValue) => {
-//     const isSelected = transmission.find(item => item === newValue);
+    // const onSelectTransmission = (event, newValue) => {
+    //     const isSelected = transmission.find(item => item === newValue);
 
-//     if (isSelected) {
-//         setTransmission(transmission.filter(item => item !== newValue))
-//     } else {
-//         setTransmission([...transmission, newValue])
-//     }
-// }
+    //     if (isSelected) {
+    //         setTransmission(transmission.filter(item => item !== newValue))
+    //     } else {
+    //         setTransmission([...transmission, newValue])
+    //     }
+    // }
 
-// const findModel = function (carBrand) {
-//     if (!carBrand) return;
-//     // if (!Make) { return };
-//     const selectedCarModel = INITIAL_CAR_STATE.make.find(item => item.name === carBrand.name).models
-//     return selectedCarModel;
-// }
+    // const findModel = function (carBrand) {
+    //     if (!carBrand) return;
+    //     // if (!Make) { return };
+    //     const selectedCarModel = INITIAL_CAR_STATE.make.find(item => item.name === carBrand.name).models
+    //     return selectedCarModel;
+    // }
 
 
-return (
+    return (
 
-    <Box className={classes.sidebar} >
+        <Box className={classes.sidebar} >
 
-        <Card className={classes.sidebarInner}>
+            <Card className={classes.sidebarInner}>
 
-            {/* <CustomItem
+                {/* <CustomItem
                     label="Posted by"
                     onClick={onPostedBy}
                     data={INITIAL_CAR_STATE.postedBy}
                 />
                 <Divider /> */}
-            <CustomItem
-                label="Make"
-                search
-                onClick={useCarContext.onSelectMake}
-                data={INITIAL_CAR_STATE.make}
-            />
-            {/* <CustomItem
+                <CustomItem
+                    label="Make"
+                    search
+                    onClick={useCarContext.onSelectMake}
+                    data={INITIAL_CAR_STATE.make}
+                />
+                {/* <CustomItem
                     label="Model"
                     search
                     data={models}
                     onClick={useCarContext.onSelectModel}
                     disabled={!make}
                 /> */}
-            {/*<CustomSlider
+                {/*<CustomSlider
                     // slideBeforeLabel
                     leftBeforeSlideMaxLabel={"Before"}
                     label="Year"
@@ -121,7 +119,7 @@ return (
                     onChange={onMileageChange}
                 />
                 <Divider /> */}
-            {/* 
+                {/* 
                 <CustomItem
                     label="Body Style"
                     onClick={onSelectBodyStyle}
@@ -145,7 +143,7 @@ return (
                     multiSelect
                 />
                 <Divider /> */}
-            {/* <CustomSlider
+                {/* <CustomSlider
                     label="Seats"
                     valueMatchLabel="Any"
                     labelRight="seats"
@@ -159,12 +157,12 @@ return (
                     // onChange={handleChange}
                     onChange={onSeatsChange}
                 /> */}
-            <Box className={classes.item}>
-                <Button fullWidth variant="contained" color="secondary">Save filters</Button>
-            </Box>
-        </Card>
-    </Box>
-)
+                <Box className={classes.item}>
+                    <Button fullWidth variant="contained" color="secondary">Save filters</Button>
+                </Box>
+            </Card>
+        </Box>
+    )
 }
 
 export default CarSidebar;

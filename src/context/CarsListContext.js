@@ -13,11 +13,6 @@ function CarListProvider({ children }) {
 
     // const [postedBy, setPostedBy] = useState();
     const [make, setMake] = useState();
-    // const [model, setModel] = useState();
-
-    // const [bodyStyle, setBodyStyle] = useState([]);
-    // const [transmission, setTransmission] = useState([]);
-
 
     // const [year, setYear] = useState([INITIAL_CAR_STATE.year[0], INITIAL_CAR_STATE.year[1]]);
     // const [mileage, setMileage] = useState([INITIAL_CAR_STATE.mileage[0], INITIAL_CAR_STATE.mileage[1]]);
@@ -57,10 +52,6 @@ function CarListProvider({ children }) {
         // setModels(findModel(newValue))
     }
 
-    // const onSelectModel = function (event, newValue) {
-    //     setModel(newValue)
-    // }
-
     useEffect(() => {
         console.log("useEffect")
         fetchCarList()
@@ -84,9 +75,3 @@ export {
     CarListContext,
     CarListProvider
 }
-
-// Set CONTEXT with different components to filter CARS query
-// Fetch CARS database with filter options and return them
-
-
-
