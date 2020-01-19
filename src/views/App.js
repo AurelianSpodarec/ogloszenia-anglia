@@ -47,9 +47,7 @@ function Layout(props) {
         <ThemeProvider theme={theme}>
 
             <Header />
-            {/* <div> */}
             <Category />
-            {/* </div> */}
             <Footer />
 
         </ThemeProvider>
