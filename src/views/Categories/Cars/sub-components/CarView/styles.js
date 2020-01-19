@@ -72,6 +72,7 @@ const useStyles = makeStyles(theme => ({
     },
     userAvatar: {
         height: '40px',
+        marginRight: '8px'
     },
     userName: {
         fontSize: '16px',
@@ -80,6 +81,10 @@ const useStyles = makeStyles(theme => ({
     },
     userContactDetails: {
         display: 'flex',
+    },
+
+    carDetailsChipWrap: {
+        marginTop: '12px'
     }
 
 }));

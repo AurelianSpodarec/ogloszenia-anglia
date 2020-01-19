@@ -94,6 +94,7 @@ const CarView = ({ match, location }) => {
                             direction="row"
                             justify="space-between"
                             alignItems="center"
+                            style={{ marginBottom: '12px' }}
                         >
                             {/* <Box>Added Yesterday</Box> */}
 
@@ -117,6 +118,7 @@ const CarView = ({ match, location }) => {
                                 <Typography>Car details</Typography>
                             </Grid>
                             <Grid
+                                className={classes.carDetailsChipWrap}
                                 item
                                 container
                                 direction="row"
