@@ -151,7 +151,7 @@ const CarView = ({ match, location }) => {
                             </Grid>
 
                             <Grid item className={classes.userButtons}>
-                                <Grid container direction="row">
+                                <Grid container spacing={2} direction="row">
                                     <Grid item md={6}>
 
                                         <Button fullWidth variant="outlined" color="secondary">
