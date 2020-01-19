@@ -34,14 +34,8 @@ const CarView = ({ match, location }) => {
         fetchCar();
     }, []);
 
-    // useEffect(() => {
-    //     const fetchUser = async() => {
-    //         const result = await getUserById()
-    //     }
-    // })
-
     console.log(car, "mmsdksdksjdksdjskdjsk")
-    // 
+
     return (
         <Container>
             <Box className={classes.carView}>
@@ -108,8 +102,6 @@ const CarView = ({ match, location }) => {
                             </Grid>
                         </Grid>
 
-
-
                         <Grid
                             container
                             direction="column"
@@ -163,7 +155,7 @@ const CarView = ({ match, location }) => {
                                     <Grid item md={6}>
 
                                         <Button fullWidth variant="outlined" color="secondary">
-                                            <FontAwesomeIcon icon="heart" />Show Mobile
+                                            <FontAwesomeIcon icon="phone" />Show Mobile
                                             </Button>
                                     </Grid>
                                     <Grid item md={6}>

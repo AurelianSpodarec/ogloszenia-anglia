@@ -53,7 +53,8 @@ const CarItem = function (props) {
                                     <Typography className={classes.location}>{props.car.location}</Typography>
                                 </Box>
                                 <Box display="flex">
-                                    <Button><FontAwesomeIcon icon="share-square" /></Button>
+                                    {/* TODO: When clicked heart, assign it to user and add relation to this car then get the cout */}
+                                    {/* <Button><FontAwesomeIcon icon="share-square" /></Button> */}
                                     <Button><FontAwesomeIcon icon="heart" /></Button>
                                     {/* <Button><FontAwesomeIcon icon={['far', 'heart']} /></Button> */}
                                     {/* <Button>Chat Now</Button> */}
