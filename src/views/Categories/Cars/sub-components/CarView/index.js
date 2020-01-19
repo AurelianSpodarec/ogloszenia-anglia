@@ -117,13 +117,20 @@ const CarView = ({ match, location }) => {
                                 <Typography>Car details</Typography>
                             </Grid>
                             <Grid
+                                item
+                                container
                                 direction="row"
-                                alignItems="center">
-                                <Grid item>
-                                    <Box>BMW</Box>
+                                alignItems="center"
+                            >
+                                <Grid item className={classes.carDetailsGenes}>
+                                    {/* TODO: Change 'car.brand' to 'car.make' */}
+                                    <Chip label={car.brand} variant="outlined" />
                                 </Grid>
                                 <Grid item className={classes.carDetailsGenes}>
-                                    <Typography>Sedan</Typography>
+                                    <Chip label={car.model} variant="outlined" />
+                                </Grid>
+                                <Grid item className={classes.carDetailsGenes}>
+                                    <Chip label={car.year} variant="outlined" />
                                 </Grid>
                             </Grid>
                         </Grid>
