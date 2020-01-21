@@ -14,7 +14,7 @@ const userLogin = async (data) => {
 
 const isLoggedIn = async () => {
     const res = await axios.get(`${config.apiUrl}isLoggedIn`)
-    console.log(res)
+    console.log("Is logged in", res)
     return res;
 }
 
@@ -39,6 +39,7 @@ const userRegister = async (data) => {
 
 const getUsers = async () => {
     const res = await axios.get(`${config.apiUrl}users`)
+    console.log("Get users", res)
     return res;
 }
 

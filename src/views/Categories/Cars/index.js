@@ -30,7 +30,7 @@ const CarsView = function () {
 
     const carProvider = useContext(CarListContext)
 
-    console.log("MMMMMMMMMMMMMMMMMM", carProvider.carList.cars)
+    console.log("MMMMMMMMMMMMMMMMMM", carProvider.isLoading)
 
 
 
@@ -87,9 +87,14 @@ const CarsView = function () {
                     </Grid>
 
                     <Grid container spacing={2}>
-                        {carProvider.carList.map(car => {
-                            return <CarItem key={car._id} car={car} />
-                        })}
+
+                        {
+                            carProvider.isLoading ?
+                                "Loading..." :
+                                carProvider.carList.map(car => {
+                                    return <CarItem key={car._id} car={car} />
+                                })
+                        }
                     </Grid>
                 </Grid>
 

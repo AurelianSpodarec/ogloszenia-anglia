@@ -25,17 +25,17 @@ function CarListProvider({ children }) {
     })
 
     const [carList, setCarList] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(true)
 
 
     // NEED BIG REFACTOR
 
     const fetchCarList = async () => {
-        console.log("FETCHHHHHHHHHHHHHHHHHHHHHHHHHHHHHh")
         try {
             const cars = await getCars();
             setCarList(cars.data.cars)
-            setLoading(false)
+            setIsLoading(false)
+            console.log("Fetch cars", cars)
         } catch (e) {
             console.log("CarsListProvider: ", e)
         }
@@ -54,7 +54,7 @@ function CarListProvider({ children }) {
     return (
         <CarListContext.Provider value={{
             carList,
-            loading,
+            isLoading,
             // onSelectModel,
             onSelectMake
         }} >

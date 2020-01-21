@@ -70,7 +70,7 @@ const UserMenu = function ({ props }) {
                 open={Boolean(anchorEl)}
                 onClose={handleMenuClose}
             >
-                {auth.user.role === 'admin' ?
+                {auth.user && auth.user.role === 'admin' ?
                     <>
                         <CustomMenuItem
                             label="Dashboard"
