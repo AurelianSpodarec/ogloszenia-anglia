@@ -95,8 +95,8 @@ const CarsView = function () {
                                 //         <Skeleton width="60%" />
                                 //     </Box>
                                 :
-                                carProvider.length != 0 ?
-                                    carProvider.carList.map(car => {
+                                carProvider && carProvider.length != 0 ?
+                                    carProvider && carProvider.carList.map(car => {
                                         return <CarItem key={car._id} car={car} />
                                     })
                                     : "No cars found"
