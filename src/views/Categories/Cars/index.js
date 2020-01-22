@@ -13,7 +13,6 @@ import {
     Box
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
-
 import CarItem from './sub-components/CarItem/';
 import { getCars, getCarById } from './../../../services/api/categories/car';
 import useStyles from './styles'
@@ -90,10 +89,17 @@ const CarsView = function () {
 
                         {
                             carProvider.isLoading ?
-                                "Loading..." :
-                                carProvider.carList.map(car => {
-                                    return <CarItem key={car._id} car={car} />
-                                })
+                                <CarItem isLoading={carProvider.isLoading} />
+                                //     <Box pt={0.5}>
+                                //         <Skeleton />
+                                //         <Skeleton width="60%" />
+                                //     </Box>
+                                :
+                                carProvider.length != 0 ?
+                                    carProvider.carList.map(car => {
+                                        return <CarItem key={car._id} car={car} />
+                                    })
+                                    : "No cars found"
                         }
                     </Grid>
                 </Grid>
