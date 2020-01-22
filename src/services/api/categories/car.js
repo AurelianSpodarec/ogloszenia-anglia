@@ -5,7 +5,8 @@ axios.defaults.withCredentials = true
 
 const getCars = async (data) => {
     try {
-        const res = await axios.get(`https://ogloszenia-anglia.herokuapp.com/api/v1/cars`)
+        console.log("ENVIROMENT VARIABLEEEEEEEEEEEEE", process.env.API_URL)
+        const res = await axios.get(`${config.apiUrl}cars`)
         return res;
     } catch (err) {
         console.log("Car List", err)
