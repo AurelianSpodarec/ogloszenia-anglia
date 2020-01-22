@@ -5,7 +5,7 @@ axios.defaults.withCredentials = true
 
 const getCars = async (data) => {
     try {
-        console.log("ENVIROMENT VARIABLEEEEEEEEEEEEE", process.env.API_URL)
+        console.log("ENVIROMENT VARIABLEEEEEEEEEEEEE", process.env.REACT_APP_API_URL)
         const res = await axios.get(`${config.apiUrl}cars`)
         return res;
     } catch (err) {
