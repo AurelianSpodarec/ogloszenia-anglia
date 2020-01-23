@@ -23,6 +23,7 @@ const CarItem = function (props) {
     const classes = useStyles();
     let { path } = useRouteMatch();
     console.log(props)
+    console.log("PATHHHHHH", path)
     return (
         <Grid item xs={12} sm={6} md={12}>
             <Link className={classes.link} to={props.isLoading ? "" : `${path}/${props.car._id}`}> :
@@ -69,22 +70,24 @@ const CarItem = function (props) {
                             </>
                             <>
 
-                                {props.isLoading ?
-                                    "Loading" :
-                                    <Box justifyContent="space-between" style={{ marginTop: 'auto' }} className={classes.detail}>
-                                        <Box display="flex">
-                                            <FontAwesomeIcon icon="map-marker-alt" />
-                                            <Typography className={classes.location}>{props.car.location}</Typography>
-                                        </Box>
-                                        <Box display="flex">
-                                            {/* TODO: When clicked heart, assign it to user and add relation to this car then get the cout */}
-                                            {/* <Button><FontAwesomeIcon icon="share-square" /></Button> */}
-                                            <Button><FontAwesomeIcon icon="heart" /></Button>
-                                            {/* <Button><FontAwesomeIcon icon={['far', 'heart']} /></Button> */}
-                                            {/* <Button>Chat Now</Button> */}
-                                        </Box>
-                                    </Box>
-                                }
+                                <Box justifyContent="space-between" style={{ marginTop: 'auto' }} className={classes.detail}>
+                                    {props.isLoading ?
+                                        <Skeleton /> :
+                                        <>
+                                            <Box display="flex">
+                                                <FontAwesomeIcon icon="map-marker-alt" />
+                                                <Typography className={classes.location}>{props.car.location}</Typography>
+                                            </Box>
+                                            <Box display="flex">
+                                                {/* TODO: When clicked heart, assign it to user and add relation to this car then get the cout */}
+                                                {/* <Button><FontAwesomeIcon icon="share-square" /></Button> */}
+                                                <Button><FontAwesomeIcon icon="heart" /></Button>
+                                                {/* <Button><FontAwesomeIcon icon={['far', 'heart']} /></Button> */}
+                                                {/* <Button>Chat Now</Button> */}
+                                            </Box>
+                                        </>
+                                    }
+                                </Box>
                             </>
                         </Box>
 

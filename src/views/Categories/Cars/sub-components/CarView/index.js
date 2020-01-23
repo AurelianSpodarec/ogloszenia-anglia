@@ -17,24 +17,18 @@ import {
     Button
 } from '@material-ui/core';
 import { getCarById } from '../../../../../services/api/categories/car';
-import { getUser } from '../../../../../services/api/users';
 
 const CarView = ({ match, location }) => {
     const classes = useStyles();
     const [car, setCar] = useState([]);
-    const [user, setUser] = useState();
-    // if (!match || !match.params.id) { return }
 
     useEffect(() => {
         const fetchCar = async () => {
             const result = await getCarById(match.params.id)
-            console.log("DSDDSDSDSDS", result)
-            setCar(result.data.data.car);
+            setCar(result.data.car);
         };
         fetchCar();
     }, []);
-
-    console.log(car, "mmsdksdksjdksdjskdjsk")
 
     return (
         <Container>

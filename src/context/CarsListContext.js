@@ -11,8 +11,6 @@ function CarListProvider({ children }) {
     const [models, setModels] = useState([])
     const [make, setMake] = useState();
 
-
-
     const [car, setCar] = useState({
         postedBy: 'All',
         make: 'All',
@@ -29,11 +27,13 @@ function CarListProvider({ children }) {
 
 
     // NEED BIG REFACTOR
+    // On submit, fetch car list and update the list
 
     const fetchCarList = async () => {
         try {
             const cars = await getCars();
-            setCarList(cars.data.cars)
+            console.log("LLLLLLLLLLLLLLLLLLLLL", cars)
+            setCarList(cars.cars)
             setIsLoading(false)
             console.log("Fetch cars", cars)
         } catch (e) {

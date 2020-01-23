@@ -22,8 +22,8 @@ import {
 
 import useStyles from './styles'
 import { CustomItem } from '../../components';
-import { INITIAL_CAR_STATE } from './../../utils/data/menu'
-
+import { INITIAL_CAR_STATE } from './../../utils/data/menu';
+import { createCar } from '../../services/api/categories/car';
 
 
 
@@ -205,6 +205,11 @@ const AddListing = function ({ onClose, selectedValue, open }) {
     //     set(event.currentTarget);
     // };
 
+    const addNewCar = () => {
+        console.log("Add new car")
+        createCar()
+    }
+
     return (
         <Dialog maxWidth="sm" fullWidth={true} onClose={onClose} aria-labelledby="simple-dialog-title" open={open}>
             <DialogTitle fontWeight="fontWeightBold" className={classes.dialogTitle} id="simple-dialog-title">Add new listing</DialogTitle>
@@ -212,6 +217,10 @@ const AddListing = function ({ onClose, selectedValue, open }) {
             <DialogContent dividers='paper'>
 
 
+
+                <Box onClick={addNewCar}>
+                    ADD NEW CAR
+                </Box>
 
                 <Dropzone />
 

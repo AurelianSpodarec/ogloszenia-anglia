@@ -76,8 +76,9 @@ const Header = function (props) {
 
                     <Toolbar disableGutters>
 
-                        <Typography className={classes.logoText}>BUBA</Typography>
-
+                        <a href="/">
+                            <Typography className={classes.logoText}>BUBA</Typography>
+                        </a>
                         <Box className={classes.search}>
                             <Box className={classes.searchIcon}>
                                 <FontAwesomeIcon icon="search" />

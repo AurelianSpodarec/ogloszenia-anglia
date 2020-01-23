@@ -1,30 +1,25 @@
 import config from './../../config';
-import axios from 'axios';
+import request from '../request';
 
-axios.defaults.withCredentials = true
+// KY: https://golb.hplar.ch/2019/08/ky.html - because AXIOS is outdated and unmaintained
 
 const getCars = async (data) => {
-    try {
-        console.log("ENVIROMENT VARIABLEEEEEEEEEEEEE", process.env.REACT_APP_API_URL)
-        const res = await axios.get(`${config.apiUrl}cars`)
-        return res;
-    } catch (err) {
-        console.log("Car List", err)
-    }
+    const res = await fetch(`${config.apiUrl}cars`, request("GET"))
+    return await res.json();
 }
 
 const getCarById = async (id) => {
-    try {
-        const res = await axios.get(`${config.apiUrl}car/${id}`)
-        return res;
-    } catch (err) {
-        console.log("Car", err)
-    }
+    const res = await fetch(`${config.apiUrl}car/${id}`, request("GET"))
+    return await res.json();
 }
 
-// const createCar = async (car) => {
+const createCar = async (car) => {
 
-// }
+    const res = await fetch(`${config.apiUrl}car`, request("POST", { "title": "CCCa" }))
+        .then(res => res.json())
+        .then(res => console.log(res));
+    return res;
+}
 
 // const deleteCar = async (id) => {
 
@@ -32,5 +27,6 @@ const getCarById = async (id) => {
 
 export {
     getCars,
-    getCarById
+    getCarById,
+    createCar
 }

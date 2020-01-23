@@ -13,6 +13,7 @@ import {
 import { useForm } from '../../../../hooks';
 import PasswordInput from './../../../PasswordInput/PasswordInput';
 import { AuthProvider, useAuthData } from '../../../../context/AuthContext';
+import Spinner from '../../../Spinner';
 
 const INITIAL_STATE = {
     email: "",
@@ -27,6 +28,7 @@ const AuthLoginView = ({ setView }) => {
 
     async function submit() {
         auth.methods.login({ "email": values.email, "password": values.password })
+        console.log("AUTHHH LOGIN", auth)
     }
 
     return (
@@ -62,6 +64,7 @@ const AuthLoginView = ({ setView }) => {
 
             <Box>
                 <Button onClick={() => setView('AuthForgotPasswordView')}>Forgot your password?</Button>
+
                 <Button onClick={() => setView('AuthRegisterView')}>Don't have an account?</Button>
             </Box>
 

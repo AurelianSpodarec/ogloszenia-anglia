@@ -29,8 +29,8 @@ function AuthProvider({ children }) {
     const isLogged = async function () {
         const data = await isLoggedIn();
 
-        if (data.status === 200) {
-            setAuthData({ user: data.data.user, isAuthenticated: true });
+        if (data.status === 'success') {
+            setAuthData({ user: data.user, isAuthenticated: true });
             return;
         } else {
             setAuthData({ user: {}, isAuthenticated: false })
