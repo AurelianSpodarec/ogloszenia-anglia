@@ -3,19 +3,18 @@ import request from './request';
 
 const userLogin = async (data) => {
     const res = await fetch(`${config.apiUrl}user/login`, request("POST", data))
-    console.log("USER LOGIN", await res.json())
-    return res.json();
+    // console.log("USER LOGIN", await res.json())
+    return await res.json();
 }
 
 const isLoggedIn = async () => {
     const res = await fetch(`${config.apiUrl}isLoggedIn`, request("GET"))
-    // console.log("IS LOGGED IN", await res.json())
     return await res.json();
 }
 
 const userLogout = async () => {
     const res = await fetch(`${config.apiUrl}user/logout`, request("GET"))
-    if (res.data.status === 'success') window.location.reload(true)
+    if (res.status === 'success') window.location.reload(true)
 }
 
 const userRegister = async (data) => {
