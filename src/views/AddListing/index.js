@@ -194,8 +194,6 @@ const AddListing = function ({ onClose, selectedValue, open }) {
     // const [open, setOpen] = useState();
     // const { onClose, selectedValue, open } = props;
 
-    console.log(selectedValue, 'mkmkmkmkmkmkmkmkmk')
-
     // const handleClose = () => {
     //     // onSetClose(selectedValue);
     //     setOpen(falsselectedValuee)

@@ -120,7 +120,7 @@ const Header = function (props) {
             </AppBar>
 
             <AuthDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
-            <AddListing selectedValue={onOpenListing} open={onOpenListing} onClose={onCloseListing} />
+            <AddListing open={onOpenListing} onClose={onCloseListing} />
 
 
         </>

@@ -32,10 +32,8 @@ function CarListProvider({ children }) {
     const fetchCarList = async () => {
         try {
             const cars = await getCars();
-            console.log("LLLLLLLLLLLLLLLLLLLLL", cars)
             setCarList(cars.cars)
             setIsLoading(false)
-            console.log("Fetch cars", cars)
         } catch (e) {
             console.log("CarsListProvider: ", e)
         }
@@ -47,7 +45,6 @@ function CarListProvider({ children }) {
     }
 
     useEffect(() => {
-        console.log("useEffect")
         fetchCarList()
     }, [])
 

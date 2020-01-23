@@ -23,7 +23,7 @@ const Footer = function () {
             <Container maxWidth="md">
 
 
-                <Grid container grid className={classes.footerTop}>
+                <Grid container className={classes.footerTop}>
                     <Grid item xs={3}>
                         <Typography variant="h4">Buba</Typography>
                     </Grid>

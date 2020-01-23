@@ -14,7 +14,6 @@ function useAuthData() {
         "isAuthenticated": context.authData.isAuthenticated,
         "methods": context
     }
-    console.log(a, "sds")
     return a;
 }
 

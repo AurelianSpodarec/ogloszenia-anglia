@@ -4,12 +4,9 @@ import { Link } from 'react-router-dom';
 import useStyles from './styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    makeStyles,
     Grid,
-    Card,
     Typography,
     Container,
-    CardItem,
     CardMedia,
     Box,
     Avatar,

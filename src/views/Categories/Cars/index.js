@@ -29,10 +29,6 @@ const CarsView = function () {
 
     const carProvider = useContext(CarListContext)
 
-    console.log("MMMMMMMMMMMMMMMMMM", carProvider.isLoading)
-
-
-
     // Replace With Context
     // useEffect(() => {
     //     const fetchData = async () => {

@@ -14,16 +14,12 @@ import {
 
 import Skeleton from '@material-ui/lab/Skeleton';
 
-
 import useStyles from './styles';
-
-// import Skeleton from '@material-ui/lab/Skeleton'; // Skeleton when the content is loading
 
 const CarItem = function (props) {
     const classes = useStyles();
     let { path } = useRouteMatch();
-    console.log(props)
-    console.log("PATHHHHHH", path)
+
     return (
         <Grid item xs={12} sm={6} md={12}>
             <Link className={classes.link} to={props.isLoading ? "" : `${path}/${props.car._id}`}> :
