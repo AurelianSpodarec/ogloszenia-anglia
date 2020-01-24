@@ -4,18 +4,13 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     Container,
-    Grid,
     Typography,
     Box,
     AppBar,
     Toolbar,
     Button,
-    InputBase,
-    Avatar,
-    Divider
+    InputBase
 } from '@material-ui/core';
-
-import { withStyles } from '@material-ui/core/styles';
 
 import UserMenu from './sub-components/UserMenu'
 import AuthDialog from '../AuthDialog';
@@ -28,10 +23,7 @@ const Header = function (props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [onOpenListing, setOnOpenListing] = React.useState(false);
-
-    const [selectedListingValues, setSelectedListingValues] = React.useState();
     const [selectedValue, setSelectedValue] = React.useState();
-    const [isLogged, setIsLogged] = React.useState(true)
 
 
     const auth = useAuthData();
@@ -96,21 +88,12 @@ const Header = function (props) {
                             <FontAwesomeIcon icon="sliders-h" />
                         </Box>
 
+                        {auth.isAuthenticated ? "" : <Button variant="outlined" color="secondary" onClick={handleClickOpen}>Log In</Button>}
                         <Button className={classes.listingButton} onClick={handleClickOpen} variant="contained" color="secondary">
                             <FontAwesomeIcon className={classes.listingButtonIcon} icon="plus" /> {/* //icon="bullhorn" /> */}
                             <Typography className={classes.listingButtonName}>Add Listing</Typography>
                         </Button>
-
-                        <Box>
-                            {auth.isAuthenticated ?
-                                <UserMenu /> :
-                                <>
-                                    <Button onClick={handleClickOpen} color="inherit">Log In</Button>
-                                    <Button onClick={handleClickOpen} color="inherit">Sign Up</Button>
-                                </>
-                            }
-                        </Box>
-
+                        {auth.isAuthenticated ? <UserMenu /> : ""}
 
                     </Toolbar>
 
@@ -121,7 +104,6 @@ const Header = function (props) {
 
             <AuthDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
             <AddListing open={onOpenListing} onClose={onCloseListing} />
-
 
         </>
     )

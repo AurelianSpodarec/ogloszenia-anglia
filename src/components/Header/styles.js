@@ -30,8 +30,9 @@ const useStyles = makeStyles(theme => ({
 
     listingButton: {
         display: 'none',
+        marginLeft: theme.spacing(1.5),
         textTransform: 'inherit',
-        borderRadius: '17px',
+        borderRadius: theme.spacing(1),
         [theme.breakpoints.up('md')]: {
             display: 'flex'
         }
@@ -40,9 +41,8 @@ const useStyles = makeStyles(theme => ({
 
     },
     listingButtonName: {
-        marginLeft: '8px'
+        marginLeft: theme.spacing(1)
     },
-
 
     search: {
         position: 'relative',

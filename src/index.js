@@ -39,7 +39,8 @@ import {
     faShareSquare,
     faEllipsisV,
     faThLarge,
-    faSquare
+    faSquare,
+    faCommentAlt
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -85,7 +86,8 @@ library.add(
     faShareSquare,
     faEllipsisV,
     faThLarge,
-    faSquare
+    faSquare,
+    faCommentAlt
 )
 
 

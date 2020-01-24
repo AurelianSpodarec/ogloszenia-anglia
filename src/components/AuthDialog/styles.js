@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
     authModalBackground: {
         overflow: "hidden",
+        
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -11,6 +12,7 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         flexDirection: "row",
         textAlign: 'center',
+
         backgroundColor: '#fff',
         overflow: "hidden",
         height: '500px',

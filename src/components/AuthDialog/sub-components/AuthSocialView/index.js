@@ -16,7 +16,8 @@ const AuthSocialView = ({ setView }) => {
                 <Typography variant="h6">Ogloszenia Anglia</Typography>
                 <Typography>Buy and sell quickly, safely and locally</Typography>
             </Box>
-            <div className={classes.socialButtons}>
+
+            <Box className={classes.socialButtons}>
                 <Button className={classes.buttonFacebook}>
                     <FontAwesomeIcon className={classes.socialButtonIcon} icon={['fab', 'facebook-f']} />
                     <Typography component="span">Continue with Facebook</Typography>
@@ -25,12 +26,12 @@ const AuthSocialView = ({ setView }) => {
                     <FontAwesomeIcon className={classes.socialButtonIcon} icon={['fab', 'google']} />
                     <Typography>Continue with Google</Typography>
                 </Button>
-            </div>
+            </Box>
 
-            <div>
+            <Box>
                 <Button onClick={() => setView('AuthRegisterView')}>Sign Up</Button>
                 <Button onClick={() => setView('AuthLoginView')}>Log In</Button>
-            </div>
+            </Box>
 
             <Typography className={classes.terms}>By clicking on "Sign Up", you agree on Ogloszenia Anglia <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></Typography>
 

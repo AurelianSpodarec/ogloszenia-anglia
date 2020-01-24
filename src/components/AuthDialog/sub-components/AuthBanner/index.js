@@ -30,6 +30,10 @@ function AuthBanner({ onClose }) {
                         <Typography className={classes.authFeatureUnlockTitle}>Post Listings</Typography>
                     </Box>
                     <Box className={classes.authFeatureUnlock}>
+                        <FontAwesomeIcon className={classes.authFeatureUnlockIcon} icon={"comment-alt"} />
+                        <Typography className={classes.authFeatureUnlockTitle}>Chat with buyers and sellers</Typography>
+                    </Box>
+                    <Box className={classes.authFeatureUnlock}>
                         <FontAwesomeIcon className={classes.authFeatureUnlockIcon} icon={"heart"} />
                         <Typography className={classes.authFeatureUnlockTitle}>Save listings</Typography>
                     </Box>

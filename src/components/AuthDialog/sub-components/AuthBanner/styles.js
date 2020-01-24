@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
     authBanner: {
         height: '100%',
-        boxShadow: 'inset 0px -79px 61px 46px rgba(0,0,0,0.26)',
+        // boxShadow: 'inset 0px -79px 61px 46px rgba(0,0,0,0.36)',
+        boxShadow: 'inset 0px 0px 120px 100px rgba(0,0,0,0.36)',
         [theme.breakpoints.down('sm')]: {
             display: 'none',
         }
