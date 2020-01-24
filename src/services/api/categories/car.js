@@ -13,20 +13,19 @@ const getCarById = async (id) => {
     return await res.json();
 }
 
-const createCar = async (car) => {
-
-    const res = await fetch(`${config.apiUrl}car`, request("POST", { "title": "CCCa" }))
-        .then(res => res.json())
-        .then(res => console.log(res));
-    return res;
+const createCar = async (newCar) => {
+    const res = await fetch(`${config.apiUrl}car`, request("POST", newCar))
+    return res.json();
 }
 
-// const deleteCar = async (id) => {
-
-// }
+const deleteCar = async (id) => {
+    const res = await fetch(`${config.apiUrl}car/${id}`, request("DELETE"))
+    return await res.json();
+}
 
 export {
     getCars,
     getCarById,
-    createCar
+    createCar,
+    deleteCar
 }

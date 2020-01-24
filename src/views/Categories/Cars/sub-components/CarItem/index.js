@@ -19,7 +19,7 @@ import useStyles from './styles';
 const CarItem = function (props) {
     const classes = useStyles();
     let { path } = useRouteMatch();
-
+    
     return (
         <Grid item xs={12} sm={6} md={12}>
             <Link className={classes.link} to={props.isLoading ? "" : `${path}/${props.car._id}`}> :

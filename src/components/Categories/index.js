@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
 } from "react-router-dom";
 
 import CategoryItem from './sub-components/CategoryItem/'
@@ -25,6 +24,7 @@ import useStyles from './styles'
 import AddListing from '../../views/AddListing';
 import Profile from '../../views/UserProfile/Profile';
 import Settings from '../../views/UserProfile/Settings';
+
 const router = {
     menu: [
         {
@@ -145,8 +145,10 @@ const router = {
 
 function Category() {
     const classes = useStyles()
-    const [activeCategory, setCategory] = useState(false)
+    const [activeCategory, setCategory] = useState(false);
+
     return (
+
         <Router>
             <Grid className={classes.categoryWrap}>
                 {router.categories.map(category => {

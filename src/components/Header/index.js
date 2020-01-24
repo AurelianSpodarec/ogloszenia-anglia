@@ -119,6 +119,8 @@ const Header = function (props) {
                 </Container>
             </AppBar>
 
+            {props.children}
+
             <AuthDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
             <AddListing open={onOpenListing} onClose={onCloseListing} />
 
