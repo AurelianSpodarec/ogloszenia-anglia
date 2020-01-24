@@ -42,15 +42,6 @@ const useStyles = makeStyles(theme => ({
         height: '100%',
         padding: "0 25px 15px"
     },
-    authTitleWrap: {
-        padding: '15px 20px',
-    },
-    authTitle: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-
-    }
 }));
 
 export default useStyles;

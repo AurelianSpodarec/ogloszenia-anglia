@@ -12,14 +12,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useStyles from './styles';
 
 
-function AuthBanner(handleClose) {
+function AuthBanner({ onClose }) {
     const classes = useStyles();
 
     return (
         <CardMedia className={classes.authBanner} image={"https://images.unsplash.com/photo-1524634126442-357e0eac3c14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"}>
-            <DialogContent className={classes.authBannerInner}>
+            <DialogContent>
 
-                <Box onClick={handleClose} className={classes.authBannerClose}>
+                <Box onClick={onClose} className={classes.authBannerClose}>
                     <FontAwesomeIcon icon="times" />
                 </Box>
 

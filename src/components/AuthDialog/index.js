@@ -2,15 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import {
-    Container,
-    Grid,
-    Typography,
-    Dialog,
-    CardMedia,
-    DialogContent,
-    DialogContentText,
     Box,
-    DialogTitle,
     Modal,
     Fade
 } from '@material-ui/core';
@@ -19,25 +11,12 @@ import {
     AuthSocialView,
     AuthRegisterView,
     AuthLoginView,
-    AuthBanner
+    AuthBanner,
+    AuthTitle
 } from './sub-components';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useStyles from './styles';
 
-const AuthTitle = function ({ title, setView }) {
-    const classes = useStyles();
-
-    return (
-        // TODO: The button must have width: auto - currently it spans across the entire whitespace
-        <Box className={classes.authTitleWrap} onClick={() => setView('AuthSocialView')}>
-            <Box className={classes.authTitle}>
-                <FontAwesomeIcon icon="arrow-left" />
-                <Typography>{title}</Typography>
-            </Box>
-        </Box>
-    )
-}
 
 function AuthDialog({ onClose, selectedValue, open }) {
     const classes = useStyles();
@@ -68,9 +47,8 @@ function AuthDialog({ onClose, selectedValue, open }) {
             titleToRender = <AuthTitle setView={setView} title="Password Reset" />
             break;
         default:
-            // viewToRender = <AuthLoginView setView={setView} title="Login" />;
             viewToRender = <AuthSocialView setView={setView} />;
-        // titleToRender = <AuthTitle setView={setView} />
+            titleToRender = null;
     }
 
     return (
@@ -84,7 +62,7 @@ function AuthDialog({ onClose, selectedValue, open }) {
                     <Box className={classes.authModal}>
 
                         <Box className={classes.authBanner}>
-                            {<AuthBanner />}
+                            {<AuthBanner onClose={handleClose} />}
                         </Box>
 
                         <Box className={classes.authContent}>
@@ -97,7 +75,6 @@ function AuthDialog({ onClose, selectedValue, open }) {
                         </Box>
 
                     </Box>
-
                 </Fade>
             </Modal>
         </>
