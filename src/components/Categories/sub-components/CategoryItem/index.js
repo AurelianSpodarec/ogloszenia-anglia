@@ -23,12 +23,10 @@ const lightenColor = (color, number) => {
 
 const CategoryItem = props => {
     const classes = useStyles();
-    let { id } = useParams();
 
     return (
         <Grid className={classes.linkWrap} style={props.path === window.location.pathname ? null : { "opacity": 0.3 }}>
             <Link className={classes.link} exact={props.exact ? true : undefined} to={props.path}>
-                {console.log("sdsd", id)}
                 <div onClick={props.onSelectCategory} className={classes.categoryLink}
                 >
                     <div className={classes.categoryItem} style={{ backgroundColor: props.bgColor }}>

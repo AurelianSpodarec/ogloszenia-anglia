@@ -39,10 +39,8 @@ const Header = function (props) {
     const handleClickOpen = () => {
         if (auth.isAuthenticated) {
             setOnOpenListing(true)
-            console.log("sds")
         } else {
             setOpen(true);
-            console.log("mmm")
         }
     };
 

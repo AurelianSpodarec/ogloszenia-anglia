@@ -4,6 +4,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
+    useLocation,
 } from "react-router-dom";
 
 import CategoryItem from './sub-components/CategoryItem/'
@@ -143,24 +144,58 @@ const router = {
 
 }
 
+function MenuList() {
+    let location = useLocation()
+    console.log(location)
+
+    return router.categories.map(category => {
+        return <CategoryItem
+            bgColor={category.bgColor}
+            key={category.route.url}
+            label={category.label}
+            icon={category.icon}
+            path={category.route.url}
+            component={category.component}
+        />
+    })
+
+}
+
 function Category() {
     const classes = useStyles()
-    const [activeCategory, setCategory] = useState(false);
+    const [isMenuVisible, setIsMenuVisible] = useState(true);
+
+    const isMatch = function () {
+
+        const a = router.categories.find(cat => cat.route.url === window.location.pathname)
+        // console.log("d", a != undefined && a.route.url === window.location.pathname
+        // || a != undefined && window.location.pathname == "/")
+        // if ((a && a.route.url === window.location.pathname) || window.location.pathname == "/") {
+        // console.log("sd", a != undefined && window.location.pathname = "/")
+        // console.log(a, window.location.pathname == "/")
+        if (a != undefined && a.route.url === window.location.pathname
+            || a != undefined && window.location.pathname == "/") {
+            setIsMenuVisible(true)
+        } else if (a === undefined) {
+            setIsMenuVisible(false)
+        } else {
+            setIsMenuVisible(true)
+        }
+
+    }
+
+
+    React.useEffect(() => {
+        isMatch()
+    }, [])
 
     return (
 
         <Router>
             <Grid className={classes.categoryWrap}>
-                {router.categories.map(category => {
-                    return <CategoryItem
-                        bgColor={category.bgColor}
-                        key={category.route.url}
-                        label={category.label}
-                        icon={category.icon}
-                        path={category.route.url}
-                        component={category.component}
-                    />
-                })}
+                {isMenuVisible ?
+                    MenuList()
+                    : ""}
             </Grid>
             <Switch>
                 {/* <Route exact path="/" component={AddListing} /> */}
