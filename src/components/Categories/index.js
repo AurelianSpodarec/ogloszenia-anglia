@@ -1,27 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
     BrowserRouter as Router,
     Switch,
     Route,
-    useLocation,
 } from "react-router-dom";
 
-import { Grid } from '@material-ui/core'
-
-import CategoryItem from './sub-components/CategoryItem/'
 import CategoryList from './sub-components/CategoryList';
 
 
-
 import CarsView from '../../views/Categories/Cars';
-
 import NotFound from '../../views/NotFound';
 import HomesView from '../../views/Categories/Homes';
 import DefaultView from '../../views/Categories/Default';
 import CarView from '../../views/Categories/Cars/sub-components/CarView';
 
-import useStyles from './styles'
 import AddListing from '../../views/AddListing';
 import Profile from '../../views/UserProfile/Profile';
 import Settings from '../../views/UserProfile/Settings';
@@ -29,15 +22,11 @@ import Settings from '../../views/UserProfile/Settings';
 import { categoriesRouter } from './categoriesRouter';
 
 function Category() {
-
     return (
-
         <Router>
-
             <CategoryList categories={categoriesRouter.categories} />
 
             <Switch>
-                {/* <Route exact path="/" component={AddListing} /> */}
                 <Route exact path="/cars" component={CarsView} />
                 <Route path={`/cars/:id`} component={CarView} />
 

@@ -8,8 +8,6 @@ import DefaultView from '../../views/Categories/Default';
 import CarView from '../../views/Categories/Cars/sub-components/CarView';
 
 
-
-import useStyles from './styles'
 import AddListing from '../../views/AddListing';
 import Profile from '../../views/UserProfile/Profile';
 import Settings from '../../views/UserProfile/Settings';

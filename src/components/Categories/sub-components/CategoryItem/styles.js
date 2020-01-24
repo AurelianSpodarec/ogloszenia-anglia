@@ -9,7 +9,6 @@ const useStyles = makeStyles(theme => ({
         padding: '0 5px'
     },
     categoryLink: {
-        // alignItems: 'center',
         display: 'flex',
         flexDirection: 'column',
         textTransform: 'uppercase',
@@ -18,14 +17,13 @@ const useStyles = makeStyles(theme => ({
         overflowWrap: 'break-word'
     },
     categoryItem: {
-        // backgroundColor: '#ff9d9d',
-        marginBottom: '8px',
+        marginBottom: theme.spacing(1),
         height: '56px',
         width: '56px',
+        borderRadius: '50%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: '50%',
         verticalAlign: 'middle',
         color: 'white',
     },

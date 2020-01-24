@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-
 const useStyles = makeStyles(theme => ({
     link: {
         textDecoration: "none"
@@ -13,12 +12,11 @@ const useStyles = makeStyles(theme => ({
     },
     resultNumber: {
         fontWeight: 'bold',
-        marginLeft: '8px'
+        marginLeft: theme.spacing(1)
     },
     listingBar: {
-        marginBottom: '8px'
+        marginBottom: theme.spacing(1)
     }
-
 
 }));
 
