@@ -144,59 +144,107 @@ const router = {
 
 }
 
-function MenuList() {
-    let location = useLocation()
-    console.log(location)
-
-    return router.categories.map(category => {
-        return <CategoryItem
-            bgColor={category.bgColor}
-            key={category.route.url}
-            label={category.label}
-            icon={category.icon}
-            path={category.route.url}
-            component={category.component}
-        />
-    })
-
-}
-
-function Category() {
+function MenuList({ categories }) {
     const classes = useStyles()
+
     const [isMenuVisible, setIsMenuVisible] = useState(true);
+    let location = useLocation()
 
-    const isMatch = function () {
 
-        const a = router.categories.find(cat => cat.route.url === window.location.pathname)
-        // console.log("d", a != undefined && a.route.url === window.location.pathname
-        // || a != undefined && window.location.pathname == "/")
-        // if ((a && a.route.url === window.location.pathname) || window.location.pathname == "/") {
-        // console.log("sd", a != undefined && window.location.pathname = "/")
-        // console.log(a, window.location.pathname == "/")
-        if (a != undefined && a.route.url === window.location.pathname
-            || a != undefined && window.location.pathname == "/") {
+    console.log('>>>', location)
+
+    const isMenuItem = function () {
+        const matchUrlRoutes = router.categories.find(cat => cat.route.url === location.pathname)
+        if (matchUrlRoutes != undefined && matchUrlRoutes.route.url === location.pathname
+            || matchUrlRoutes == undefined && location.pathname == "/") {
             setIsMenuVisible(true)
-        } else if (a === undefined) {
-            setIsMenuVisible(false)
         } else {
-            setIsMenuVisible(true)
+            setIsMenuVisible(false)
         }
-
     }
 
-
     React.useEffect(() => {
-        isMatch()
-    }, [])
+        isMenuItem()
+    }, [location])
+
+    return (
+        <>
+            {isMenuVisible ?
+                <Grid className={classes.categoryWrap}>
+                    {categories.map(category => {
+                        return <CategoryItem
+                            bgColor={category.bgColor}
+                            key={category.route.url}
+                            label={category.label}
+                            icon={category.icon}
+                            path={category.route.url}
+                            component={category.component}
+                        />
+                    })}
+                </Grid>
+                : ""}
+        </>
+    )
+}
+
+// function MenuList() {
+//     let location = useLocation()
+//     console.log(location)
+
+//     // const isMatch = function () {
+
+//     //     const a = router.categories.find(cat => cat.route.url === window.location.pathname)
+//     //     // console.log("d", a != undefined && a.route.url === window.location.pathname
+//     //     // || a != undefined && window.location.pathname == "/")
+//     //     // if ((a && a.route.url === window.location.pathname) || window.location.pathname == "/") {
+//     //     // console.log("sd", a != undefined && window.location.pathname = "/")
+//     //     // console.log(a, window.location.pathname == "/")
+//     //     if (a != undefined && a.route.url === window.location.pathname
+//     //         || a != undefined && window.location.pathname == "/") {
+//     //         setIsMenuVisible(true)
+//     //     } else if (a === undefined) {
+//     //         setIsMenuVisible(false)
+//     //     } else {
+//     //         setIsMenuVisible(true)
+//     //     }
+
+//     // }
+
+//     // React.useEffect(() => {
+//     //     isMatch()
+//     // }, [])
+
+//     const classes = useStyles()
+//     return (
+//         <>
+//             {isMenuVisible ?
+//                 <Grid className={classes.categoryWrap}>
+//                     {router.categories.map(category => {
+//                         return <CategoryItem
+//                             bgColor={category.bgColor}
+//                             key={category.route.url}
+//                             label={category.label}
+//                             icon={category.icon}
+//                             path={category.route.url}
+//                             component={category.component}
+//                         />
+
+//                     })}
+//                 </Grid>
+//                 : null}
+//         </>
+//     )
+
+// }
+
+function Category() {
 
     return (
 
         <Router>
-            <Grid className={classes.categoryWrap}>
-                {isMenuVisible ?
-                    MenuList()
-                    : ""}
-            </Grid>
+
+            <MenuList categories={router.categories} />
+
             <Switch>
                 {/* <Route exact path="/" component={AddListing} /> */}
                 <Route exact path="/cars" component={CarsView} />
