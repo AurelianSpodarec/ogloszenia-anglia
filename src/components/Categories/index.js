@@ -149,7 +149,7 @@ function Category() {
     return (
         <Router>
             <Grid className={classes.categoryWrap}>
-                {/* {router.categories.map(category => {
+                {router.categories.map(category => {
                     return <CategoryItem
                         bgColor={category.bgColor}
                         key={category.route.url}
@@ -158,7 +158,7 @@ function Category() {
                         path={category.route.url}
                         component={category.component}
                     />
-                })} */}
+                })}
             </Grid>
             <Switch>
                 {/* <Route exact path="/" component={AddListing} /> */}

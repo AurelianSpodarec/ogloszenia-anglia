@@ -28,7 +28,6 @@ const CarsView = function () {
     const [dataLength, setDataLength] = useState("0");
 
     const carProvider = useContext(CarListContext)
-
     // Replace With Context
     // useEffect(() => {
     //     const fetchData = async () => {
@@ -69,7 +68,7 @@ const CarsView = function () {
                                         direction="row"
                                     >
                                         <Typography>Search Result</Typography>
-                                        <Typography className={classes.resultNumber}>({dataLength})</Typography>
+                                        <Typography className={classes.resultNumber}>({carProvider.carsLength})</Typography>
                                     </Grid>
                                 </Grid>
 

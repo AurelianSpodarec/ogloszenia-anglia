@@ -23,6 +23,7 @@ function CarListProvider({ children }) {
     })
 
     const [carList, setCarList] = useState([])
+    const [carsLength, setCarsLength] = useState(0)
     const [isLoading, setIsLoading] = useState(true)
 
 
@@ -32,7 +33,9 @@ function CarListProvider({ children }) {
     const fetchCarList = async () => {
         try {
             const cars = await getCars();
+            console.log("M", cars)
             setCarList(cars.cars)
+            setCarsLength(cars.length)
             setIsLoading(false)
         } catch (e) {
             console.log("CarsListProvider: ", e)
@@ -51,6 +54,7 @@ function CarListProvider({ children }) {
     return (
         <CarListContext.Provider value={{
             carList,
+            carsLength,
             isLoading,
             // onSelectModel,
             onSelectMake
