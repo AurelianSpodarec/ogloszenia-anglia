@@ -4,15 +4,18 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
     spinner: {
         display: "inline-block",
-        width: "50px",
-        height: "50px",
-        border: "8px solid rgba(255,255,255,.3)",
+        padding: '5px',
+        border: "3px solid rgba(255,255,255,.3)",
         borderRadius: "50%",
         borderTopColor: "#fff",
-        animation: "spin 1s linear infinite",
+        animationName: '$spin',
+        animationDuration: '0.7s',
+        animationTimingFunction: 'linear',
+        animationIterationCount: 'infinite',
     },
     '@keyframes spin': {
-        to: { transform: "rotate(360deg)" },
+        '0%': { transform: 'rotate(0deg)' },
+        '100%': { transform: 'rotate(360deg)' },
     }
 }));
 

@@ -12,9 +12,11 @@ const AuthTitle = function ({ title, setView }) {
 
     return (
         <Box className={classes.authTitleWrap} onClick={() => setView('AuthSocialView')}>
-            <Box className={classes.authTitle}>
-                <FontAwesomeIcon icon="arrow-left" />
-                <Typography>{title}</Typography>
+            <Box className={classes.authTitleInner}>
+                <Box className={classes.authIconWrap}>
+                    <FontAwesomeIcon className={classes.authIcon} icon="arrow-left" />
+                </Box>
+                <Typography className={classes.authTitle}>{title}</Typography>
             </Box>
         </Box>
     )

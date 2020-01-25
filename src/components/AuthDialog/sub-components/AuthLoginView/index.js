@@ -57,7 +57,7 @@ const AuthLoginView = ({ setView }) => {
                     </Grid>
                 </Grid>
 
-                <Button type="submit" variant="contained" color="secondary">Log in</Button>
+                <Button type="submit" variant="contained" color="secondary">Log in <Spinner /></Button>
             </form>
 
             <Box>

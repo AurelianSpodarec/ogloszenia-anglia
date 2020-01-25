@@ -36,7 +36,7 @@ function AuthDialog({ onClose, selectedValue, open }) {
             break;
         case "AuthLoginView":
             viewToRender = <AuthLoginView setView={setView} />;
-            titleToRender = <AuthTitle setView={setView} title="Login" />
+            titleToRender = <AuthTitle setView={setView} title="Log In" />
             break;
         case "AuthRegisterView":
             viewToRender = <AuthRegisterView setView={setView} />;
