@@ -12,12 +12,13 @@ import Alert from '@material-ui/lab/Alert';
 
 import useStyles from './styles';
 
+// TODO: Refactor this to one function 'Alert', no need for two alerts;
+
 const CustomAlertCookie = function () {
     const classes = useStyles();
-    const [state, setState] = useState(false)
+    const [state, setState] = useState(false);
 
-    // Check if cookie is set 
-
+    // STACKOVERFLOW COOKIE CODE
     function setCookie(name, value, days) {
         var d = new Date;
         d.setTime(d.getTime() + 24 * 60 * 60 * 1000 * days);

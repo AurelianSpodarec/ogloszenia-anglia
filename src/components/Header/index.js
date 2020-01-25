@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     Container,
@@ -9,14 +8,11 @@ import {
     AppBar,
     Toolbar,
     Button,
-    InputBase,
-    SnackbarContent
+    InputBase
 } from '@material-ui/core';
 
-import Alert from '@material-ui/lab/Alert';
-
 import UserMenu from './sub-components/UserMenu'
-import AuthDialog from '../AuthDialog';
+import AuthDialog from './../../views/AuthDialog';
 import useStyles from './styles'
 import { useAuthData } from '../../context/AuthContext';
 import AddListing from '../../views/AddListing';
@@ -27,7 +23,6 @@ const Header = function (props) {
     const [open, setOpen] = React.useState(false);
     const [onOpenListing, setOnOpenListing] = React.useState(false);
     const [selectedValue, setSelectedValue] = React.useState();
-
 
     const auth = useAuthData();
 
