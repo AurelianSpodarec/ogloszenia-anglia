@@ -1,87 +1,47 @@
 import React, { useEffect } from "react";
 
-
 import {
-    Container,
-    Typography,
-    Box,
-    AppBar,
-    Toolbar,
-    Button,
-    InputBase,
     Snackbar,
-    SnackbarContent,
-    IconButton,
-    CheckCircleIcon,
-    // CloseIcon,
-    ErrorIcon,
-    InfoWrapper,
+    Button,
+    Grow
 } from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
 
-function Alert({ status, msg, requireUser, label }) {
-    const [open, setOpen] = React.useState(true);
-    useEffect(
-        () => {
-            setOpen(true);
-        },
-        [status]
-    );
+const CustomAlert = function () {
+    const [state, setState] = React.useState({
+        open: false,
+        Transition: Fade,
+    });
 
-    const handleClose = function (event, reason) {
-        if (!requireUser) {
-            if (reason === "clickaway") {
-                return;
-            }
-            setOpen(false);
-        }
-        return;
-    }
+    const handleClick = Transition => () => {
+        setState({
+            open: true,
+            Transition,
+        });
+    };
 
+    const handleClose = () => {
+        setState({
+            ...state,
+            open: false,
+        });
+    };
 
     return (
-        <Snackbar
-            anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left"
-            }}
-            open={open}
-            autoHideDuration={requireUser ? 99999 : 2000}
-            onClose={handleClose}
-        >
-            <SnackbarContent
-                status={status}
-                contentprops={{
-                    "aria-describedby": "message-id"
-                }}
-                // prettier-ignore
-                message={(
-                    <>
-                        {requireUser ? label
-                            :
-                            "sd"
-                        }
-                    </>
-                )}
-
-                action={[
-                    <>
-                        {requireUser ?
-                            <Button>Got it!</Button>
-                            :
-                            <IconButton
-                                key="close"
-                                aria-label="Close"
-                                color="inherit"
-                                onClick={handleClose}
-                            >
-                                {/* <CloseIcon /> */}
-                            </IconButton>
-                        }
-                    </>
-                ]}
+        <>
+            <Button
+                onClick={handleClick(GrowTransition)}
+            >
+                Grow Transition
+        </Button>
+            <Snackbar
+                open={state.open}
+                onClose={handleClose}
+                TransitionComponent={state.Transition}
+                message="I love snacks"
             />
-        </Snackbar>
-    );
+        </>
+    )
 }
 
-export default Alert;
+export default CustomAlert;
