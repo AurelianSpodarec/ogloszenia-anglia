@@ -22,13 +22,11 @@ const INITIAL_STATE = {
 
 const AuthLoginView = ({ setView }) => {
     const classes = useStyles();
-    const { handleChange, handleSubmit, values } = useForm(submit, INITIAL_STATE);
-
     const auth = useAuthData()
+    const { handleChange, handleSubmit, values } = useForm(submit, INITIAL_STATE);
 
     async function submit() {
         auth.methods.login({ "email": values.email, "password": values.password })
-        console.log("AUTHHH LOGIN", auth)
     }
 
     return (

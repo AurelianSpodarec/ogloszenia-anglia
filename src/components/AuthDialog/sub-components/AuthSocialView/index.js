@@ -13,8 +13,12 @@ const AuthSocialView = ({ setView }) => {
     return (
         <Box>
             <Box className={classes.authBodyLogo}>
-                <Typography variant="h6">Ogloszenia Anglia</Typography>
-                <Typography>Buy and sell quickly, safely and locally</Typography>
+                <Typography className={classes.logoText} variant="h6">BUBA</Typography>
+                <Typography className={classes.mottoText}>Buy and sell quickly, safely and locally. Time to make it happen!</Typography>
+            </Box>
+
+            <Box className={classes.dash}>
+                <Typography variant="span" className={classes.dashText}>Quickly Connect With</Typography>
             </Box>
 
             <Box className={classes.socialButtons}>
@@ -28,9 +32,13 @@ const AuthSocialView = ({ setView }) => {
                 </Button>
             </Box>
 
-            <Box>
-                <Button onClick={() => setView('AuthRegisterView')}>Sign Up</Button>
-                <Button onClick={() => setView('AuthLoginView')}>Log In</Button>
+
+            <Box className={classes.dash}>
+                <Typography variant="span" className={classes.dashText}>Or use your email</Typography>
+            </Box>
+            <Box className={classes.emailButtonWrap}>
+                <Button className={classes.emailButton} color="secondary" onClick={() => setView('AuthRegisterView')}>Sign Up</Button>
+                <Button className={classes.emailButton} color="secondary" onClick={() => setView('AuthLoginView')}>Log In</Button>
             </Box>
 
             <Typography className={classes.terms}>By clicking on "Sign Up", you agree on Ogloszenia Anglia <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></Typography>
