@@ -7,8 +7,10 @@ const request = async function (endpoint, method, data) {
     const response = await fetch(`${config.API_URL}/${endpoint}`, {
         method,
         credentials: 'include',
-        // ...options,
-        body: data
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
     })
 
     const content = await getResponseContent(response)
