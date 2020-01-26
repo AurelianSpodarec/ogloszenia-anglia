@@ -1,4 +1,4 @@
-import Alert from './Alert';
+import CustomAlert from './CustomAlert';
 import Categories from './Categories';
 import CustomItem from './CustomItem';
 import CustomSlider from './CustomSlider';
@@ -10,7 +10,7 @@ import PasswordInput from './PasswordInput';
 import Spinner from './Spinner';
 
 export {
-    Alert,
+    CustomAlert,
     Categories,
     CustomItem,
     CustomSlider,

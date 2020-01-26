@@ -13,7 +13,7 @@ import {
 
 import { useForm } from '@hooks';
 import { AuthProvider, useAuthData } from '@context/AuthContext';
-import { PasswordInput, Spinner } from '@components';
+import { PasswordInput, Spinner, CustomAlert } from '@components';
 
 
 const INITIAL_STATE = {
@@ -36,10 +36,12 @@ const AuthLoginView = ({ setView }) => {
             setIsChecking(true)
             if (a.status === 'ok') {
                 //TODO: SHow alert
+                // <CustomAlert message="Successfully authenticated" type="success" />
                 setIsChecking(false)
             }
         } catch (e) {
             //TODO: Show alert
+            // <CustomAlert message="Bad email or password. Try again." type="error" />
             setIsChecking(false)
         }
 
