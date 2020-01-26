@@ -16,15 +16,3 @@ const getResponseContent = async function (response) {
     }
 }
 export default getResponseContent;
-
-
-// export function createApiGetAll(endpoint, query = '') {
-//     return function apiGetAll() {
-//       return api.get(`${endpoint}${query}`)
-//     }
-//   }
-
-
-//   const ENDPOINT = 'users'
-
-//   export const getUsers = createApiGetAll(ENDPOINT)
