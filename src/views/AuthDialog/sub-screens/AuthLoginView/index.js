@@ -11,9 +11,9 @@ import {
     FormControl,
 } from '@material-ui/core';
 
-import { useForm } from '../../../../hooks';
-import { AuthProvider, useAuthData } from '../../../../context/AuthContext';
-import { PasswordInput, Spinner } from '../../../../components';
+import { useForm } from '@hooks';
+import { AuthProvider, useAuthData } from '@context/AuthContext';
+import { PasswordInput, Spinner } from '@components';
 
 
 const INITIAL_STATE = {
@@ -24,13 +24,22 @@ const INITIAL_STATE = {
 const AuthLoginView = ({ setView }) => {
     const classes = useStyles();
     const auth = useAuthData()
-    const { isChecking, setIsChecking } = useState(false)
-    const { handleChange, handleSubmit, values } = useForm(submit, INITIAL_STATE);
+    const { handleChange, handleSubmit, values } = useForm(onLogin, INITIAL_STATE);
+    const [isChecking, setIsChecking] = useState(false);
 
-    async function submit() {
-        auth.methods.login({ "email": values.email, "password": values.password });
+    async function onLogin() {
+        const a = await auth.methods.login({ "email": values.email, "password": values.password });
+        console.log('MMMMMMMMMMMmm', a, a.statusCode)
         setIsChecking(true)
+        if (a.status === 'success') {
+            //create alert showing logged in, and close the modal
+            setIsChecking(false)
+        } else {
+            // hide the loading
+            setIsChecking(false)
+        }
     }
+
 
     return (
         <Box>

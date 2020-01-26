@@ -2,14 +2,14 @@ import config from './../config';
 import request from './request';
 
 const userLogin = async (data) => {
-    const res = await fetch(`${config.apiUrl}user/login`, request("POST", data))
-    // console.log("USER LOGIN", await res.json())
-    return await res.json();
+    const res = await request('user/login', 'POST', data);
+    console.log(res, "User login")
+    return await res;
 }
 
 const isLoggedIn = async () => {
-    const res = await fetch(`${config.apiUrl}isLoggedIn`, request("GET"))
-    return await res.json();
+    const res = await request('isLoggedIn', 'GET')
+    return await res;
 }
 
 const userLogout = async () => {

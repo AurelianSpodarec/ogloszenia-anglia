@@ -1,11 +1,10 @@
 import config from './../../config';
 import request from '../request';
 
-// KY: https://golb.hplar.ch/2019/08/ky.html - because AXIOS is outdated and unmaintained
-
 const getCars = async (data) => {
-    const res = await fetch(`${config.apiUrl}cars`, request("GET"))
-    return await res.json();
+    const res = await request("cars", "GET")
+    console.log(res)
+    return await res;
 }
 
 const getCarById = async (id) => {
