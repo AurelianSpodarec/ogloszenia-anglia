@@ -9,7 +9,6 @@ const userLogin = async (data) => {
 
 const isLoggedIn = async () => {
     const res = await request('isLoggedIn', 'GET');
-    console.log(res)
     return await res;
 }
 
