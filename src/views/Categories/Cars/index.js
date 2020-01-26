@@ -6,7 +6,7 @@ import {
     Typography,
     Container
 } from '@material-ui/core';
-import CarItem from './sub-components/CarItem/';
+import CarItem from './sub-components/CarItem';
 import useStyles from './styles'
 import CarSidebar from './sub-components/CarSidebar';
 import PageTitle from '../components/Title';

@@ -1,22 +1,8 @@
-
 import React from 'react';
-import {
-    Container,
-    Grid,
-    Typography,
-    Box,
-    Avatar,
-    Divider
-} from '@material-ui/core';
-
-
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import useStyles from './styles';
 
 import MenuItem from '@material-ui/core/MenuItem';
-import { useAuthData } from '../../../../context/AuthContext';
-
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 

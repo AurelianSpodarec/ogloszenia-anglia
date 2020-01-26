@@ -1,25 +1,17 @@
 import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    Container,
-    Grid,
-    Typography,
     Box,
     Avatar,
     Divider
 } from '@material-ui/core';
 
-
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import useStyles from './styles';
-
 import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 import { useAuthData } from '../../../../context/AuthContext';
 import CustomMenuItem from '../CustomMenuItem';
+
+import useStyles from './styles';
 
 
 const CustomMenu = withStyles({

@@ -1,31 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
-import { Route, Link, Switch, BrowserRouter as Router } from 'react-router-dom'
-
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import Categories from '../components/Categories'
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import {
-    Container,
-    Grid,
-    Paper,
-    withStyles
-} from "@material-ui/core";
+    Header,
+    Footer,
+    Categories
+} from '../components';
 
-import CarsView from './Categories/Cars';
-import HomesView from './Categories/Homes';
-import NotFound from './NotFound';
-import Category from '../components/Categories';
-
-import { createMuiTheme } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/core";
 import { ThemeProvider } from '@material-ui/styles';
-import './App.css';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 import { AuthProvider, useAuthData } from '../context/AuthContext';
 import { CarListProvider } from './../context/CarsListContext';
+
+import './App.css';
+
 
 const theme = createMuiTheme({
     typography: {
@@ -47,7 +36,7 @@ function Layout(props) {
         <ThemeProvider theme={theme}>
 
             <Header />
-            <Category />
+            <Categories />
             <Footer />
 
         </ThemeProvider>

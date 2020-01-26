@@ -1,35 +1,35 @@
 import React, { useEffect } from "react";
 
-import {
-    Snackbar,
-    Button,
-    Grow
-} from '@material-ui/core';
-import Alert from '@material-ui/lab/Alert';
+// import {
+//     Snackbar,
+//     Button,
+//     Grow
+// } from '@material-ui/core';
+// import Alert from '@material-ui/lab/Alert';
 
 const CustomAlert = function () {
-    const [state, setState] = React.useState({
-        open: false,
-        Transition: Fade,
-    });
+    // const [state, setState] = React.useState({
+    //     open: false,
+    //     Transition: Fade,
+    // });
 
-    const handleClick = Transition => () => {
-        setState({
-            open: true,
-            Transition,
-        });
-    };
+    // const handleClick = Transition => () => {
+    //     setState({
+    //         open: true,
+    //         Transition,
+    //     });
+    // };
 
-    const handleClose = () => {
-        setState({
-            ...state,
-            open: false,
-        });
-    };
+    // const handleClose = () => {
+    //     setState({
+    //         ...state,
+    //         open: false,
+    //     });
+    // };
 
     return (
         <>
-            <Button
+            {/* <Button
                 onClick={handleClick(GrowTransition)}
             >
                 Grow Transition
@@ -39,7 +39,7 @@ const CustomAlert = function () {
                 onClose={handleClose}
                 TransitionComponent={state.Transition}
                 message="I love snacks"
-            />
+            /> */}
         </>
     )
 }

@@ -12,8 +12,8 @@ import {
 
 import { useForm } from '../../../../hooks';
 import { userRegister } from '../../../../services/api/users';
+import { PasswordInput } from '../../../../components';
 
-import PasswordInput from './../../../PasswordInput/PasswordInput';
 
 const INITIAL_STATE = {
     firstName: "",

@@ -9,12 +9,12 @@ function useAuthData() {
 
     const context = useContext(AuthContext);
 
-    const a = {
+    const data = {
         "user": context.authData.user,
         "isAuthenticated": context.authData.isAuthenticated,
         "methods": context
     }
-    return a;
+    return data;
 }
 
 function AuthProvider({ children }) {
@@ -49,6 +49,7 @@ function AuthProvider({ children }) {
             } else {
                 setAuthData({ user: {}, isAuthenticated: false })
             }
+            return data;
         },
         logout() {
             userLogout()

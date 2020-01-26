@@ -1,22 +1,8 @@
 import React, { useState } from 'react';
 import {
-    Container,
-    Grid,
-    Typography,
-    Box,
-    AppBar,
-    Toolbar,
-    Button,
-    InputBase,
-    Dialog,
-    DialogTitle,
-    CardMedia,
     Input,
-    TextField,
-    InputLabel,
     IconButton,
     InputAdornment,
-    FormControl
 } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 

@@ -1,11 +1,13 @@
 import React from 'react';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import useStyles from './styles';
 import {
     Typography,
     Box,
     Button
 } from '@material-ui/core';
+
+import useStyles from './styles';
 
 const AuthSocialView = ({ setView }) => {
     const classes = useStyles();

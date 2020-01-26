@@ -6,10 +6,10 @@ import {
     Box,
 } from '@material-ui/core';
 import useStyles from './styles';
-import { CustomItem, CustomSlider } from '../../../../../components';
+import { CustomItem, CustomSlider } from '@components';
 
-import { INITIAL_CAR_STATE } from '../../../../../utils/data/menu';
-import { CarListContext } from '../../../../../context/CarsListContext';
+import { INITIAL_CAR_STATE } from '@utils/data/menu';
+import { CarListContext } from '@context/CarsListContext';
 
 
 const CarSidebar = function () {

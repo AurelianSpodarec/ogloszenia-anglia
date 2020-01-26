@@ -12,8 +12,9 @@ import {
     AuthRegisterView,
     AuthLoginView,
     AuthBanner,
-    AuthTitle
-} from './sub-components';
+} from './sub-screens';
+
+import AuthTitle from './sub-components/AuthTitle'
 
 import useStyles from './styles';
 
@@ -24,7 +25,9 @@ function AuthDialog({ onClose, selectedValue, open }) {
 
     const handleClose = () => {
         onClose(selectedValue);
-        setView('AuthSocialView')
+        setTimeout(function () {
+            setView('AuthSocialView')
+        }, 1500)
     };
 
     let viewToRender;

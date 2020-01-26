@@ -13,7 +13,7 @@ import {
     Chip,
     Button
 } from '@material-ui/core';
-import { getCarById } from '../../../../../services/api/categories/car';
+import { getCarById } from '@services/api/categories/car';
 
 const CarView = ({ match, location }) => {
     const classes = useStyles();

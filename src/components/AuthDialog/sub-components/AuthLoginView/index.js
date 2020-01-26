@@ -11,7 +11,7 @@ import {
 } from '@material-ui/core';
 
 import { useForm } from '../../../../hooks';
-import PasswordInput from './../../../PasswordInput/PasswordInput';
+import PasswordInput from '../../../PasswordInput';
 import { AuthProvider, useAuthData } from '../../../../context/AuthContext';
 import Spinner from '../../../Spinner';
 
