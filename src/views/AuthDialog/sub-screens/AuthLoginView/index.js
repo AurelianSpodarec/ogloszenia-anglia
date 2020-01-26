@@ -28,16 +28,21 @@ const AuthLoginView = ({ setView }) => {
     const [isChecking, setIsChecking] = useState(false);
 
     async function onLogin() {
-        const a = await auth.methods.login({ "email": values.email, "password": values.password });
-        console.log('MMMMMMMMMMMmm', a, a.statusCode)
+        if (values.email === "" || values.password === "") return;
+
         setIsChecking(true)
-        if (a.status === 'success') {
-            //create alert showing logged in, and close the modal
-            setIsChecking(false)
-        } else {
-            // hide the loading
+        try {
+            const a = await auth.methods.login({ "email": values.email, "password": values.password });
+            setIsChecking(true)
+            if (a.status === 'ok') {
+                //TODO: SHow alert
+                setIsChecking(false)
+            }
+        } catch (e) {
+            //TODO: Show alert
             setIsChecking(false)
         }
+
     }
 
 
