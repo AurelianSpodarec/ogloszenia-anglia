@@ -6,11 +6,12 @@ import {
 } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 
-// import useStyles from './styles';
+import useStyles from './styles';
 
 const Notification = function ({ state, message, duration = 2000, type = 'info' }) {
     const [open, setOpen] = useState(false);
-    console.log(state)
+    const classes = useStyles();
+
     useEffect(() => {
         setOpen(state)
         let notificationDuration = setTimeout(() => setOpen(false), duration)
@@ -22,6 +23,7 @@ const Notification = function ({ state, message, duration = 2000, type = 'info' 
     return ReactDOM.createPortal(
         <Snackbar open={open}>
             <Alert
+                className={classes.alert}
                 severity={type}
             >
                 {message}

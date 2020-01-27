@@ -12,17 +12,17 @@ const isLoggedIn = async () => {
 }
 
 const userLogout = async () => {
-    const res = await fetch(`${config.apiUrl}user/logout`, request("GET"))
-    if (res.status === 'success') window.location.reload(true)
+    const res = await request('user/logout', 'GET');
+    return await res;
 }
 
 const userRegister = async (data) => {
-    const res = await fetch(`${config.apiUrl}user/signup`, request("POST", data))
-    return await res.json();
+    const res = await request('user/signup', 'POST', data);
+    return await res;
 }
 
 const getUsers = async () => {
-    const res = await fetch(`${config.apiUrl}users`, request("GET"))
+    const res = await request('users', 'GET');
     return await res.json();
 }
 

@@ -16,7 +16,6 @@ import { useForm } from '@hooks';
 import { AuthProvider, useAuthData } from '@context/AuthContext';
 import { PasswordInput, Spinner, CustomAlert, Notification } from '@components';
 
-
 const INITIAL_STATE = {
     email: "",
     password: ""
@@ -30,20 +29,20 @@ const AuthLoginView = ({ setView }) => {
     const [notification, setNotification] = useState({})
 
     async function onLogin() {
-        //TODO Show alert "Please enter values to login"
-        if (values.email === "" || values.password === "") return;
-
+        if (values.email === "" || values.password === "") return
         setIsChecking(true)
+
         try {
             const res = await auth.methods.login({ "email": values.email, "password": values.password });
             setIsChecking(true)
             if (res.status === 'success') {
-                //TODO: Show alter 'User successfuly logged in'.
+                setNotification({})
+                setNotification({ state: true, message: "You have been successfully logged in!", type: "success" })
                 setIsChecking(false)
             }
         } catch (e) {
-            setNotification({ state: true, message: "Bad credentials", type: "warning", duration: 1500 })
-            //TODO: SHow alert 'Bad cretentials'
+            setNotification({})
+            setNotification({ state: true, message: "Invalid credentials", type: "error" })
             setIsChecking(false)
         }
 
