@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useStyles from './styles';
@@ -14,7 +13,7 @@ import {
 
 import { useForm } from '@hooks';
 import { AuthProvider, useAuthData } from '@context/AuthContext';
-import { PasswordInput, Spinner, CustomAlert, Notification } from '@components';
+import { PasswordInput, Spinner, Notification } from '@components';
 
 const INITIAL_STATE = {
     email: "",
@@ -45,9 +44,7 @@ const AuthLoginView = ({ setView }) => {
             setNotification({ state: true, message: "Invalid credentials", type: "error" })
             setIsChecking(false)
         }
-
     }
-
 
     return (
         <Box>
@@ -76,7 +73,9 @@ const AuthLoginView = ({ setView }) => {
                     </Grid>
                 </Grid>
 
-                <Button type="submit" variant="contained" color="secondary">
+                {/* <CustomButton isChecking> </CustomButton> */}
+
+                <Button type="submit" variant="contained" color="secondary" >
                     Log in
                     {isChecking ?
                         <Spinner />
