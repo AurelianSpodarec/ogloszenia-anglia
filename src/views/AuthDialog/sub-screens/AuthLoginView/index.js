@@ -22,10 +22,10 @@ const INITIAL_STATE = {
 
 const AuthLoginView = ({ setView }) => {
     const classes = useStyles();
-    const auth = useAuthData()
+    const auth = useAuthData();
     const { handleChange, handleSubmit, values } = useForm(onLogin, INITIAL_STATE);
     const [isChecking, setIsChecking] = useState(false);
-    const [notification, setNotification] = useState({})
+    const [notification, setNotification] = useState({});
 
     async function onLogin() {
         if (values.email === "" || values.password === "") return
@@ -38,6 +38,7 @@ const AuthLoginView = ({ setView }) => {
                 setNotification({})
                 setNotification({ state: true, message: "You have been successfully logged in!", type: "success" })
                 setIsChecking(false)
+                setView("")
             }
         } catch (e) {
             setNotification({})
