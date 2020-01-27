@@ -6,7 +6,8 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         flexDirection: "row",
         flexWrap: "wrap",
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+        marginTop: theme.spacing(6)
     },
     mainImgWrap: {
         height: '320px',

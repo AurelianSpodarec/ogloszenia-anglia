@@ -120,12 +120,9 @@ const CarView = ({ match, location }) => {
                             </Grid>
                         </Grid>
 
-
                         <Box>
                             <Typography className={classes.description}>{car.description}</Typography>
                         </Box>
-
-
 
                         <Grid container direction="column" className={classes.userInfo}>
                             <Grid item>
@@ -164,9 +161,9 @@ const CarView = ({ match, location }) => {
                     </Grid>
                 </Grid>
 
-                <Grid container>
+                {/* <Grid container>
                     <Grid item> D</Grid>
-                </Grid>
+                </Grid> */}
 
 
             </Box>

@@ -11,7 +11,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import Typography from '@material-ui/core/Typography';
-import { blue } from '@material-ui/core/colors';
 
 import {
     Box, FormControl, TextField, InputLabel,
@@ -21,11 +20,12 @@ import {
 } from '@material-ui/core/'
 
 import useStyles from './styles'
-import { CustomItem } from '../../components';
-import { INITIAL_CAR_STATE } from './../../utils/data/menu';
-import { createCar } from '../../services/api/categories/car';
+import { CustomItem } from '@components';
+import { INITIAL_CAR_STATE } from '@utils/data/menu';
+import { createCar } from '@services/api/categories/car';
 
 
+// createCar()
 
 const Location = function () {
     return (
