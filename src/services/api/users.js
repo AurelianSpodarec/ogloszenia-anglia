@@ -3,7 +3,6 @@ import request from './request';
 
 const userLogin = async (data) => {
     const res = await request('user/login', 'POST', data);
-    console.log(res, "User login")
     return await res;
 }
 

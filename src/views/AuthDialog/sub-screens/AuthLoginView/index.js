@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useStyles from './styles';
@@ -13,7 +14,7 @@ import {
 
 import { useForm } from '@hooks';
 import { AuthProvider, useAuthData } from '@context/AuthContext';
-import { PasswordInput, Spinner, CustomAlert } from '@components';
+import { PasswordInput, Spinner, CustomAlert, Notification } from '@components';
 
 
 const INITIAL_STATE = {
@@ -26,22 +27,23 @@ const AuthLoginView = ({ setView }) => {
     const auth = useAuthData()
     const { handleChange, handleSubmit, values } = useForm(onLogin, INITIAL_STATE);
     const [isChecking, setIsChecking] = useState(false);
+    const [notification, setNotification] = useState({})
 
     async function onLogin() {
+        //TODO Show alert "Please enter values to login"
         if (values.email === "" || values.password === "") return;
 
         setIsChecking(true)
         try {
-            const a = await auth.methods.login({ "email": values.email, "password": values.password });
+            const res = await auth.methods.login({ "email": values.email, "password": values.password });
             setIsChecking(true)
-            if (a.status === 'ok') {
-                //TODO: SHow alert
-                // <CustomAlert message="Successfully authenticated" type="success" />
+            if (res.status === 'success') {
+                //TODO: Show alter 'User successfuly logged in'.
                 setIsChecking(false)
             }
         } catch (e) {
-            //TODO: Show alert
-            // <CustomAlert message="Bad email or password. Try again." type="error" />
+            setNotification({ state: true, message: "Bad credentials", type: "warning", duration: 1500 })
+            //TODO: SHow alert 'Bad cretentials'
             setIsChecking(false)
         }
 
@@ -87,6 +89,8 @@ const AuthLoginView = ({ setView }) => {
                 <Button onClick={() => setView('AuthForgotPasswordView')}>Forgot your password?</Button>
                 <Button onClick={() => setView('AuthRegisterView')}>Don't have an account?</Button>
             </Box>
+
+            <Notification state={notification.state} message={notification.message} type={notification.type} duration={notification.duration} />
 
         </Box>
     )

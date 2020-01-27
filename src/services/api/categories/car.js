@@ -2,7 +2,6 @@ import request from '../request';
 
 const getCars = async (data) => {
     const res = await request("cars", "GET");
-    console.log(res)
     return await res;
 }
 

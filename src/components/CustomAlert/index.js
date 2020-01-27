@@ -28,7 +28,7 @@ const CustomAlert = function ({ message, type }) {
 
 
     return (
-        <Snackbar open={true}>
+        <Snackbar autoHideDuration={2000} open={true}>
             <Alert
                 severity={type}
             >
