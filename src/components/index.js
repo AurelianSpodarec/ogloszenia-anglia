@@ -2,6 +2,7 @@ import CustomAlert from './CustomAlert';
 import Categories from './Categories';
 import CustomItem from './CustomItem';
 import CustomSlider from './CustomSlider';
+import CustomTextarea from './CustomTextarea';
 import Dropzone from './Dropzone';
 import Footer from './Footer';
 import Header from './Header';
@@ -15,6 +16,7 @@ export {
     Categories,
     CustomItem,
     CustomSlider,
+    CustomTextarea,
     Dropzone,
     Footer,
     Header,

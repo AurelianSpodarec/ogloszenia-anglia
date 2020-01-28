@@ -10,9 +10,9 @@ import {
     FormControl,
 } from '@material-ui/core';
 
-import { useForm } from '../../../../hooks';
+import { useForm } from '@hooks';
 import PasswordInput from '../../../PasswordInput';
-import { AuthProvider, useAuthData } from '../../../../context/AuthContext';
+import { AuthProvider, useAuthData } from '@context/AuthContext';
 import Spinner from '../../../Spinner';
 
 const INITIAL_STATE = {
