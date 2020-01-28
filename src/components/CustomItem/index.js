@@ -14,7 +14,7 @@ import { shortenWord } from './../../utils/functions';
 import useStyles from './styles';
 
 
-const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, disabled, menuPosition }) => {
+const CustomItem = ({ name, label, search, data, icon, value, multiSelect, onClick, disabled, menuPosition }) => {
     const classes = useStyles();
 
     const [menu, setMenu] = useState(data || []);
@@ -113,8 +113,10 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
     }
 
 
-    const onClickMenuItem = (e, value) => {
-        onClick(e, value.slug)
+    const onClickMenuItem = (e, value, name) => {
+        // const a = <div name="hello" target="tte"></div>;
+        onClick(e, value.slug, name, value)
+        // console.log("Custom item", name, value, e.target, value.slug)
 
         if (multiSelect) {
             const isSelected = multiSelected.find(item => item.slug === value.slug)
@@ -167,9 +169,9 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
                         <Box className={classes.customItemMenuContent}>
                             {menu.map(item => {
                                 return (
-                                    <Box key={item.slug} onClick={(e) => onClickMenuItem(e, item)} onKeyDown={onTabPress} className={classes.customItemContent}>
+                                    <Box key={item.slug} name={name} value={item.displayName} onClick={(e, b) => onClickMenuItem(e, item, name, value)} onKeyDown={onTabPress} className={classes.customItemContent}>
                                         {/* <Box onClick={(e) => onClick(e, item.name)} value="BB"> */}
-                                        <Typography>{item.displayName || item}</Typography>
+                                        <Typography name={name} value={item.displayName}>{item.displayName || item}</Typography>
                                     </Box>
                                 )
                             })}

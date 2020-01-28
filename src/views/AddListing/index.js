@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import {
     Box, FormControl, TextField, InputLabel,
     DialogContent,
-    DialogActions,
+    DialogActions, Input,
     OutlinedInput, InputAdornment
 } from '@material-ui/core/'
 
@@ -128,30 +128,6 @@ const Dropzone = function () {
     )
 }
 
-const Pictures = function () {
-    return (
-        <Box>
-            <Box>Main Pic</Box>
-            <Box>
-                <Box>Pic 1</Box>
-                <Box> Pic2</Box>
-                <Box> pic3</Box>
-            </Box>
-        </Box>
-    )
-}
-
-const Common = function () {
-    return (
-        <Box>
-            Title
-            Description
-        </Box>
-    )
-}
-
-
-
 const INITIAL_NEW_CAR_STATE = {
     "title": "",
     "description": "",
@@ -160,6 +136,7 @@ const INITIAL_NEW_CAR_STATE = {
     "coverPicture": "",
     "media": [],
     "brand": "",
+    "make": "",
     "model": "",
     "year": "",
     "milleage": "",
@@ -174,7 +151,7 @@ const AddListing = function ({ onClose, selectedValue, open }) {
     const classes = useStyles();
     const [category, setCategory] = useState();
     const { handleChange, handleSubmit, values } = useForm(submit, INITIAL_NEW_CAR_STATE);
-
+    console.log("ADD listing values", values)
     function submit() {
         console.log("submit")
         createCar({
@@ -185,6 +162,7 @@ const AddListing = function ({ onClose, selectedValue, open }) {
             "coverPicture": values.picture,
             "media": [],
             "brand": values.brand,
+            "make": values.make,
             "model": values.model,
             "year": parseInt(values.year),
             "milleage": parseInt(values.milleage),
@@ -196,72 +174,68 @@ const AddListing = function ({ onClose, selectedValue, open }) {
         })
     }
 
-    const onChange = (event) => {
-        // setValues(...values, value)  
-        console.log("On change", event.target.value)
-        console.log(values)
-        // setValues(title: event.target.value)
+    const onSelectChange = function (e, a, b) {
+        console.log("Select change", a, b)
     }
 
-
     return (
-        <Dialog maxWidth="sm" fullWidth={true} onClose={onClose} aria-labelledby="simple-dialog-title" open={open}>
+        <Dialog maxWidth="sm" fullWidth={true} onClose={onClose} aria-labelledby="simple-dialog-title" open={true}>
             <DialogTitle fontWeight="fontWeightBold" className={classes.dialogTitle} id="simple-dialog-title">Add new listing</DialogTitle>
 
-            <FormControl fullWidth className={classes.listingForm} >
-                <TextField
-                    name="title"
-                    label="Title"
-                    value={values.title}
-                    onChange={handleChange}
-                    required
-                />
-                <CustomTextarea
-                    name="description"
-                    label="Description"
-                    value={values.description}
-                    onChange={handleChange}
-                />
-            </FormControl>
 
-
-            {/* 
             <DialogContent dividers='paper'>
-   
-                <FormControl fullWidth className={classes.listingForm} >
-                    <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
-                    <TextField
-                        label="Amount"
-                        id="outlined-adornment-amount"
-                        // value={values.amount}
-                        // onChange={handleChange('amount')}
+
+
+                <CustomItem
+                    name="make"
+                    label="Make"
+                    onClick={(e, value, name) => onSelectChange(e, value, name)}
+                    // onClick={handleChange}
+                    search
+                    data={INITIAL_CAR_STATE.make}
+                />
+
+
+
+                <FormControl fullWidth >
+                    <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
+                    <Input
+                        id="standard-adornment-amount"
+                        name="price"
+                        label="Price"
+                        value={values.price}
+                        onChange={handleChange}
+                        required
                         startAdornment={<InputAdornment position="start">$</InputAdornment>}
                         labelWidth={60}
                     />
                 </FormControl>
 
-                <Box>
-                    <FormControl fullWidth className={classes.listingForm} >
-                        <TextField
-                            required
-                            id="outlined-required"
-                            label="Title"
-
-                        />
-                    </FormControl>
-                    {/* <CustomTextArea 
-                    onChange={}
-                    description={values.description}
-                     className={classes.listingForm} 
-                     /> 
-                </Box>
-
-            </DialogContent>   */}
+                <FormControl fullWidth className={classes.listingForm} >
+                    <TextField
+                        name="title"
+                        label="Title"
+                        value={values.title}
+                        onChange={handleChange}
+                        required
+                    />
+                    <CustomTextarea
+                        name="description"
+                        label="Description"
+                        value={values.description}
+                        onChange={handleChange}
+                    />
+                </FormControl>
+            </DialogContent>
 
             <DialogActions className={classes.dialogActions}>
                 <Button onClick={submit} className={classes.dialogActionsButton} variant="contained" color="secondary" fullWidth>List it!</Button>
             </DialogActions>
 
+            {/* <input name="make" value={values.make} onClick={handleChange} /> */}
+
+            {/* <Hello name="make" value={values.make} onClick={handleChange} />
+            <You name="make" value={values.make} onClick={handleChange} /> */}
 
         </Dialog>
 
@@ -275,3 +249,19 @@ AddListing.propTypes = {
     open: PropTypes.bool.isRequired,
     selectedValue: PropTypes.string.isRequired,
 };
+
+// const You = function ({ make, value, onClick }) {
+//     return (
+//         <div>
+//             <input onClick={onClick} name={make} value={value} placeholder="You" />
+//         </div>
+//     )
+// }
+
+// const Hello = function ({ make, value, onClick }) {
+//     return (
+//         <div>
+//             <div onClick={onClick} name={make} value={value}>MM</div>
+//         </div>
+//     )
+// }

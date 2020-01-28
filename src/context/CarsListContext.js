@@ -43,6 +43,7 @@ function CarListProvider({ children }) {
     }
 
     const onSelectMake = function (event, newValue) {
+        console.log("Sidebar car", event, newValue)
         setMake(newValue)
         // setModels(findModel(newValue))
     }
