@@ -150,20 +150,25 @@ const INITIAL_NEW_CAR_STATE = {
 const AddListing = function ({ onClose, selectedValue, open }) {
     const [category, setCategory] = useState();
     const [newCar, setNewCar] = useState({});
-    const { handleChange, handleSubmit, values } = useForm(submit, INITIAL_NEW_CAR_STATE);
-
+    const [models, setModels] = useState([]);
     const classes = useStyles();
 
+    const { handleChange, handleSubmit, values } = useForm(submit, INITIAL_NEW_CAR_STATE);
 
     const onSelected = (e, value, name) => {
-        // const { name, value } = e;
-        // console.log(e, b, c)
         setNewCar({
             ...newCar,
             [name]: value
         });
     }
 
+    useEffect(() => {
+        const newModels = findModel(newCar.make)
+        console.log(newModels, "LL")
+        setModels(
+            newModels
+        )
+    }, [newCar.make])
 
     console.log("ADD listing values", newCar)
     function submit() {
@@ -188,13 +193,11 @@ const AddListing = function ({ onClose, selectedValue, open }) {
         })
     }
 
-    // const onSelectChange = (e, a, b) => {
-    //     console.log("Select change", a, b)
-    //     setNewCar({
-    //         ...newCar,
-    //         [a]: b
-    //     });
-    // }
+    const findModel = function (carBrand) {
+        if (!newCar.make) return;
+        const selectedCarModel = INITIAL_CAR_STATE.make.find(item => item.slug === carBrand).models
+        return selectedCarModel;
+    }
 
     return (
         <Dialog maxWidth="sm" fullWidth={true} onClose={onClose} aria-labelledby="simple-dialog-title" open={true}>
@@ -219,16 +222,18 @@ const AddListing = function ({ onClose, selectedValue, open }) {
                     data={INITIAL_CAR_STATE.make}
                     menuPosition="bottom"
                 />
-                {/* <CustomItem
+                <CustomItem
+                    name="model"
                     label="Model"
                     search
-                    data={models}
-                    onClick={useCarContext.onSelectModel}
-                    disabled={!make}/> */}
+                    data={models || []}
+                    onClick={(e, value, name) => onSelected(e, value, name)}
+                    disabled={!newCar.make}
+                    menuPosition="bottom"
+                />
                 <CustomItem
                     name="fuel"
                     label="Fuel"
-                    // onClick={(e, value, name) => onSelectChange(e, value, name)}
                     onClick={(e, value, name) => onSelected(e, value, name)}
                     search
                     data={INITIAL_CAR_STATE.fuel}
@@ -343,11 +348,6 @@ const AddListing = function ({ onClose, selectedValue, open }) {
                 <Button onClick={submit} className={classes.dialogActionsButton} variant="contained" color="secondary" fullWidth>List it!</Button>
             </DialogActions>
 
-            {/* <input name="make" value={values.make} onClick={handleChange} /> */}
-
-            {/* <Hello name="make" value={values.make} onClick={handleChange} />
-            <You name="make" value={values.make} onClick={handleChange} /> */}
-
         </Dialog>
 
     )
@@ -360,19 +360,3 @@ AddListing.propTypes = {
     open: PropTypes.bool.isRequired,
     selectedValue: PropTypes.string.isRequired,
 };
-
-// const You = function ({ make, value, onClick }) {
-//     return (
-//         <div>
-//             <input onClick={onClick} name={make} value={value} placeholder="You" />
-//         </div>
-//     )
-// }
-
-// const Hello = function ({ make, value, onClick }) {
-//     return (
-//         <div>
-//             <div onClick={onClick} name={make} value={value}>MM</div>
-//         </div>
-//     )
-// }
