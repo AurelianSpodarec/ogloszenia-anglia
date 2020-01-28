@@ -148,10 +148,24 @@ const INITIAL_NEW_CAR_STATE = {
 }
 
 const AddListing = function ({ onClose, selectedValue, open }) {
-    const classes = useStyles();
     const [category, setCategory] = useState();
+    const [newCar, setNewCar] = useState({});
     const { handleChange, handleSubmit, values } = useForm(submit, INITIAL_NEW_CAR_STATE);
-    console.log("ADD listing values", values)
+
+    const classes = useStyles();
+
+
+    const onSelected = (e, value, name) => {
+        // const { name, value } = e;
+        // console.log(e, b, c)
+        setNewCar({
+            ...newCar,
+            [name]: value
+        });
+    }
+
+
+    console.log("ADD listing values", newCar)
     function submit() {
         console.log("submit")
         createCar({
@@ -174,9 +188,13 @@ const AddListing = function ({ onClose, selectedValue, open }) {
         })
     }
 
-    const onSelectChange = function (e, a, b) {
-        console.log("Select change", a, b)
-    }
+    // const onSelectChange = (e, a, b) => {
+    //     console.log("Select change", a, b)
+    //     setNewCar({
+    //         ...newCar,
+    //         [a]: b
+    //     });
+    // }
 
     return (
         <Dialog maxWidth="sm" fullWidth={true} onClose={onClose} aria-labelledby="simple-dialog-title" open={true}>
@@ -187,13 +205,106 @@ const AddListing = function ({ onClose, selectedValue, open }) {
 
 
                 <CustomItem
+                    name="postedBy"
+                    label="Posted By"
+                    onClick={(e, value, name) => onSelected(e, value, name)}
+                    data={INITIAL_CAR_STATE.postedBy}
+                    menuPosition="bottom"
+                />
+                <CustomItem
                     name="make"
                     label="Make"
-                    onClick={(e, value, name) => onSelectChange(e, value, name)}
-                    // onClick={handleChange}
+                    onClick={(e, value, name) => onSelected(e, value, name)}
                     search
                     data={INITIAL_CAR_STATE.make}
+                    menuPosition="bottom"
                 />
+                {/* <CustomItem
+                    label="Model"
+                    search
+                    data={models}
+                    onClick={useCarContext.onSelectModel}
+                    disabled={!make}/> */}
+                <CustomItem
+                    name="fuel"
+                    label="Fuel"
+                    // onClick={(e, value, name) => onSelectChange(e, value, name)}
+                    onClick={(e, value, name) => onSelected(e, value, name)}
+                    search
+                    data={INITIAL_CAR_STATE.fuel}
+                    menuPosition="bottom"
+                />
+                {/*<CustomSlider
+                    // slideBeforeLabel
+                    leftBeforeSlideMaxLabel={"Before"}
+                    label="Year"
+                    valueMatchLabel="Any year" // If values match display 'Any year', instead of 1960-2020
+                    min={INITIAL_CAR_STATE.year[0]}
+                    max={INITIAL_CAR_STATE.year[1]}
+                    name="year"
+                    value={year}
+                    // onChange={handleChange}
+                    onChange={onYearChange}
+                />
+                <Divider />
+                <CustomSlider
+                    label="Mileage"
+                    labelRight={"+ mi"}
+                    min={INITIAL_CAR_STATE.mileage[0]}
+                    max={INITIAL_CAR_STATE.mileage[1]}
+                    name="mileage"
+                    value={mileage}
+                    // onChange={handleChange}
+                    onChange={onMileageChange}
+                />
+                <Divider /> */}
+
+                <CustomItem
+                    name="bodyStyle"
+                    label="Body Style"
+                    onClick={(e, value, name) => onSelected(e, value, name)}
+                    data={INITIAL_CAR_STATE.bodyStyle}
+                    menuPosition="bottom"
+                    multiSelect
+                />
+                <CustomItem
+                    name="transmission"
+                    label="Transmission"
+                    onClick={(e, value, name) => onSelected(e, value, name)}
+                    data={INITIAL_CAR_STATE.transmission}
+                    menuPosition="bottom"
+                    multiSelect
+                />
+                <CustomItem
+                    name="fuel"
+                    label="Fuel"
+                    onClick={(e, value, name) => onSelected(e, value, name)}
+                    data={INITIAL_CAR_STATE.fuel}
+                    menuPosition="bottom"
+                    multiSelect
+                />
+                <CustomItem
+                    name="drivetrain"
+                    label="Drivetrain"
+                    onClick={(e, value, name) => onSelected(e, value, name)}
+                    data={INITIAL_CAR_STATE.driveTrain}
+                    menuPosition="bottom"
+                    multiSelect
+                />
+                {/* <CustomSlider
+                    label="Seats"
+                    valueMatchLabel="Any"
+                    labelRight="seats"
+                    // labelLeft
+                    // labelSlideLeft
+                    // labelSlideRight
+                    min={INITIAL_CAR_STATE.seats[0]}
+                    max={INITIAL_CAR_STATE.seats[1]}
+                    name="seats"
+                    value={seats}
+                    // onChange={handleChange}
+                    onChange={onSeatsChange}
+                /> */}
 
 
 
