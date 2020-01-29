@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
         borderRadius: "50%",
         borderTopColor: "#fff",
         animationName: '$spin',
-        animationDuration: '0.7s',
+        animationDuration: '0.4s',
         animationTimingFunction: 'linear',
         animationIterationCount: 'infinite',
     },
