@@ -26,13 +26,13 @@ function CarListProvider({ children }) {
     const [carsLength, setCarsLength] = useState(0)
     const [isLoading, setIsLoading] = useState(true)
 
-
+    console.log(make, "MAKEEEEEEEE")
     // NEED BIG REFACTOR
     // On submit, fetch car list and update the list
 
-    const fetchCarList = async () => {
+    const fetchCarList = async (data) => {
         try {
-            const cars = await getCars();
+            const cars = await getCars(data);
             console.log("M", cars)
             setCarList(cars.cars)
             setCarsLength(cars.length)
@@ -50,7 +50,7 @@ function CarListProvider({ children }) {
 
     useEffect(() => {
         fetchCarList()
-    }, [])
+    }, [make])
 
     return (
         <CarListContext.Provider value={{
