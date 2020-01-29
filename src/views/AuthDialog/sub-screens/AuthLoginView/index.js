@@ -34,11 +34,12 @@ const AuthLoginView = ({ setView }) => {
         try {
             const res = await auth.methods.login({ "email": values.email, "password": values.password });
             setIsChecking(true)
+            console.log(res.status, "LOGGING IN success")
             if (res.status === 'success') {
                 setNotification({})
                 setNotification({ state: true, message: "You have been successfully logged in!", type: "success" })
                 setIsChecking(false)
-                setView("")
+                // setView("")
             }
         } catch (e) {
             setNotification({})
@@ -48,50 +49,52 @@ const AuthLoginView = ({ setView }) => {
     }
 
     return (
-        <Box>
-            <form onSubmit={handleSubmit} noValidate autoComplete="off">
-                <Grid container alignItems="center">
-                    <Grid className={classes.inputWrap} item md={12}>
-                        <FontAwesomeIcon className={classes.inputIcon} width={24} icon="envelope" />
-                        <TextField
-                            fullWidth
-                            name="email"
-                            type="email"
-                            value={values.email}
-                            id="input-with-icon-grid"
-                            label="Email"
-                            onChange={handleChange}
-                        />
-                    </Grid>
-                </Grid>
-                <Grid container alignItems="center">
-                    <Grid className={classes.inputWrap} item md={12}>
-                        <FontAwesomeIcon className={classes.inputIcon} width={24} icon="lock" />
-                        <FormControl fullWidth>
-                            <InputLabel htmlFor="auth-login-password">Password</InputLabel>
-                            <PasswordInput value={values.password} onChange={handleChange} />
-                        </FormControl>
-                    </Grid>
-                </Grid>
-
-                {/* <CustomButton isChecking> </CustomButton> */}
-
-                <Button type="submit" variant="contained" color="secondary" >
-                    Log in
-                    {isChecking ?
-                        <Spinner />
-                        : ""}
-                </Button>
-            </form>
-
+        <>
             <Box>
-                <Button onClick={() => setView('AuthForgotPasswordView')}>Forgot your password?</Button>
-                <Button onClick={() => setView('AuthRegisterView')}>Don't have an account?</Button>
+                <form onSubmit={handleSubmit} noValidate autoComplete="off">
+                    <Grid container alignItems="center">
+                        <Grid className={classes.inputWrap} item md={12}>
+                            <FontAwesomeIcon className={classes.inputIcon} width={24} icon="envelope" />
+                            <TextField
+                                fullWidth
+                                name="email"
+                                type="email"
+                                value={values.email}
+                                id="input-with-icon-grid"
+                                label="Email"
+                                onChange={handleChange}
+                            />
+                        </Grid>
+                    </Grid>
+                    <Grid container alignItems="center">
+                        <Grid className={classes.inputWrap} item md={12}>
+                            <FontAwesomeIcon className={classes.inputIcon} width={24} icon="lock" />
+                            <FormControl fullWidth>
+                                <InputLabel htmlFor="auth-login-password">Password</InputLabel>
+                                <PasswordInput value={values.password} onChange={handleChange} />
+                            </FormControl>
+                        </Grid>
+                    </Grid>
+
+                    {/* <CustomButton isChecking> </CustomButton> */}
+
+                    <Button type="submit" variant="contained" color="secondary" >
+                        Log in
+                    {isChecking ?
+                            <Spinner />
+                            : ""}
+                    </Button>
+                </form>
+
+                <Box>
+                    <Button onClick={() => setView('AuthForgotPasswordView')}>Forgot your password?</Button>
+                    <Button onClick={() => setView('AuthRegisterView')}>Don't have an account?</Button>
+                </Box>
+
+
             </Box>
-
             <Notification state={notification.state} message={notification.message} type={notification.type} duration={notification.duration} />
-
-        </Box>
+        </>
     )
 }
 

@@ -36,7 +36,7 @@ const CarView = ({ match, location }) => {
                         <Box className={classes.mainImgWrap}>
                             <CardMedia
                                 className={classes.mainImg}
-                                image={'https://iproxy2.motortrak.com/2014/ferrari/458_italia/rosso_corsa_ds_322-Stratstone_Manchester-ZFF67NHC000201564-1024-0.jpg'}
+                                image={car.coverImage ? car.coverImage : "https://via.placeholder.com/250x250"}
                                 title={car.title}
                             />
                         </Box>
@@ -52,7 +52,11 @@ const CarView = ({ match, location }) => {
                                 alignItems="center"
                             >
                                 <Grid item xs>
-                                    <Typography className={classes.price}>£{car.price}</Typography>
+                                    <Typography className={classes.price}>{new Intl.NumberFormat('en-US', {
+                                        style: 'currency',
+                                        currency: 'GBP',
+                                        minimumFractionDigits: 0
+                                    }).format(car.price)}</Typography>
                                 </Grid>
 
                                 <Grid item>

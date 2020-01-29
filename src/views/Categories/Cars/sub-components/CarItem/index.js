@@ -19,7 +19,7 @@ import useStyles from './styles';
 const CarItem = function (props) {
     const classes = useStyles();
     let { path } = useRouteMatch();
-
+    console.log("ite", props.car)
     return (
         <Grid item xs={12} sm={6} md={12}>
             <Link className={classes.link} to={props.isLoading ? "" : `${path}/${props.car._id}`}> :
@@ -30,7 +30,7 @@ const CarItem = function (props) {
                             :
                             <CardMedia
                                 className={classes.media}
-                                image={"https://via.placeholder.com/250x250"}
+                                image={props.car.coverImage ? props.car.coverImage : "https://via.placeholder.com/250x250"}
                                 title={props.car.title}
                             />
                         }
@@ -49,7 +49,11 @@ const CarItem = function (props) {
                                 <>
                                     <Box justifyContent="space-between" className={classes.detail}>
                                         <Typography className={classes.title}>{props.car.title}</Typography>
-                                        <Typography className={classes.price}>£{props.car.price}</Typography>
+                                        <Typography className={classes.price}>{new Intl.NumberFormat('en-US', {
+                                            style: 'currency',
+                                            currency: 'GBP',
+                                            minimumFractionDigits: 0
+                                        }).format(props.car.price)}</Typography>
                                     </Box>
                                     <Box>
                                     </Box>
