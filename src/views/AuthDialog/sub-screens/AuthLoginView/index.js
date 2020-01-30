@@ -39,7 +39,7 @@ const AuthLoginView = ({ setView }) => {
                 setNotification({})
                 setNotification({ state: true, message: "You have been successfully logged in!", type: "success" })
                 setIsChecking(false)
-                // setView("")
+                setView("")
             }
         } catch (e) {
             setNotification({})
