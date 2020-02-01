@@ -58,7 +58,7 @@ const CarItem = function (props) {
                                     <Box>
                                     </Box>
                                     <Box className={classes.detail}>
-                                        <Typography>{props.car.brand} - {props.car.model} - {props.car.year}</Typography>
+                                        <Typography>{props.car.make} - {props.car.model} - {props.car.year}</Typography>
                                         {props.car.milleage ?
                                             <Typography>{props.car.milleage}ml</Typography>
                                             : null

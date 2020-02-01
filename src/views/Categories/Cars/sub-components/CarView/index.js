@@ -112,8 +112,8 @@ const CarView = ({ match, location }) => {
                                 alignItems="center"
                             >
                                 <Grid item className={classes.carDetailsGenes}>
-                                    {/* TODO: Change 'car.brand' to 'car.make' */}
-                                    <Chip label={car.brand} variant="outlined" />
+                                    {/* TODO: Change 'car.make' to 'car.make' */}
+                                    <Chip label={car.make} variant="outlined" />
                                 </Grid>
                                 <Grid item className={classes.carDetailsGenes}>
                                     <Chip label={car.model} variant="outlined" />

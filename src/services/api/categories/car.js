@@ -1,7 +1,8 @@
 import request from '../request';
 
 const getCars = async (data) => {
-    const res = await request("cars", "GET");
+    console.log(data, "getCars")
+    const res = await request(`cars`, "GET");
     return await res;
 }
 

@@ -27,12 +27,11 @@ function CarListProvider({ children }) {
     const [isLoading, setIsLoading] = useState(true)
 
     console.log(make, "MAKEEEEEEEE")
-    // NEED BIG REFACTOR
-    // On submit, fetch car list and update the list
 
-    const fetchCarList = async (data) => {
+    const fetchCarList = async () => {
         try {
-            const cars = await getCars(data);
+            console.log("FETCH car list", car)
+            const cars = await getCars(car);
             console.log("M", cars)
             setCarList(cars.cars)
             setCarsLength(cars.length)
@@ -48,15 +47,21 @@ function CarListProvider({ children }) {
         // setModels(findModel(newValue))
     }
 
+    const onFilter = function () {
+        console.log("On FIlter clicked")
+        fetchCarList()
+    }
+
     useEffect(() => {
         fetchCarList()
-    }, [make])
+    }, [car.make])
 
     return (
         <CarListContext.Provider value={{
             carList,
             carsLength,
             isLoading,
+            onFilter,
             // onSelectModel,
             onSelectMake
         }} >

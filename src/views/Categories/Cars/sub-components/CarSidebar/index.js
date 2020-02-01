@@ -17,30 +17,7 @@ const CarSidebar = function () {
     const useCarContext = useContext(CarListContext);
 
 
-    // const handleChange = e => {
-    //     const { name, value } = e.target
-    //     console.log(name, value)
-    //     setState(prevState => ({
-    //         ...prevState,
-    //         [name]: value
-    //     }))
-    // }
 
-
-
-    // const onSelectMake = function (event, newValue) {
-    //     setMake(newValue)
-    //     setModels(findModel(newValue))
-    // }
-
-    // const onSlide = (event, newValue) => {
-    //     const type = event.target.value;
-    //     const isSelected.type.find(item => item === newValue);
-
-    //     if(isSelected) {
-
-    //     }
-    // }
 
     // const onSelectBodyStyle = (event, newValue) => {
     //     const isSelected = bodyStyle.find(item => item === newValue);
@@ -158,7 +135,7 @@ const CarSidebar = function () {
                     onChange={onSeatsChange}
                 /> */}
                 <Box className={classes.item}>
-                    <Button fullWidth variant="contained" color="secondary">Save filters</Button>
+                    <Button onClick={useCarContext.onFilter} fullWidth variant="contained" color="secondary">Save filters</Button>
                 </Box>
             </Card>
         </Box>
