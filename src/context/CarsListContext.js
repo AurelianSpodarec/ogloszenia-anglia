@@ -12,14 +12,14 @@ function CarListProvider({ children }) {
     const [make, setMake] = useState();
 
     const [car, setCar] = useState({
-        postedBy: 'All',
-        make: 'All',
-        model: 'All',
-        bodyStyle: 'All',
-        transmission: 'All',
-        year: [INITIAL_CAR_STATE.year[0], INITIAL_CAR_STATE.year[1]],
-        mileage: [INITIAL_CAR_STATE.mileage[0], INITIAL_CAR_STATE.mileage[1]],
-        seats: [INITIAL_CAR_STATE.seats[0], INITIAL_CAR_STATE.seats[1]]
+        postedBy: '',
+        make: '',
+        model: '',
+        bodyStyle: [],
+        transmission: '',
+        year: [],
+        mileage: '',
+        seats: [],
     })
 
     const [carList, setCarList] = useState([])
