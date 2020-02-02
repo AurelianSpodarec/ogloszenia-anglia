@@ -60,7 +60,7 @@ const CustomItem = ({ name, label, search, data, icon, value, multiSelect, onCli
             setMenu(data)
         }
         // TODO:If nothing matches, display: Not found
-    }, [searchQuery])
+    }, [data, searchQuery])
 
     const onToggleMenu = () => {
         if (!disabled) { setMenuOpen(prevOpen => !menuOpen) }

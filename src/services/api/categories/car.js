@@ -41,7 +41,7 @@ const getCars = async (data) => {
             return `${key}[gte]=${value[0]}&${key}[lte]=${value[1]}&`
             // year[gte]=2013&year[lt]=2014
         } else {
-            return `${key}=${value}`
+            return `${key}=${value}&`
         }
 
 

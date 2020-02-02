@@ -53,25 +53,26 @@ const CarSidebar = function () {
 
             <Card className={classes.sidebarInner}>
 
-                {/* <CustomItem
+                <CustomItem
                     label="Posted by"
-                    onClick={onPostedBy}
+                    onClick={(a, b, c) => useCarContext.onChangeValue(a, b, c)}
                     data={INITIAL_CAR_STATE.postedBy}
                 />
-                <Divider /> */}
+                <Divider />
                 <CustomItem
                     label="Make"
                     search
-                    onClick={useCarContext.onSelectMake}
+                    name="make"
+                    onClick={(a, b, c) => useCarContext.onChangeValue(a, b, c)}
                     data={INITIAL_CAR_STATE.make}
                 />
-                {/* <CustomItem
+                <CustomItem
                     label="Model"
                     search
-                    data={models}
-                    onClick={useCarContext.onSelectModel}
-                    disabled={!make}
-                /> */}
+                    data={useCarContext.modelsData}
+                    onClick={(a, b, c) => useCarContext.onChangeValue(a, b, c)}
+                    disabled={!useCarContext.car.make}
+                />
                 <CustomSlider
                     // slideBeforeLabel
                     leftBeforeSlideMaxLabel={"Before"}
@@ -84,7 +85,7 @@ const CarSidebar = function () {
                     // onChange={handleChange}
                     onChange={useCarContext.onYearChange}
                 />
-                {/*
+
                 <Divider />
                 <CustomSlider
                     label="Mileage"
@@ -92,36 +93,39 @@ const CarSidebar = function () {
                     min={INITIAL_CAR_STATE.mileage[0]}
                     max={INITIAL_CAR_STATE.mileage[1]}
                     name="mileage"
-                    value={mileage}
+                    value={useCarContext.car.mileage}
                     // onChange={handleChange}
-                    onChange={onMileageChange}
+                    onChange={useCarContext.onMileageChange}
                 />
-                <Divider /> */}
-                {/* 
+                <Divider />
+
                 <CustomItem
                     label="Body Style"
-                    onClick={onSelectBodyStyle}
                     data={INITIAL_CAR_STATE.bodyStyle}
+                    onClick={(a, b, c) => useCarContext.onChangeValue(a, b, c)}
                     multiSelect
                 />
                 <CustomItem
                     label="Transmission"
-                    onClick={onSelectTransmission}
                     data={INITIAL_CAR_STATE.transmission}
+                    onClick={(a, b, c) => useCarContext.onChangeValue(a, b, c)}
                     multiSelect
                 />
                 <CustomItem
                     label="Fuel"
                     data={INITIAL_CAR_STATE.fuel}
+                    onClick={(a, b, c) => useCarContext.onChangeValue(a, b, c)}
                     multiSelect
                 />
                 <CustomItem
                     label="Drivetrain"
                     data={INITIAL_CAR_STATE.driveTrain}
+                    onClick={(a, b, c) => useCarContext.onChangeValue(a, b, c)}
                     multiSelect
                 />
-                <Divider /> */}
-                {/* <CustomSlider
+
+                <Divider />
+                <CustomSlider
                     label="Seats"
                     valueMatchLabel="Any"
                     labelRight="seats"
@@ -131,10 +135,10 @@ const CarSidebar = function () {
                     min={INITIAL_CAR_STATE.seats[0]}
                     max={INITIAL_CAR_STATE.seats[1]}
                     name="seats"
-                    value={seats}
+                    value={useCarContext.car.seats}
                     // onChange={handleChange}
-                    onChange={onSeatsChange}
-                /> */}
+                    onChange={useCarContext.onSeatsChange}
+                />
                 <Box className={classes.item}>
                     <Button onClick={useCarContext.onFilter} fullWidth variant="contained" color="secondary">Save filters</Button>
                 </Box>
