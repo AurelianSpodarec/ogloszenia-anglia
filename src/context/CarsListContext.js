@@ -8,9 +8,6 @@ const CarListContext = createContext();
 
 function CarListProvider({ children }) {
 
-    const [models, setModels] = useState([])
-    const [make, setMake] = useState();
-
     const [car, setCar] = useState({
         postedBy: '',
         make: '',
@@ -26,13 +23,10 @@ function CarListProvider({ children }) {
     const [carsLength, setCarsLength] = useState(0)
     const [isLoading, setIsLoading] = useState(true)
 
-    console.log(make, "MAKEEEEEEEE")
-
     const fetchCarList = async () => {
         try {
             console.log("FETCH car list", car)
             const cars = await getCars(car);
-            console.log("M", cars)
             setCarList(cars.cars)
             setCarsLength(cars.length)
             setIsLoading(false)
@@ -42,19 +36,18 @@ function CarListProvider({ children }) {
     }
 
     const onSelectMake = function (event, newValue) {
-        console.log("Sidebar car", event, newValue)
-        setMake(newValue)
-        // setModels(findModel(newValue))
+        console.log("Sidebar car", car)
+        setCar({ ...car, make: newValue })
     }
 
     const onFilter = function () {
-        console.log("On FIlter clicked")
+        console.log("On FIlter clicked", car)
         fetchCarList()
     }
 
     useEffect(() => {
         fetchCarList()
-    }, [car.make])
+    }, [])
 
     return (
         <CarListContext.Provider value={{
