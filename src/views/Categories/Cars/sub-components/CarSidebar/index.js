@@ -15,7 +15,7 @@ import { CarListContext } from '@context/CarsListContext';
 const CarSidebar = function () {
     const classes = useStyles();
     const useCarContext = useContext(CarListContext);
-
+    console.log(useCarContext.car.year, "he")
 
 
 
@@ -72,7 +72,7 @@ const CarSidebar = function () {
                     onClick={useCarContext.onSelectModel}
                     disabled={!make}
                 /> */}
-                {/*<CustomSlider
+                <CustomSlider
                     // slideBeforeLabel
                     leftBeforeSlideMaxLabel={"Before"}
                     label="Year"
@@ -80,10 +80,11 @@ const CarSidebar = function () {
                     min={INITIAL_CAR_STATE.year[0]}
                     max={INITIAL_CAR_STATE.year[1]}
                     name="year"
-                    value={year}
+                    value={useCarContext.car.year}
                     // onChange={handleChange}
-                    onChange={onYearChange}
+                    onChange={useCarContext.onYearChange}
                 />
+                {/*
                 <Divider />
                 <CustomSlider
                     label="Mileage"

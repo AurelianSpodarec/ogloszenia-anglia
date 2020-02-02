@@ -34,9 +34,12 @@ const getCars = async (data) => {
         // if (!(key in schema)) throw new Error();
 
         // if (!value == "") {
-        console.log("INSIDE", key, value)
+        console.log("INSIDE", key, value[0])
         if (value == '' || value == []) {
             return '';
+        } else if (value.length === 2) {
+            return `${key}[gte]=${value[0]}&${key}[lte]=${value[1]}&`
+            // year[gte]=2013&year[lt]=2014
         } else {
             return `${key}=${value}`
         }
@@ -56,8 +59,8 @@ const getCars = async (data) => {
 
     buildQuery()
 
-    const res = await request(query, "GET");
     console.log("REs", query)
+    const res = await request(query, "GET");
     return await res;
 }
 

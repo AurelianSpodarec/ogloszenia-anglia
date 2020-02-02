@@ -14,9 +14,9 @@ function CarListProvider({ children }) {
         model: '',
         bodyStyle: [],
         transmission: '',
-        year: [],
+        year: [1960, 2020],
         mileage: '',
-        seats: [],
+        seats: [1, 9],
     })
 
     const [carList, setCarList] = useState([])
@@ -35,10 +35,15 @@ function CarListProvider({ children }) {
         }
     }
 
+
     const onSelectMake = function (event, newValue) {
-        console.log("Sidebar car", car)
         setCar({ ...car, make: newValue })
     }
+
+    const onYearChange = function (event, newValue) {
+        setCar({ ...car, year: newValue })
+    }
+
 
     const onFilter = function () {
         console.log("On FIlter clicked", car)
@@ -56,7 +61,9 @@ function CarListProvider({ children }) {
             isLoading,
             onFilter,
             // onSelectModel,
-            onSelectMake
+            onSelectMake,
+            onYearChange,
+            car
         }} >
             {children}
         </CarListContext.Provider >
