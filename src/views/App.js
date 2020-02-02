@@ -46,7 +46,7 @@ function Layout(props) {
 
 function App() {
 
-
+    document.title = "Buba Classified Ads"
     return (
         <AuthProvider>
             <CarListProvider>
