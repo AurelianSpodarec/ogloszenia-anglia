@@ -70,6 +70,7 @@ const Header = function (props) {
                                 <FontAwesomeIcon icon="search" />
                             </Box>
                             <InputBase
+
                                 fullWidth
                                 placeholder="Search…"
                                 classes={{
