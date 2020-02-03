@@ -51,7 +51,8 @@ const useStyles = makeStyles(theme => ({
     },
     detail: {
         width: "100%",
-        display: "flex"
+        display: "flex",
+        justifyContent: 'space-between'
     },
     price: {
         fontWeight: "bold",

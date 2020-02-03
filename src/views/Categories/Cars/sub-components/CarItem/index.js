@@ -13,9 +13,9 @@ import {
 } from '@material-ui/core';
 
 import Skeleton from '@material-ui/lab/Skeleton';
+import { CreatedSince } from '@components';
 
 import useStyles from './styles';
-import { CreatedSince } from '@components';
 
 
 const CarItem = function (props) {
@@ -62,14 +62,17 @@ const CarItem = function (props) {
                                     <Box className={classes.detail}>
 
                                         <Typography>{props.car.make} - {props.car.model} - {props.car.year}</Typography>
+                                        <Box>
+                                            <CreatedSince createdAt={props.car.createdAt} />
+                                        </Box>
                                         {props.car.milleage ?
                                             <Typography>{props.car.milleage}ml</Typography>
                                             : null
                                         }
                                     </Box>
-                                    <Box>
+                                    {/* <Box>
                                         <CreatedSince createdAt={props.car.createdAt} />
-                                    </Box>
+                                    </Box> */}
                                 </>
                             }
 

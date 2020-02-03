@@ -5,50 +5,18 @@ import {
     Divider,
     Box,
 } from '@material-ui/core';
-import useStyles from './styles';
-import { CustomItem, CustomSlider } from '@components';
 
 import { INITIAL_CAR_STATE } from '@utils/data/menu';
 import { CarListContext } from '@context/CarsListContext';
+import { CustomItem, CustomSlider } from '@components';
 
+import useStyles from './styles';
 
 const CarSidebar = function () {
     const classes = useStyles();
     const useCarContext = useContext(CarListContext);
-    console.log(useCarContext.car.year, "he")
-
-
-
-    // const onSelectBodyStyle = (event, newValue) => {
-    //     const isSelected = bodyStyle.find(item => item === newValue);
-
-    //     if (isSelected) {
-    //         setBodyStyle(bodyStyle.filter(item => item !== newValue))
-    //     } else {
-    //         setBodyStyle([...bodyStyle, newValue])
-    //     }
-    // }
-
-    // const onSelectTransmission = (event, newValue) => {
-    //     const isSelected = transmission.find(item => item === newValue);
-
-    //     if (isSelected) {
-    //         setTransmission(transmission.filter(item => item !== newValue))
-    //     } else {
-    //         setTransmission([...transmission, newValue])
-    //     }
-    // }
-
-    // const findModel = function (carBrand) {
-    //     if (!carBrand) return;
-    //     // if (!Make) { return };
-    //     const selectedCarModel = INITIAL_CAR_STATE.make.find(item => item.name === carBrand.name).models
-    //     return selectedCarModel;
-    // }
-
 
     return (
-
         <Box className={classes.sidebar} >
 
             <Card className={classes.sidebarInner}>
@@ -77,12 +45,11 @@ const CarSidebar = function () {
                     // slideBeforeLabel
                     leftBeforeSlideMaxLabel={"Before"}
                     label="Year"
-                    valueMatchLabel="Any year" // If values match display 'Any year', instead of 1960-2020
+                    valueMatchLabel="Any year"
                     min={INITIAL_CAR_STATE.year[0]}
                     max={INITIAL_CAR_STATE.year[1]}
                     name="year"
                     value={useCarContext.car.year}
-                    // onChange={handleChange}
                     onChange={useCarContext.onYearChange}
                 />
 
@@ -94,7 +61,6 @@ const CarSidebar = function () {
                     max={INITIAL_CAR_STATE.mileage[1]}
                     name="mileage"
                     value={useCarContext.car.mileage}
-                    // onChange={handleChange}
                     onChange={useCarContext.onMileageChange}
                 />
                 <Divider />

@@ -9,12 +9,19 @@ import {
 
 // import useStyles from './styles';
 
-const CreatedSince = function ({ createdAt }) {
+// TODO: Take into account time zone, leap year, and other things. 
+
+const CreatedSince = function ({ createdAt, newFor = 3 }) {
 
     let time = '';
 
-    let getTodayDate = new Date().getTime();
-    let getCreatedDate = new Date(createdAt).getTime();
+    const hour = 60,
+        day = 60 * 24,
+        month = day * 30,
+        year = month * 12;
+
+    let getTodayDate = new Date().getTime(),
+        getCreatedDate = new Date(createdAt).getTime();
 
     let secondsPassed = Math.round((getTodayDate - getCreatedDate) / 1000);
 
@@ -24,9 +31,9 @@ const CreatedSince = function ({ createdAt }) {
     const monthPassed = Math.round(secondsPassed / 2592000)
     const yearPassed = Math.round(secondsPassed / (2592000 * 12))
 
-    // If its 3dayPasseds old, make it on fire!
-    const hour = 60,
-        day = (secondsPassed / 3600) < 24
+    const isNew = dayPassed < newFor;
+
+
 
     if ((secondsPassed / 60) < 60) {
         time = minutePassed + " minutes ago"
@@ -41,8 +48,8 @@ const CreatedSince = function ({ createdAt }) {
     }
 
     return (
-        <Box style={{ color: dayPassed < 3 ? 'red' : 'black' }}>
-            {dayPassed < 3 ? <FontAwesomeIcon icon="fire" /> : <FontAwesomeIcon icon="clock" />} {time}
+        <Box style={{ color: isNew ? 'red' : 'black' }}>
+            {isNew ? <FontAwesomeIcon icon="fire" /> : <FontAwesomeIcon icon="clock" />} {time}
         </Box>
     )
 }
