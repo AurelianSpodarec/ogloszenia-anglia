@@ -1,15 +1,31 @@
 # Ogloszenia Anglia (UK Classified ADS)
 
+
+![Product Teaser](./github/images/car-page-dashboard.png)
+
+
+[Ogloszenia Anglia Live Demo](https://ogloszenianglia.netlify.com/cars)
+
+## Description
+
+
+
+
 ## Installation
 
-1. Clone this repo `git clone https://github.com/AurelianSpodarec/Hobo_Dashboard.git`
-2. Run `npm install`
+Clone this repo to your local machine using: `git clone https://github.com/AurelianSpodarec/ogloszenia-anglia`
 
-### Using this repo
+### Setup
 
-For development work, run:
+```
+npm install
+```
 
-`npm start`
+<!-- https://ogloszenia-anglia.herokuapp.com/ -->
+## Status
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1429779c-474c-4cbf-95cd-7c348d6a71b1/deploy-status)](https://app.netlify.com/sites/ogloszenianglia/deploys)
+
+[![Heroku CI Status](https://ogloszenia-anglia.herokuapp.com/last.svg)](https://dashboard.heroku.com/)
 
 ## Technologies used
 * MongoDB
@@ -27,3 +43,4 @@ For development work, run:
 - [New blog](https://creativeprogrammer.io/)
 
 ## Licence
+MIT © Aurelian Spodarec
