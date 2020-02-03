@@ -1,5 +1,6 @@
 import CustomAlert from './CustomAlert';
 import Categories from './Categories';
+import CreatedSince from './CreatedSince';
 import CustomItem from './CustomItem';
 import CustomSlider from './CustomSlider';
 import CustomTextarea from './CustomTextarea';
@@ -14,6 +15,7 @@ import Spinner from './Spinner';
 export {
     CustomAlert,
     Categories,
+    CreatedSince,
     CustomItem,
     CustomSlider,
     CustomTextarea,

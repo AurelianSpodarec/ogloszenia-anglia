@@ -41,7 +41,9 @@ import {
     faThLarge,
     faSquare,
     faCommentAlt,
-    faCheck
+    faCheck,
+    faFire,
+    faClock
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -89,7 +91,9 @@ library.add(
     faThLarge,
     faSquare,
     faCommentAlt,
-    faCheck
+    faCheck,
+    faFire,
+    faClock
 )
 
 
