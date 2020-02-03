@@ -49,6 +49,7 @@ function App() {
     document.title = "Buba Classified Ads"
     return (
         <AuthProvider>
+            {/* <SearchProvider value={'currentSearch'}> */}
             <CarListProvider>
                 <Layout></Layout>
             </CarListProvider>

@@ -29,52 +29,60 @@ const CreatedSince = function ({ createdAt }) {
 
     let time = '';
 
-    let getTodayDate = new Date();
-    let getCreatedDate = new Date(createdAt);
+    let getTodayDate = new Date().getTime();
+    let getCreatedDate = new Date(createdAt).getTime();
 
-    // const todayDate = {
-    //     year: getTodayDate.getFullYear(),
-    //     month: getTodayDate.getMonth(),
-    //     day: getTodayDate.getDay(),
-    //     hour: getTodayDate.getHours(),
-    //     min: getTodayDate.getMinutes(),
-    //     sec: getTodayDate.getSeconds()
+
+    let secondsPassed = Math.round((getTodayDate - getCreatedDate) / 1000);
+
+    const minute = Math.round(secondsPassed / 60)
+    const hour = Math.round(secondsPassed / 3600)
+    const day = Math.round(secondsPassed / 86400)
+    const month = Math.round(secondsPassed / 2592000)
+
+    if ((secondsPassed / 60) < 60) {
+        time = minute + " minutes ago"
+    } else if ((secondsPassed / 3600) < 24) {
+        time = hour + " hours ago"
+    } else if ((secondsPassed / 86400) < 30) {
+        time = day + " days ago"
+    } else if ((secondsPassed / 2592000) < 365) {
+        time = month + " month ago"
+    }
+
+    // const hour = 60 * 60,
+    //     day = hour * 24,
+    //     month = day * 30
+
+
+    // const isMinutes = Math.floor(((seconds % 86400) % 3600) / 60);
+    // const isHours = Math.floor((seconds % 86400) / 3600);
+    // const isDays = Math.floor(seconds / 86400)
+    // if (isMinutes > isHours) {
+    //     time = isMinutes + " minutes ago"
+    // } else if (isHours < isDays) {
+    //     time = isHours + " hours ago"
+    // } else if (isDays) {
+    //     time = isDays + " days ago"
     // }
 
-    // const carDate = {
-    //     year: getCreatedDate.getFullYear(),
-    //     month: getCreatedDate.getMonth(),
-    //     day: getCreatedDate.getDay(),
-    //     hour: getCreatedDate.getHours(),
-    //     min: getCreatedDate.getMinutes(),
-    //     sec: getCreatedDate.getSeconds()
+    // if (isMinutes > isHours) {
+    //     time = isMinutes + " minutes ago"
+    // } else if (isHours < isDays) {
+    //     time = isHours + " hours ago"
+    // } else if (isHours < 24 || isHours < 48) {
+    //     time = "yesterday"
+    // } else if (isDays) {
+    //     time = isDays + " days ago"
+    // } else if (isMonth) {
+    //     time = isMonth + "month ago"
+    // } else if (isYear) {
+    //     time + isYear + "year ago"
     // }
 
-    // const diff = {
-    //     year: todayDate.year - carDate.year,
-    //     month: todayDate.month - carDate.month,
-    //     day: todayDate.day - carDate.day,
-    //     hour: todayDate.hour - carDate.hour,
-    //     min: todayDate.min - carDate.min,
-    //     sec: todayDate.sec - carDate.sec,
-    // }
+    // console.log("TEST TIME", isMinutes, isHours, isDays)
 
-    var diff = (getTodayDate.getTime() - getCreatedDate.getTime()) / 1000;
-    diff /= 60;
-
-    // if(/)
-
-    // if (diff.getMinutes() >= 60) {
-    //     time = diff + 'minutes ago'
-    // } else if (diff.getHours() >= 24) {
-    //     time = diff + 'hours ago'
-    // }
-
-    // const numberDiff = new Date(Math.abs(Math.round(diff)))
-
-    console.log("Today date", new Date(Math.abs(Math.round(diff))))
-    // console.log("TODAY DATE", diff.year, diff.month, diff.day, diff.hour, diff.min, diff.sec)
-
+    console.log("Today datesss", time, hour)
 
     return (
         <Box>
@@ -119,7 +127,7 @@ const CarItem = function (props) {
 
 
                                         {/* START TEST */}
-                                        {/* <CreatedSince createdAt={props.car.createdAt} /> */}
+                                        <CreatedSince createdAt={props.car.createdAt} />
                                         {/* END TEST */}
 
                                         <Typography className={classes.price}>{new Intl.NumberFormat('en-US', {

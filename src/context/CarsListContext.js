@@ -27,7 +27,7 @@ function CarListProvider({ children }) {
 
     const fetchCarList = async () => {
         try {
-            console.log("FETCH car list", car)
+            // console.log("FETCH car list", car)
             const cars = await getCars(car);
             setCarList(cars.cars)
             setCarsLength(cars.length)
@@ -48,7 +48,7 @@ function CarListProvider({ children }) {
 
 
     const onYearChange = function (event, newValue) {
-        console.log("BBBBBB", event.target.name, newValue)
+        // console.log("BBBBBB", event.target.name, newValue)
         setCar({ ...car, year: newValue })
     }
 
@@ -65,12 +65,12 @@ function CarListProvider({ children }) {
         setCar({ ...car, [name]: value })
         if (name === 'make') {
             const carModels = findModel(car.make)
-            console.log("CAR MODELLLLLLS", carModels)
+            // console.log("CAR MODELLLLLLS", carModels)
         }
     }
 
     const onFilter = function () {
-        console.log("On FIlter clicked", car)
+        // console.log("On FIlter clicked", car)
         fetchCarList()
     }
 

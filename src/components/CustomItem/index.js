@@ -16,7 +16,6 @@ import useStyles from './styles';
 
 const SubMenuItem = ({ menu, multiSelected, name, onClickMenuItem, value, onTabPress }) => {
     const classes = useStyles();
-    console.log("KKK", multiSelected)
     return (
         <Box className={classes.customItemMenuContent}>
             {menu.map(item => {
