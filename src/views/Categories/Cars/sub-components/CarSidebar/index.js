@@ -23,6 +23,7 @@ const CarSidebar = function () {
 
                 <CustomItem
                     label="Posted by"
+                    name="postedBy"
                     onClick={(a, b, c) => useCarContext.onChangeValue(a, b, c)}
                     data={INITIAL_CAR_STATE.postedBy}
                 />

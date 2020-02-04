@@ -1,9 +1,6 @@
 import React from 'react';
 
 import {
-    Container,
-    Grid,
-    Typography,
     Box,
 } from '@material-ui/core';
 
