@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -7,13 +7,16 @@ import {
     Container,
     Box
 } from '@material-ui/core';
-import CarItem from './sub-components/CarItem';
-import useStyles from './styles'
-import CarSidebar from './sub-components/CarSidebar';
-import PageTitle from '../components/Title';
-
 import { CarListContext } from '@context/CarsListContext';
+
+import CarItem from './sub-components/CarItem';
+import CarSidebar from './sub-components/CarSidebar';
+
+import PageTitle from '../components/Title';
 import NoResults from '../components/NoResults';
+import SelectedChips from '../components/SelectedChips';
+
+import useStyles from './styles'
 
 const CarsView = function () {
     const classes = useStyles();
@@ -57,7 +60,9 @@ const CarsView = function () {
                             </Grid>
                         </Grid>
                     </Grid>
-                    {console.log(carProvider.carList === 0 ? "ok" : "no", "PPPPPPPPPPPPPPPPPPPP")}
+
+                    <SelectedChips data={carProvider.car} />
+
                     <Grid container spacing={2}>
                         {
                             carProvider.isLoading ?

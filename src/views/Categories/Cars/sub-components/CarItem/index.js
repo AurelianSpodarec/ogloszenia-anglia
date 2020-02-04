@@ -24,7 +24,7 @@ const CarItem = function (props) {
     // console.log("ite", props.car)
     return (
         <Grid item xs={12} sm={6} md={12}>
-            <Link className={classes.link} to={props.isLoading ? "" : `${path}/${props.car._id}`}> :
+            <Link className={classes.link} to={props.isLoading ? "" : `${path}/${props.car._id}`}>
                 <Card className={classes.card}>
                     <Box className={classes.mediaBox}>
                         {props.isLoading ?
