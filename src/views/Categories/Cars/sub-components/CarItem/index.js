@@ -63,16 +63,18 @@ const CarItem = function (props) {
 
                                         <Typography>{props.car.make} - {props.car.model} - {props.car.year}</Typography>
                                         <Box>
-                                            <CreatedSince createdAt={props.car.createdAt} />
+                                            <CreatedSince size="small" createdAt={props.car.createdAt} />
                                         </Box>
-                                        {props.car.milleage ?
-                                            <Typography>{props.car.milleage}ml</Typography>
+
+                                    </Box>
+                                    <Box>
+                                        {props.car.mileage ?
+                                            <Typography>
+                                                <FontAwesomeIcon style={{ marginRight: '4px', marginTop: '8px' }} icon="tachometer-alt" />
+                                                {props.car.mileage}ml</Typography>
                                             : null
                                         }
                                     </Box>
-                                    {/* <Box>
-                                        <CreatedSince createdAt={props.car.createdAt} />
-                                    </Box> */}
                                 </>
                             }
 
@@ -80,12 +82,16 @@ const CarItem = function (props) {
 
                                 <Box justifyContent="space-between" style={{ marginTop: 'auto' }} className={classes.detail}>
                                     {props.isLoading ?
-                                        <Skeleton /> :
+                                        <Skeleton height="20px" width="100%" /> :
                                         <>
-                                            <Box display="flex">
-                                                <FontAwesomeIcon icon="map-marker-alt" />
+                                            <Grid
+                                                container
+                                                direction="row"
+                                                alignItems="center"
+                                            >
+                                                <FontAwesomeIcon className={classes.locationIcon} icon="map-marker-alt" />
                                                 <Typography className={classes.location}>{props.car.location}</Typography>
-                                            </Box>
+                                            </Grid>
                                             <Box display="flex">
                                                 {/* TODO: When clicked heart, assign it to user and add relation to this car then get the cout */}
                                                 {/* <Button><FontAwesomeIcon icon="share-square" /></Button> */}

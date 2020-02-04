@@ -58,9 +58,10 @@ const useStyles = makeStyles(theme => ({
         fontWeight: "bold",
         fontSize: "24px",
         color: "#000"
+    },
+    locationIcon: {
+        marginRight: '8px'
     }
-
-
 
 }));
 

@@ -5,13 +5,14 @@ import {
     Box,
     Button,
     Grid,
+    Chip
 } from '@material-ui/core';
 
-// import useStyles from './styles';
+import useStyles from './styles';
 
 // TODO: Take into account time zone, leap year, and other things. 
-
-const CreatedSince = function ({ createdAt, newFor = 3 }) {
+const CreatedSince = function ({ createdAt, newFor = 3, size }) {
+    const classes = useStyles();
 
     let time = '';
 
@@ -34,7 +35,6 @@ const CreatedSince = function ({ createdAt, newFor = 3 }) {
     const isNew = dayPassed < newFor;
 
 
-
     if ((secondsPassed / 60) < 60) {
         time = minutePassed + " minutes ago"
     } else if ((secondsPassed / 3600) < 24) {
@@ -49,7 +49,14 @@ const CreatedSince = function ({ createdAt, newFor = 3 }) {
 
     return (
         <Box style={{ color: isNew ? 'red' : 'black' }}>
-            {isNew ? <FontAwesomeIcon icon="fire" /> : <FontAwesomeIcon icon="clock" />} {time}
+            <Chip className={isNew ? classes.chipNew : ""}
+                size={size}
+                icon={<FontAwesomeIcon
+                    style={{ color: isNew ? 'red' : 'black' }}
+                    icon={isNew ? 'fire' : 'clock'}
+                />}
+                label={time}
+            />
         </Box>
     )
 }
