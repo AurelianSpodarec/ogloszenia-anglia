@@ -17,8 +17,7 @@ The webapp has build in custom components, such as the sidebar menu which can be
 
 I've used React Context API instead of Redux, although I believe Contex API haven't matured enough to replace Redux, yet. So will be adding Redux to the project in the upcoming days.
 
-
-[Back-end repo for Ogloszenia Anglia](https://github.com/AurelianSpodarec/ogloszenia-anglia-server)
+GitHub Server Rep: [OgloszeniaAnglia Server Repo](https://github.com/AurelianSpodarec/ogloszenia-anglia-server)
 
 ## Installation
 
@@ -30,13 +29,10 @@ Clone this repo to your local machine using: `git clone https://github.com/Aurel
 npm install
 ```
 
-<!-- https://ogloszenia-anglia.herokuapp.com/ -->
 ## Status
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1429779c-474c-4cbf-95cd-7c348d6a71b1/deploy-status)](https://app.netlify.com/sites/ogloszenianglia/deploys)
 
 [Ogloszenia Anglia Live Demo](https://ogloszenianglia.netlify.com/cars)
-
-<!-- [![Heroku CI Status](https://ogloszenia-anglia.herokuapp.com/last.svg)](https://dashboard.heroku.com/) -->
 
 ## Technologies used
 * MongoDB
