@@ -9,34 +9,11 @@ import {
 } from '@material-ui/core';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { shortenWord } from './../../utils/functions';
+import { shortenWord } from '@utils/functions';
+
+import MenuItem from './sub-components/menu-item'
 
 import useStyles from './styles';
-
-
-const SubMenuItem = ({ menu, multiSelected, name, onClickMenuItem, value, onTabPress }) => {
-    const classes = useStyles();
-    return (
-        <Box className={classes.customItemMenuContent}>
-            {menu.map(item => {
-                return (
-                    <Box key={item.slug} name={name} value={item.displayName} onClick={(e, b) => onClickMenuItem(e, item, name, value)} onKeyDown={onTabPress} className={classes.customItemContent}>
-
-
-                        <Typography name={name} value={item.displayName}>
-                            {
-                                multiSelected.length !== 0 && multiSelected.find(selectedItem => selectedItem.slug === item.slug) ?
-                                    <FontAwesomeIcon icon="check" />
-                                    : ""
-                            }
-                            {item.displayName || item}
-                        </Typography>
-                    </Box>
-                )
-            })}
-        </Box>
-    )
-}
 
 
 const CustomItem = ({ name, label, search, data, icon, value, multiSelect, onClick, disabled, menuPosition }) => {
@@ -68,7 +45,7 @@ const CustomItem = ({ name, label, search, data, icon, value, multiSelect, onCli
 
 
     const onSearch = function (event, userInput) {
-        setSearchQuery(event.target.value)
+        // setSearchQuery(event.target.value)
         console.log(event.target.value)
     }
 
@@ -85,7 +62,7 @@ const CustomItem = ({ name, label, search, data, icon, value, multiSelect, onCli
             setMenu(data)
         }
         // TODO:If nothing matches, display: Not found
-    }, [data, searchQuery])
+    }, [menu, searchQuery])
 
     const onToggleMenu = () => {
         if (!disabled) { setMenuOpen(prevOpen => !menuOpen) }
@@ -208,7 +185,7 @@ const CustomItem = ({ name, label, search, data, icon, value, multiSelect, onCli
                             </Box>
                             : null}
 
-                        <SubMenuItem menu={menu} multiSelected={multiSelected} value={value} onClickMenuItem={onClickMenuItem} name={name} onTabPres={onTabPress} />
+                        <MenuItem menu={menu} multiSelected={multiSelected} value={value} onClickMenuItem={onClickMenuItem} name={name} onTabPres={onTabPress} />
 
                     </Box>
                 </ClickAwayListener>
