@@ -13,7 +13,7 @@ const CategoryItem = props => {
     const classes = useStyles();
 
     return (
-        <Grid className={classes.linkWrap} style={props.path === window.location.pathname ? null : { "opacity": 0.3 }}>
+        <Grid className={[classes.linkWrap, props.path === window.location.pathname ? null : classes.linkWrapInactive]}>
             <Link className={classes.link} exact={props.exact ? true : undefined} to={props.path}>
                 <Box onClick={props.onSelectCategory} className={classes.categoryLink}
                 >
