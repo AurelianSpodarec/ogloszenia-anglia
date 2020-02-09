@@ -1,8 +1,10 @@
 # Ogloszenia Anglia - [OgloszeniaAnglia.netifly.com](https://ogloszenianglia.netlify.com/cars)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![React 16.12.0](https://img.shields.io/badge/React-16.12.0-red.svg) ![Material_UI 4.91](https://img.shields.io/badge/Material_UI-4.91-orange.svg) ![Awesome TRUE!](https://img.shields.io/badge/Awesome-TRUE!-brightgreen.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![Material_UI 4.9.1](https://img.shields.io/badge/Material_UI-4.91-orange.svg)  ![React 16.12.0](https://img.shields.io/badge/React-16.12.0-red.svg) ![Awesome TRUE!](https://img.shields.io/badge/Awesome-TRUE!-brightgreen.svg)
 
 Currentl under development - However, feel free to visit the site 🚧👷🏗️
+
+A prototype DEMO for a Polish Classified ADS webapp. 
 
 How to use the app? It's simple!
 
@@ -15,15 +17,15 @@ Make a deal and BAM! The item is yours.
 
 ![Product Teaser](./github/images/car-page-dashboard.png)
 
+Build using ReactJS - To simply put it, the MERN stack. [server link](https://github.com/AurelianSpodarec/ogloszenia-anglia-server)
+
 The webapp allows users to create an account, post a listing and contact the buyer(in dev). 
 
-Classifieds ADS webapp built using the MERN stack. 
+I've build custom components that perform single function, and are re-usable in different sections of the app.
 
-The webapp has build in custom components, such as the sidebar menu which can be re-used in multiple scenarios but still performs one function.
+Context API has been used to deal with pretty much everything, however since it hasn't yet matured enough, I will use Redux for the upcoming development.
 
-I've used React Context API instead of Redux, although I believe Contex API haven't matured enough to replace Redux, yet. So will be adding Redux to the project in the upcoming days.
-
-GitHub Server Rep: [OgloszeniaAnglia Server Repo](https://github.com/AurelianSpodarec/ogloszenia-anglia-server)
+GitHub Server Repository: [OgloszeniaAnglia Server Repo](https://github.com/AurelianSpodarec/ogloszenia-anglia-server)
 
 ## Installation
 
