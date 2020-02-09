@@ -1,6 +1,6 @@
 # Ogloszenia Anglia - [OgloszeniaAnglia.netifly.com](https://ogloszenianglia.netlify.com/cars)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![React 16.12.0](https://img.shields.io/badge/React-16.12.0-red.svg)] [![Awesome TRUE!](https://img.shields.io/badge/Awesome-TRUE!-brightgreen.svg)] [![Material_UI 4.91](https://img.shields.io/badge/Material_UI-4.91-yellow.svg)]
 
 Currentl under development - However, feel free to visit the site 🚧👷🏗️
 
@@ -37,9 +37,6 @@ npm install
 
 ## Status
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1429779c-474c-4cbf-95cd-7c348d6a71b1/deploy-status)](https://app.netlify.com/sites/ogloszenianglia/deploys)
-
-![Build Passing](https://api.netlify.com/api/v1/badges/1429779c-474c-4cbf-95cd-7c348d6a71b1/deploy-status)
-<!-- (https://app.netlify.com/sites/ogloszenianglia/deploys) -->
 
 [Ogloszenia Anglia Live Demo](https://ogloszenianglia.netlify.com/cars)
 
