@@ -1,15 +1,21 @@
 # Ogloszenia Anglia - [OgloszeniaAnglia.netifly.com](https://ogloszenianglia.netlify.com/cars)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Currentl under development - However, feel free to visit the site 🚧👷🏗️
 
 How to use the app? It's simple!
 
-Look for a listing you like. You can narrow down the search by filtering the results how you want them.
-Once you've done that,  click on a listing you find attractive, check the details and contact the buyer if you like so.
+Look for a listing you like. Use the sidebar to narrow down the search by filtering the values to your liking.
+Once you've done that, click 'Save' at the bottom of the sidebar. New results will be loaded.
+Click on a listing you find attractive to view more details.
+Ccreate a new account to contact with the seller. 
 
-The webapp allows users to create an account, post a listing and contact the buyer(in dev). 
+Make a deal and BAM! The item is yours.
 
 ![Product Teaser](./github/images/car-page-dashboard.png)
+
+The webapp allows users to create an account, post a listing and contact the buyer(in dev). 
 
 Classifieds ADS webapp built using the MERN stack. 
 
@@ -31,6 +37,9 @@ npm install
 
 ## Status
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1429779c-474c-4cbf-95cd-7c348d6a71b1/deploy-status)](https://app.netlify.com/sites/ogloszenianglia/deploys)
+
+![Build Passing](https://api.netlify.com/api/v1/badges/1429779c-474c-4cbf-95cd-7c348d6a71b1/deploy-status)
+<!-- (https://app.netlify.com/sites/ogloszenianglia/deploys) -->
 
 [Ogloszenia Anglia Live Demo](https://ogloszenianglia.netlify.com/cars)
 
