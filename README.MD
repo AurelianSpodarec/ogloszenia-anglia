@@ -1,8 +1,8 @@
 # Ogloszenia Anglia - [OgloszeniaAnglia.netifly.com](https://ogloszenianglia.netlify.com/cars)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![Material_UI 4.9.1](https://img.shields.io/badge/Material_UI-4.91-orange.svg)  ![React 16.12.0](https://img.shields.io/badge/React-16.12.0-red.svg) ![Awesome TRUE!](https://img.shields.io/badge/Awesome-TRUE!-brightgreen.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![Material_UI 4.9.1](https://img.shields.io/badge/Material_UI-4.9.1-orange.svg)  ![React 16.12.0](https://img.shields.io/badge/React-16.12.0-red.svg) ![Awesome TRUE!](https://img.shields.io/badge/Awesome-TRUE!-brightgreen.svg)
 
-Currentl under development - However, feel free to visit the site 🚧👷🏗️
+Currently under development - However, feel free to visit the site 🚧👷🏗️
 
 A prototype DEMO for a Polish Classified ADS webapp. 
 
@@ -11,7 +11,7 @@ How to use the app? It's simple!
 Look for a listing you like. Use the sidebar to narrow down the search by filtering the values to your liking.
 Once you've done that, click 'Save' at the bottom of the sidebar. New results will be loaded.
 Click on a listing you find attractive to view more details.
-Ccreate a new account to contact with the seller. 
+Create a new account to contact with the seller. 
 
 Make a deal and BAM! The item is yours.
 
