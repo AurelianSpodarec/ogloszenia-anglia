@@ -13,7 +13,7 @@ Once you've done that, click 'Save' at the bottom of the sidebar. New results wi
 Click on a listing you find attractive to view more details.
 Create a new account to contact with the seller. 
 
-Make a deal and BAM! The item is yours.
+Make a deal and BAM! The item is yours! :)
 
 ![Product Teaser](./github/images/car-page-dashboard.png)
 
