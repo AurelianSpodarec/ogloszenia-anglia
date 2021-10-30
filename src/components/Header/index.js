@@ -34,14 +34,12 @@ const Header = function (props) {
         }
     };
 
-    // If is Authenticated, close setOpen(false) automatically. 
+    React.useEffect(() => {
+        if (auth.isAuthenticated) {
+            setOpen(false)
+        }
 
-
-    // const prevSignUpIdRef = React.useRef();
-    // React.useEffect(() => {
-    //     prevSignUpIdRef.current = open;
-    // })
-    // const prevSignUpId = prevSignUpIdRef.current;
+    }, [auth])
 
     const onCloseListing = value => {
         // set
@@ -72,6 +70,7 @@ const Header = function (props) {
                                 <FontAwesomeIcon icon="search" />
                             </Box>
                             <InputBase
+
                                 fullWidth
                                 placeholder="Search…"
                                 classes={{

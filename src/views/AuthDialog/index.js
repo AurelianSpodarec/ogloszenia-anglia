@@ -17,10 +17,12 @@ import {
 import AuthTitle from './sub-components/AuthTitle'
 
 import useStyles from './styles';
+import { useAuthData } from '@context/AuthContext';
 
 
 function AuthDialog({ onClose, selectedValue, open }) {
     const classes = useStyles();
+    const auth = useAuthData()
     const [currentView, setView] = useState();
 
     const handleClose = () => {
@@ -30,8 +32,12 @@ function AuthDialog({ onClose, selectedValue, open }) {
         }, 1500)
     };
 
+
     let viewToRender;
     let titleToRender;
+    if (auth) {
+        viewToRender = null
+    }
     switch (currentView) {
         case "AuthSocialView":
             viewToRender = <AuthSocialView setView={setView} />;

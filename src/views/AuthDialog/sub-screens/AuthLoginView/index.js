@@ -13,8 +13,7 @@ import {
 
 import { useForm } from '@hooks';
 import { AuthProvider, useAuthData } from '@context/AuthContext';
-import { PasswordInput, Spinner } from '@components';
-
+import { PasswordInput, Spinner, Notification } from '@components';
 
 const INITIAL_STATE = {
     email: "",
@@ -23,65 +22,79 @@ const INITIAL_STATE = {
 
 const AuthLoginView = ({ setView }) => {
     const classes = useStyles();
-    const auth = useAuthData()
+    const auth = useAuthData();
     const { handleChange, handleSubmit, values } = useForm(onLogin, INITIAL_STATE);
     const [isChecking, setIsChecking] = useState(false);
+    const [notification, setNotification] = useState({});
 
     async function onLogin() {
-        const a = await auth.methods.login({ "email": values.email, "password": values.password });
-        console.log('MMMMMMMMMMMmm', a, a.statusCode)
+        if (values.email === "" || values.password === "") return
         setIsChecking(true)
-        if (a.status === 'success') {
-            //create alert showing logged in, and close the modal
-            setIsChecking(false)
-        } else {
-            // hide the loading
+
+        try {
+            const res = await auth.methods.login({ "email": values.email, "password": values.password });
+            setIsChecking(true)
+            console.log(res.status, "LOGGING IN success")
+            if (res.status === 'success') {
+                setNotification({})
+                setNotification({ state: true, message: "You have been successfully logged in!", type: "success" })
+                setIsChecking(false)
+                setView("")
+            }
+        } catch (e) {
+            setNotification({})
+            setNotification({ state: true, message: "Invalid credentials", type: "error" })
             setIsChecking(false)
         }
     }
 
-
     return (
-        <Box>
-            <form onSubmit={handleSubmit} noValidate autoComplete="off">
-                <Grid container alignItems="center">
-                    <Grid className={classes.inputWrap} item md={12}>
-                        <FontAwesomeIcon className={classes.inputIcon} width={24} icon="envelope" />
-                        <TextField
-                            fullWidth
-                            name="email"
-                            type="email"
-                            value={values.email}
-                            id="input-with-icon-grid"
-                            label="Email"
-                            onChange={handleChange}
-                        />
-                    </Grid>
-                </Grid>
-                <Grid container alignItems="center">
-                    <Grid className={classes.inputWrap} item md={12}>
-                        <FontAwesomeIcon className={classes.inputIcon} width={24} icon="lock" />
-                        <FormControl fullWidth>
-                            <InputLabel htmlFor="auth-login-password">Password</InputLabel>
-                            <PasswordInput value={values.password} onChange={handleChange} />
-                        </FormControl>
-                    </Grid>
-                </Grid>
-
-                <Button type="submit" variant="contained" color="secondary">
-                    Log in
-                    {isChecking ?
-                        <Spinner />
-                        : ""}
-                </Button>
-            </form>
-
+        <>
             <Box>
-                <Button onClick={() => setView('AuthForgotPasswordView')}>Forgot your password?</Button>
-                <Button onClick={() => setView('AuthRegisterView')}>Don't have an account?</Button>
-            </Box>
+                <form onSubmit={handleSubmit} noValidate autoComplete="off">
+                    <Grid container alignItems="center">
+                        <Grid className={classes.inputWrap} item md={12}>
+                            <FontAwesomeIcon className={classes.inputIcon} width={24} icon="envelope" />
+                            <TextField
+                                fullWidth
+                                name="email"
+                                type="email"
+                                value={values.email}
+                                id="input-with-icon-grid"
+                                label="Email"
+                                onChange={handleChange}
+                            />
+                        </Grid>
+                    </Grid>
+                    <Grid container alignItems="center">
+                        <Grid className={classes.inputWrap} item md={12}>
+                            <FontAwesomeIcon className={classes.inputIcon} width={24} icon="lock" />
+                            <FormControl fullWidth>
+                                <InputLabel htmlFor="auth-login-password">Password</InputLabel>
+                                <PasswordInput value={values.password} onChange={handleChange} />
+                            </FormControl>
+                        </Grid>
+                    </Grid>
 
-        </Box>
+                    {/* <CustomButton isChecking> </CustomButton> */}
+
+                    <Button type="submit" variant="contained" color="secondary" >
+                        Log in
+                    {isChecking ?
+                            <Spinner />
+                            : ""}
+                    </Button>
+                </form>
+
+                <Box>
+                    <Button onClick={() => setView('AuthForgotPasswordView')}>Forgot your password?</Button>
+                    <Button onClick={() => setView('AuthRegisterView')}>Don't have an account?</Button>
+                </Box>
+
+
+            </Box>
+            <Notification state={notification.state} message={notification.message} type={notification.type} duration={notification.duration} />
+        </>
     )
 }
 

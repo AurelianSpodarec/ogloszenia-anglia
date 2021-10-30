@@ -1,17 +1,22 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     Grid,
     Typography,
-    Container
+    Container,
+    Box
 } from '@material-ui/core';
-import CarItem from './sub-components/CarItem';
-import useStyles from './styles'
-import CarSidebar from './sub-components/CarSidebar';
-import PageTitle from '../components/Title';
+import { CarListContext } from '@context/CarsListContext';
 
-import { CarListContext } from '../../../context/CarsListContext';
+import CarItem from './sub-components/CarItem';
+import CarSidebar from './sub-components/CarSidebar';
+
+import PageTitle from '../components/Title';
+import NoResults from '../components/NoResults';
+import SelectedChips from '../components/SelectedChips';
+
+import useStyles from './styles'
 
 const CarsView = function () {
     const classes = useStyles();
@@ -56,16 +61,18 @@ const CarsView = function () {
                         </Grid>
                     </Grid>
 
+                    <SelectedChips data={carProvider.car} />
+
                     <Grid container spacing={2}>
                         {
                             carProvider.isLoading ?
                                 [...Array(5)].map((x, i) => <CarItem key={i} isLoading={carProvider.isLoading} />)
-                                :
-                                carProvider && carProvider.length != 0 ?
+                                : carProvider.carList.length === 0 ?
+                                    <NoResults />
+                                    :
                                     carProvider.carList && carProvider.carList.map(car => {
                                         return <CarItem key={car._id} car={car} />
                                     })
-                                    : <Typography>No cars found :-( </Typography>
                         }
                     </Grid>
                 </Grid>

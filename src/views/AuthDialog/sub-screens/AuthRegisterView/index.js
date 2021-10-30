@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useStyles from './styles';
 import {
@@ -10,9 +10,9 @@ import {
     FormControl
 } from '@material-ui/core';
 
-import { useForm } from '../../../../hooks';
-import { userRegister } from '../../../../services/api/users';
-import { PasswordInput } from '../../../../components';
+import { useForm } from '@hooks';
+import { userRegister } from '@services/api/users';
+import { PasswordInput, Notification } from '@components';
 
 
 const INITIAL_STATE = {
@@ -25,15 +25,27 @@ const INITIAL_STATE = {
 const AuthRegisterView = ({ setView }) => {
     const classes = useStyles();
 
+    const [notification, setNotification] = useState({})
     const { handleChange, handleSubmit, values } = useForm(submit, INITIAL_STATE)
 
-    function submit() {
-        userRegister({
-            "firstName": values.firstName,
-            "lastName": values.lastName,
-            "email": values.email,
-            "password": values.password
-        })
+    async function submit() {
+        try {
+            const res = await userRegister({
+                "firstName": values.firstName,
+                "lastName": values.lastName,
+                "email": values.email,
+                "password": values.password
+            })
+            if (res.status === 'success') {
+                setNotification({})
+                setNotification({ state: true, message: "You have successfully registered.", type: "success" })
+                // setIsChecking(false)
+            }
+        } catch (e) {
+            setNotification({})
+            setNotification({ state: true, message: "Pleaes check your details, or try again later.", type: "error" })
+            // setIsChecking(false)
+        }
     }
 
     return (
@@ -98,6 +110,8 @@ const AuthRegisterView = ({ setView }) => {
                     <Button onClick={() => setView('AuthLoginView')}>Already have an account?</Button>
                 </Box>
             </form>
+
+            <Notification state={notification.state} message={notification.message} type={notification.type} duration={notification.duration} />
 
         </Box>
     )

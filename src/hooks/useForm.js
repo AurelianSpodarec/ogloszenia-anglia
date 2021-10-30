@@ -4,11 +4,18 @@ const useForm = (callback, customValues) => {
     const [values, setValues] = useState(customValues)
 
     const handleChange = event => {
+
         const { name, value } = event.target;
         setValues({
             ...values,
             [name]: value
         });
+
+        console.log("UseForm", event.target, name, value)
+        // setValues({
+        //     ...values,
+        //     [name]: value
+        // });
     }
 
     const handleSubmit = event => {

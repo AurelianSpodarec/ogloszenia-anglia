@@ -1,263 +1,318 @@
 import React, { useState, useEffect } from 'react';
 
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Avatar from '@material-ui/core/Avatar';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemText from '@material-ui/core/ListItemText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Dialog from '@material-ui/core/Dialog';
-import Typography from '@material-ui/core/Typography';
-import { blue } from '@material-ui/core/colors';
+import { Dialog, Button, DialogTitle } from '@material-ui/core';
 
 import {
-    Box, FormControl, TextField, InputLabel,
+    Box,
+    FormControl,
+    TextField,
+    InputLabel,
     DialogContent,
     DialogActions,
-    OutlinedInput, InputAdornment
+    Input,
+    InputAdornment
 } from '@material-ui/core/'
 
+import { INITIAL_CAR_STATE } from '@utils/data/menu';
+import { createCar } from '@services/api/categories/car';
+import { useForm } from '@hooks';
+import { CustomItem, CustomTextarea } from '@components';
+
 import useStyles from './styles'
-import { CustomItem } from '../../components';
-import { INITIAL_CAR_STATE } from './../../utils/data/menu';
-import { createCar } from '../../services/api/categories/car';
 
 
-
-const Location = function () {
-    return (
-        // Current location - access geo data or if location is in profile
-        // Zipcode/Select location
-        <Box></Box>
-        // 
-    )
-}
-
-const ListingChooseCar = function () {
-    return (
-        <Box>
-            <Typography>Car model</Typography>
-
-            <CustomItem
-                label="Year"
-                // onClick={onPostedBy}
-                search
-                data={INITIAL_CAR_STATE.year}
-            />
-            <CustomItem
-                label="Make"
-                // onClick={onPostedBy}
-                search
-                data={INITIAL_CAR_STATE.make}
-            />
-            {/* Get by id selected */}
-            {/* <CustomItem
-                label="Model"
-                // onClick={onPostedBy}
-                search
-                data={INITIAL_CAR_STATE.model}
-            /> */}
-
-            <Typography>Car details</Typography>
-
-
-            <CustomItem
-                label="Body Style"
-                // onClick={onSelectBodyStyle}
-                data={INITIAL_CAR_STATE.bodyStyle}
-                multiSelect
-            />
-            <CustomItem
-                label="Transmission"
-                // onClick={onSelectTransmission}
-                data={INITIAL_CAR_STATE.transmission}
-                multiSelect
-            />
-            <CustomItem
-                label="Fuel"
-                data={INITIAL_CAR_STATE.fuel}
-                multiSelect
-            />
-            <CustomItem
-                label="Drivetrain"
-                data={INITIAL_CAR_STATE.driveTrain}
-                multiSelect
-            />
-            {/* <Divider /> */}
-
-            Seats
-            Mileage
-        </Box>
-    )
-}
-
-const ChooseCategory = function () {
-    const classes = useStyles();
-
-    return (
-        <Box>
-            <Typography>Choose a category</Typography>
-            <Box>Cars</Box>
-            <Box>Housing</Box>
-            <Box>Jobs</Box>
-        </Box>
-    )
+const INITIAL_NEW_CAR_STATE = {
+    "title": "",
+    "description": "",
+    "location": "",
+    "price": "",
+    "coverPicture": "",
+    "media": [],
+    "brand": "",
+    "make": "",
+    "model": "",
+    "year": "",
+    "milleage": "",
+    "bodyStyle": "",
+    "transmision": "",
+    "fuel": "",
+    "driveStrain": "",
+    "seats": "",
 }
 
 
-// TODO: Make dropzone global
-const Dropzone = function () {
-    const classes = useStyles();
 
-    return (
-        <Box className={classes.dropzone}>
-            <Box className={classes.dropzoneInner}>
-                <Box className={classes.dropzoneText}>
-                    <Typography>Drop & Drop or browser</Typography>
-                    <Typography>Upload up to 10photos of what you're selling. Images must be in PNG or JPG format and under 5mb.</Typography>
-                    {/* <Typography>or</Typography>
-                            <Button>Browse Files</Button> */}
-                </Box>
-            </Box>
+const INITIAL_CUSTOM_DATA = {
+    seats: [
+        {
+            slug: "1",
+            displayName: '1'
+        },
+        {
+            slug: "2",
+            displayName: '2'
+        },
+        {
+            slug: "3",
+            displayName: '3'
+        },
+        {
+            slug: "4",
+            displayName: '4'
+        },
+        {
+            slug: "5",
+            displayName: '5'
+        },
+        {
+            slug: "6",
+            displayName: '6'
+        },
+        {
+            slug: "7",
+            displayName: '7'
+        },
+        {
+            slug: "8",
+            displayName: '8'
+        },
+        {
+            slug: "9",
+            displayName: '9'
+        },
 
-            {/* <Box>
-                        Image
-                    </Box>
-                    <Box></Box> */}
-        </Box>
-    )
+    ]
+
 }
-
-const Pictures = function () {
-    return (
-        <Box>
-            <Box>Main Pic</Box>
-            <Box>
-                <Box>Pic 1</Box>
-                <Box> Pic2</Box>
-                <Box> pic3</Box>
-            </Box>
-        </Box>
-    )
-}
-
-const Common = function () {
-    return (
-        <Box>
-            Title
-            Description
-        </Box>
-    )
-}
-
-const CustomTextArea = function () {
-    const [char, setChar] = useState(0);
-    const [text, setText] = useState();
-
-    const classes = useStyles();
-
-    const onChange = function (e, value) {
-        const textareaLength = e.target.value.length;
-        // TODO: FInish this
-        if (textareaLength >= 1500) {
-            console.log("Limit!")
-        }
-
-        setChar(textareaLength)
-    }
-
-    return (
-        <Box className={classes.customTextArea}>
-            <FormControl fullWidth className={classes.margin} >
-                <TextField
-                    id="outlined-multiline-static"
-                    label="Description"
-                    multiline
-                    rows="4"
-
-                    value={text}
-                    onChange={(e) => onChange(e)}
-                />
-            </FormControl>
-            <Box className={classes.customTextAreaLimit}>{char} / 1500</Box>
-        </Box>
-    )
-}
-
 
 const AddListing = function ({ onClose, selectedValue, open }) {
-    const classes = useStyles();
     const [category, setCategory] = useState();
-    // const [open, setOpen] = useState();
-    // const { onClose, selectedValue, open } = props;
+    const [newCar, setNewCar] = useState({});
+    const [models, setModels] = useState([]);
+    const classes = useStyles();
 
-    // const handleClose = () => {
-    //     // onSetClose(selectedValue);
-    //     setOpen(falsselectedValuee)
-    // };
+    const { handleChange, handleSubmit, values } = useForm(submit, INITIAL_NEW_CAR_STATE);
 
-    // const handleMenu = event => {
-    //     set(event.currentTarget);
-    // };
+    const onSelected = (e, value, name) => {
+        setNewCar({
+            ...newCar,
+            [name]: value
+        });
+    }
 
-    const addNewCar = () => {
-        console.log("Add new car")
-        createCar()
+    useEffect(() => {
+        const newModels = findModel(newCar.make)
+        console.log(newModels, "LL")
+        setModels(
+            newModels
+        )
+    }, [newCar.make])
+
+    console.log("ADD listing values", newCar)
+    function submit() {
+        console.log("submit")
+        createCar({
+            "title": values.title,
+            "description": values.description,
+            "location": values.location,
+            "price": parseInt(values.price),
+            "coverPicture": values.picture,
+            "media": [],
+            "brand": values.brand,
+            "make": values.make,
+            "model": values.model,
+            "year": parseInt(values.year),
+            "milleage": parseInt(values.milleage),
+            "bodyStyle": values.bodyStyle,
+            "transmision": values.transmision,
+            "fuel": values.fuel,
+            "driveStrain": values.driveStrain,
+            "seats": parseInt(values.seats)
+        })
+    }
+
+    const findModel = function (carBrand) {
+        if (!newCar.make) return;
+        const selectedCarModel = INITIAL_CAR_STATE.make.find(item => item.slug === carBrand).models
+        return selectedCarModel;
     }
 
     return (
         <Dialog maxWidth="sm" fullWidth={true} onClose={onClose} aria-labelledby="simple-dialog-title" open={open}>
             <DialogTitle fontWeight="fontWeightBold" className={classes.dialogTitle} id="simple-dialog-title">Add new listing</DialogTitle>
 
+
             <DialogContent dividers='paper'>
 
+                <CustomItem
+                    name="postedBy"
+                    label="Posted By"
+                    onClick={(e, value, name) => onSelected(e, value, name)}
+                    data={INITIAL_CAR_STATE.postedBy}
+                    menuPosition="bottom"
+                />
+                <CustomItem
+                    name="make"
+                    label="Make"
+                    onClick={(e, value, name) => onSelected(e, value, name)}
+                    search
+                    data={INITIAL_CAR_STATE.make}
+                    menuPosition="bottom"
+                />
+                <CustomItem
+                    name="model"
+                    label="Model"
+                    search
+                    data={models || []}
+                    onClick={(e, value, name) => onSelected(e, value, name)}
+                    disabled={!newCar.make}
+                    menuPosition="bottom"
+                />
+                <CustomItem
+                    name="fuel"
+                    label="Fuel"
+                    onClick={(e, value, name) => onSelected(e, value, name)}
+                    search
+                    data={INITIAL_CAR_STATE.fuel}
+                    menuPosition="bottom"
+                />
+
+                {/* TODO: Need to create years array and re-factor this with a for loop from 1960 -2020*/}
+                <CustomItem
+                    name="year"
+                    label="Year"
+                    onClick={(e, value, name) => onSelected(e, value, name)}
+                    data={[
+                        {
+                            slug: "2020",
+                            displayName: '2020'
+                        },
+                        {
+                            slug: "2019",
+                            displayName: '2019'
+                        },
+                        {
+                            slug: "2018",
+                            displayName: '2018'
+                        },
+                        {
+                            slug: "2017",
+                            displayName: '2017'
+                        },
+                        {
+                            slug: "2016",
+                            displayName: '2016'
+                        },
+                        {
+                            slug: "2015",
+                            displayName: '2015'
+                        },
+                        {
+                            slug: "2014",
+                            displayName: '2014'
+                        },
+                        {
+                            slug: "2013",
+                            displayName: '2013'
+                        },
+                        {
+                            slug: "2012",
+                            displayName: '2012'
+                        },
+
+                    ]}
+                    menuPosition="bottom"
+                    multiSelect
+                />
+                {/* <Divider />
+                <CustomSlider
+                    label="Mileage"
+                    labelRight={"+ mi"}
+                    min={INITIAL_CAR_STATE.mileage[0]}
+                    max={INITIAL_CAR_STATE.mileage[1]}
+                    name="mileage"
+                    value={mileage}
+                    // onChange={handleChange}
+                    onChange={onMileageChange}
+                />
+                <Divider /> */}
+
+                <CustomItem
+                    name="bodyStyle"
+                    label="Body Style"
+                    onClick={(e, value, name) => onSelected(e, value, name)}
+                    data={INITIAL_CAR_STATE.bodyStyle}
+                    menuPosition="bottom"
+                    multiSelect
+                />
+                <CustomItem
+                    name="transmission"
+                    label="Transmission"
+                    onClick={(e, value, name) => onSelected(e, value, name)}
+                    data={INITIAL_CAR_STATE.transmission}
+                    menuPosition="bottom"
+                    multiSelect
+                />
+                <CustomItem
+                    name="fuel"
+                    label="Fuel"
+                    onClick={(e, value, name) => onSelected(e, value, name)}
+                    data={INITIAL_CAR_STATE.fuel}
+                    menuPosition="bottom"
+                    multiSelect
+                />
+                <CustomItem
+                    name="drivetrain"
+                    label="Drivetrain"
+                    onClick={(e, value, name) => onSelected(e, value, name)}
+                    data={INITIAL_CAR_STATE.driveTrain}
+                    menuPosition="bottom"
+                    multiSelect
+                />
+                <CustomItem
+                    name="seats"
+                    label="Seats"
+                    onClick={(e, value, name) => onSelected(e, value, name)}
+                    data={INITIAL_CUSTOM_DATA.seats}
+                    menuPosition="bottom"
+                />
 
 
-                <Box onClick={addNewCar}>
-                    ADD NEW CAR
-                </Box>
-
-                <Dropzone />
-
-                <ListingChooseCar />
-
-                {/* <ListingCarDetails /> */}
-
-
-
-                <FormControl fullWidth className={classes.listingForm} >
-                    {/* <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel> */}
-                    <TextField
-                        label="Amount"
-                        id="outlined-adornment-amount"
-                        // value={values.amount}
-                        // onChange={handleChange('amount')}
+                <FormControl fullWidth >
+                    <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
+                    <Input
+                        id="standard-adornment-amount"
+                        name="price"
+                        label="Price"
+                        value={values.price}
+                        onChange={handleChange}
+                        required
                         startAdornment={<InputAdornment position="start">$</InputAdornment>}
                         labelWidth={60}
                     />
                 </FormControl>
 
-                <Box>
-                    <FormControl fullWidth className={classes.listingForm} >
-                        <TextField
-                            required
-                            id="outlined-required"
-                            label="Title"
-
-                        />
-                    </FormControl>
-                    <CustomTextArea className={classes.listingForm} />
-                </Box>
-
+                <FormControl fullWidth className={classes.listingForm} >
+                    <TextField
+                        name="title"
+                        label="Title"
+                        value={values.title}
+                        onChange={handleChange}
+                        required
+                    />
+                    <CustomTextarea
+                        name="description"
+                        label="Description"
+                        value={values.description}
+                        onChange={handleChange}
+                    />
+                </FormControl>
             </DialogContent>
 
             <DialogActions className={classes.dialogActions}>
-                <Button className={classes.dialogActionsButton} variant="contained" color="secondary" fullWidth>List it!</Button>
+                <Button onClick={submit} className={classes.dialogActionsButton} variant="contained" color="secondary" fullWidth>List it!</Button>
             </DialogActions>
-
 
         </Dialog>
 

@@ -51,15 +51,17 @@ const useStyles = makeStyles(theme => ({
     },
     detail: {
         width: "100%",
-        display: "flex"
+        display: "flex",
+        justifyContent: 'space-between'
     },
     price: {
         fontWeight: "bold",
         fontSize: "24px",
         color: "#000"
+    },
+    locationIcon: {
+        marginRight: '8px'
     }
-
-
 
 }));
 

@@ -9,12 +9,14 @@ import {
 } from '@material-ui/core';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { shortenWord } from './../../utils/functions';
+import { shortenWord } from '@utils/functions';
+
+import MenuItem from './sub-components/menu-item'
 
 import useStyles from './styles';
 
 
-const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, disabled, menuPosition }) => {
+const CustomItem = ({ name, label, search, data, icon, value, multiSelect, onClick, disabled, menuPosition }) => {
     const classes = useStyles();
 
     const [menu, setMenu] = useState(data || []);
@@ -43,7 +45,7 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
 
 
     const onSearch = function (event, userInput) {
-        setSearchQuery(event.target.value)
+        // setSearchQuery(event.target.value)
         console.log(event.target.value)
     }
 
@@ -60,7 +62,7 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
             setMenu(data)
         }
         // TODO:If nothing matches, display: Not found
-    }, [searchQuery])
+    }, [menu, searchQuery])
 
     const onToggleMenu = () => {
         if (!disabled) { setMenuOpen(prevOpen => !menuOpen) }
@@ -113,8 +115,10 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
     }
 
 
-    const onClickMenuItem = (e, value) => {
-        onClick(e, value.slug)
+    const onClickMenuItem = (e, value, name) => {
+        // const a = <div name="hello" target="tte"></div>;
+        onClick(e, value.slug, name, value)
+        // console.log("Custom item", name, value, e.target, value.slug)
 
         if (multiSelect) {
             const isSelected = multiSelected.find(item => item.slug === value.slug)
@@ -129,6 +133,23 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
             setSelected(value)
         }
 
+    }
+
+    const MenuItems = function () {
+        return (
+            <Box className={classes.customItemMenuContent}>
+                {menu.map(item => {
+                    return (
+                        <Box key={item.slug} name={name} value={item.displayName} onClick={(e, b) => onClickMenuItem(e, item, name, value)} onKeyDown={onTabPress} className={classes.customItemContent}>
+
+                            {/* RE_RENDER */}
+                            {!multiSelected.length === 0 && multiSelected.filter(selectedItem => selectedItem.slug === item.slug) ? 'ok ' : "false"}
+                            <Typography name={name} value={item.displayName}>{item.displayName || item}</Typography>
+                        </Box>
+                    )
+                })}
+            </Box>
+        )
     }
 
     return (
@@ -163,17 +184,9 @@ const CustomItem = ({ label, search, data, icon, value, multiSelect, onClick, di
                                 />
                             </Box>
                             : null}
-                        {/* Put data in search state, up */}
-                        <Box className={classes.customItemMenuContent}>
-                            {menu.map(item => {
-                                return (
-                                    <Box key={item.slug} onClick={(e) => onClickMenuItem(e, item)} onKeyDown={onTabPress} className={classes.customItemContent}>
-                                        {/* <Box onClick={(e) => onClick(e, item.name)} value="BB"> */}
-                                        <Typography>{item.displayName || item}</Typography>
-                                    </Box>
-                                )
-                            })}
-                        </Box>
+
+                        <MenuItem menu={menu} multiSelected={multiSelected} value={value} onClickMenuItem={onClickMenuItem} name={name} onTabPres={onTabPress} />
+
                     </Box>
                 </ClickAwayListener>
             </Card>

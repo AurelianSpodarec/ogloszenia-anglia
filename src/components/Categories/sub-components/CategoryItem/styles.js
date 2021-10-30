@@ -8,6 +8,13 @@ const useStyles = makeStyles(theme => ({
         width: '80px',
         padding: '0 5px'
     },
+    linkWrapInactive: {
+        opacity: 0.3,
+        transition: '.18s linear',
+        "&:hover": {
+            opacity: 0.75
+        }
+    },
     categoryLink: {
         display: 'flex',
         flexDirection: 'column',

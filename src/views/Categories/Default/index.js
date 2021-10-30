@@ -8,14 +8,15 @@ import {
 } from '@material-ui/core';
 
 import useStyles from './styles'
+import NoResults from '../components/NoResults';
 
 
 const Default = function (props) {
     const classes = useStyles();
 
     return (
-        <Box className={classes.box}>
-            <Typography>Default</Typography>
+        <Box>
+            <NoResults />
         </Box>
     )
 }

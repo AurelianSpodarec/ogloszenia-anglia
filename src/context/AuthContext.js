@@ -44,7 +44,7 @@ function AuthProvider({ children }) {
         authData,
         async login(username, password) {
             const data = await userLogin(username, password);
-            console.log("DATAAAA", await data.json())
+            console.log("DATAAAA", await data)
             if (data.status === 'success') {
                 setAuthData({ user: data.data.user, isAuthenticated: true });
             } else {

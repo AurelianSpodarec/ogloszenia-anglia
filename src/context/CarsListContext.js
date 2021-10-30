@@ -8,32 +8,27 @@ const CarListContext = createContext();
 
 function CarListProvider({ children }) {
 
-    const [models, setModels] = useState([])
-    const [make, setMake] = useState();
-
     const [car, setCar] = useState({
-        postedBy: 'All',
-        make: 'All',
-        model: 'All',
-        bodyStyle: 'All',
-        transmission: 'All',
-        year: [INITIAL_CAR_STATE.year[0], INITIAL_CAR_STATE.year[1]],
-        mileage: [INITIAL_CAR_STATE.mileage[0], INITIAL_CAR_STATE.mileage[1]],
-        seats: [INITIAL_CAR_STATE.seats[0], INITIAL_CAR_STATE.seats[1]]
+        postedBy: '',
+        make: '',
+        model: '',
+        bodyStyle: [],
+        transmission: '',
+        year: [1960, 2020],
+        mileage: [0, 300000],
+        seats: [1, 9],
     })
+
+    const [modelsData, setModelsData] = useState([])
 
     const [carList, setCarList] = useState([])
     const [carsLength, setCarsLength] = useState(0)
     const [isLoading, setIsLoading] = useState(true)
 
-
-    // NEED BIG REFACTOR
-    // On submit, fetch car list and update the list
-
     const fetchCarList = async () => {
         try {
-            const cars = await getCars();
-            console.log("M", cars)
+            // console.log("FETCH car list", car)
+            const cars = await getCars(car);
             setCarList(cars.cars)
             setCarsLength(cars.length)
             setIsLoading(false)
@@ -42,9 +37,41 @@ function CarListProvider({ children }) {
         }
     }
 
-    const onSelectMake = function (event, newValue) {
-        setMake(newValue)
-        // setModels(findModel(newValue))
+
+
+    const findModel = function (carBrand) {
+        if (!carBrand) return;
+        // if (!Make) { return };
+        const selectedCarModel = INITIAL_CAR_STATE.make.find(item => item.name === carBrand.name).models
+        return selectedCarModel;
+    }
+
+
+    const onYearChange = function (event, newValue) {
+        // console.log("BBBBBB", event.target.name, newValue)
+        setCar({ ...car, year: newValue })
+    }
+
+    const onSeatsChange = function (event, newValue) {
+        setCar({ ...car, seats: newValue })
+    }
+
+    const onMileageChange = function (event, newValue) {
+        setCar({ ...car, mileage: newValue })
+    }
+
+
+    const onChangeValue = function (e, value, name) {
+        setCar({ ...car, [name]: value })
+        if (name === 'make') {
+            const carModels = findModel(car.make)
+            // console.log("CAR MODELLLLLLS", carModels)
+        }
+    }
+
+    const onFilter = function () {
+        // console.log("On FIlter clicked", car)
+        fetchCarList()
     }
 
     useEffect(() => {
@@ -56,8 +83,15 @@ function CarListProvider({ children }) {
             carList,
             carsLength,
             isLoading,
+            onFilter,
             // onSelectModel,
-            onSelectMake
+            // onSelectMake,
+            onYearChange,
+            onChangeValue,
+            onSeatsChange,
+            onMileageChange,
+            car,
+            modelsData
         }} >
             {children}
         </CarListContext.Provider >

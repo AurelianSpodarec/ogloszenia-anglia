@@ -40,7 +40,10 @@ import {
     faEllipsisV,
     faThLarge,
     faSquare,
-    faCommentAlt
+    faCommentAlt,
+    faCheck,
+    faFire,
+    faClock
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -87,7 +90,10 @@ library.add(
     faEllipsisV,
     faThLarge,
     faSquare,
-    faCommentAlt
+    faCommentAlt,
+    faCheck,
+    faFire,
+    faClock
 )
 
 
